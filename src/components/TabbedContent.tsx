@@ -1,5 +1,7 @@
 import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { Briefcase, GraduationCap, Users } from "lucide-react";
+import AnimatedSection from "./AnimatedSection";
 
 const tabs = [
   { id: "experience", label: "Experience & Projects", icon: Briefcase },
@@ -87,30 +89,42 @@ const TabbedContent = () => {
   };
 
   return (
-    <section className="w-full max-w-3xl mx-auto px-4 pb-20">
-      <div className="flex flex-col sm:flex-row gap-1 p-1 bg-secondary rounded-xl mb-8 border border-border">
-        {tabs.map((tab) => {
-          const Icon = tab.icon;
-          const isActive = activeTab === tab.id;
-          return (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
-                isActive
-                  ? "bg-primary text-primary-foreground shadow-lg"
-                  : "text-muted-foreground hover:text-foreground"
-              }`}
-            >
-              <Icon className="w-4 h-4" />
-              <span className="hidden sm:inline">{tab.label}</span>
-            </button>
-          );
-        })}
-      </div>
+    <AnimatedSection>
+      <section className="w-full max-w-3xl mx-auto px-4 pb-20">
+        <div className="flex flex-col sm:flex-row gap-1 p-1 bg-secondary rounded-xl mb-8 border border-border">
+          {tabs.map((tab) => {
+            const Icon = tab.icon;
+            const isActive = activeTab === tab.id;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-sm font-medium transition-all ${
+                  isActive
+                    ? "bg-primary text-primary-foreground shadow-lg"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span className="hidden sm:inline">{tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
 
-      {content[activeTab]}
-    </section>
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={activeTab}
+            initial={{ opacity: 0, y: 12 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -12 }}
+            transition={{ duration: 0.25 }}
+          >
+            {content[activeTab]}
+          </motion.div>
+        </AnimatePresence>
+      </section>
+    </AnimatedSection>
   );
 };
 

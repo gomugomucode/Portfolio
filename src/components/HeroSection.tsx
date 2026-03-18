@@ -1,26 +1,50 @@
+import { motion } from "framer-motion";
 import { Github, Terminal } from "lucide-react";
 
 const HeroSection = () => {
   return (
     <section className="min-h-[60vh] flex flex-col items-center justify-center text-center px-4 py-16 md:py-24">
-      <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary text-primary font-mono text-sm mb-6 border border-border">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5 }}
+        className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-secondary text-primary font-mono text-sm mb-6 border border-border"
+      >
         <Terminal className="w-4 h-4" />
         <span>~/anupam-baral</span>
-      </div>
+      </motion.div>
 
-      <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+        className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-4"
+      >
         Anupam <span className="text-primary">Baral</span>
-      </h1>
+      </motion.h1>
 
-      <p className="text-lg md:text-xl font-medium text-primary mb-6 font-mono">
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="text-lg md:text-xl font-medium text-primary mb-6 font-mono"
+      >
         Full-Stack Developer & BCA Student
-      </p>
+      </motion.p>
 
-      <p className="max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed mb-8">
+      <motion.p
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="max-w-2xl text-muted-foreground text-base md:text-lg leading-relaxed mb-8"
+      >
         I build scalable web applications using React and Node.js. Currently expanding my skill set into Python, NumPy, and Pandas to explore Data Science and AI. Proud Arch Linux user and anime/manga enthusiast.
-      </p>
+      </motion.p>
 
-      <a
+      <motion.a
+        initial={{ opacity: 0, scale: 0.9 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ duration: 0.4, delay: 0.4 }}
         href="https://github.com/gomugomucode"
         target="_blank"
         rel="noopener noreferrer"
@@ -28,7 +52,7 @@ const HeroSection = () => {
       >
         <Github className="w-5 h-5" />
         gomugomucode
-      </a>
+      </motion.a>
     </section>
   );
 };

@@ -1,8 +1,15 @@
+import { motion } from "framer-motion";
 import { Github } from "lucide-react";
 
 const Footer = () => {
   return (
-    <footer className="w-full border-t border-border py-8 px-4">
+    <motion.footer
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+      className="w-full border-t border-border py-8 px-4"
+    >
       <div className="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-4">
         <p className="text-sm text-muted-foreground">
           © {new Date().getFullYear()} Anupam Baral. All rights reserved.
@@ -17,7 +24,7 @@ const Footer = () => {
           GitHub
         </a>
       </div>
-    </footer>
+    </motion.footer>
   );
 };
 

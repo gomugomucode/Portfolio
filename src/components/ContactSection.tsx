@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import AnimatedSection from "./AnimatedSection";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -40,64 +41,48 @@ const ContactSection = () => {
   };
 
   return (
-    <section className="w-full max-w-3xl mx-auto px-4 pb-20">
-      <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
-        Get in <span className="text-primary">Touch</span>
-      </h2>
+    <AnimatedSection>
+      <section className="w-full max-w-3xl mx-auto px-4 pb-20">
+        <h2 className="text-2xl font-bold text-foreground mb-6 text-center">
+          Get in <span className="text-primary">Touch</span>
+        </h2>
 
-      <form onSubmit={handleSubmit} className="bg-card border border-border rounded-xl p-6 md:p-8 space-y-5">
-        <div>
-          <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">Name</label>
-          <input
-            id="name"
-            type="text"
-            maxLength={100}
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
-            className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
-            placeholder="Your name"
-          />
-          {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
-        </div>
+        <form onSubmit={handleSubmit} className="bg-card border border-border rounded-xl p-6 md:p-8 space-y-5">
+          <div>
+            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-1.5">Name</label>
+            <input id="name" type="text" maxLength={100} value={form.name}
+              onChange={(e) => setForm({ ...form, name: e.target.value })}
+              className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+              placeholder="Your name" />
+            {errors.name && <p className="text-destructive text-xs mt-1">{errors.name}</p>}
+          </div>
 
-        <div>
-          <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">Email</label>
-          <input
-            id="email"
-            type="email"
-            maxLength={255}
-            value={form.email}
-            onChange={(e) => setForm({ ...form, email: e.target.value })}
-            className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
-            placeholder="you@example.com"
-          />
-          {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
-        </div>
+          <div>
+            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-1.5">Email</label>
+            <input id="email" type="email" maxLength={255} value={form.email}
+              onChange={(e) => setForm({ ...form, email: e.target.value })}
+              className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow"
+              placeholder="you@example.com" />
+            {errors.email && <p className="text-destructive text-xs mt-1">{errors.email}</p>}
+          </div>
 
-        <div>
-          <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">Message</label>
-          <textarea
-            id="message"
-            rows={5}
-            maxLength={1000}
-            value={form.message}
-            onChange={(e) => setForm({ ...form, message: e.target.value })}
-            className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow resize-none"
-            placeholder="What's on your mind?"
-          />
-          {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
-        </div>
+          <div>
+            <label htmlFor="message" className="block text-sm font-medium text-foreground mb-1.5">Message</label>
+            <textarea id="message" rows={5} maxLength={1000} value={form.message}
+              onChange={(e) => setForm({ ...form, message: e.target.value })}
+              className="w-full bg-secondary border border-border rounded-lg px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-ring transition-shadow resize-none"
+              placeholder="What's on your mind?" />
+            {errors.message && <p className="text-destructive text-xs mt-1">{errors.message}</p>}
+          </div>
 
-        <button
-          type="submit"
-          disabled={sending}
-          className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50"
-        >
-          <Send className="w-4 h-4" />
-          {sending ? "Sending..." : "Send Message"}
-        </button>
-      </form>
-    </section>
+          <button type="submit" disabled={sending}
+            className="w-full flex items-center justify-center gap-2 bg-primary text-primary-foreground px-6 py-3 rounded-lg font-semibold hover:opacity-90 transition-opacity disabled:opacity-50">
+            <Send className="w-4 h-4" />
+            {sending ? "Sending..." : "Send Message"}
+          </button>
+        </form>
+      </section>
+    </AnimatedSection>
   );
 };
 
