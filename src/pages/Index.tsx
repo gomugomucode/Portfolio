@@ -11,6 +11,7 @@ const Index = () => {
       <TabbedContent />
       <SkillsSection />
       <ContactSection />
+      <Footer />
     </div>
   );
 };
