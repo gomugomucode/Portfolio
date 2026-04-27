@@ -88,24 +88,24 @@ const ContactSection = () => {
 
               <div className="space-y-4">
                 {/* Updated with your actual email */}
-                <a href="mailto:anupam.baral.dev@gmail.com" className="flex items-center gap-4 group">
+                <a href="mailto:contact@anupambaral.com.np" className="flex items-center gap-4 group">
                   <div className="p-3 rounded-lg bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-black transition-all">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-xs text-slate-500 uppercase font-mono tracking-tighter">Email</p>
-                    <p className="text-sm text-slate-200 group-hover:text-emerald-400 transition-colors">baralanupam111@gmail.com</p>
+                    <p className="text-sm text-slate-200 group-hover:text-emerald-400 transition-colors">contact@anupambaral.com.np</p>
                   </div>
                 </a>
 
                 {/* Replace 98XXXXXXXX with your real number when ready */}
-                <a href="tel:+9779767606302" className="flex items-center gap-4 group">
+                <a href="tel:+977-9767606302" className="flex items-center gap-4 group">
                   <div className="p-3 rounded-lg bg-blue-500/10 text-blue-500 border border-blue-500/20 group-hover:bg-blue-500 group-hover:text-black transition-all">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-xs text-slate-500 uppercase font-mono tracking-tighter">Phone</p>
-                    <p className="text-sm text-slate-200 group-hover:text-blue-400 transition-colors">+977 9767606302</p>
+                    <p className="text-sm text-slate-200 group-hover:text-blue-400 transition-colors">+977-9767606302</p>
                   </div>
                 </a>
 
