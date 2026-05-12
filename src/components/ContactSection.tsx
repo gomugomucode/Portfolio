@@ -73,12 +73,12 @@ const ContactSection = () => {
       <section className="w-full max-w-6xl mx-auto px-4 pb-20">
         <header className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-            Initiate <span className="text-emerald-500">Connection</span>
+            Initiate <span className="text-violet-500">Connection</span>
           </h2>
           <p className="max-w-2xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed mb-6">
             Open for freelance opportunities, technical collaborations, and full-time roles. Let's discuss how my expertise can deliver value to your next project.
           </p>
-          <div className="w-12 h-1 bg-emerald-500/20 rounded-full mx-auto" />
+          <div className="w-12 h-1 bg-violet-500/20 rounded-full mx-auto" />
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
@@ -90,37 +90,37 @@ const ContactSection = () => {
 
               <div className="space-y-4">
                 <a href="mailto:contact@anupambaral.com.np" className="flex items-center gap-4 group">
-                  <div className="p-3 rounded-xl bg-emerald-500/10 text-emerald-500 border border-emerald-500/20 group-hover:bg-emerald-500 group-hover:text-black transition-all duration-300">
+                  <div className="p-3 rounded-xl bg-violet-500/10 text-violet-500 border border-violet-500/20 group-hover:bg-violet-500 group-hover:text-white transition-all duration-300">
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Email Protocol</p>
-                    <p className="text-sm font-medium text-slate-200 group-hover:text-emerald-400 transition-colors">contact@anupambaral.com.np</p>
+                    <p className="text-sm font-medium text-slate-200 group-hover:text-violet-400 transition-colors">contact@anupambaral.com.np</p>
                   </div>
                 </a>
 
                 <a href="tel:+977-9767606302" className="flex items-center gap-4 group">
-                  <div className="p-3 rounded-xl bg-blue-500/10 text-blue-500 border border-blue-500/20 group-hover:bg-blue-500 group-hover:text-black transition-all duration-300">
+                  <div className="p-3 rounded-xl bg-indigo-500/10 text-indigo-500 border border-indigo-500/20 group-hover:bg-indigo-500 group-hover:text-white transition-all duration-300">
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Voice Link</p>
-                    <p className="text-sm font-medium text-slate-200 group-hover:text-blue-400 transition-colors">+977-9767606302</p>
+                    <p className="text-sm font-medium text-slate-200 group-hover:text-indigo-400 transition-colors">+977-9767606302</p>
                   </div>
                 </a>
 
                 <a href="https://linkedin.com/in/gomugomucode" target="_blank" rel="noopener noreferrer" className="flex items-center gap-4 group">
-                  <div className="p-3 rounded-xl bg-sky-500/10 text-sky-500 border border-sky-500/20 group-hover:bg-sky-500 group-hover:text-black transition-all duration-300">
+                  <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-500 border border-cyan-500/20 group-hover:bg-cyan-500 group-hover:text-black transition-all duration-300">
                     <Linkedin className="w-5 h-5" />
                   </div>
                   <div>
                     <p className="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Professional Network</p>
-                    <p className="text-sm font-medium text-slate-200 group-hover:text-sky-400 transition-colors">gomugomucode</p>
+                    <p className="text-sm font-medium text-slate-200 group-hover:text-cyan-400 transition-colors">gomugomucode</p>
                   </div>
                 </a>
 
                 <div className="flex items-center gap-4">
-                  <div className="p-3 rounded-xl bg-purple-500/10 text-purple-500 border border-purple-500/20">
+                  <div className="p-3 rounded-xl bg-violet-500/10 text-violet-500 border border-violet-500/20">
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
@@ -142,7 +142,7 @@ const ContactSection = () => {
                   <label htmlFor="name" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Client / Contact Name</label>
                   <input id="name" type="text" value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className={`w-full bg-slate-950/50 border ${errors.name ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
+                    className={`w-full bg-slate-950/50 border ${errors.name ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none transition-all`}
                     placeholder="John Doe" />
                   {errors.name && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.name}</p>}
                 </div>
@@ -150,7 +150,7 @@ const ContactSection = () => {
                   <label htmlFor="email" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Return Address (Email)</label>
                   <input id="email" type="email" value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className={`w-full bg-slate-950/50 border ${errors.email ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
+                    className={`w-full bg-slate-950/50 border ${errors.email ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none transition-all`}
                     placeholder="john@example.com" />
                   {errors.email && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.email}</p>}
                 </div>
@@ -160,7 +160,7 @@ const ContactSection = () => {
                 <label htmlFor="subject" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Subject Protocol</label>
                 <input id="subject" type="text" value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  className={`w-full bg-slate-950/50 border ${errors.subject ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
+                  className={`w-full bg-slate-950/50 border ${errors.subject ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none transition-all`}
                   placeholder="Project Collaboration / Technical Inquiry" />
                 {errors.subject && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.subject}</p>}
               </div>
@@ -169,16 +169,16 @@ const ContactSection = () => {
                 <label htmlFor="message" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Payload Data (Message)</label>
                 <textarea id="message" rows={5} value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className={`w-full bg-slate-950/50 border ${errors.message ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none resize-none transition-all`}
+                  className={`w-full bg-slate-950/50 border ${errors.message ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-violet-500/50 focus:border-violet-500/50 outline-none resize-none transition-all`}
                   placeholder="Outline the parameters of our potential collaboration..." />
                 {errors.message && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.message}</p>}
               </div>
 
               <button type="submit" disabled={sending}
-                className="w-full flex items-center justify-center gap-2 bg-emerald-500 text-black px-6 py-3.5 rounded-xl font-bold hover:bg-emerald-400 transition-all active:scale-95 disabled:opacity-50 relative overflow-hidden group">
+                className="w-full flex items-center justify-center gap-2 bg-violet-600 text-white px-6 py-3.5 rounded-xl font-bold hover:bg-violet-500 transition-all active:scale-95 disabled:opacity-50 relative overflow-hidden group">
                 {sending ? (
                   <span className="flex items-center gap-2 font-mono uppercase text-[11px] tracking-widest">
-                    <span className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin" />
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
                     Transmitting...
                   </span>
                 ) : (
