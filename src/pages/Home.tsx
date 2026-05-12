@@ -4,7 +4,7 @@ import HeroSection from "@/components/HeroSection";
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Annupam Baral",
+  "name": "Anupam Baral",
   "alternateName": "gomugomucode",
   "url": "https://anupambaral.com.np",
   "jobTitle": "Full Stack Developer",
@@ -29,10 +29,10 @@ const personSchema = {
 const Home = () => {
   return (
     <div className="space-y-20">
-      <SEO 
-        title="Annupam Baral (gomugomucode) | Full Stack Developer Nepal"
-        description="Annupam Baral (gomugomucode) is a Full Stack Developer & AI/ML Engineer from Nepal specializing in React, TypeScript, and Python."
-        keywords="Annupam Baral, gomugomucode, Developer in Nepal, React Developer Nepal, TypeScript Engineer, AI/ML Builder, Python Developer Nepal"
+      <SEO
+        title="Anupam Baral (gomugomucode) | Full Stack Developer Nepal"
+        description="Anupam Baral (gomugomucode) is a Full Stack Developer & AI/ML Engineer from Nepal specializing in React, TypeScript, and Python."
+        keywords="Anupam Baral, gomugomucode, Developer in Nepal, React Developer Nepal, TypeScript Engineer, AI/ML Builder, Python Developer Nepal"
         schema={personSchema}
       />
       <HeroSection />

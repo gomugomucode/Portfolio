@@ -21,7 +21,7 @@ const HeroSection = () => {
           <div className="w-full h-full rounded-full border-4 border-[#020617] overflow-hidden">
             <img
               src="/my-photo.webp"
-              alt="Annupam Baral - Full Stack Developer from Nepal"
+              alt="Anupam Baral - Full Stack Developer from Nepal"
               className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
               loading="eager"
             />
@@ -53,7 +53,7 @@ const HeroSection = () => {
       <motion.h1
         className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white max-w-4xl"
       >
-        Annupam Baral (gomugomucode) — <span className="text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">Full Stack Developer</span> & AI/ML Engineer from Nepal
+        Anupam Baral (gomugomucode) — <span className="text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">Full Stack Developer</span> & AI/ML Engineer from Nepal
       </motion.h1>
 
       <motion.p className="text-lg md:text-xl font-medium text-slate-300 mb-6 font-mono">
