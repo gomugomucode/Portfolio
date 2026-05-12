@@ -1,17 +1,20 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Terminal, Menu, X } from "lucide-react";
+import { Link, useLocation } from "react-router-dom";
 
 const navLinks = [
-    { name: "Experience", href: "#experience" },
-    { name: "Skills", href: "#skills" },
-    { name: "Resources", href: "#resources" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "/" },
+    { name: "About", href: "/about" },
+    { name: "Projects", href: "/projects" },
+    { name: "Resources", href: "/resources" },
+    { name: "Contact", href: "/contact" },
 ];
 
 const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const location = useLocation();
 
     // Detect scroll to add a blur effect to the navbar background
     useEffect(() => {
@@ -21,6 +24,11 @@ const Navbar = () => {
         window.addEventListener("scroll", handleScroll);
         return () => window.removeEventListener("scroll", handleScroll);
     }, []);
+
+    // Close mobile menu when route changes
+    useEffect(() => {
+        setIsMobileMenuOpen(false);
+    }, [location.pathname]);
 
     return (
         <motion.nav
@@ -36,23 +44,25 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
 
                     {/* Logo */}
-                    <a href="#" className="flex items-center gap-2 text-emerald-500 group">
+                    <Link to="/" className="flex items-center gap-2 text-emerald-500 group" aria-label="Home">
                         <Terminal className="w-5 h-5 group-hover:rotate-12 transition-transform" />
                         <span className="font-bold font-mono text-white tracking-tight group-hover:text-emerald-400 transition-colors">
                             Anupam<span className="text-emerald-500">.dev</span>
                         </span>
-                    </a>
+                    </Link>
 
                     {/* Desktop Links */}
                     <div className="hidden md:flex items-center gap-8">
                         {navLinks.map((link) => (
-                            <a
+                            <Link
                                 key={link.name}
-                                href={link.href}
-                                className="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"
+                                to={link.href}
+                                className={`text-sm font-medium transition-colors hover:text-emerald-400 ${
+                                    location.pathname === link.href ? "text-emerald-500" : "text-slate-300"
+                                }`}
                             >
                                 {link.name}
-                            </a>
+                            </Link>
                         ))}
                     </div>
 
@@ -60,6 +70,8 @@ const Navbar = () => {
                     <button
                         className="md:hidden text-slate-300 hover:text-white"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                        aria-label="Toggle mobile menu"
+                        aria-expanded={isMobileMenuOpen}
                     >
                         {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
                     </button>
@@ -77,14 +89,15 @@ const Navbar = () => {
                     >
                         <div className="flex flex-col px-4 py-4 space-y-4">
                             {navLinks.map((link) => (
-                                <a
+                                <Link
                                     key={link.name}
-                                    href={link.href}
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                    className="text-sm font-medium text-slate-300 hover:text-emerald-400 transition-colors"
+                                    to={link.href}
+                                    className={`text-sm font-medium transition-colors hover:text-emerald-400 ${
+                                        location.pathname === link.href ? "text-emerald-500" : "text-slate-300"
+                                    }`}
                                 >
                                     {link.name}
-                                </a>
+                                </Link>
                             ))}
                         </div>
                     </motion.div>

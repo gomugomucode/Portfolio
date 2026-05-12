@@ -3,75 +3,76 @@ import { Code2, Database, Globe, Terminal, Cpu, Palette } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
 const skillCategories = [
-  { title: "Frontend", icon: Globe, skills: ["React", "Next.js", "Tailwind CSS", "HTML/CSS", "JavaScript", "TypeScript"] },
-  { title: "Backend", icon: Database, skills: ["Node.js", "Express.js", "MySQL", "SQLite"] },
-  { title: "Languages", icon: Code2, skills: ["JavaScript", "TypeScript", "Python"] },
-  { title: "Data Science", icon: Cpu, skills: ["NumPy", "Pandas"] },
-  { title: "DevOps & Tools", icon: Terminal, skills: ["Git", "GitHub", "Vercel", "Arch Linux"] },
-  { title: "Design", icon: Palette, skills: ["Canva", "Responsive Design"] },
+  { title: "Frontend Architecture", icon: Globe, skills: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Framer Motion", "Vite"] },
+  { title: "Backend Systems", icon: Database, skills: ["Node.js", "Express.js", "Python", "MySQL", "REST APIs", "SQLite"] },
+  { title: "AI & Data Engineering", icon: Cpu, skills: ["Machine Learning", "NumPy", "Pandas", "Scikit-Learn"] },
+  { title: "DevOps & Infrastructure", icon: Terminal, skills: ["Git / GitHub", "Vercel Actions", "Cloudflare", "Linux Administration"] },
 ];
 
 const SkillsSection = () => {
   return (
     <AnimatedSection>
-      {/* Changed to max-w-6xl to match the Resources layout width */}
       <section className="w-full max-w-6xl mx-auto px-4 pb-20">
 
         {/* Header Section */}
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-white tracking-tight mb-6">
-            Skills & <span className="text-emerald-500">Technologies</span>
+        <header className="text-center mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-6">
+            Technical <span className="text-emerald-500">Arsenal</span>
           </h2>
 
-          {/* Current Focus Badge - Moved up for better flow */}
-          <div className="flex justify-center mb-4">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-500/10 border border-blue-500/30 text-blue-400 text-sm font-mono shadow-lg shadow-blue-500/5">
+          <div className="flex justify-center mb-6">
+            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-mono shadow-lg shadow-emerald-500/5">
               <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
               </span>
-              Current Focus: Python, NumPy, Pandas & Machine Learning
+              Actively Architecting: Advanced AI/ML pipelines with Python
             </div>
           </div>
 
-          <div className="w-12 h-1 bg-emerald-500/20 rounded-full mx-auto mt-6" />
-        </div>
+          <p className="max-w-2xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed">
+            I leverage a robust ecosystem of modern tools to build scalable, high-performance applications. 
+            My approach combines strongly-typed frontend frameworks with resilient backend architectures.
+          </p>
 
-        {/* Grid Layout - Added max-w-md mx-auto md:max-w-none to fix mobile width! */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-md mx-auto md:max-w-none">
+          <div className="w-12 h-1 bg-emerald-500/20 rounded-full mx-auto mt-8" />
+        </header>
+
+        {/* Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
           {skillCategories.map((cat, i) => {
             const Icon = cat.icon;
             return (
-              <motion.div
+              <motion.article
                 key={cat.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-2xl p-5 hover:border-emerald-500/40 transition-all shadow-lg shadow-black/10 group"
+                className="bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 hover:border-emerald-500/40 transition-all shadow-lg shadow-black/10 group"
               >
                 {/* Card Header */}
-                <div className="flex items-center gap-3 mb-4">
-                  <div className="p-2 rounded-lg bg-slate-800/80 border border-slate-700 group-hover:bg-slate-800 transition-colors">
-                    <Icon className="w-4 h-4 text-emerald-500" />
+                <header className="flex items-center gap-4 mb-5">
+                  <div className="p-3 rounded-xl bg-slate-800/80 border border-slate-700 group-hover:bg-slate-800 transition-colors">
+                    <Icon className="w-5 h-5 text-emerald-500" />
                   </div>
-                  <h3 className="text-base font-semibold text-slate-100 group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-lg font-bold text-slate-100 group-hover:text-emerald-400 transition-colors">
                     {cat.title}
                   </h3>
-                </div>
+                </header>
 
                 {/* Skill Pills */}
-                <div className="flex flex-wrap gap-2">
+                <div className="flex flex-wrap gap-2.5">
                   {cat.skills.map((skill) => (
                     <span
                       key={skill}
-                      className="text-xs font-mono px-2.5 py-1.5 rounded-lg bg-slate-800/50 text-slate-300 border border-slate-700/50 group-hover:border-slate-700 transition-colors"
+                      className="text-xs font-mono px-3 py-1.5 rounded-md bg-slate-800/50 text-slate-300 border border-slate-700/50 group-hover:border-slate-700 group-hover:text-white transition-colors"
                     >
                       {skill}
                     </span>
                   ))}
                 </div>
-              </motion.div>
+              </motion.article>
             );
           })}
         </div>
