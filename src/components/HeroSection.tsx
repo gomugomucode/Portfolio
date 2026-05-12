@@ -1,115 +1,164 @@
 import { motion } from "framer-motion";
-import { Github, Terminal, Linkedin, FileText, ArrowRight, Briefcase } from "lucide-react";
+import { Github, Terminal, Linkedin, FileText, ArrowRight, Briefcase, Sparkles, Code2 } from "lucide-react";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section className="min-h-[80vh] flex flex-col items-center justify-center text-center px-4 py-20">
+    <section className="relative min-h-[95vh] flex flex-col items-center justify-center text-center px-4 py-24 overflow-hidden">
+      
+      {/* Dynamic Background Glows (New Palette) */}
+      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-violet-600/10 rounded-full blur-[130px] pointer-events-none animate-pulse" />
+      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-indigo-500/10 rounded-full blur-[110px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-cyan-400/5 rounded-full blur-[80px] pointer-events-none" />
 
       {/* --- AVATAR WITH DYNAMIC GLOW --- */}
       <motion.div
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6 }}
-        className="relative mb-10"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="relative mb-14"
       >
-        {/* The "Rotating" Background Glow */}
-        <div className="absolute -inset-4 bg-gradient-to-tr from-emerald-500 to-blue-600 rounded-full blur-[20px] opacity-20 animate-pulse" />
-
-        {/* The Border Ring */}
-        <div className="relative w-36 h-36 md:w-44 md:h-44 rounded-full p-[3px] bg-gradient-to-b from-emerald-400 to-slate-800 shadow-[0_0_30px_rgba(16,185,129,0.2)]">
-          <div className="w-full h-full rounded-full border-4 border-[#020617] overflow-hidden">
+        <div className="absolute -inset-1.5 bg-gradient-to-r from-violet-600 via-indigo-500 to-cyan-400 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 animate-tilt"></div>
+        
+        <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-b from-violet-500/50 to-slate-900 shadow-2xl">
+          <div className="w-full h-full rounded-full border-[6px] border-[#020617] overflow-hidden bg-slate-950">
             <img
               src="/my-photo.webp"
-              alt="Anupam Baral - Full Stack Developer from Nepal"
-              className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+              alt="Anupam Baral - Full Stack Architect"
+              className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-1000 hover:scale-105"
               loading="eager"
             />
           </div>
         </div>
 
-        {/* Floating Terminal Badge */}
+        {/* Status Indicator */}
         <motion.div
-          initial={{ x: 20, opacity: 0 }}
-          animate={{ x: 0, opacity: 1 }}
-          transition={{ delay: 0.5 }}
-          className="absolute -bottom-2 -right-2 bg-slate-900 border border-emerald-500/50 text-emerald-400 px-3 py-1 rounded-md text-[10px] font-mono shadow-xl backdrop-blur-md"
+          initial={{ scale: 0 }}
+          animate={{ scale: 1 }}
+          transition={{ delay: 0.8, type: "spring" }}
+          className="absolute bottom-1 right-2 flex items-center gap-1.5 bg-slate-950 border border-violet-500/30 px-4 py-2 rounded-full shadow-2xl backdrop-blur-xl"
         >
-          status: active
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-400 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-violet-500"></span>
+          </span>
+          <span className="text-[10px] font-black text-violet-400 uppercase tracking-widest">Active Status</span>
         </motion.div>
       </motion.div>
 
-      {/* --- CONTENT --- */}
+      {/* --- TOP BADGE --- */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.2 }}
-        className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/5 text-emerald-500 font-mono text-xs mb-6 border border-emerald-500/20"
+        transition={{ delay: 0.3 }}
+        className="group flex items-center gap-3 px-5 py-2.5 rounded-full bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-violet-500/40 transition-all mb-10"
       >
-        <Terminal className="w-3.5 h-3.5" />
-        <span>~/gomugomucode</span>
+        <Terminal className="w-4 h-4 text-violet-400" />
+        <span className="text-xs font-mono text-slate-300 tracking-tight">
+          <span className="text-violet-500 font-bold">~</span>/gomugomucode <span className="text-slate-600">--status</span> <span className="text-cyan-400 font-bold">online</span>
+        </span>
       </motion.div>
 
-      <motion.h1
-        className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-white max-w-4xl"
-      >
-        Anupam Baral (gomugomucode) — <span className="text-emerald-500 drop-shadow-[0_0_15px_rgba(16,185,129,0.3)]">Full Stack Developer</span> & AI/ML Engineer from Nepal
-      </motion.h1>
-
-      <motion.p className="text-lg md:text-xl font-medium text-slate-300 mb-6 font-mono">
-        React Developer <span className="text-emerald-500">•</span> TypeScript Engineer <span className="text-emerald-500">•</span> Python Developer
-      </motion.p>
-
-      <motion.p className="max-w-2xl text-slate-400 text-sm md:text-base leading-relaxed mb-10">
-        I am a <span className="text-emerald-400/90 font-medium">Nepal-based Developer</span> passionate about crafting highly scalable, performant web applications and intelligent data solutions. As an <span className="text-slate-200">AI/ML Builder</span> and open-source enthusiast, I specialize in bridging complex backend architectures with stunning frontend experiences. Let's build something exceptional together.
-      </motion.p>
-
-      {/* --- SOCIAL BUTTONS --- */}
-      <div className="flex flex-wrap items-center justify-center gap-4">
-        <motion.div whileHover={{ y: -2 }}>
-          <Link
-            to="/projects"
-            className="inline-flex items-center gap-2 bg-emerald-500 text-[#020617] px-6 py-2.5 rounded-full font-bold transition-all hover:bg-emerald-400"
-          >
-            <Briefcase className="w-5 h-5" />
-            View Projects
-          </Link>
-        </motion.div>
-
-        <motion.div whileHover={{ y: -2 }}>
-          <Link
-            to="/contact"
-            className="inline-flex items-center gap-2 bg-slate-900 text-white border border-slate-700 px-6 py-2.5 rounded-full font-bold transition-all hover:border-emerald-500 hover:text-emerald-400"
-          >
-            <ArrowRight className="w-5 h-5" />
-            Hire Me
-          </Link>
-        </motion.div>
-
-        <motion.a
-          whileHover={{ y: -2 }}
-          href="https://github.com/gomugomucode"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 bg-slate-900 text-white border border-slate-700 px-6 py-2.5 rounded-full font-bold transition-all hover:border-blue-500 hover:text-blue-400"
+      {/* --- HEADLINE --- */}
+      <div className="max-w-6xl mx-auto mb-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.4, duration: 0.8 }}
         >
-          <Github className="w-5 h-5" />
-          GitHub
-        </motion.a>
-
-        <motion.a
-          whileHover={{ y: -2 }}
-          href="/cv.docx"
-          download
-          className="inline-flex items-center gap-2 bg-slate-900/50 text-slate-300 border border-slate-800/50 px-6 py-2.5 rounded-full font-bold transition-all hover:border-slate-500 hover:text-white"
-        >
-          <FileText className="w-5 h-5" />
-          Download Resume
-        </motion.a>
+          <span className="text-xs md:text-sm font-black uppercase tracking-[0.5em] text-violet-400/80 mb-6 block">
+            The Intersection of Code & Intelligence
+          </span>
+          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter leading-[0.85] md:leading-[0.8]">
+            Building <br /> 
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-400 to-cyan-400 drop-shadow-2xl">
+              Next-Gen Web
+            </span>
+          </h1>
+        </motion.div>
       </div>
+
+      {/* --- SUBTITLE / DESCRIPTION --- */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5 }}
+        className="max-w-3xl mx-auto space-y-8 mb-16"
+      >
+        <p className="text-xl md:text-2xl font-bold text-slate-100 flex items-center justify-center gap-4">
+          <Sparkles className="w-6 h-6 text-violet-400" />
+          Hi, I'm Anupam Baral
+          <span className="w-2 h-2 rounded-full bg-slate-700" />
+          <span className="text-cyan-400 uppercase text-xs tracking-[0.3em] font-black">from Nepal</span>
+        </p>
+        
+        <p className="text-slate-400 text-base md:text-xl leading-relaxed font-medium px-4">
+          Architecting <span className="text-slate-100">scalable digital ecosystems</span> and high-impact
+          frontend experiences. Specializing in neural-driven 
+          <span className="text-violet-400 font-serif italic ml-1.5"> intelligent architectures.</span>
+        </p>
+
+        <div className="flex flex-wrap justify-center gap-3">
+          {["React", "TypeScript", "Python", "Solana", "AI/ML"].map((skill) => (
+            <span key={skill} className="px-4 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-xs font-mono text-slate-300 hover:border-violet-500/50 transition-colors cursor-default">
+              {skill}
+            </span>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* --- ACTION BUTTONS --- */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.6 }}
+        className="flex flex-wrap items-center justify-center gap-6"
+      >
+        <Link
+          to="/projects"
+          className="group relative inline-flex items-center gap-3 bg-violet-600 text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all hover:bg-violet-500 hover:scale-[1.02] active:scale-95 shadow-2xl shadow-violet-600/30 overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
+          <Code2 className="w-5 h-5" />
+          Explore Work
+          <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
+        </Link>
+
+        <Link
+          to="/contact"
+          className="inline-flex items-center gap-3 bg-slate-900 text-white border border-slate-800 px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all hover:bg-slate-800 hover:border-violet-500/40 active:scale-95 shadow-xl"
+        >
+          <Briefcase className="w-5 h-5 text-cyan-400" />
+          Partner Up
+        </Link>
+
+        <div className="flex items-center gap-6 mt-6 md:mt-0 md:ml-6 pl-8 border-l border-slate-800 hidden sm:flex">
+          <motion.a
+            whileHover={{ y: -4, color: "#a855f7" }}
+            href="https://github.com/gomugomucode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-500 transition-colors"
+          >
+            <Github className="w-7 h-7" />
+          </motion.a>
+          <motion.a
+            whileHover={{ y: -4, color: "#a855f7" }}
+            href="/cv.docx"
+            download
+            className="text-slate-500 transition-colors"
+          >
+            <FileText className="w-7 h-7" />
+          </motion.a>
+        </div>
+      </motion.div>
 
     </section>
   );
 };
 
 export default HeroSection;
+
+
+export default HeroSection;
+
