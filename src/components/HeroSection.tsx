@@ -136,6 +136,15 @@ const HeroSection = () => {
           >
             <Github className="w-7 h-7" />
           </motion.a>
+           <motion.a
+            whileHover={{ y: -3, color: "#0077b5" }}
+            href="https://linkedin.com/in/gomugomucode"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-slate-400 transition-colors"
+          >
+            <Linkedin className="w-6 h-6" />
+          </motion.a>
           <motion.a
             whileHover={{ y: -4, color: "#a855f7" }}
             href="/cv.docx"
