@@ -69,12 +69,6 @@ const HeroSection = () => {
           <span className="text-xs md:text-sm font-black uppercase tracking-[0.5em] text-violet-400/80 mb-6 block">
             The Intersection of Code & Intelligence
           </span>
-          <h1 className="text-6xl md:text-8xl lg:text-9xl font-black text-white tracking-tighter leading-[0.85] md:leading-[0.8]">
-            Building <br /> 
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 via-indigo-400 to-cyan-400 drop-shadow-2xl">
-              Next-Gen Web
-            </span>
-          </h1>
         </motion.div>
       </div>
 
@@ -160,5 +154,5 @@ const HeroSection = () => {
 export default HeroSection;
 
 
-export default HeroSection;
+
 

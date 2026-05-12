@@ -16,14 +16,14 @@ const ExperienceTab = () => (
     {/* Experience Header */}
     <div className="relative p-8 rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/20 backdrop-blur-md">
       <div className="absolute top-0 right-0 p-4 opacity-10">
-        <Briefcase className="w-24 h-24 text-emerald-500" />
+        <Briefcase className="w-24 h-24 text-violet-500" />
       </div>
       <div className="relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-[10px] font-bold uppercase tracking-widest mb-4">
           Engineering Portfolio
         </div>
         <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
-          Crafting Scalable <span className="text-emerald-500">Digital Solutions</span>
+          Crafting Scalable <span className="text-violet-500">Digital Solutions</span>
         </h3>
         <p className="text-slate-400 text-sm md:text-base max-w-xl leading-relaxed">
           Focused on building high-performance applications with clean architecture, 
