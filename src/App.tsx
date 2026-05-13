@@ -23,13 +23,13 @@ const PageLoader = () => (
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <Toaster />
     <BrowserRouter
       future={{
         v7_startTransition: true,
-        v7_relativeSplatPath: true
+        v7_relativeSplatPath: true,
       }}
     >
+      <Toaster />
       <Layout>
         <Suspense fallback={<PageLoader />}>
           <Routes>

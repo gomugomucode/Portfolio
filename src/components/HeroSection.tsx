@@ -24,7 +24,7 @@ const HeroSection = () => {
           <div className="w-full h-full rounded-full border-[6px] border-[#020617] overflow-hidden bg-slate-950">
             <img
               src="/my-photo.webp"
-              alt="Anupam Baral - Full Stack Architect"
+              alt="Anupam Baral - Full Stack Developer from Butwal, Nepal"
               className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-1000 hover:scale-105"
               loading="eager"
             />
@@ -79,12 +79,12 @@ const HeroSection = () => {
         transition={{ delay: 0.5 }}
         className="max-w-3xl mx-auto space-y-8 mb-16"
       >
-        <p className="text-xl md:text-2xl font-bold text-slate-100 flex items-center justify-center gap-4">
+        <h1 className="text-xl md:text-2xl font-bold text-slate-100 flex items-center justify-center gap-4">
           <Sparkles className="w-6 h-6 text-violet-400" />
           Hi, I'm Anupam Baral
           <span className="w-2 h-2 rounded-full bg-slate-700" />
           <span className="text-cyan-400 uppercase text-xs tracking-[0.3em] font-black">from Nepal</span>
-        </p>
+        </h1>
         
         <p className="text-slate-400 text-base md:text-xl leading-relaxed font-medium px-4">
           Architecting <span className="text-slate-100">scalable digital ecosystems</span> and high-impact

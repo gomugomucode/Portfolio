@@ -17,7 +17,7 @@ const AboutSection = () => {
             <div className="absolute inset-0 bg-violet-500/0 group-hover:bg-violet-500/0 transition-colors z-10" />
             <img
               src="/my-photo.webp"
-              alt="Anupam Baral"
+              alt="Anupam Baral - Full Stack Developer from Butwal, Nepal"
               className="w-full h-full object-cover"
               onError={(e) => {
                 e.currentTarget.src = 'https://github.com/gomugomucode.png';
