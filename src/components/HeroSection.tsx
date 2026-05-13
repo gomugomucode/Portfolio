@@ -147,7 +147,7 @@ const HeroSection = () => {
           </motion.a>
           <motion.a
             whileHover={{ y: -4, color: "#a855f7" }}
-            href="/cv.docx"
+            href="/Anupambaral-cv.docx"
             download
             className="text-slate-500 transition-colors"
           >
