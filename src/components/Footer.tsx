@@ -19,7 +19,7 @@ const Footer = () => {
         <div className="flex items-center gap-6">
           <a
             href="mailto:contact@anupambaral.com.np"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-violet-500 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-emerald-500 transition-colors"
           >
             <Mail className="w-4 h-4" />
             <span className="hidden sm:inline">Email</span>
@@ -29,7 +29,7 @@ const Footer = () => {
             href="https://linkedin.com/in/gomugomucode"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-violet-400 transition-colors"
+            className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-emerald-400 transition-colors"
           >
             <Linkedin className="w-4 h-4" />
             <span className="hidden sm:inline">LinkedIn</span>

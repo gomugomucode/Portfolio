@@ -44,10 +44,10 @@ const Navbar = () => {
                 <div className="flex items-center justify-between h-16">
 
                     {/* Logo */}
-                    <Link to="/" className="flex items-center gap-2 text-violet-500 group" aria-label="Home">
+                    <Link to="/" className="flex items-center gap-2 text-emerald-500 group" aria-label="Home">
                         <Terminal className="w-5 h-5 group-hover:rotate-12 transition-transform" />
-                        <span className="font-bold font-mono text-white tracking-tight group-hover:text-violet-400 transition-colors">
-                            Anupam<span className="text-violet-500">.dev</span>
+                        <span className="font-bold font-mono text-white tracking-tight group-hover:text-emerald-400 transition-colors">
+                            Anupam<span className="text-emerald-500">.dev</span>
                         </span>
                     </Link>
 
@@ -57,8 +57,8 @@ const Navbar = () => {
                             <Link
                                 key={link.name}
                                 to={link.href}
-                                className={`text-sm font-medium transition-colors hover:text-violet-400 ${
-                                    location.pathname === link.href ? "text-violet-500" : "text-slate-300"
+                                className={`text-sm font-medium transition-colors hover:text-emerald-400 ${
+                                    location.pathname === link.href ? "text-emerald-500" : "text-slate-300"
                                 }`}
                             >
                                 {link.name}
@@ -92,8 +92,8 @@ const Navbar = () => {
                                 <Link
                                     key={link.name}
                                     to={link.href}
-                                    className={`text-sm font-medium transition-colors hover:text-violet-400 ${
-                                        location.pathname === link.href ? "text-violet-500" : "text-slate-300"
+                                    className={`text-sm font-medium transition-colors hover:text-emerald-400 ${
+                                        location.pathname === link.href ? "text-emerald-500" : "text-slate-300"
                                     }`}
                                 >
                                     {link.name}

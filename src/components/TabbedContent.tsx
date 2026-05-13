@@ -16,14 +16,14 @@ const ExperienceTab = () => (
     {/* Experience Header */}
     <div className="relative p-8 rounded-3xl overflow-hidden border border-slate-800 bg-slate-900/20 backdrop-blur-md">
       <div className="absolute top-0 right-0 p-4 opacity-10">
-        <Briefcase className="w-24 h-24 text-violet-500" />
+        <Briefcase className="w-24 h-24 text-emerald-500" />
       </div>
       <div className="relative z-10">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-[10px] font-bold uppercase tracking-widest mb-4">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-bold uppercase tracking-widest mb-4">
           Engineering Portfolio
         </div>
         <h3 className="text-2xl md:text-3xl font-bold text-white mb-3 tracking-tight">
-          Crafting Scalable <span className="text-violet-500">Digital Solutions</span>
+          Crafting Scalable <span className="text-emerald-500">Digital Solutions</span>
         </h3>
         <p className="text-slate-400 text-sm md:text-base max-w-xl leading-relaxed">
           Focused on building high-performance applications with clean architecture, 
@@ -130,7 +130,7 @@ interface ProjectCaseStudyProps {
 }
 
 const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, stats }: ProjectCaseStudyProps) => (
-  <div className="group relative bg-slate-900/30 backdrop-blur-sm border border-slate-800/60 rounded-2xl overflow-hidden hover:border-violet-500/30 transition-all duration-500 shadow-2xl shadow-black/20">
+  <div className="group relative bg-slate-900/30 backdrop-blur-sm border border-slate-800/60 rounded-2xl overflow-hidden hover:border-emerald-500/30 transition-all duration-500 shadow-2xl shadow-black/20">
     <div className="flex flex-col lg:flex-row">
       {/* Media Side */}
       <div className="lg:w-2/5 relative h-56 lg:h-auto overflow-hidden">
@@ -153,7 +153,7 @@ const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink
       <div className="p-6 lg:p-8 flex flex-col flex-1">
         <div className="flex justify-between items-start mb-4">
           <div>
-            <p className="text-[10px] font-bold text-violet-500 uppercase tracking-widest mb-1">{impact}</p>
+            <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1">{impact}</p>
             <h3 className="text-xl font-bold text-white tracking-tight leading-tight">{title}</h3>
           </div>
         </div>
@@ -176,7 +176,7 @@ const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[11px] font-bold px-5 py-2.5 bg-violet-500 text-white rounded-lg hover:bg-violet-400 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all active:scale-95"
+              className="flex items-center gap-2 text-[11px] font-bold px-5 py-2.5 bg-emerald-500 text-white rounded-lg hover:bg-emerald-400 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all active:scale-95"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               VIEW PROJECT
@@ -210,7 +210,7 @@ interface ContentCardProps {
 }
 
 const ContentCard = ({ title, subtitle, description, tags, imageUrl, liveLink, githubLink }: ContentCardProps) => (
-  <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-xl hover:border-violet-500/40 transition-all duration-300 overflow-hidden flex flex-col shadow-lg shadow-black/10">
+  <div className="bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-xl hover:border-emerald-500/40 transition-all duration-300 overflow-hidden flex flex-col shadow-lg shadow-black/10">
     {/* Optional Image Header */}
     {imageUrl && (
       <div className="w-full h-48 sm:h-64 overflow-hidden border-b border-slate-800">
@@ -225,13 +225,13 @@ const ContentCard = ({ title, subtitle, description, tags, imageUrl, liveLink, g
 
     <div className="p-5 md:p-6 flex flex-col flex-1">
       <h3 className="text-lg font-bold text-slate-100 mb-1 leading-tight">{title}</h3>
-      {subtitle && <p className="text-sm text-violet-500 font-mono mb-3">{subtitle}</p>}
+      {subtitle && <p className="text-sm text-emerald-500 font-mono mb-3">{subtitle}</p>}
       <p className="text-slate-400 text-sm leading-relaxed mb-5 flex-grow">{description}</p>
 
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-5">
           {tags.map((tag) => (
-            <span key={tag} className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-800/80 text-violet-400 border border-slate-700/50">
+            <span key={tag} className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-slate-800/80 text-emerald-400 border border-slate-700/50">
               {tag}
             </span>
           ))}
@@ -246,7 +246,7 @@ const ContentCard = ({ title, subtitle, description, tags, imageUrl, liveLink, g
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 bg-violet-500/10 text-violet-400 hover:bg-violet-500 hover:text-white rounded-md transition-all border border-violet-500/20 active:scale-95"
+              className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-white rounded-md transition-all border border-emerald-500/20 active:scale-95"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               Live Deployment
@@ -284,9 +284,9 @@ const TabbedContent = () => {
         
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
-            Professional <span className="text-violet-500 font-mono tracking-tighter">Trajectory_</span>
+            Professional <span className="text-emerald-500 font-mono tracking-tighter">Trajectory_</span>
           </h2>
-          <div className="w-12 h-1 bg-violet-500/40 rounded-full mx-auto" />
+          <div className="w-12 h-1 bg-emerald-500/40 rounded-full mx-auto" />
         </div>
 
         <div className="flex flex-col sm:flex-row gap-1 p-1.5 bg-slate-900/50 backdrop-blur-sm rounded-xl mb-12 border border-slate-800">
@@ -298,7 +298,7 @@ const TabbedContent = () => {
                 key={tab.id}
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex-1 flex items-center justify-center gap-2 px-4 py-3 rounded-lg text-xs font-bold uppercase tracking-wider transition-all duration-300 ${isActive
-                  ? "bg-violet-500 text-white shadow-lg shadow-violet-500/20"
+                  ? "bg-emerald-500 text-white shadow-lg shadow-emerald-500/20"
                   : "text-slate-400 hover:text-slate-200 hover:bg-slate-800/50"
                   }`}
               >
