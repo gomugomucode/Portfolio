@@ -26,10 +26,10 @@ const ExperienceTab = () => (
           Crafting Scalable <span className="text-emerald-500">Digital Solutions</span>
         </h3>
         <p className="text-slate-400 text-sm md:text-base max-w-xl leading-relaxed">
-          Focused on building high-performance applications with clean architecture, 
-          robust security, and exceptional user experiences. 
+          Focused on building high-performance applications with clean architecture,
+          robust security, and exceptional user experiences.
         </p>
-        
+
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mt-8 pt-8 border-t border-slate-800/50">
           {[
             { label: "Stack", value: "Full Stack" },
@@ -58,28 +58,30 @@ const ExperienceTab = () => (
         <ProjectCaseStudy
           title="Scalable E-Learning Platform Architecture"
           impact="Full-stack Engineering • System Design"
-          description="Engineered a comprehensive Learning Management System (LMS) designed for high concurrency and robust resource delivery. Implemented a decoupled React frontend with a secure Node.js/Express RESTful API, backed by an optimized MySQL schema for complex relational querying."
+          description="Engineered a comprehensive Learning Management System (LMS) designed for high concurrency and robust resource delivery. Implemented a decoupled React frontend with a secure Node.js/Express RESTful API."
           tags={["React", "Node.js", "MySQL", "Express", "Tailwind"]}
           imageUrl="/elearning-preview.webp"
           liveLink="https://elearn-lake.vercel.app"
           githubLink="https://github.com/gomugomucode/elearn"
-          stats={[
-            { label: "Tech", value: "MERN+MySQL" },
-            { label: "Role", value: "Lead Dev" }
-          ]}
         />
+        <ProjectCaseStudy
+          title="Yatra - Solana Ride-Sharing Protocol"
+          impact="Web3 Engineering • Real-time Systems"
+          description="Architected a decentralized ride-sharing infrastructure on the Solana blockchain. Implemented atomic trip transactions, driver reputation protocols, and resilient live signaling for high-frequency dispatching."
+          tags={["Solana", "Rust", "Firebase", "TypeScript", "Web3.js"]}
+          imageUrl="/yatra.webp"
+          liveLink="https://yatraa-zeta.vercel.app/"
+          githubLink="https://github.com/gomugomucode/Yatra"
+        />
+
         <ProjectCaseStudy
           title="Web3 Decentralized Loyalty Protocol"
           impact="Blockchain • Web3 Architecture"
-          description="Architected a Solana-based loyalty rewards decentralized application (dApp) for a Superteam Nepal bounty. Leveraged Next.js for SSR performance and integrated Web3.js to handle smart contract interactions and secure wallet authentication flows."
+          description="Architected a Solana-based loyalty rewards decentralized application (dApp). Leveraged Next.js for SSR performance and integrated Web3.js for smart contract interactions."
           tags={["Solana", "Next.js", "Web3.js", "TypeScript", "Rust"]}
           imageUrl="/solana.webp"
           liveLink="https://solana-loyalty-d-app.vercel.app/"
           githubLink="https://github.com/gomugomucode/Solana-Loyalty-dApp"
-          stats={[
-            { label: "Chain", value: "Solana" },
-            { label: "Outcome", value: "Bounty Win" }
-          ]}
         />
       </div>
     </div>
@@ -126,60 +128,53 @@ interface ProjectCaseStudyProps {
   imageUrl: string;
   liveLink?: string;
   githubLink?: string;
-  stats?: { label: string; value: string }[];
 }
 
-const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, stats }: ProjectCaseStudyProps) => (
-  <div className="group relative bg-slate-900/30 backdrop-blur-sm border border-slate-800/60 rounded-2xl overflow-hidden hover:border-emerald-500/30 transition-all duration-500 shadow-2xl shadow-black/20">
-    <div className="flex flex-col lg:flex-row">
+const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink, githubLink }: ProjectCaseStudyProps) => (
+  <div className="group relative bg-slate-900/40 backdrop-blur-md border border-slate-800/50 rounded-3xl overflow-hidden hover:border-emerald-500/20 transition-all duration-700 shadow-2xl">
+    <div className="flex flex-col lg:flex-row min-h-[320px]">
       {/* Media Side */}
-      <div className="lg:w-2/5 relative h-56 lg:h-auto overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-tr from-slate-950/80 to-transparent z-10" />
+      <div className="lg:w-[45%] relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 to-transparent z-10" />
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
         />
-        <div className="absolute bottom-4 left-4 z-20 flex gap-2">
-          {stats?.map((stat) => (
-            <div key={stat.label} className="px-2 py-1 bg-black/60 backdrop-blur-md rounded border border-white/10 text-[9px] font-mono text-slate-300">
-              <span className="text-slate-500 uppercase">{stat.label}:</span> {stat.value}
-            </div>
-          ))}
-        </div>
       </div>
 
       {/* Content Side */}
-      <div className="p-6 lg:p-8 flex flex-col flex-1">
-        <div className="flex justify-between items-start mb-4">
-          <div>
-            <p className="text-[10px] font-bold text-emerald-500 uppercase tracking-widest mb-1">{impact}</p>
-            <h3 className="text-xl font-bold text-white tracking-tight leading-tight">{title}</h3>
+      <div className="p-8 lg:p-10 flex flex-col flex-1 relative z-20 bg-slate-900/20 backdrop-blur-sm">
+        <div className="mb-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
+            <p className="text-[10px] font-black text-emerald-500/80 uppercase tracking-[0.2em]">{impact}</p>
           </div>
+          <h3 className="text-2xl font-bold text-white tracking-tight">{title}</h3>
         </div>
 
-        <p className="text-slate-400 text-sm leading-relaxed mb-6">
+        <p className="text-slate-400 text-sm leading-relaxed mb-8 max-w-lg">
           {description}
         </p>
 
-        <div className="flex flex-wrap gap-1.5 mb-8">
+        <div className="flex flex-wrap gap-2 mb-8">
           {tags.map((tag) => (
-            <span key={tag} className="text-[10px] font-mono px-2 py-0.5 rounded-full bg-slate-800/40 text-slate-300 border border-slate-700/50">
+            <span key={tag} className="text-[10px] font-mono px-3 py-1 rounded-lg bg-slate-800/60 text-slate-300 border border-slate-700/50 hover:border-emerald-500/30 transition-colors">
               {tag}
             </span>
           ))}
         </div>
 
-        <div className="flex items-center gap-3 mt-auto">
+        <div className="flex items-center gap-4 mt-auto">
           {liveLink && (
             <a
               href={liveLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[11px] font-bold px-5 py-2.5 bg-emerald-500 text-white rounded-lg hover:bg-emerald-400 hover:shadow-[0_0_20px_rgba(139,92,246,0.4)] transition-all active:scale-95"
+              className="flex items-center gap-2 text-xs font-bold px-6 py-3 bg-emerald-500 text-slate-950 rounded-xl hover:bg-emerald-400 transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
             >
-              <ExternalLink className="w-3.5 h-3.5" />
-              VIEW PROJECT
+              <ExternalLink className="w-4 h-4" />
+              Live Demo
             </a>
           )}
           {githubLink && (
@@ -187,10 +182,10 @@ const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink
               href={githubLink}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2 text-[11px] font-bold px-5 py-2.5 bg-slate-800 text-slate-200 rounded-lg hover:bg-slate-700 hover:text-white transition-all border border-slate-700 active:scale-95"
+              className="flex items-center gap-2 text-xs font-bold px-6 py-3 bg-slate-800/80 text-slate-200 rounded-xl hover:bg-slate-700 hover:text-white transition-all border border-slate-700/50 active:scale-95"
             >
-              <Github className="w-3.5 h-3.5" />
-              CODEBASE
+              <Github className="w-4 h-4" />
+              Source
             </a>
           )}
         </div>
@@ -281,7 +276,7 @@ const TabbedContent = () => {
   return (
     <AnimatedSection>
       <section className="w-full max-w-4xl mx-auto px-4 pb-20">
-        
+
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight mb-4">
             Professional <span className="text-emerald-500 font-mono tracking-tighter">Trajectory_</span>
@@ -325,4 +320,4 @@ const TabbedContent = () => {
   );
 };
 
-export default TabbedContent;
+export default TabbedContent;
