@@ -35,7 +35,7 @@ const resources = [
         icon: <Globe className="w-5 h-5 text-cyan-400" />,
         links: [
             { label: "Register NP Domain", url: "https://register.com.np/", isDownload: false },
-            { label: "Cover Letter Format", url: "/cv.docx", isDownload: true }
+            { label: "Cover Letter Format", url: "/registerdomaincv.docx", isDownload: true }
         ]
     },
     {
