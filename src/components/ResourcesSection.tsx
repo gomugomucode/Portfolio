@@ -56,12 +56,12 @@ const ResourcesSection = () => {
                 <header className="text-center mb-12">
                     <div className="flex items-center justify-center gap-3 mb-4">
                         <BriefcaseBusiness className="w-8 h-8 text-emerald-500" />
-                        <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
                             Developer <span className="text-emerald-500">Resources</span>
                         </h2>
                     </div>
 
-                    <p className="max-w-2xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed">
+                    <p className="max-w-2xl mx-auto text-muted-foreground text-sm md:text-base leading-relaxed">
                         A curated collection of technical assets, deployment strategies, and career optimization tools designed to <span className="text-emerald-400 font-medium">accelerate professional scaling</span> and bridge the gap between development and production.
                     </p>
 
@@ -73,25 +73,25 @@ const ResourcesSection = () => {
                     {resources.map((res, index) => (
                         <article
                             key={index}
-                            className="flex flex-col bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-2xl p-5 md:p-6 hover:border-emerald-500/40 transition-all duration-300 group shadow-lg shadow-black/10"
+                            className="flex flex-col bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-5 md:p-6 hover:border-emerald-500/40 transition-all duration-300 group shadow-lg"
                         >
                             {/* Header: Icon + Title */}
                             <header className="flex items-start gap-4 mb-3">
-                                <div className="flex-shrink-0 p-2.5 rounded-xl bg-slate-800/80 border border-slate-700 group-hover:bg-slate-800 group-hover:scale-110 transition-all duration-300">
+                                <div className="flex-shrink-0 p-2.5 rounded-xl bg-muted border border-border group-hover:bg-muted/80 group-hover:scale-110 transition-all duration-300">
                                     {res.icon}
                                 </div>
-                                <h3 className="text-lg font-bold text-slate-100 group-hover:text-emerald-400 transition-colors mt-1 leading-tight">
+                                <h3 className="text-lg font-bold text-foreground group-hover:text-emerald-400 transition-colors mt-1 leading-tight">
                                     {res.title}
                                 </h3>
                             </header>
 
                             {/* Description */}
-                            <p className="text-slate-400 text-sm leading-relaxed flex-grow mb-6">
+                            <p className="text-muted-foreground text-sm leading-relaxed flex-grow mb-6">
                                 {res.description}
                             </p>
 
                             {/* Action Buttons */}
-                            <div className="mt-auto pt-4 border-t border-slate-800/50 flex flex-wrap gap-2.5">
+                            <div className="mt-auto pt-4 border-t border-border flex flex-wrap gap-2.5">
                                 {res.links.map((link, i) => (
                                     <a
                                         key={i}

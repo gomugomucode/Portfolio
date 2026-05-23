@@ -28,13 +28,13 @@ const AboutSection = () => {
           {/* Text Content */}
           <div className="flex-1 space-y-6 text-center md:text-left">
             <div>
-              <h2 className="text-3xl font-bold text-white mb-2">
+              <h2 className="text-3xl font-bold text-foreground mb-2">
                 About <span className="text-emerald-500">Me</span>
               </h2>
               <div className="w-12 h-1 bg-emerald-500/20 rounded-full mx-auto md:mx-0" />
             </div>
 
-            <div className="space-y-4 text-slate-400 leading-relaxed text-sm md:text-base">
+            <div className="space-y-4 text-muted-foreground leading-relaxed text-sm md:text-base">
               <p>
                 Hello! I'm <span className="text-emerald-400 font-medium">Anupam Baral</span>, a passionate software engineer based in Nepal. My journey in tech started with a curiosity for how web applications scale, which evolved into a deep dive into Full-Stack Development and Artificial Intelligence.
               </p>
@@ -47,9 +47,9 @@ const AboutSection = () => {
             </div>
 
             <div className="pt-4 flex flex-wrap justify-center md:justify-start gap-3">
-              <span className="px-3 py-1 bg-slate-800/50 text-slate-300 text-xs font-mono rounded-md border border-slate-700/50">Problem Solver</span>
-              <span className="px-3 py-1 bg-slate-800/50 text-slate-300 text-xs font-mono rounded-md border border-slate-700/50">Lifelong Learner</span>
-              <span className="px-3 py-1 bg-slate-800/50 text-slate-300 text-xs font-mono rounded-md border border-slate-700/50">Open Source Advocate</span>
+              <span className="px-3 py-1 bg-muted text-muted-foreground text-xs font-mono rounded-md border border-border">Problem Solver</span>
+              <span className="px-3 py-1 bg-muted text-muted-foreground text-xs font-mono rounded-md border border-border">Lifelong Learner</span>
+              <span className="px-3 py-1 bg-muted text-muted-foreground text-xs font-mono rounded-md border border-border">Open Source Advocate</span>
             </div>
           </div>
 

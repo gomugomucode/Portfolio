@@ -20,8 +20,8 @@ const HeroSection = () => {
       >
         <div className="absolute -inset-1.5 bg-gradient-to-r from-emerald-600 via-cyan-500 to-cyan-400 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 animate-tilt"></div>
         
-        <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-b from-emerald-500/50 to-slate-900 shadow-2xl">
-          <div className="w-full h-full rounded-full border-[6px] border-[#020617] overflow-hidden bg-slate-950">
+        <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-b from-emerald-500/50 to-border shadow-2xl">
+          <div className="w-full h-full rounded-full border-[6px] border-background overflow-hidden bg-card">
             <img
               src="/my-photo.webp"
               alt="Anupam Baral - Full Stack Developer from Butwal, Nepal"
@@ -36,7 +36,7 @@ const HeroSection = () => {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ delay: 0.8, type: "spring" }}
-          className="absolute bottom-1 right-2 flex items-center gap-1.5 bg-slate-950 border border-emerald-500/30 px-4 py-2 rounded-full shadow-2xl backdrop-blur-xl"
+          className="absolute bottom-1 right-2 flex items-center gap-1.5 bg-background border border-emerald-500/30 px-4 py-2 rounded-full shadow-2xl backdrop-blur-xl"
         >
           <span className="relative flex h-2 w-2">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -51,11 +51,11 @@ const HeroSection = () => {
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.3 }}
-        className="group flex items-center gap-3 px-5 py-2.5 rounded-full bg-slate-900/60 backdrop-blur-md border border-slate-800 hover:border-emerald-500/40 transition-all mb-10"
+        className="group flex items-center gap-3 px-5 py-2.5 rounded-full bg-background/60 backdrop-blur-md border border-border hover:border-emerald-500/40 transition-all mb-10"
       >
         <Terminal className="w-4 h-4 text-emerald-400" />
-        <span className="text-xs font-mono text-slate-300 tracking-tight">
-          <span className="text-emerald-500 font-bold">~</span>/gomugomucode <span className="text-slate-600">--status</span> <span className="text-cyan-400 font-bold">online</span>
+        <span className="text-xs font-mono text-muted-foreground tracking-tight">
+          <span className="text-emerald-500 font-bold">~</span>/gomugomucode <span className="text-muted-foreground/60">--status</span> <span className="text-cyan-400 font-bold">online</span>
         </span>
       </motion.div>
 
@@ -79,22 +79,22 @@ const HeroSection = () => {
         transition={{ delay: 0.5 }}
         className="max-w-3xl mx-auto space-y-8 mb-16"
       >
-        <h1 className="text-xl md:text-2xl font-bold text-slate-100 flex items-center justify-center gap-4">
+        <h1 className="text-xl md:text-2xl font-bold text-foreground flex items-center justify-center gap-4">
           <Sparkles className="w-6 h-6 text-emerald-400" />
           Hi, I'm Anupam Baral
-          <span className="w-2 h-2 rounded-full bg-slate-700" />
+          <span className="w-2 h-2 rounded-full bg-border" />
           <span className="text-cyan-400 uppercase text-xs tracking-[0.3em] font-black">from Nepal</span>
         </h1>
         
-        <p className="text-slate-400 text-base md:text-xl leading-relaxed font-medium px-4">
-          Architecting <span className="text-slate-100">scalable digital ecosystems</span> and high-impact
+        <p className="text-muted-foreground text-base md:text-xl leading-relaxed font-medium px-4">
+          Architecting <span className="text-foreground">scalable digital ecosystems</span> and high-impact
           frontend experiences. Specializing in neural-driven 
           <span className="text-emerald-400 font-serif italic ml-1.5"> intelligent architectures.</span>
         </p>
 
         <div className="flex flex-wrap justify-center gap-3">
           {["React", "TypeScript", "Python", "Solana", "AI/ML"].map((skill) => (
-            <span key={skill} className="px-4 py-1.5 rounded-lg bg-slate-900/80 border border-slate-800 text-xs font-mono text-slate-300 hover:border-emerald-500/50 transition-colors cursor-default">
+            <span key={skill} className="px-4 py-1.5 rounded-lg bg-background/80 border border-border text-xs font-mono text-foreground/70 hover:border-emerald-500/50 transition-colors cursor-default">
               {skill}
             </span>
           ))}
@@ -120,19 +120,19 @@ const HeroSection = () => {
 
         <Link
           to="/contact"
-          className="inline-flex items-center gap-3 bg-slate-900 text-white border border-slate-800 px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all hover:bg-slate-800 hover:border-emerald-500/40 active:scale-95 shadow-xl"
+          className="inline-flex items-center gap-3 bg-background text-foreground border border-border px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all hover:bg-muted hover:border-emerald-500/40 active:scale-95 shadow-xl"
         >
           <Briefcase className="w-5 h-5 text-cyan-400" />
           Partner Up
         </Link>
 
-        <div className="flex items-center gap-6 mt-6 md:mt-0 md:ml-6 pl-8 border-l border-slate-800 hidden sm:flex">
+        <div className="flex items-center gap-6 mt-6 md:mt-0 md:ml-6 pl-8 border-l border-border hidden sm:flex">
           <motion.a
             whileHover={{ y: -4, color: "#10b981" }}
             href="https://github.com/gomugomucode"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-500 transition-colors"
+            className="text-muted-foreground transition-colors"
           >
             <Github className="w-7 h-7" />
           </motion.a>
@@ -141,7 +141,7 @@ const HeroSection = () => {
             href="https://linkedin.com/in/gomugomucode"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-slate-400 transition-colors"
+            className="text-muted-foreground transition-colors"
           >
             <Linkedin className="w-6 h-6" />
           </motion.a>
@@ -149,7 +149,7 @@ const HeroSection = () => {
             whileHover={{ y: -4, color: "#10b981" }}
             href="/Anupambaral-cv.docx"
             download
-            className="text-slate-500 transition-colors"
+            className="text-muted-foreground transition-colors"
           >
             <FileText className="w-7 h-7" />
           </motion.a>

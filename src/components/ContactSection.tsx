@@ -72,10 +72,10 @@ const ContactSection = () => {
     <AnimatedSection>
       <section className="w-full max-w-6xl mx-auto px-4 pb-20">
         <header className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 tracking-tight">
             Initiate <span className="text-emerald-500">Connection</span>
           </h2>
-          <p className="max-w-2xl mx-auto text-slate-400 text-sm md:text-base leading-relaxed mb-6">
+          <p className="max-w-2xl mx-auto text-muted-foreground text-sm md:text-base leading-relaxed mb-6">
             Open for freelance opportunities, technical collaborations, and full-time roles. Let's discuss how my expertise can deliver value to your next project.
           </p>
           <div className="w-12 h-1 bg-emerald-500/20 rounded-full mx-auto" />
@@ -85,8 +85,8 @@ const ContactSection = () => {
 
           {/* --- LEFT SIDE: CONTACT DETAILS --- */}
           <address className="lg:col-span-1 space-y-4 not-italic">
-            <div className="p-6 rounded-2xl bg-slate-900/40 backdrop-blur-sm border border-slate-800 space-y-6 shadow-lg shadow-black/10">
-              <h3 className="text-xl font-bold text-slate-100 mb-4">Communication Channels</h3>
+            <div className="p-6 rounded-2xl bg-card/60 backdrop-blur-sm border border-border space-y-6 shadow-lg">
+              <h3 className="text-xl font-bold text-foreground mb-4">Communication Channels</h3>
 
               <div className="space-y-4">
                 <a href="mailto:contact@anupambaral.com.np" className="flex items-center gap-4 group">
@@ -94,8 +94,8 @@ const ContactSection = () => {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Email Protocol</p>
-                    <p className="text-sm font-medium text-slate-200 group-hover:text-emerald-400 transition-colors">contact@anupambaral.com.np</p>
+                    <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest">Email Protocol</p>
+                    <p className="text-sm font-medium text-foreground group-hover:text-emerald-400 transition-colors">contact@anupambaral.com.np</p>
                   </div>
                 </a>
 
@@ -104,8 +104,8 @@ const ContactSection = () => {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Voice Link</p>
-                    <p className="text-sm font-medium text-slate-200 group-hover:text-cyan-400 transition-colors">+977-9767606302</p>
+                    <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest">Voice Link</p>
+                    <p className="text-sm font-medium text-foreground group-hover:text-cyan-400 transition-colors">+977-9767606302</p>
                   </div>
                 </a>
 
@@ -114,8 +114,8 @@ const ContactSection = () => {
                     <Linkedin className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Professional Network</p>
-                    <p className="text-sm font-medium text-slate-200 group-hover:text-cyan-400 transition-colors">gomugomucode</p>
+                    <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest">Professional Network</p>
+                    <p className="text-sm font-medium text-foreground group-hover:text-cyan-400 transition-colors">gomugomucode</p>
                   </div>
                 </a>
 
@@ -124,8 +124,8 @@ const ContactSection = () => {
                     <MapPin className="w-5 h-5" />
                   </div>
                   <div>
-                    <p className="text-[10px] text-slate-500 uppercase font-mono tracking-widest">Current Coordinates</p>
-                    <p className="text-sm font-medium text-slate-200">Butwal, Nepal</p>
+                    <p className="text-[10px] text-muted-foreground uppercase font-mono tracking-widest">Current Coordinates</p>
+                    <p className="text-sm font-medium text-foreground">Butwal, Nepal</p>
                   </div>
                 </div>
               </div>
@@ -134,42 +134,42 @@ const ContactSection = () => {
 
           {/* --- RIGHT SIDE: THE FORM --- */}
           <div className="lg:col-span-2">
-            <form onSubmit={handleSubmit} className="bg-slate-900/40 backdrop-blur-sm border border-slate-800 rounded-2xl p-6 md:p-8 space-y-5 shadow-lg shadow-black/10">
+            <form onSubmit={handleSubmit} className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 md:p-8 space-y-5 shadow-lg">
               <input type="checkbox" name="botcheck" className="hidden" style={{ display: "none" }} />
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="name" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Client / Contact Name</label>
+                  <label htmlFor="name" className="block text-[11px] font-mono text-muted-foreground mb-2 uppercase tracking-widest">Client / Contact Name</label>
                   <input id="name" type="text" value={form.name}
                     onChange={(e) => setForm({ ...form, name: e.target.value })}
-                    className={`w-full bg-slate-950/50 border ${errors.name ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
+                    className={`w-full bg-background border ${errors.name ? 'border-red-500/50' : 'border-border'} rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
                     placeholder="John Doe" />
                   {errors.name && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.name}</p>}
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Return Address (Email)</label>
+                  <label htmlFor="email" className="block text-[11px] font-mono text-muted-foreground mb-2 uppercase tracking-widest">Return Address (Email)</label>
                   <input id="email" type="email" value={form.email}
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
-                    className={`w-full bg-slate-950/50 border ${errors.email ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
+                    className={`w-full bg-background border ${errors.email ? 'border-red-500/50' : 'border-border'} rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
                     placeholder="john@example.com" />
                   {errors.email && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.email}</p>}
                 </div>
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Subject Protocol</label>
+                <label htmlFor="subject" className="block text-[11px] font-mono text-muted-foreground mb-2 uppercase tracking-widest">Subject Protocol</label>
                 <input id="subject" type="text" value={form.subject}
                   onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                  className={`w-full bg-slate-950/50 border ${errors.subject ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
+                  className={`w-full bg-background border ${errors.subject ? 'border-red-500/50' : 'border-border'} rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none transition-all`}
                   placeholder="Project Collaboration / Technical Inquiry" />
                 {errors.subject && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.subject}</p>}
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-[11px] font-mono text-slate-400 mb-2 uppercase tracking-widest">Payload Data (Message)</label>
+                <label htmlFor="message" className="block text-[11px] font-mono text-muted-foreground mb-2 uppercase tracking-widest">Payload Data (Message)</label>
                 <textarea id="message" rows={5} value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className={`w-full bg-slate-950/50 border ${errors.message ? 'border-red-500/50' : 'border-slate-800'} rounded-xl px-4 py-3 text-sm text-white focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none resize-none transition-all`}
+                  className={`w-full bg-background border ${errors.message ? 'border-red-500/50' : 'border-border'} rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:ring-2 focus:ring-emerald-500/50 focus:border-emerald-500/50 outline-none resize-none transition-all`}
                   placeholder="Outline the parameters of our potential collaboration..." />
                 {errors.message && <p className="text-[10px] text-red-500 mt-1.5 font-mono uppercase">{errors.message}</p>}
               </div>
