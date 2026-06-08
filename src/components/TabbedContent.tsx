@@ -145,10 +145,10 @@ const ProjectImageCard = ({ imageUrl, title, reverse = false }: { imageUrl: stri
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, amount: 0.25 }}
     transition={{ duration: 0.6, ease: "easeOut" }}
-    className={`project-image-card relative overflow-hidden rounded-[1.75rem] border border-border/30 shadow-lg flex items-center ${reverse ? "lg:order-last" : ""}`}
+    className={`project-image-card relative overflow-hidden rounded-2xl border border-border/30 shadow-lg h-[450px] lg:h-[500px] ${reverse ? "lg:order-last" : ""}`}
   >
     {/* Outer wrapper enforces fixed height and overflow-hidden so layout won't shift */}
-    <div className="h-[450px] lg:h-[500px] w-full relative overflow-hidden">
+    <div className="w-full h-full relative overflow-hidden">
       <motion.div
         className="project-card-perspective h-full w-full"
         initial={{ rotateY: -6, scale: 1 }}

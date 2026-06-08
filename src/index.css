@@ -51,6 +51,9 @@ All colors MUST be HSL.
     height: 100%;
     transform-style: preserve-3d;
     will-change: transform, filter;
+    transform-origin: center;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
   }
 }
 
