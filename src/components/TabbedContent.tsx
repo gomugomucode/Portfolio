@@ -89,11 +89,7 @@ const ExperienceTab = () => (
 
       <div className="space-y-14">
         {featuredProjects.map((project, index) => (
-          <ProjectCard
-            key={project.title}
-            reverse={index % 2 === 1}
-            {...project}
-          />
+          <ProjectRow key={project.title} reverse={index % 2 === 1} {...project} />
         ))}
       </div>
     </div>
@@ -132,7 +128,7 @@ const LeadershipTab = () => (
   </div>
 );
 
-interface ProjectCardProps {
+interface ProjectRowProps {
   title: string;
   impact: string;
   description: string;
@@ -143,86 +139,72 @@ interface ProjectCardProps {
   reverse?: boolean;
 }
 
-const ProjectCard = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, reverse = false }: ProjectCardProps) => (
-  <motion.article
-    initial={{ opacity: 0, x: reverse ? 80 : -80, y: 16 }}
-    whileInView={{ opacity: 1, x: 0, y: 0 }}
+const ProjectImageCard = ({ imageUrl, title, reverse = false }: { imageUrl: string; title: string; reverse?: boolean }) => (
+  <motion.div
+    initial={{ opacity: 0, x: reverse ? 80 : -80 }}
+    whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, amount: 0.25 }}
     transition={{ duration: 0.6, ease: "easeOut" }}
-    whileHover={{ y: -8 }}
-    className="group relative bg-card/30 backdrop-blur-md border border-border/40 rounded-[2rem] overflow-hidden hover:border-emerald-500/20 transition-all duration-500 shadow-2xl shadow-slate-950/10"
+    whileHover={{ scale: 1.03, y: -6 }}
+    className={`project-image-card group relative overflow-hidden rounded-[1.75rem] border border-border/30 shadow-lg ${reverse ? "lg:order-last" : ""}`}
+    style={{ minHeight: 450 }}
   >
-    <div className={`grid gap-6 lg:gap-8 min-h-[500px] ${reverse ? "lg:grid-cols-[1fr_1.65fr]" : "lg:grid-cols-[1.65fr_1fr]"}`}>
-      {/* Media Side */}
-      <div
-        className={`relative overflow-hidden rounded-[2rem] border border-border/30 bg-slate-950/5 min-h-[450px] lg:min-h-[500px] ${reverse ? "lg:order-last" : ""}`}
-      >
-        <div className="h-full w-full project-card-perspective">
-          <div className="project-card-image-3d h-full w-full">
-            <img
-              src={imageUrl}
-              alt={title}
-              className="w-full h-full object-cover"
-            />
-          </div>
-        </div>
-      </div>
-
-      {/* Content Side */}
-      <div className="p-8 lg:p-10 flex flex-col justify-between relative z-10 bg-card/20 backdrop-blur-sm">
-        <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-400 mb-4">
-            {impact}
-          </p>
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-5">
-            {title}
-          </h3>
-
-          <div className="flex flex-wrap gap-3 mb-6">
-            {tags.map((tag) => (
-              <span
-                key={tag}
-                className="text-sm font-semibold px-4 py-2 rounded-full bg-muted/80 text-emerald-200 border border-border/30"
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
-
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl line-clamp-3">
-            {description}
-          </p>
-        </div>
-
-        <div className="mt-8">
-          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
-            {liveLink && (
-              <a
-                href={liveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 bg-emerald-500 text-slate-950 rounded-2xl hover:bg-emerald-400 transition-all duration-300 active:scale-95 shadow-lg shadow-emerald-500/20"
-              >
-                <ExternalLink className="w-4 h-4" />
-                Live Demo
-              </a>
-            )}
-            {githubLink && (
-              <a
-                href={githubLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 bg-muted text-foreground rounded-2xl hover:bg-muted/80 transition-all duration-300 border border-border active:scale-95"
-              >
-                <Github className="w-4 h-4" />
-                Source
-              </a>
-            )}
-          </div>
-        </div>
+    <div className="h-full w-full project-card-perspective">
+      <div className="project-card-image-3d h-full w-full">
+        <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
       </div>
     </div>
-  </motion.article>
+  </motion.div>
+);
+
+const ProjectContentBlock = ({ title, impact, description, tags, liveLink, githubLink }: Omit<ProjectRowProps, "imageUrl" | "reverse">) => (
+  <motion.div
+    initial={{ opacity: 0, y: 12 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.25 }}
+    transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
+    className="project-content-block p-0 lg:px-6 lg:py-4"
+  >
+    <div>
+      <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-400 mb-4">{impact}</p>
+      <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">{title}</h3>
+
+      <div className="flex flex-wrap gap-3 mb-4">
+        {tags.map((tag) => (
+          <span key={tag} className="text-sm font-semibold px-3 py-1.5 rounded-full bg-muted/80 text-emerald-200 border border-border/30">
+            {tag}
+          </span>
+        ))}
+      </div>
+
+      <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl line-clamp-3">{description}</p>
+    </div>
+
+    <div className="mt-8">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+        {liveLink && (
+          <a href={liveLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 bg-emerald-500 text-slate-950 rounded-2xl hover:bg-emerald-400 transition-all duration-300 active:scale-95 shadow-lg shadow-emerald-500/20">
+            <ExternalLink className="w-4 h-4" />
+            Live Demo
+          </a>
+        )}
+        {githubLink && (
+          <a href={githubLink} target="_blank" rel="noopener noreferrer" className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 bg-muted text-foreground rounded-2xl hover:bg-muted/80 transition-all duration-300 border border-border active:scale-95">
+            <Github className="w-4 h-4" />
+            Source
+          </a>
+        )}
+      </div>
+    </div>
+  </motion.div>
+);
+
+// ProjectRow composes the two blocks as siblings inside a simple layout container (no shared card)
+const ProjectRow = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, reverse = false }: ProjectRowProps) => (
+  <div className={`grid gap-12 items-center ${reverse ? "lg:grid-cols-[45%_55%] lg:grid-flow-row-dense" : "lg:grid-cols-[55%_45%]"}`}>
+    <ProjectImageCard imageUrl={imageUrl} title={title} reverse={reverse} />
+    <ProjectContentBlock title={title} impact={impact} description={description} tags={tags} liveLink={liveLink} githubLink={githubLink} />
+  </div>
 );
 
 interface ContentCardProps {
@@ -240,12 +222,7 @@ const ContentCard = ({ title, subtitle, description, tags, imageUrl, liveLink, g
     {/* Optional Image Header */}
     {imageUrl && (
       <div className="w-full h-48 sm:h-64 overflow-hidden border-b border-border">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover hover:scale-105 transition-transform duration-500"
-          loading="lazy"
-        />
+        <img src={imageUrl} alt={title} className="w-full h-full object-cover hover:scale-105 transition-transform duration-500" loading="lazy" />
       </div>
     )}
 
@@ -257,9 +234,7 @@ const ContentCard = ({ title, subtitle, description, tags, imageUrl, liveLink, g
       {tags.length > 0 && (
         <div className="flex flex-wrap gap-2 mb-5">
           {tags.map((tag) => (
-            <span key={tag} className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-muted text-emerald-400 border border-border">
-              {tag}
-            </span>
+            <span key={tag} className="text-[11px] font-mono px-2.5 py-1 rounded-md bg-muted text-emerald-400 border border-border">{tag}</span>
           ))}
         </div>
       )}
@@ -268,23 +243,13 @@ const ContentCard = ({ title, subtitle, description, tags, imageUrl, liveLink, g
       {(liveLink || githubLink) && (
         <div className="flex flex-wrap gap-3 mt-auto pt-5 border-t border-border/50">
           {liveLink && (
-            <a
-              href={liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-white rounded-md transition-all border border-emerald-500/20 active:scale-95"
-            >
+            <a href={liveLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 bg-emerald-500/10 text-emerald-400 hover:bg-emerald-500 hover:text-white rounded-md transition-all border border-emerald-500/20 active:scale-95">
               <ExternalLink className="w-3.5 h-3.5" />
               Live Deployment
             </a>
           )}
           {githubLink && (
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground rounded-md transition-all border border-border active:scale-95"
-            >
+            <a href={githubLink} target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 text-xs font-medium px-4 py-2 bg-muted text-muted-foreground hover:bg-muted/80 hover:text-foreground rounded-md transition-all border border-border active:scale-95">
               <Github className="w-3.5 h-3.5" />
               Source Code
             </a>
