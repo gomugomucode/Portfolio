@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useRef, useEffect } from "react";
+import { motion, AnimatePresence, useScroll, useTransform, useSpring } from "framer-motion";
 import { Briefcase, GraduationCap, Users, ExternalLink, Github } from "lucide-react";
 import AnimatedSection from "./AnimatedSection";
 
@@ -139,38 +139,77 @@ interface ProjectRowProps {
   reverse?: boolean;
 }
 
-const ProjectImageCard = ({ imageUrl, title, reverse = false }: { imageUrl: string; title: string; reverse?: boolean }) => (
-  <motion.div
-    initial={{ opacity: 0, x: reverse ? 80 : -80 }}
-    whileInView={{ opacity: 1, x: 0 }}
-    viewport={{ once: true, amount: 0.25 }}
-    transition={{ duration: 0.6, ease: "easeOut" }}
-    className={`project-image-card relative overflow-hidden rounded-2xl border border-border/30 shadow-lg h-[450px] lg:h-[500px] ${reverse ? "lg:order-last" : ""}`}
-  >
-    {/* Outer wrapper enforces fixed height and overflow-hidden so layout won't shift */}
-    <div className="w-full h-full relative overflow-hidden">
-      <motion.div
-        className="project-card-perspective h-full w-full"
-        initial={{ rotateY: reverse ? 4 : -4, rotateX: 0 }}
-        whileHover={{ rotateY: 0, rotateX: 2, y: -6, filter: "brightness(1.06)" }}
-        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
-      >
-        <div className="project-card-image-3d h-full w-full origin-center will-change-transform">
-          <img src={imageUrl} alt={title} className="w-full h-full object-cover object-center block" />
-        </div>
-      </motion.div>
-    </div>
-  </motion.div>
-);
+const ProjectImageCard = ({ imageUrl, title, reverse = false }: { imageUrl: string; title: string; reverse?: boolean }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
-const ProjectContentBlock = ({ title, impact, description, tags, liveLink, githubLink }: Omit<ProjectRowProps, "imageUrl" | "reverse">) => (
-  <motion.div
-    initial={{ opacity: 0, y: 12 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.25 }}
-    transition={{ duration: 0.6, ease: "easeOut", delay: 0.12 }}
-    className="project-content-block p-0 lg:px-6 lg:py-4"
-  >
+  useEffect(() => {
+    const mm = window.matchMedia("(max-width: 768px)");
+    const onChange = () => setIsMobile(mm.matches);
+    onChange();
+    mm.addEventListener?.("change", onChange);
+    return () => mm.removeEventListener?.("change", onChange);
+  }, []);
+
+  const { scrollYProgress } = useScroll({ target: containerRef, offset: ["start end", "end start"] });
+  const imageY = useTransform(scrollYProgress, [0, 1], [0, -20]);
+  const imageRot = useTransform(scrollYProgress, [0, 1], [reverse ? 3 : -3, 0]);
+  const smoothY = useSpring(imageY, { stiffness: 80, damping: 24 });
+  const smoothRot = useSpring(imageRot, { stiffness: 80, damping: 24 });
+
+  return (
+    <motion.div
+      ref={containerRef}
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1] }}
+      className={`project-image-card relative overflow-hidden rounded-2xl border border-border/30 shadow-lg h-[450px] lg:h-[500px] ${reverse ? "lg:order-last" : ""}`}
+    >
+      <div className="w-full h-full relative overflow-hidden">
+        <motion.div
+          className="project-card-perspective h-full w-full"
+          style={{ y: isMobile ? 0 : smoothY, rotateY: isMobile ? (reverse ? 4 : -4) : smoothRot }}
+        >
+          <motion.div
+            className="project-card-image-3d h-full w-full origin-center will-change-transform"
+            whileHover={isMobile ? {} : { y: -4, rotateX: 2, filter: "brightness(1.06)" }}
+            transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+          >
+            <img src={imageUrl} alt={title} className="w-full h-full object-cover object-center block shadow-xl" />
+          </motion.div>
+        </motion.div>
+      </div>
+    </motion.div>
+  );
+};
+
+const ProjectContentBlock = ({ title, impact, description, tags, liveLink, githubLink }: Omit<ProjectRowProps, "imageUrl" | "reverse">) => {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const mm = window.matchMedia("(max-width: 768px)");
+    const onChange = () => setIsMobile(mm.matches);
+    onChange();
+    mm.addEventListener?.("change", onChange);
+    return () => mm.removeEventListener?.("change", onChange);
+  }, []);
+
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start end", "end start"] });
+  const contentY = useTransform(scrollYProgress, [0, 1], [0, -8]);
+  const smoothContentY = useSpring(contentY, { stiffness: 90, damping: 26 });
+
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.25 }}
+      transition={{ duration: 0.95, ease: [0.16, 1, 0.3, 1], delay: 0.12 }}
+      style={{ y: isMobile ? 0 : smoothContentY }}
+      className="project-content-block p-0 lg:px-6 lg:py-4"
+    >
     <div>
       <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-400 mb-4">{impact}</p>
       <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">{title}</h3>
@@ -203,7 +242,8 @@ const ProjectContentBlock = ({ title, impact, description, tags, liveLink, githu
       </div>
     </div>
   </motion.div>
-);
+  );
+};
 
 // ProjectRow composes the two blocks as siblings inside a simple layout container (no shared card)
 const ProjectRow = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, reverse = false }: ProjectRowProps) => (
