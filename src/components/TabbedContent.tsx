@@ -151,9 +151,9 @@ const ProjectImageCard = ({ imageUrl, title, reverse = false }: { imageUrl: stri
     <div className="w-full h-full relative overflow-hidden">
       <motion.div
         className="project-card-perspective h-full w-full"
-        initial={{ rotateY: -6, scale: 1 }}
-        whileHover={{ rotateY: 0, scale: 1.04, translateY: -6 }}
-        transition={{ duration: 0.6, ease: "easeOut" }}
+        initial={{ rotateY: reverse ? 4 : -4, rotateX: 0 }}
+        whileHover={{ rotateY: 0, rotateX: 2, y: -6, filter: "brightness(1.06)" }}
+        transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       >
         <div className="project-card-image-3d h-full w-full origin-center will-change-transform">
           <img src={imageUrl} alt={title} className="w-full h-full object-cover object-center block" />
