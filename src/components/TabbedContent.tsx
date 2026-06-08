@@ -145,14 +145,20 @@ const ProjectImageCard = ({ imageUrl, title, reverse = false }: { imageUrl: stri
     whileInView={{ opacity: 1, x: 0 }}
     viewport={{ once: true, amount: 0.25 }}
     transition={{ duration: 0.6, ease: "easeOut" }}
-    whileHover={{ scale: 1.03, y: -6 }}
-    className={`project-image-card group relative overflow-hidden rounded-[1.75rem] border border-border/30 shadow-lg ${reverse ? "lg:order-last" : ""}`}
-    style={{ minHeight: 450 }}
+    className={`project-image-card relative overflow-hidden rounded-[1.75rem] border border-border/30 shadow-lg flex items-center ${reverse ? "lg:order-last" : ""}`}
   >
-    <div className="h-full w-full project-card-perspective">
-      <div className="project-card-image-3d h-full w-full">
-        <img src={imageUrl} alt={title} className="w-full h-full object-cover" />
-      </div>
+    {/* Outer wrapper enforces fixed height and overflow-hidden so layout won't shift */}
+    <div className="h-[450px] lg:h-[500px] w-full relative overflow-hidden">
+      <motion.div
+        className="project-card-perspective h-full w-full"
+        initial={{ rotateY: -6, scale: 1 }}
+        whileHover={{ rotateY: 0, scale: 1.04, translateY: -6 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+      >
+        <div className="project-card-image-3d h-full w-full origin-center will-change-transform">
+          <img src={imageUrl} alt={title} className="w-full h-full object-cover object-center block" />
+        </div>
+      </motion.div>
     </div>
   </motion.div>
 );
