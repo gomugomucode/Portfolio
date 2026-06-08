@@ -16,7 +16,7 @@ const featuredProjects = [
     title: "Scalable E-Learning Platform Architecture",
     impact: "Full-stack Engineering • System Design",
     description:
-      "Built a scalable LMS with React and Node.js, delivering fast course access, secure API routing, and modular platform architecture for modern education workflows.",
+      "Engineered a comprehensive Learning Management System (LMS) designed for high concurrency and robust resource delivery. Implemented a decoupled React frontend with a secure Node.js/Express RESTful API.",
     tags: ["React", "Node.js", "MySQL", "Express", "Tailwind"],
     imageUrl: "/elearning-preview.webp",
     liveLink: "https://elearn-lake.vercel.app",
@@ -26,7 +26,7 @@ const featuredProjects = [
     title: "Yatra - Solana Ride-Sharing Protocol",
     impact: "Web3 Engineering • Real-time Systems",
     description:
-      "Designed a Solana ride-sharing protocol with resilient dispatch, on-chain trip coordination, and real-time Web3 user experience for scalable travel infrastructure.",
+      "Architected a decentralized ride-sharing infrastructure on the Solana blockchain. Implemented atomic trip transactions, driver reputation protocols, and resilient live signaling for high-frequency dispatching.",
     tags: ["Solana", "Rust", "Firebase", "TypeScript", "Web3.js"],
     imageUrl: "/yatra.webp",
     liveLink: "https://yatraa-zeta.vercel.app/",
@@ -36,7 +36,7 @@ const featuredProjects = [
     title: "Web3 Decentralized Loyalty Protocol",
     impact: "Blockchain • Web3 Architecture",
     description:
-      "Delivered a Solana-based loyalty dApp built with Next.js for high-performance rewards, secure smart contract flows, and seamless decentralized user engagement.",
+      "Architected a Solana-based loyalty rewards decentralized application (dApp). Leveraged Next.js for SSR performance and integrated Web3.js for smart contract interactions.",
     tags: ["Solana", "Next.js", "Web3.js", "TypeScript", "Rust"],
     imageUrl: "/solana.webp",
     liveLink: "https://solana-loyalty-d-app.vercel.app/",
@@ -89,7 +89,7 @@ const ExperienceTab = () => (
 
       <div className="space-y-14">
         {featuredProjects.map((project, index) => (
-          <ProjectCaseStudy
+          <ProjectCard
             key={project.title}
             reverse={index % 2 === 1}
             {...project}
@@ -132,7 +132,7 @@ const LeadershipTab = () => (
   </div>
 );
 
-interface ProjectCaseStudyProps {
+interface ProjectCardProps {
   title: string;
   impact: string;
   description: string;
@@ -143,22 +143,29 @@ interface ProjectCaseStudyProps {
   reverse?: boolean;
 }
 
-const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, reverse = false }: ProjectCaseStudyProps) => (
+const ProjectCard = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, reverse = false }: ProjectCardProps) => (
   <motion.article
-    initial={{ opacity: 0, y: 24 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    viewport={{ once: true, amount: 0.2 }}
-    transition={{ duration: 0.55, ease: "easeOut" }}
-    className="group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-[2rem] overflow-hidden hover:border-emerald-500/20 transition-all duration-700 shadow-2xl shadow-slate-950/10"
+    initial={{ opacity: 0, x: reverse ? 80 : -80, y: 16 }}
+    whileInView={{ opacity: 1, x: 0, y: 0 }}
+    viewport={{ once: true, amount: 0.25 }}
+    transition={{ duration: 0.6, ease: "easeOut" }}
+    whileHover={{ y: -8 }}
+    className="group relative bg-card/30 backdrop-blur-md border border-border/40 rounded-[2rem] overflow-hidden hover:border-emerald-500/20 transition-all duration-500 shadow-2xl shadow-slate-950/10"
   >
-    <div className={`grid gap-6 lg:gap-8 ${reverse ? "lg:grid-cols-[1fr_1.65fr]" : "lg:grid-cols-[1.65fr_1fr]"} min-h-[500px]`}>
+    <div className={`grid gap-6 lg:gap-8 min-h-[500px] ${reverse ? "lg:grid-cols-[1fr_1.65fr]" : "lg:grid-cols-[1.65fr_1fr]"}`}>
       {/* Media Side */}
-      <div className="relative overflow-hidden rounded-[2rem] border border-border/30 bg-slate-950/5 min-h-[450px] lg:min-h-[500px]">
-        <img
-          src={imageUrl}
-          alt={title}
-          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
-        />
+      <div
+        className={`relative overflow-hidden rounded-[2rem] border border-border/30 bg-slate-950/5 min-h-[450px] lg:min-h-[500px] ${reverse ? "lg:order-last" : ""}`}
+      >
+        <div className="h-full w-full project-card-perspective">
+          <div className="project-card-image-3d h-full w-full">
+            <img
+              src={imageUrl}
+              alt={title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        </div>
       </div>
 
       {/* Content Side */}
@@ -167,7 +174,7 @@ const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink
           <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-400 mb-4">
             {impact}
           </p>
-          <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-5">
             {title}
           </h3>
 
