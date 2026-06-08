@@ -11,6 +11,39 @@ const tabs = [
 
 type TabId = (typeof tabs)[number]["id"];
 
+const featuredProjects = [
+  {
+    title: "Scalable E-Learning Platform Architecture",
+    impact: "Full-stack Engineering • System Design",
+    description:
+      "Built a scalable LMS with React and Node.js, delivering fast course access, secure API routing, and modular platform architecture for modern education workflows.",
+    tags: ["React", "Node.js", "MySQL", "Express", "Tailwind"],
+    imageUrl: "/elearning-preview.webp",
+    liveLink: "https://elearn-lake.vercel.app",
+    githubLink: "https://github.com/gomugomucode/elearn",
+  },
+  {
+    title: "Yatra - Solana Ride-Sharing Protocol",
+    impact: "Web3 Engineering • Real-time Systems",
+    description:
+      "Designed a Solana ride-sharing protocol with resilient dispatch, on-chain trip coordination, and real-time Web3 user experience for scalable travel infrastructure.",
+    tags: ["Solana", "Rust", "Firebase", "TypeScript", "Web3.js"],
+    imageUrl: "/yatra.webp",
+    liveLink: "https://yatraa-zeta.vercel.app/",
+    githubLink: "https://github.com/gomugomucode/Yatra",
+  },
+  {
+    title: "Web3 Decentralized Loyalty Protocol",
+    impact: "Blockchain • Web3 Architecture",
+    description:
+      "Delivered a Solana-based loyalty dApp built with Next.js for high-performance rewards, secure smart contract flows, and seamless decentralized user engagement.",
+    tags: ["Solana", "Next.js", "Web3.js", "TypeScript", "Rust"],
+    imageUrl: "/solana.webp",
+    liveLink: "https://solana-loyalty-d-app.vercel.app/",
+    githubLink: "https://github.com/gomugomucode/Solana-Loyalty-dApp",
+  },
+];
+
 const ExperienceTab = () => (
   <div className="space-y-12">
     {/* Experience Header */}
@@ -54,35 +87,14 @@ const ExperienceTab = () => (
         <div className="h-px flex-1 bg-border" />
       </div>
 
-      <div className="space-y-8">
-        <ProjectCaseStudy
-          title="Scalable E-Learning Platform Architecture"
-          impact="Full-stack Engineering • System Design"
-          description="Engineered a comprehensive Learning Management System (LMS) designed for high concurrency and robust resource delivery. Implemented a decoupled React frontend with a secure Node.js/Express RESTful API."
-          tags={["React", "Node.js", "MySQL", "Express", "Tailwind"]}
-          imageUrl="/elearning-preview.webp"
-          liveLink="https://elearn-lake.vercel.app"
-          githubLink="https://github.com/gomugomucode/elearn"
-        />
-        <ProjectCaseStudy
-          title="Yatra - Solana Ride-Sharing Protocol"
-          impact="Web3 Engineering • Real-time Systems"
-          description="Architected a decentralized ride-sharing infrastructure on the Solana blockchain. Implemented atomic trip transactions, driver reputation protocols, and resilient live signaling for high-frequency dispatching."
-          tags={["Solana", "Rust", "Firebase", "TypeScript", "Web3.js"]}
-          imageUrl="/yatra.webp"
-          liveLink="https://yatraa-zeta.vercel.app/"
-          githubLink="https://github.com/gomugomucode/Yatra"
-        />
-
-        <ProjectCaseStudy
-          title="Web3 Decentralized Loyalty Protocol"
-          impact="Blockchain • Web3 Architecture"
-          description="Architected a Solana-based loyalty rewards decentralized application (dApp). Leveraged Next.js for SSR performance and integrated Web3.js for smart contract interactions."
-          tags={["Solana", "Next.js", "Web3.js", "TypeScript", "Rust"]}
-          imageUrl="/solana.webp"
-          liveLink="https://solana-loyalty-d-app.vercel.app/"
-          githubLink="https://github.com/gomugomucode/Solana-Loyalty-dApp"
-        />
+      <div className="space-y-14">
+        {featuredProjects.map((project, index) => (
+          <ProjectCaseStudy
+            key={project.title}
+            reverse={index % 2 === 1}
+            {...project}
+          />
+        ))}
       </div>
     </div>
   </div>
@@ -128,70 +140,81 @@ interface ProjectCaseStudyProps {
   imageUrl: string;
   liveLink?: string;
   githubLink?: string;
+  reverse?: boolean;
 }
 
-const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink, githubLink }: ProjectCaseStudyProps) => (
-  <div className="group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-3xl overflow-hidden hover:border-emerald-500/20 transition-all duration-700 shadow-2xl">
-    <div className="flex flex-col lg:flex-row min-h-[320px]">
+const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink, githubLink, reverse = false }: ProjectCaseStudyProps) => (
+  <motion.article
+    initial={{ opacity: 0, y: 24 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.55, ease: "easeOut" }}
+    className="group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-[2rem] overflow-hidden hover:border-emerald-500/20 transition-all duration-700 shadow-2xl shadow-slate-950/10"
+  >
+    <div className={`grid gap-6 lg:gap-8 ${reverse ? "lg:grid-cols-[1fr_1.6fr]" : "lg:grid-cols-[1.6fr_1fr]"} min-h-[450px]`}>
       {/* Media Side */}
-      <div className="lg:w-[45%] relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-950/40 to-transparent z-10" />
+      <div className="relative overflow-hidden rounded-[2rem] border border-border/30 bg-slate-950/5">
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-1000"
+          className="w-full h-full min-h-[320px] lg:min-h-[450px] object-cover transition-transform duration-1000 group-hover:scale-105"
         />
       </div>
 
       {/* Content Side */}
-      <div className="p-8 lg:p-10 flex flex-col flex-1 relative z-20 bg-card/20 backdrop-blur-sm">
-        <div className="mb-6">
-          <div className="flex items-center gap-2 mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500" />
-            <p className="text-[10px] font-black text-emerald-500/80 uppercase tracking-[0.2em]">{impact}</p>
+      <div className="p-8 lg:p-10 flex flex-col justify-between relative z-10 bg-card/20 backdrop-blur-sm">
+        <div>
+          <p className="text-[10px] font-semibold uppercase tracking-[0.35em] text-emerald-400 mb-4">
+            {impact}
+          </p>
+          <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
+            {title}
+          </h3>
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl max-h-[6.5rem] overflow-hidden">
+            {description}
+          </p>
+        </div>
+
+        <div className="mt-8">
+          <div className="flex flex-wrap gap-3 mb-8">
+            {tags.map((tag) => (
+              <span
+                key={tag}
+                className="text-sm font-semibold px-4 py-2 rounded-full bg-muted/80 text-emerald-200 border border-border/30"
+              >
+                {tag}
+              </span>
+            ))}
           </div>
-          <h3 className="text-2xl font-bold text-foreground tracking-tight">{title}</h3>
-        </div>
 
-        <p className="text-muted-foreground text-sm leading-relaxed mb-8 max-w-lg">
-          {description}
-        </p>
-
-        <div className="flex flex-wrap gap-2 mb-8">
-          {tags.map((tag) => (
-            <span key={tag} className="text-[10px] font-mono px-3 py-1 rounded-lg bg-muted text-muted-foreground border border-border hover:border-emerald-500/30 transition-colors">
-              {tag}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex items-center gap-4 mt-auto">
-          {liveLink && (
-            <a
-              href={liveLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-bold px-6 py-3 bg-emerald-500 text-slate-950 rounded-xl hover:bg-emerald-400 transition-all active:scale-95 shadow-lg shadow-emerald-500/20"
-            >
-              <ExternalLink className="w-4 h-4" />
-              Live Demo
-            </a>
-          )}
-          {githubLink && (
-            <a
-              href={githubLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 text-xs font-bold px-6 py-3 bg-muted text-foreground rounded-xl hover:bg-muted/80 hover:text-foreground transition-all border border-border active:scale-95"
-            >
-              <Github className="w-4 h-4" />
-              Source
-            </a>
-          )}
+          <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
+            {liveLink && (
+              <a
+                href={liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 text-sm font-bold px-6 py-3 bg-emerald-500 text-slate-950 rounded-2xl hover:bg-emerald-400 transition-all duration-300 active:scale-95 shadow-lg shadow-emerald-500/20"
+              >
+                <ExternalLink className="w-4 h-4" />
+                Live Demo
+              </a>
+            )}
+            {githubLink && (
+              <a
+                href={githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 text-sm font-semibold px-6 py-3 bg-muted text-foreground rounded-2xl hover:bg-muted/80 transition-all duration-300 border border-border active:scale-95"
+              >
+                <Github className="w-4 h-4" />
+                Source
+              </a>
+            )}
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  </motion.article>
 );
 
 interface ContentCardProps {
@@ -275,7 +298,7 @@ const TabbedContent = () => {
 
   return (
     <AnimatedSection>
-      <section className="w-full max-w-4xl mx-auto px-4 pb-20">
+      <section className="w-full max-w-7xl mx-auto px-4 sm:px-6 pb-20">
 
         <div className="text-center mb-10">
           <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
