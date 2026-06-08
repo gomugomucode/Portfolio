@@ -35,6 +35,15 @@ All colors MUST be HSL.
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
+@layer utilities {
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+    overflow: hidden;
+  }
+}
+
 @layer base {
   /* === LIGHT MODE (default) === */
   :root {
@@ -127,4 +136,4 @@ All colors MUST be HSL.
     --tab-inactive: 220 14% 14%;
     --gradient-primary: linear-gradient(135deg, hsl(160 80% 50%), hsl(180 70% 45%));
   }
-}
+}

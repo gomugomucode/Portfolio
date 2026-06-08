@@ -151,13 +151,13 @@ const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink
     transition={{ duration: 0.55, ease: "easeOut" }}
     className="group relative bg-card/40 backdrop-blur-md border border-border/50 rounded-[2rem] overflow-hidden hover:border-emerald-500/20 transition-all duration-700 shadow-2xl shadow-slate-950/10"
   >
-    <div className={`grid gap-6 lg:gap-8 ${reverse ? "lg:grid-cols-[1fr_1.6fr]" : "lg:grid-cols-[1.6fr_1fr]"} min-h-[450px]`}>
+    <div className={`grid gap-6 lg:gap-8 ${reverse ? "lg:grid-cols-[1fr_1.65fr]" : "lg:grid-cols-[1.65fr_1fr]"} min-h-[500px]`}>
       {/* Media Side */}
-      <div className="relative overflow-hidden rounded-[2rem] border border-border/30 bg-slate-950/5">
+      <div className="relative overflow-hidden rounded-[2rem] border border-border/30 bg-slate-950/5 min-h-[450px] lg:min-h-[500px]">
         <img
           src={imageUrl}
           alt={title}
-          className="w-full h-full min-h-[320px] lg:min-h-[450px] object-cover transition-transform duration-1000 group-hover:scale-105"
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
         />
       </div>
 
@@ -170,13 +170,8 @@ const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink
           <h3 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-4">
             {title}
           </h3>
-          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl max-h-[6.5rem] overflow-hidden">
-            {description}
-          </p>
-        </div>
 
-        <div className="mt-8">
-          <div className="flex flex-wrap gap-3 mb-8">
+          <div className="flex flex-wrap gap-3 mb-6">
             {tags.map((tag) => (
               <span
                 key={tag}
@@ -187,6 +182,12 @@ const ProjectCaseStudy = ({ title, impact, description, tags, imageUrl, liveLink
             ))}
           </div>
 
+          <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-xl line-clamp-3">
+            {description}
+          </p>
+        </div>
+
+        <div className="mt-8">
           <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4">
             {liveLink && (
               <a
