@@ -156,6 +156,12 @@ const HeroSection = () => {
         </div>
       </motion.div>
 
+      <div className="mt-6 text-sm text-muted-foreground">
+        <p>
+          Explore more: <Link to="/projects" className="underline text-emerald-400">Projects</Link> or <Link to="/resources" className="underline text-emerald-400">Resources</Link>.
+        </p>
+      </div>
+
     </section>
   );
 };

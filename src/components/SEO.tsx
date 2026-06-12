@@ -18,7 +18,7 @@ export default function SEO({
   canonicalUrl,
   ogTitle,
   ogDescription,
-  ogImage = "https://anupambaral.com.np/og-image.jpg",
+  ogImage = "https://anupambaral.com.np/og-image.webp",
   schema,
 }: SEOProps) {
   const currentUrl = canonicalUrl || "https://anupambaral.com.np";
