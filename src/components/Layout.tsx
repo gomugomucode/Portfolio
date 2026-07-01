@@ -16,7 +16,7 @@ const Layout = ({ children }: LayoutProps) => {
 
       <Navbar />
 
-      <main className="relative z-10 container pt-24 pb-12 px-4 min-h-[calc(100vh-100px)]">
+      <main className="relative z-10 w-full min-h-[calc(100vh-100px)] pt-16">
         {children}
       </main>
 

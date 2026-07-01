@@ -1,83 +1,97 @@
 import { motion } from "framer-motion";
-import { Code2, Database, Globe, Terminal, Cpu, Palette } from "lucide-react";
-import AnimatedSection from "./AnimatedSection";
+import { Globe, Database, Cpu, Share2, Shield, Terminal } from "lucide-react";
+import { Card } from "./ui/card";
 
 const skillCategories = [
-  { title: "Frontend Architecture", icon: Globe, skills: ["React", "Next.js", "Tailwind CSS", "TypeScript", "Framer Motion", "Vite"] },
-  { title: "Backend Systems", icon: Database, skills: ["Node.js", "Express.js", "Python", "MySQL", "REST APIs", "SQLite"] },
-  { title: "AI & Data Engineering", icon: Cpu, skills: ["Machine Learning", "NumPy", "Pandas", "Scikit-Learn"] },
-  { title: "DevOps & Infrastructure", icon: Terminal, skills: ["Git / GitHub", "Vercel Actions", "Cloudflare", "Linux Administration"] },
+  { 
+    title: "Frontend Architecture", 
+    icon: Globe, 
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"] 
+  },
+  { 
+    title: "Backend Systems", 
+    icon: Database, 
+    skills: ["Node.js", "Express.js", "Python", "REST APIs"] 
+  },
+  { 
+    title: "Data & Intelligence", 
+    icon: Cpu, 
+    skills: ["Machine Learning", "Pandas", "NumPy", "Scikit-Learn"] 
+  },
+  { 
+    title: "Database & Cloud", 
+    icon: Share2, 
+    skills: ["MySQL", "SQLite", "MongoDB", "Vercel", "Cloudflare"] 
+  },
+  { 
+    title: "Web3 & Decentralization", 
+    icon: Shield, 
+    skills: ["Solana", "Rust", "Web3.js"] 
+  },
+  { 
+    title: "DevOps & Tooling", 
+    icon: Terminal, 
+    skills: ["Git / GitHub", "Docker", "Linux Administration"] 
+  },
 ];
 
 const SkillsSection = () => {
   return (
-    <AnimatedSection>
-      <section className="w-full max-w-6xl mx-auto px-4 pb-20">
-
-        {/* Header Section */}
-        <header className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight mb-6">
-            Technical <span className="text-emerald-500">Arsenal</span>
+    <section id="skills" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-24 border-t border-border/40">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
+        
+        {/* Left Side - Title Rail (col-span-4) */}
+        <div className="lg:col-span-4 flex flex-col gap-2 sticky top-28">
+          <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+            04 — SKILLS
+          </span>
+          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground uppercase">
+            Technical<br />Arsenal.
           </h2>
-
-          <div className="flex justify-center mb-6">
-            <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-sm font-mono shadow-lg shadow-emerald-500/5">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-              </span>
-              Actively Architecting: Advanced AI/ML pipelines with Python
-            </div>
-          </div>
-
-          <p className="max-w-2xl mx-auto text-muted-foreground text-sm md:text-base leading-relaxed">
-            I leverage a robust ecosystem of modern tools to build scalable, high-performance applications. 
-            My approach combines strongly-typed frontend frameworks with resilient backend architectures.
+          <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-sm mt-4">
+            A curated stack of frontend frameworks, backend runtimes, databases, AI/ML tools, and Web3 protocols. Built on type-safety, testability, and edge deployments.
           </p>
+        </div>
 
-          <div className="w-12 h-1 bg-emerald-500/20 rounded-full mx-auto mt-8" />
-        </header>
-
-        {/* Grid Layout */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-4xl mx-auto">
-          {skillCategories.map((cat, i) => {
+        {/* Right Side - Bento Grid (col-span-8) */}
+        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
+          {skillCategories.map((cat) => {
             const Icon = cat.icon;
             return (
-              <motion.article
+              <Card 
                 key={cat.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-6 hover:border-emerald-500/40 transition-all shadow-lg shadow-black/5 group"
+                className="hover:border-foreground/20 transition-all duration-300 group"
               >
-                {/* Card Header */}
-                <header className="flex items-center gap-4 mb-5">
-                  <div className="p-3 rounded-xl bg-muted border border-border group-hover:bg-muted/80 transition-colors">
-                    <Icon className="w-5 h-5 text-emerald-500" />
+                <div className="flex flex-col gap-4">
+                  {/* Category Header */}
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 rounded-md border border-border text-muted-foreground bg-muted/20 group-hover:text-primary group-hover:border-primary/20 transition-colors duration-300">
+                      <Icon className="w-4 h-4" />
+                    </div>
+                    <h3 className="font-mono text-xs uppercase tracking-widest text-foreground font-semibold">
+                      {cat.title}
+                    </h3>
                   </div>
-                  <h3 className="text-lg font-bold text-foreground group-hover:text-emerald-400 transition-colors">
-                    {cat.title}
-                  </h3>
-                </header>
 
-                {/* Skill Pills */}
-                <div className="flex flex-wrap gap-2.5">
-                  {cat.skills.map((skill) => (
-                    <span
-                      key={skill}
-                      className="text-xs font-mono px-3 py-1.5 rounded-md bg-muted text-muted-foreground border border-border group-hover:border-emerald-500/30 group-hover:text-foreground transition-colors"
-                    >
-                      {skill}
-                    </span>
-                  ))}
+                  {/* Skills List */}
+                  <div className="flex flex-wrap gap-2 mt-2">
+                    {cat.skills.map((skill) => (
+                      <span
+                        key={skill}
+                        className="inline-flex items-center border border-border text-muted-foreground font-mono text-[11px] uppercase tracking-widest px-2.5 py-1 rounded-sm bg-foreground/5"
+                      >
+                        {skill}
+                      </span>
+                    ))}
+                  </div>
                 </div>
-              </motion.article>
+              </Card>
             );
           })}
         </div>
-      </section>
-    </AnimatedSection>
+
+      </div>
+    </section>
   );
 };
 

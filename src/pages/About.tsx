@@ -18,7 +18,7 @@ const About = () => {
       </div>
       <div className="text-center">
         <p className="text-sm text-muted-foreground">
-          Ready to collaborate? <Link to="/contact" className="text-emerald-400 underline">Contact me</Link> for freelance work and technical partnerships.
+          Ready to collaborate? <Link to="/contact" className="text-primary underline">Contact me</Link> for freelance work and technical partnerships.
         </p>
       </div>
       <div>

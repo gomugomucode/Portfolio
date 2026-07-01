@@ -1,5 +1,6 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
+import { Button } from "@/components/ui/button";
 
 const NotFound = () => {
   const location = useLocation();
@@ -9,13 +10,20 @@ const NotFound = () => {
   }, [location.pathname]);
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-muted">
-      <div className="text-center">
-        <h2 className="mb-4 text-4xl font-bold">404</h2>
-        <p className="mb-4 text-xl text-muted-foreground">Oops! Page not found</p>
-        <a href="/" className="text-primary underline hover:text-primary/90">
-          Return to Home
-        </a>
+    <div className="flex min-h-[70vh] items-center justify-center py-16">
+      <div className="text-center flex flex-col items-center gap-4 max-w-md px-4">
+        <h1 className="font-display text-8xl md:text-9xl font-black tracking-tighter text-muted-foreground/30 leading-none">
+          404
+        </h1>
+        <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase">
+          Architecture not found.
+        </h2>
+        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+          The route you requested doesn't exist in this environment.
+        </p>
+        <Button variant="default" asChild className="mt-4">
+          <Link to="/">Return Home</Link>
+        </Button>
       </div>
     </div>
   );

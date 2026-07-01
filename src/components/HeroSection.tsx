@@ -1,167 +1,142 @@
 import { motion } from "framer-motion";
-import { Github, Terminal, Linkedin, FileText, ArrowRight, Briefcase, Sparkles, Code2 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Github, Linkedin, ArrowDown } from "lucide-react";
+import { Button } from "./ui/button";
+import { Badge } from "./ui/badge";
 
 const HeroSection = () => {
+  const handleScroll = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+        delayChildren: 0.2,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1], // out-expo
+      },
+    },
+  };
+
   return (
-    <section className="relative min-h-[95vh] flex flex-col items-center justify-center text-center px-4 py-24 overflow-hidden">
-      
-      {/* Dynamic Background Glows (New Palette) */}
-      <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-emerald-600/10 rounded-full blur-[130px] pointer-events-none animate-pulse" />
-      <div className="absolute bottom-1/4 right-1/4 w-[500px] h-[500px] bg-cyan-500/10 rounded-full blur-[110px] pointer-events-none" />
-      <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] bg-cyan-400/5 rounded-full blur-[80px] pointer-events-none" />
+    <section className="relative min-h-[90vh] flex flex-col justify-center max-w-6xl mx-auto px-4 md:px-8 pt-32 pb-16 overflow-hidden">
+      {/* Subtle Background Lighting */}
+      <div className="absolute top-1/4 left-1/4 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
-      {/* --- AVATAR WITH DYNAMIC GLOW --- */}
       <motion.div
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        className="relative mb-14"
+        variants={containerVariants}
+        initial="hidden"
+        animate="visible"
+        className="max-w-4xl flex flex-col gap-6"
       >
-        <div className="absolute -inset-1.5 bg-gradient-to-r from-emerald-600 via-cyan-500 to-cyan-400 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-1000 animate-tilt"></div>
-        
-        <div className="relative w-44 h-44 md:w-56 md:h-56 rounded-full p-1 bg-gradient-to-b from-emerald-500/50 to-border shadow-2xl">
-          <div className="w-full h-full rounded-full border-[6px] border-background overflow-hidden bg-card">
-            <img
-              src="/my-photo.webp"
-              alt="Anupam Baral - Full Stack Developer from Butwal, Nepal"
-              className="w-full h-full object-cover grayscale-[10%] hover:grayscale-0 transition-all duration-1000 hover:scale-105"
-              loading="eager"
-            />
-          </div>
-        </div>
-
-        {/* Status Indicator */}
-        <motion.div
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ delay: 0.8, type: "spring" }}
-          className="absolute bottom-1 right-2 flex items-center gap-1.5 bg-background border border-emerald-500/30 px-4 py-2 rounded-full shadow-2xl backdrop-blur-xl"
-        >
-          <span className="relative flex h-2 w-2">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-          </span>
-          <span className="text-[10px] font-black text-emerald-400 uppercase tracking-widest">Active Status</span>
-        </motion.div>
-      </motion.div>
-
-      {/* --- TOP BADGE --- */}
-      <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3 }}
-        className="group flex items-center gap-3 px-5 py-2.5 rounded-full bg-background/60 backdrop-blur-md border border-border hover:border-emerald-500/40 transition-all mb-10"
-      >
-        <Terminal className="w-4 h-4 text-emerald-400" />
-        <span className="text-xs font-mono text-muted-foreground tracking-tight">
-          <span className="text-emerald-500 font-bold">~</span>/gomugomucode <span className="text-muted-foreground/60">--status</span> <span className="text-cyan-400 font-bold">online</span>
-        </span>
-      </motion.div>
-
-      {/* --- HEADLINE --- */}
-      <div className="max-w-6xl mx-auto mb-10">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4, duration: 0.8 }}
-        >
-          <span className="text-xs md:text-sm font-black uppercase tracking-[0.5em] text-emerald-400/80 mb-6 block">
-            The Intersection of Code & Intelligence
-          </span>
-        </motion.div>
-      </div>
-
-      {/* --- SUBTITLE / DESCRIPTION --- */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.5 }}
-        className="max-w-3xl mx-auto space-y-8 mb-16"
-      >
-        <h1 className="text-xl md:text-2xl font-bold text-foreground flex items-center justify-center gap-4">
-          <Sparkles className="w-6 h-6 text-emerald-400" />
-          Hi, I'm Anupam Baral
-          <span className="w-2 h-2 rounded-full bg-border" />
-          <span className="text-cyan-400 uppercase text-xs tracking-[0.3em] font-black">from Nepal</span>
-        </h1>
-        
-        <p className="text-muted-foreground text-base md:text-xl leading-relaxed font-medium px-4">
-          Architecting <span className="text-foreground">scalable digital ecosystems</span> and high-impact
-          frontend experiences. Specializing in neural-driven 
-          <span className="text-emerald-400 font-serif italic ml-1.5"> intelligent architectures.</span>
-        </p>
-
-        <div className="flex flex-wrap justify-center gap-3">
-          {["React", "TypeScript", "Python", "Solana", "AI/ML"].map((skill) => (
-            <span key={skill} className="px-4 py-1.5 rounded-lg bg-background/80 border border-border text-xs font-mono text-foreground/70 hover:border-emerald-500/50 transition-colors cursor-default">
-              {skill}
+        {/* Availability Status Badge */}
+        <motion.div variants={itemVariants} className="flex items-center">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-sm bg-foreground/5 border border-border text-[11px] font-mono uppercase tracking-widest text-muted-foreground">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
             </span>
+            Available for work
+          </div>
+        </motion.div>
+
+        {/* Pre-headline (Name) */}
+        <motion.span
+          variants={itemVariants}
+          className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground block mt-2"
+        >
+          ANUPAM BARAL
+        </motion.span>
+
+        {/* Headline */}
+        <motion.h1
+          variants={itemVariants}
+          className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-black tracking-tighter leading-none text-foreground uppercase"
+        >
+          Full Stack<br />Developer.
+        </motion.h1>
+
+        {/* Tech Stack Tags */}
+        <motion.div variants={itemVariants} className="flex flex-wrap gap-2.5 mt-2">
+          {["React / Next.js", "Node.js", "Python / AI", "TypeScript"].map((tag) => (
+            <Badge key={tag} variant="default">
+              {tag}
+            </Badge>
           ))}
-        </div>
+        </motion.div>
+
+        {/* Subtitle */}
+        <motion.p
+          variants={itemVariants}
+          className="font-sans text-base md:text-lg text-muted-foreground max-w-2xl leading-relaxed mt-4"
+        >
+          Building production-ready web applications and intelligent systems. From scalable SaaS platforms to machine learning pipelines — I engineer things that work.
+        </motion.p>
+
+        {/* Actions & Socials */}
+        <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 mt-6">
+          <Button variant="default" onClick={() => handleScroll("work")}>
+            View Work
+          </Button>
+
+          <Button variant="outline" onClick={() => handleScroll("contact")}>
+            Get in Touch
+          </Button>
+
+          <div className="h-6 w-[1px] bg-border hidden sm:block mx-2" />
+
+          <div className="flex items-center gap-3">
+            <a
+              href="https://github.com/gomugomucode"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-md border border-border bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground transition-all active:scale-95"
+              aria-label="GitHub"
+            >
+              <Github className="w-4 h-4" />
+            </a>
+            <a
+              href="https://linkedin.com/in/gomugomucode"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="p-3 rounded-md border border-border bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground transition-all active:scale-95"
+              aria-label="LinkedIn"
+            >
+              <Linkedin className="w-4 h-4" />
+            </a>
+          </div>
+        </motion.div>
       </motion.div>
 
-      {/* --- ACTION BUTTONS --- */}
+      {/* Down Indicator */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.6 }}
-        className="flex flex-wrap items-center justify-center gap-6"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.5 }}
+        transition={{ delay: 1, duration: 0.5 }}
+        className="absolute bottom-6 left-4 md:left-8 flex items-center gap-2 cursor-pointer font-mono text-[10px] uppercase tracking-widest text-muted-foreground hover:opacity-100 transition-opacity hidden md:flex"
+        onClick={() => handleScroll("about")}
       >
-        <Link
-          to="/projects"
-          className="group relative inline-flex items-center gap-3 bg-emerald-600 text-white px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all hover:bg-emerald-500 hover:scale-[1.02] active:scale-95 shadow-2xl shadow-emerald-600/30 overflow-hidden"
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000" />
-          <Code2 className="w-5 h-5" />
-          Explore Work
-          <ArrowRight className="w-5 h-5 transition-transform group-hover:translate-x-1.5" />
-        </Link>
-
-        <Link
-          to="/contact"
-          className="inline-flex items-center gap-3 bg-background text-foreground border border-border px-10 py-5 rounded-2xl font-black text-sm uppercase tracking-widest transition-all hover:bg-muted hover:border-emerald-500/40 active:scale-95 shadow-xl"
-        >
-          <Briefcase className="w-5 h-5 text-cyan-400" />
-          Partner Up
-        </Link>
-
-        <div className="flex items-center gap-6 mt-6 md:mt-0 md:ml-6 pl-8 border-l border-border hidden sm:flex">
-          <motion.a
-            whileHover={{ y: -4, color: "#10b981" }}
-            href="https://github.com/gomugomucode"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors"
-          >
-            <Github className="w-7 h-7" />
-          </motion.a>
-           <motion.a
-            whileHover={{ y: -3, color: "#0077b5" }}
-            href="https://linkedin.com/in/gomugomucode"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-muted-foreground transition-colors"
-          >
-            <Linkedin className="w-6 h-6" />
-          </motion.a>
-          <motion.a
-            whileHover={{ y: -4, color: "#10b981" }}
-            href="/Anupambaral-cv.docx"
-            download
-            className="text-muted-foreground transition-colors"
-          >
-            <FileText className="w-7 h-7" />
-          </motion.a>
-        </div>
+        <span className="animate-bounce">
+          <ArrowDown className="w-3.5 h-3.5" />
+        </span>
+        Scroll
       </motion.div>
-
-      <div className="mt-6 text-sm text-muted-foreground">
-        <p>
-          Explore more: <Link to="/projects" className="underline text-emerald-400">Projects</Link> or <Link to="/resources" className="underline text-emerald-400">Resources</Link>.
-        </p>
-      </div>
-
     </section>
   );
 };
