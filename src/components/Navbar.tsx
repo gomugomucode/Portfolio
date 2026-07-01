@@ -4,10 +4,11 @@ import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const navLinks = [
-  { name: "About", href: "about" },
-  { name: "Work", href: "work" },
-  { name: "Skills", href: "skills" },
-  { name: "Contact", href: "contact" },
+  { name: "About", href: "about", isPage: false },
+  { name: "Work", href: "work", isPage: false },
+  { name: "Skills", href: "skills", isPage: false },
+  { name: "Blog", href: "blog", isPage: true },
+  { name: "Contact", href: "contact", isPage: false },
 ];
 
 const Navbar = () => {
@@ -82,14 +83,24 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-8">
             <div className="flex items-center gap-6">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={`/#${link.href}`}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
-                >
-                  {link.name}
-                </a>
+                link.isPage ? (
+                  <Link
+                    key={link.name}
+                    to={`/${link.href}`}
+                    className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={`/#${link.href}`}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
             </div>
           </div>
@@ -119,14 +130,25 @@ const Navbar = () => {
           >
             <div className="flex flex-col gap-4">
               {navLinks.map((link) => (
-                <a
-                  key={link.name}
-                  href={`/#${link.href}`}
-                  onClick={(e) => handleNavClick(e, link.href)}
-                  className="font-mono text-[12px] uppercase tracking-widest text-muted-foreground hover:text-foreground py-2 border-b border-border/40"
-                >
-                  {link.name}
-                </a>
+                link.isPage ? (
+                  <Link
+                    key={link.name}
+                    to={`/${link.href}`}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="font-mono text-[12px] uppercase tracking-widest text-muted-foreground hover:text-foreground py-2 border-b border-border/40"
+                  >
+                    {link.name}
+                  </Link>
+                ) : (
+                  <a
+                    key={link.name}
+                    href={`/#${link.href}`}
+                    onClick={(e) => handleNavClick(e, link.href)}
+                    className="font-mono text-[12px] uppercase tracking-widest text-muted-foreground hover:text-foreground py-2 border-b border-border/40"
+                  >
+                    {link.name}
+                  </a>
+                )
               ))}
             </div>
           </motion.div>

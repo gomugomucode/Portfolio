@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
-import { Github, ExternalLink } from "lucide-react";
+import { Github, ExternalLink, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Badge } from "./ui/badge";
 
 const projects = [
@@ -52,10 +53,8 @@ const ProjectsSection = () => {
           >
             {/* Visual Image container - 60% Width / col-span-7 */}
             <div className="lg:col-span-7 flex flex-col gap-2">
-              <a 
-                href={project.liveLink} 
-                target="_blank" 
-                rel="noopener noreferrer" 
+              <Link 
+                to={`/project/${project.index}`} 
                 className="block aspect-video w-full rounded-md border border-border/60 overflow-hidden bg-muted relative"
               >
                 <img 
@@ -67,7 +66,7 @@ const ProjectsSection = () => {
                     e.currentTarget.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";
                   }}
                 />
-              </a>
+              </Link>
             </div>
 
             {/* Content text details - 40% Width / col-span-4 col-start-9 */}
@@ -93,12 +92,19 @@ const ProjectsSection = () => {
 
               {/* Action Links */}
               <div className="flex items-center gap-3 mt-4">
+                <Link
+                  to={`/project/${project.index}`}
+                  className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:brightness-110 active:scale-95 px-4 py-2.5 transition-all"
+                >
+                  <BookOpen className="w-3.5 h-3.5" />
+                  Read Case Study
+                </Link>
                 {project.liveLink && (
                   <a
                     href={project.liveLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:brightness-110 active:scale-95 px-4 py-2.5 transition-all"
+                    className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md border border-border hover:bg-muted text-foreground active:scale-95 px-4 py-2.5 transition-all"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     Live Demo

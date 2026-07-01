@@ -1,16 +1,33 @@
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Github, Linkedin, Mail } from "lucide-react";
 
+const footerNavLinks = [
+  { name: "About", href: "about", isPage: false },
+  { name: "Work", href: "work", isPage: false },
+  { name: "Skills", href: "skills", isPage: false },
+  { name: "Blog", href: "blog", isPage: true },
+  { name: "Contact", href: "contact", isPage: false },
+];
+
 const Footer = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
+
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    const element = document.getElementById(href);
-    if (element) {
+    if (location.pathname === "/") {
       e.preventDefault();
-      element.scrollIntoView({ behavior: "smooth" });
+      const element = document.getElementById(href);
+      if (element) {
+        element.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      e.preventDefault();
+      navigate(`/#${href}`);
     }
   };
 
   return (
-    <footer className="w-full border-t border-border/60 pt-16 pb-8 mt-32">
+    <footer className="w-full border-t border-border/60 pt-16 pb-8 mt-32 bg-background">
       <div className="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {/* Left Column */}
         <div className="flex flex-col gap-2">
@@ -25,15 +42,25 @@ const Footer = () => {
         {/* Center Column - Links */}
         <div className="flex flex-col md:items-center gap-3">
           <div className="flex flex-wrap gap-x-6 gap-y-2 md:justify-center">
-            {["about", "work", "skills", "contact"].map((item) => (
-              <a
-                key={item}
-                href={`/#${item}`}
-                onClick={(e) => handleNavClick(e, item)}
-                className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item}
-              </a>
+            {footerNavLinks.map((link) => (
+              link.isPage ? (
+                <Link
+                  key={link.name}
+                  to={`/${link.href}`}
+                  className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.name}
+                </Link>
+              ) : (
+                <a
+                  key={link.name}
+                  href={`/#${link.href}`}
+                  onClick={(e) => handleNavClick(e, link.href)}
+                  className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {link.name}
+                </a>
+              )
             ))}
           </div>
         </div>
@@ -67,7 +94,12 @@ const Footer = () => {
               <Github className="w-4 h-4" />
             </a>
           </div>
-          <p className="text-[11px] text-muted-foreground font-mono uppercase tracking-wider">
+          <div className="flex flex-wrap gap-4 text-[10px] font-mono uppercase tracking-wider text-muted-foreground md:justify-end">
+            <Link to="/privacy" className="hover:text-foreground transition-colors">Privacy</Link>
+            <span>·</span>
+            <Link to="/terms" className="hover:text-foreground transition-colors">Terms</Link>
+          </div>
+          <p className="text-[11px] text-muted-foreground font-mono uppercase tracking-wider text-right">
             © {new Date().getFullYear()} Anupam Baral. Built with React & Tailwind.
           </p>
         </div>
