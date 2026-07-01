@@ -1,5 +1,3 @@
-import React from "react";
-
 interface TimelineItemProps {
   date: string;
   title: string;
@@ -8,18 +6,22 @@ interface TimelineItemProps {
   isLast?: boolean;
 }
 
-export const TimelineItem = ({ date, title, subtitle, description, isLast = false }: TimelineItemProps) => {
+export const TimelineItem = ({
+  date,
+  title,
+  subtitle,
+  description,
+  isLast = false,
+}: TimelineItemProps) => {
   return (
-    <div className={`relative border-l border-border ml-3 pl-6 ${isLast ? "pb-0" : "pb-8"}`}>
-      {/* Node indicator */}
-      <div className="absolute -left-[6.5px] top-1.5 w-3 h-3 rounded-full border border-border bg-background" />
-      
-      {/* Content */}
-      <div className="flex flex-col gap-1">
-        <span className="font-mono text-xs text-muted-foreground tracking-widest uppercase">{date}</span>
-        <h3 className="font-display font-bold text-lg text-foreground leading-snug">{title}</h3>
-        {subtitle && <span className="text-sm font-medium text-muted-foreground/80">{subtitle}</span>}
-        <p className="text-sm text-muted-foreground mt-1.5 leading-relaxed">{description}</p>
+    <div className={`relative border-l border-border ml-3 pl-6 ${isLast ? "pb-0" : "pb-10"}`}>
+      <div className="absolute -left-[5px] top-2 w-2.5 h-2.5 rounded-full border border-border bg-background" />
+
+      <div className="flex flex-col gap-1.5">
+        <span className="label-mono">{date}</span>
+        <h3 className="font-display text-lg font-medium text-foreground leading-snug">{title}</h3>
+        {subtitle && <span className="text-sm text-muted-foreground">{subtitle}</span>}
+        <p className="text-body-sm mt-1">{description}</p>
       </div>
     </div>
   );

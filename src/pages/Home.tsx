@@ -3,32 +3,33 @@ import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
+import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
-  "name": "Anupam Baral",
-  "alternateName": "gomugomucode",
-  "url": "https://anupambaral.com.np",
-  "jobTitle": "Full Stack Developer & AI/ML Engineer",
-  "sameAs": [
+  name: "Anupam Baral",
+  alternateName: "gomugomucode",
+  url: "https://anupambaral.com.np",
+  jobTitle: "Full Stack Developer & AI/ML Engineer",
+  sameAs: [
     "https://github.com/gomugomucode",
-    "https://www.linkedin.com/in/gomugomucode/"
+    "https://www.linkedin.com/in/gomugomucode/",
   ],
-  "knowsAbout": [
+  knowsAbout: [
     "React",
     "TypeScript",
     "Python",
     "Artificial Intelligence",
     "Machine Learning",
     "Full Stack Development",
-    "Solana Blockchain"
+    "Solana Blockchain",
   ],
-  "address": {
+  address: {
     "@type": "PostalAddress",
-    "addressCountry": "Nepal"
-  }
+    addressCountry: "Nepal",
+  },
 };
 
 const Home = () => {
@@ -44,6 +45,7 @@ const Home = () => {
       <AboutSection />
       <ProjectsSection />
       <SkillsSection />
+      <BlogSection />
       <ContactSection />
     </div>
   );

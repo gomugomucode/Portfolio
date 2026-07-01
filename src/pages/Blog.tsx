@@ -154,7 +154,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32">
+    <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 md:py-28 lg:py-32">
       <SEO
         title="Technical Writing | Anupam Baral"
         description="Articles on software engineering, Solana blockchain, TypeScript, and machine learning pipelines."
@@ -164,14 +164,10 @@ const Blog = () => {
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         {/* Sticky Left Rail (col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col gap-2 lg:sticky lg:top-28">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-            05 — WRITING
-          </span>
-          <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
-            Engineering<br />Logs.
-          </h1>
-          <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-sm mt-4">
+        <div className="lg:col-span-4 flex flex-col gap-3 lg:sticky lg:top-28">
+          <span className="label-mono">05 — Writing</span>
+          <h1 className="heading-display">Engineering logs.</h1>
+          <p className="text-body-sm max-w-sm mt-2">
             Technical writing on database persistence, blockchain contract verification, and ML deployments. Documenting implementation details and runtime analysis.
           </p>
         </div>
@@ -181,7 +177,7 @@ const Blog = () => {
           {loading ? (
             <div className="flex flex-col gap-8">
               {[1, 2].map((i) => (
-                <div key={i} className="animate-pulse flex flex-col gap-4 border-b border-border/40 pb-8">
+                <div key={i} className="animate-pulse flex flex-col gap-4 border-b border-border pb-8">
                   <div className="h-4 bg-muted w-24 rounded-sm" />
                   <div className="h-6 bg-muted w-3/4 rounded-sm" />
                   <div className="h-16 bg-muted w-full rounded-sm" />
@@ -194,15 +190,15 @@ const Blog = () => {
               {posts.map((post) => (
                 <article
                   key={post.guid}
-                  className="flex flex-col gap-4 border-b border-border/40 pb-12 last:border-b-0 last:pb-0 group"
+                  className="flex flex-col gap-4 border-b border-border pb-12 last:border-b-0 last:pb-0 group"
                 >
                   {/* Meta Indicators */}
-                  <div className="flex items-center gap-4 text-[11px] font-mono uppercase tracking-wider text-muted-foreground">
+                  <div className="flex items-center gap-4 label-mono">
                     <span className="flex items-center gap-1.5">
                       <Calendar className="w-3.5 h-3.5" />
                       {formatDate(post.pubDate)}
                     </span>
-                    <span className="h-3 w-[1px] bg-border/60" />
+                    <span className="h-3 w-px bg-border" />
                     <span className="flex items-center gap-1.5">
                       <Clock className="w-3.5 h-3.5" />
                       {post.readingTime || "5 min read"}
@@ -216,13 +212,13 @@ const Blog = () => {
                     rel="noopener noreferrer"
                     className="block group-hover:text-primary transition-colors duration-300"
                   >
-                    <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground leading-snug">
+                    <h2 className="font-display text-2xl font-medium tracking-tight text-foreground leading-snug">
                       {post.title}
                     </h2>
                   </a>
 
                   {/* Excerpt */}
-                  <p className="font-sans text-sm text-muted-foreground leading-relaxed">
+                  <p className="text-body-sm">
                     {post.excerpt}
                   </p>
 

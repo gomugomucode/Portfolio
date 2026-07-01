@@ -1,97 +1,69 @@
-import { motion } from "framer-motion";
-import { Globe, Database, Cpu, Share2, Shield, Terminal } from "lucide-react";
+import { Badge } from "./ui/badge";
 import { Card } from "./ui/card";
+import { SectionGrid, SectionShell } from "./layout/SectionShell";
+import AnimatedSection from "./AnimatedSection";
 
 const skillCategories = [
-  { 
-    title: "Frontend Architecture", 
-    icon: Globe, 
-    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"] 
+  {
+    title: "Frontend architecture",
+    skills: ["React", "Next.js", "TypeScript", "Tailwind CSS", "Framer Motion"],
   },
-  { 
-    title: "Backend Systems", 
-    icon: Database, 
-    skills: ["Node.js", "Express.js", "Python", "REST APIs"] 
+  {
+    title: "Backend systems",
+    skills: ["Node.js", "Express.js", "Python", "REST APIs"],
   },
-  { 
-    title: "Data & Intelligence", 
-    icon: Cpu, 
-    skills: ["Machine Learning", "Pandas", "NumPy", "Scikit-Learn"] 
+  {
+    title: "Data & intelligence",
+    skills: ["Machine Learning", "Pandas", "NumPy", "Scikit-Learn"],
   },
-  { 
-    title: "Database & Cloud", 
-    icon: Share2, 
-    skills: ["MySQL", "SQLite", "MongoDB", "Vercel", "Cloudflare"] 
+  {
+    title: "Database & cloud",
+    skills: ["MySQL", "SQLite", "MongoDB", "Vercel", "Cloudflare"],
   },
-  { 
-    title: "Web3 & Decentralization", 
-    icon: Shield, 
-    skills: ["Solana", "Rust", "Web3.js"] 
+  {
+    title: "Web3 & decentralization",
+    skills: ["Solana", "Rust", "Web3.js"],
   },
-  { 
-    title: "DevOps & Tooling", 
-    icon: Terminal, 
-    skills: ["Git / GitHub", "Docker", "Linux Administration"] 
+  {
+    title: "DevOps & tooling",
+    skills: ["Git / GitHub", "Docker", "Linux Administration"],
   },
 ];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 border-t border-border/40">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        
-        {/* Left Side - Title Rail (col-span-4) */}
-        <div className="lg:col-span-4 flex flex-col gap-2 sticky top-28">
-          <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-            04 — SKILLS
-          </span>
-          <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
-            Technical<br />Arsenal.
-          </h2>
-          <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-sm mt-4">
-            A curated stack of frontend frameworks, backend runtimes, databases, AI/ML tools, and Web3 protocols. Built on type-safety, testability, and edge deployments.
-          </p>
-        </div>
+    <SectionShell id="skills">
+      <AnimatedSection>
+        <SectionGrid>
+          <div className="lg:col-span-4 flex flex-col gap-3 lg:sticky lg:top-28">
+            <span className="label-mono">04 — Skills</span>
+            <h2 className="heading-display">Technical arsenal.</h2>
+            <p className="text-body-sm max-w-sm mt-2">
+              A curated stack of frontend frameworks, backend runtimes, databases, AI/ML tools, and
+              Web3 protocols. Built on type-safety, testability, and edge deployments.
+            </p>
+          </div>
 
-        {/* Right Side - Bento Grid (col-span-8) */}
-        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {skillCategories.map((cat) => {
-            const Icon = cat.icon;
-            return (
-              <Card 
+          <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-3">
+            {skillCategories.map((cat) => (
+              <Card
                 key={cat.title}
-                className="p-6 hover:border-foreground/20 transition-all duration-300 group"
+                className="p-5 hover:border-foreground/20 transition-colors duration-300"
               >
                 <div className="flex flex-col gap-4">
-                  {/* Category Header */}
-                  <div className="flex items-center gap-3">
-                    <div className="p-2 rounded-md border border-border text-muted-foreground bg-muted/20 group-hover:text-primary group-hover:border-primary/20 transition-colors duration-300">
-                      <Icon className="w-4 h-4" />
-                    </div>
-                    <h3 className="font-mono text-xs uppercase tracking-widest text-foreground font-semibold">
-                      {cat.title}
-                    </h3>
-                  </div>
-
-                  {/* Skills List */}
-                  <div className="flex flex-wrap gap-2 mt-2">
+                  <h3 className="label-mono text-foreground">{cat.title}</h3>
+                  <div className="flex flex-wrap gap-2">
                     {cat.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="inline-flex items-center border border-border text-muted-foreground font-mono text-[11px] uppercase tracking-widest px-2.5 py-1 rounded-sm bg-foreground/5"
-                      >
-                        {skill}
-                      </span>
+                      <Badge key={skill}>{skill}</Badge>
                     ))}
                   </div>
                 </div>
               </Card>
-            );
-          })}
-        </div>
-
-      </div>
-    </section>
+            ))}
+          </div>
+        </SectionGrid>
+      </AnimatedSection>
+    </SectionShell>
   );
 };
 

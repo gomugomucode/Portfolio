@@ -1,10 +1,12 @@
 import { useState } from "react";
-import { Mail, Github, Linkedin, Send } from "lucide-react";
+import { Github, Linkedin, Send } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
 import { Card } from "./ui/card";
+import { SectionGrid, SectionHeader, SectionShell } from "./layout/SectionShell";
+import AnimatedSection from "./AnimatedSection";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -58,7 +60,7 @@ const ContactSection = () => {
       } else {
         throw new Error("Submission Failed");
       }
-    } catch (err) {
+    } catch {
       toast({
         title: "Transmission failed.",
         description: "Please email me directly at contact@anupambaral.com.np.",
@@ -70,23 +72,15 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 border-t border-border/40">
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        
-        {/* Left Side: Contact Form (col-span-7) */}
+    <SectionShell id="contact">
+      <AnimatedSection>
+        <SectionGrid>
         <div className="lg:col-span-7 flex flex-col gap-8">
-          <div className="flex flex-col gap-2">
-            <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
-              05 — CONTACT
-            </span>
-            <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
-              Let's Build Together.
-            </h2>
-          </div>
+          <SectionHeader index="06 — Contact" title="Let's build together." />
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-6">
+          <form onSubmit={handleSubmit} className="flex flex-col gap-5 -mt-4 md:-mt-6">
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              <label htmlFor="name" className="label-mono">
                 Name
               </label>
               <Input
@@ -98,12 +92,12 @@ const ContactSection = () => {
                 aria-invalid={!!errors.name}
               />
               {errors.name && (
-                <span className="text-xs text-red-500 font-mono mt-1">{errors.name}</span>
+                <span className="text-xs text-destructive font-mono mt-1">{errors.name}</span>
               )}
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              <label htmlFor="email" className="label-mono">
                 Email
               </label>
               <Input
@@ -115,12 +109,12 @@ const ContactSection = () => {
                 aria-invalid={!!errors.email}
               />
               {errors.email && (
-                <span className="text-xs text-red-500 font-mono mt-1">{errors.email}</span>
+                <span className="text-xs text-destructive font-mono mt-1">{errors.email}</span>
               )}
             </div>
 
             <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
+              <label htmlFor="message" className="label-mono">
                 Message
               </label>
               <Textarea
@@ -132,52 +126,47 @@ const ContactSection = () => {
                 aria-invalid={!!errors.message}
               />
               {errors.message && (
-                <span className="text-xs text-red-500 font-mono mt-1">{errors.message}</span>
+                <span className="text-xs text-destructive font-mono mt-1">{errors.message}</span>
               )}
             </div>
 
-            <Button type="submit" disabled={sending} className="mt-4 w-full sm:w-auto self-start">
+            <Button type="submit" disabled={sending} className="mt-2 w-full sm:w-auto self-start">
               {sending ? (
-                <span className="flex items-center gap-2 font-mono uppercase text-[11px] tracking-widest">
+                <span className="flex items-center gap-2 label-mono normal-case">
                   <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
                   Sending...
                 </span>
               ) : (
                 <span className="flex items-center gap-2">
                   <Send className="w-4 h-4" />
-                  Send Message
+                  Send message
                 </span>
               )}
             </Button>
           </form>
         </div>
 
-        {/* Right Side: Quick Info Cards (col-span-4 col-start-9) */}
-        <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-4 lg:mt-16">
+        <div className="lg:col-span-5 flex flex-col gap-3">
           <a href="mailto:contact@anupambaral.com.np" className="group">
-            <Card className="p-6 hover:border-foreground/20 transition-colors duration-300">
-              <div className="flex flex-col gap-2">
-                <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                  Direct Email
-                </span>
-                <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+            <Card className="p-5 hover:border-foreground/20 transition-colors duration-300">
+              <div className="flex flex-col gap-1">
+                <span className="label-mono">Direct email</span>
+                <span className="text-sm text-foreground group-hover:text-primary transition-colors">
                   contact@anupambaral.com.np
                 </span>
               </div>
             </Card>
           </a>
 
-          <Card className="p-6">
+          <Card className="p-5">
             <div className="flex flex-col gap-3">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Profiles
-              </span>
-              <div className="flex items-center gap-3">
+              <span className="label-mono">Profiles</span>
+              <div className="flex items-center gap-2">
                 <a
                   href="https://github.com/gomugomucode"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-md border border-border bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground transition-all active:scale-95"
+                  className="social-link"
                   aria-label="GitHub"
                 >
                   <Github className="w-4 h-4" />
@@ -186,7 +175,7 @@ const ContactSection = () => {
                   href="https://linkedin.com/in/gomugomucode"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="p-3 rounded-md border border-border bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground transition-all active:scale-95"
+                  className="social-link"
                   aria-label="LinkedIn"
                 >
                   <Linkedin className="w-4 h-4" />
@@ -195,20 +184,19 @@ const ContactSection = () => {
             </div>
           </Card>
 
-          <Card className="p-6 bg-foreground/5 border-dashed">
+          <Card className="p-5 bg-foreground/[0.03]">
             <div className="flex flex-col gap-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Availability
-              </span>
-              <p className="text-xs text-muted-foreground leading-relaxed">
+              <span className="label-mono">Availability</span>
+              <p className="text-body-sm">
                 Available for freelance opportunities and full-time roles. Standard response time is under 24 hours.
               </p>
             </div>
           </Card>
         </div>
 
-      </div>
-    </section>
+        </SectionGrid>
+      </AnimatedSection>
+    </SectionShell>
   );
 };
 

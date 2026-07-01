@@ -115,7 +115,7 @@ const ProjectDetails = () => {
   if (!project) {
     return (
       <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 text-center flex flex-col items-center justify-center min-h-[60vh] gap-6">
-        <h1 className="font-display text-2xl font-bold uppercase tracking-tight text-foreground">
+        <h1 className="font-display text-2xl font-medium tracking-tight text-foreground">
           Project Not Found
         </h1>
         <p className="text-sm text-muted-foreground max-w-md">
@@ -132,7 +132,7 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32">
+    <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 md:py-28 lg:py-32">
       <SEO
         title={`${project.title} | Case Study`}
         description={project.subtitle}
@@ -150,15 +150,15 @@ const ProjectDetails = () => {
 
       {/* Header Info */}
       <div className="flex flex-col gap-6 mb-12">
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tighter text-foreground uppercase leading-none">
+        <h1 className="heading-display max-w-4xl">
           {project.title}
         </h1>
-        <p className="font-sans text-lg sm:text-xl text-muted-foreground max-w-3xl leading-relaxed">
+        <p className="text-body max-w-3xl">
           {project.subtitle}
         </p>
 
         {/* Technical Pills & Actions */}
-        <div className="flex flex-wrap items-center justify-between gap-6 pt-4 border-t border-border/40">
+        <div className="flex flex-wrap items-center justify-between gap-6 pt-4 border-t border-border">
           <div className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <Badge key={tag} variant="default">
@@ -264,33 +264,33 @@ const ProjectDetails = () => {
         <div className="lg:col-span-8 flex flex-col gap-10">
           {/* The Problem */}
           <div className="flex flex-col gap-3">
-            <h3 className="font-display text-xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
+            <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Cpu className="w-5 h-5 text-primary" />
               The Problem
             </h3>
-            <p className="font-sans text-sm sm:text-base text-muted-foreground leading-relaxed">
+            <p className="text-body-sm sm:text-base">
               {project.problem}
             </p>
           </div>
 
           {/* The Solution */}
           <div className="flex flex-col gap-3">
-            <h3 className="font-display text-xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
+            <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Database className="w-5 h-5 text-primary" />
               The Solution
             </h3>
-            <p className="font-sans text-sm sm:text-base text-muted-foreground leading-relaxed">
+            <p className="text-body-sm sm:text-base">
               {project.solution}
             </p>
           </div>
 
           {/* Architecture block */}
           <div className="flex flex-col gap-3">
-            <h3 className="font-display text-xl font-bold uppercase tracking-tight text-foreground flex items-center gap-2">
+            <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
               Technical Architecture
             </h3>
-            <ul className="flex flex-col gap-3 font-sans text-sm sm:text-base text-muted-foreground pl-4 border-l border-border/80">
+            <ul className="flex flex-col gap-3 text-body-sm sm:text-base pl-4 border-l border-border">
               {project.architecture.map((item, idx) => (
                 <li key={idx} className="leading-relaxed">
                   {item}
@@ -300,20 +300,20 @@ const ProjectDetails = () => {
           </div>
 
           {/* Challenges & Learning */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border/40">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
             <div className="flex flex-col gap-2">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-foreground font-bold">
+              <h4 className="label-mono text-foreground">
                 Challenges
               </h4>
-              <p className="font-sans text-xs text-muted-foreground leading-relaxed">
+              <p className="text-body-sm">
                 {project.challenges}
               </p>
             </div>
             <div className="flex flex-col gap-2">
-              <h4 className="font-mono text-xs uppercase tracking-widest text-foreground font-bold">
-                Lessons Learned
+              <h4 className="label-mono text-foreground">
+                Lessons learned
               </h4>
-              <p className="font-sans text-xs text-muted-foreground leading-relaxed">
+              <p className="text-body-sm">
                 {project.lessons}
               </p>
             </div>

@@ -9,11 +9,14 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden font-inter">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      <a href="#main-content" className="skip-link">
+        Skip to content
+      </a>
 
       <Navbar />
 
-      <main className="relative z-10 w-full min-h-[calc(100vh-100px)] pt-16">
+      <main id="main-content" className="relative z-10 w-full min-h-[calc(100vh-100px)] pt-16">
         {children}
       </main>
 
