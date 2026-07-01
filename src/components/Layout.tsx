@@ -10,9 +10,6 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden font-inter">
-      {/* Background spotlights */}
-      <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-emerald-500/10 dark:bg-emerald-950/20 blur-[120px] pointer-events-none" />
-      <div className="absolute top-[40%] right-[10%] w-[30%] h-[30%] rounded-full bg-emerald-400/8 dark:bg-emerald-950/15 blur-[120px] pointer-events-none" />
 
       <Navbar />
 

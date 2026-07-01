@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import ThemeToggle from "./ThemeToggle";
 
 const navLinks = [
   { name: "About", href: "about" },
@@ -93,13 +92,10 @@ const Navbar = () => {
                 </a>
               ))}
             </div>
-            <div className="h-4 w-[1px] bg-border" />
-            <ThemeToggle />
           </div>
 
           {/* Mobile Actions */}
           <div className="md:hidden flex items-center gap-3">
-            <ThemeToggle />
             <button
               className="p-2 -mr-2 text-muted-foreground hover:text-foreground transition-colors"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
