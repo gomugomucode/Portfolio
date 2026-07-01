@@ -20,7 +20,7 @@ const timelineItems = [
 
 const AboutSection = () => {
   return (
-    <section id="about" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-24 border-t border-border/40">
+    <section id="about" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 border-t border-border/40">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         {/* Left Column - Narrative */}
@@ -29,8 +29,8 @@ const AboutSection = () => {
             <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
               01 — ABOUT
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground uppercase">
-              Building Architecture<br />That Scales.
+            <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
+              Building architecture that scales.
             </h2>
           </div>
 
@@ -58,39 +58,39 @@ const AboutSection = () => {
 
         {/* Right Column - Structured Metadata Cards */}
         <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-4">
-          <Card className="hover:border-foreground/20 transition-colors duration-300">
+          <Card className="p-6 hover:border-foreground/20 transition-colors duration-300">
             <div className="flex items-start gap-4">
               <div className="p-2.5 rounded-md border border-border text-muted-foreground">
                 <MapPin className="w-4 h-4" />
               </div>
               <div className="flex flex-col gap-1">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Location</span>
-                <span className="text-sm font-semibold text-foreground">Butwal, Nepal</span>
+                <span className="text-sm font-medium text-foreground">Butwal, Nepal</span>
               </div>
             </div>
           </Card>
 
-          <Card className="hover:border-foreground/20 transition-colors duration-300">
+          <Card className="p-6 hover:border-foreground/20 transition-colors duration-300">
             <div className="flex items-start gap-4">
               <div className="p-2.5 rounded-md border border-border text-muted-foreground">
                 <GraduationCap className="w-4 h-4" />
               </div>
               <div className="flex flex-col gap-1">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Education</span>
-                <span className="text-sm font-semibold text-foreground">BCA — Butwal Kalika Campus (2023–Present)</span>
+                <span className="text-sm font-medium text-foreground">BCA — Butwal Kalika Campus (2023–Present)</span>
               </div>
             </div>
           </Card>
 
           <a href="mailto:contact@anupambaral.com.np" className="group block">
-            <Card className="bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30 transition-all duration-300">
+            <Card className="p-6 bg-foreground/5 hover:bg-foreground/10 hover:border-foreground/30 transition-all duration-300">
               <div className="flex items-start gap-4">
                 <div className="p-2.5 rounded-md border border-border text-muted-foreground bg-background">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div className="flex flex-col gap-1">
                   <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">Direct Contact</span>
-                  <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                  <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                     contact@anupambaral.com.np
                   </span>
                 </div>
@@ -106,7 +106,7 @@ const AboutSection = () => {
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
             02 — EXPERIENCE
           </span>
-          <h2 className="font-display text-3xl font-bold tracking-tight text-foreground uppercase">
+          <h2 className="font-display text-3xl font-semibold tracking-tight text-foreground uppercase">
             Track Record.
           </h2>
         </div>

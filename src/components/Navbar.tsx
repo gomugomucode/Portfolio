@@ -68,7 +68,7 @@ const Navbar = () => {
           {/* Logo */}
           <Link 
             to="/" 
-            className="font-display font-bold tracking-tighter text-lg uppercase text-foreground hover:opacity-80 transition-opacity"
+            className="font-display font-semibold tracking-widest text-sm uppercase text-foreground hover:opacity-80 transition-opacity"
             onClick={(e) => {
               if (location.pathname === "/") {
                 e.preventDefault();

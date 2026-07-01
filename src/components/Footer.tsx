@@ -31,7 +31,7 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 md:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
         {/* Left Column */}
         <div className="flex flex-col gap-2">
-          <span className="font-display font-bold tracking-tighter text-lg uppercase text-foreground">
+          <span className="font-display font-semibold tracking-widest text-sm uppercase text-foreground">
             ANUPAM BARAL
           </span>
           <span className="text-[11px] text-muted-foreground font-mono uppercase tracking-wider">

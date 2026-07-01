@@ -70,7 +70,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-24 border-t border-border/40">
+    <section id="contact" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 border-t border-border/40">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         {/* Left Side: Contact Form (col-span-7) */}
@@ -79,7 +79,7 @@ const ContactSection = () => {
             <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
               05 — CONTACT
             </span>
-            <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground uppercase">
+            <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
               Let's Build Together.
             </h2>
           </div>
@@ -155,19 +155,19 @@ const ContactSection = () => {
         {/* Right Side: Quick Info Cards (col-span-4 col-start-9) */}
         <div className="lg:col-span-4 lg:col-start-9 flex flex-col gap-4 lg:mt-16">
           <a href="mailto:contact@anupambaral.com.np" className="group">
-            <Card className="hover:border-foreground/20 transition-colors duration-300">
+            <Card className="p-6 hover:border-foreground/20 transition-colors duration-300">
               <div className="flex flex-col gap-2">
                 <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                   Direct Email
                 </span>
-                <span className="text-sm font-semibold text-foreground group-hover:text-primary transition-colors">
+                <span className="text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                   contact@anupambaral.com.np
                 </span>
               </div>
             </Card>
           </a>
 
-          <Card>
+          <Card className="p-6">
             <div className="flex flex-col gap-3">
               <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                 Profiles
@@ -195,7 +195,7 @@ const ContactSection = () => {
             </div>
           </Card>
 
-          <Card className="bg-foreground/5 border-dashed">
+          <Card className="p-6 bg-foreground/5 border-dashed">
             <div className="flex flex-col gap-2">
               <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
                 Availability

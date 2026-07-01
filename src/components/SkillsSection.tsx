@@ -37,7 +37,7 @@ const skillCategories = [
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-24 border-t border-border/40">
+    <section id="skills" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 border-t border-border/40">
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         
         {/* Left Side - Title Rail (col-span-4) */}
@@ -45,7 +45,7 @@ const SkillsSection = () => {
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
             04 — SKILLS
           </span>
-          <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground uppercase">
+          <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
             Technical<br />Arsenal.
           </h2>
           <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-sm mt-4">
@@ -60,7 +60,7 @@ const SkillsSection = () => {
             return (
               <Card 
                 key={cat.title}
-                className="hover:border-foreground/20 transition-all duration-300 group"
+                className="p-6 hover:border-foreground/20 transition-all duration-300 group"
               >
                 <div className="flex flex-col gap-4">
                   {/* Category Header */}

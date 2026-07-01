@@ -132,7 +132,7 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-24">
+    <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32">
       <SEO
         title={`${project.title} | Case Study`}
         description={project.subtitle}
@@ -150,7 +150,7 @@ const ProjectDetails = () => {
 
       {/* Header Info */}
       <div className="flex flex-col gap-6 mb-12">
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-black tracking-tighter text-foreground uppercase leading-none">
+        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-semibold tracking-tighter text-foreground uppercase leading-none">
           {project.title}
         </h1>
         <p className="font-sans text-lg sm:text-xl text-muted-foreground max-w-3xl leading-relaxed">
@@ -172,7 +172,7 @@ const ProjectDetails = () => {
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:brightness-110 active:scale-95 px-4 py-2.5 transition-all"
+                className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 px-4 py-2.5 transition-all"
               >
                 <ExternalLink className="w-3.5 h-3.5" />
                 Live Demo
@@ -210,12 +210,12 @@ const ProjectDetails = () => {
         {/* Left Side: Metadata & Metrics (col-span-4) */}
         <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-28">
           {/* Metadata details */}
-          <Card className="flex flex-col gap-4">
+          <Card className="p-6 flex flex-col gap-4">
             <div>
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block">
                 Role
               </span>
-              <span className="text-sm font-semibold text-foreground">
+              <span className="text-sm font-medium text-foreground">
                 {project.role}
               </span>
             </div>
@@ -224,7 +224,7 @@ const ProjectDetails = () => {
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block">
                 Year
               </span>
-              <span className="text-sm font-semibold text-foreground flex items-center gap-1.5">
+              <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-muted-foreground" />
                 {project.year}
               </span>
@@ -234,7 +234,7 @@ const ProjectDetails = () => {
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block">
                 Environment
               </span>
-              <span className="text-sm font-semibold text-foreground">
+              <span className="text-sm font-medium text-foreground">
                 {project.client}
               </span>
             </div>
@@ -247,11 +247,11 @@ const ProjectDetails = () => {
             </span>
             <div className="flex flex-col gap-3">
               {project.metrics.map((metric) => (
-                <Card key={metric.label} className="py-4 flex justify-between items-center">
+                <Card key={metric.label} className="px-6 py-4 flex justify-between items-center">
                   <span className="font-mono text-[11px] uppercase tracking-wider text-muted-foreground">
                     {metric.label}
                   </span>
-                  <span className="text-sm font-bold text-primary font-mono">
+                  <span className="text-sm font-semibold text-primary font-mono">
                     {metric.value}
                   </span>
                 </Card>

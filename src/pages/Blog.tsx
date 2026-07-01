@@ -154,7 +154,7 @@ const Blog = () => {
   };
 
   return (
-    <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-24">
+    <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32">
       <SEO
         title="Technical Writing | Anupam Baral"
         description="Articles on software engineering, Solana blockchain, TypeScript, and machine learning pipelines."
@@ -168,7 +168,7 @@ const Blog = () => {
           <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
             05 — WRITING
           </span>
-          <h1 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground uppercase">
+          <h1 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
             Engineering<br />Logs.
           </h1>
           <p className="font-sans text-sm text-muted-foreground leading-relaxed max-w-sm mt-4">
@@ -216,7 +216,7 @@ const Blog = () => {
                     rel="noopener noreferrer"
                     className="block group-hover:text-primary transition-colors duration-300"
                   >
-                    <h2 className="font-display text-2xl font-bold tracking-tight text-foreground leading-snug">
+                    <h2 className="font-display text-2xl font-semibold tracking-tight text-foreground leading-snug">
                       {post.title}
                     </h2>
                   </a>
@@ -240,7 +240,7 @@ const Blog = () => {
                     href={post.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:brightness-110 active:scale-95 px-4 py-2.5 transition-all self-start mt-3"
+                    className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 px-4 py-2.5 transition-all self-start mt-3"
                   >
                     <BookOpen className="w-3.5 h-3.5" />
                     Read on Medium

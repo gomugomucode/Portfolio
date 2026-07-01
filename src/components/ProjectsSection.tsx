@@ -35,12 +35,12 @@ const projects = [
 
 const ProjectsSection = () => {
   return (
-    <section id="work" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-24 border-t border-border/40">
+    <section id="work" className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 border-t border-border/40">
       <div className="flex flex-col gap-2 mb-16">
         <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
           03 — SELECTED WORK
         </span>
-        <h2 className="font-display text-4xl md:text-5xl font-bold tracking-tight text-foreground uppercase">
+        <h2 className="font-display text-4xl md:text-5xl font-semibold tracking-tight text-foreground uppercase">
           Case Studies.
         </h2>
       </div>
@@ -60,7 +60,7 @@ const ProjectsSection = () => {
                 <img 
                   src={project.imageUrl} 
                   alt={project.title} 
-                  className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500 ease-out"
+                  className="w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-700 ease-out"
                   onError={(e) => {
                     // Fail-safe default placeholder if image is missing
                     e.currentTarget.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";
@@ -74,7 +74,7 @@ const ProjectsSection = () => {
               <span className="font-mono text-sm font-semibold text-primary">
                 {project.index}
               </span>
-              <h3 className="font-display text-2xl font-bold tracking-tight text-foreground uppercase">
+              <h3 className="font-display text-2xl font-semibold tracking-tight text-foreground uppercase">
                 {project.title}
               </h3>
               <p className="font-sans text-base text-muted-foreground leading-relaxed">
@@ -94,7 +94,7 @@ const ProjectsSection = () => {
               <div className="flex items-center gap-3 mt-4">
                 <Link
                   to={`/project/${project.index}`}
-                  className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:brightness-110 active:scale-95 px-4 py-2.5 transition-all"
+                  className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 px-4 py-2.5 transition-all"
                 >
                   <BookOpen className="w-3.5 h-3.5" />
                   Read Case Study

@@ -67,7 +67,7 @@ const HeroSection = () => {
         {/* Headline */}
         <motion.h1
           variants={itemVariants}
-          className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-black tracking-tighter leading-none text-foreground uppercase"
+          className="font-display text-5xl sm:text-7xl md:text-8xl lg:text-[100px] font-semibold tracking-tighter leading-none text-foreground uppercase"
         >
           Full Stack<br />Developer.
         </motion.h1>

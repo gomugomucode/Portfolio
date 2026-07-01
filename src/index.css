@@ -6,6 +6,7 @@
 
 html {
   scroll-behavior: smooth;
+  cursor: pointer;
 }
 
 body {
@@ -24,22 +25,22 @@ body {
 
   :root {
     /* PREMIUM ARCHITECTURAL DARK THEME */
-    --background: 20 4% 8%;       /* Warm Deep Charcoal #141312 */
-    --foreground: 30 20% 95%;     /* Warm Off-White #F7F5F2 */
+    --background: #111111;
+    --foreground: #f5f2ec;
     
-    --muted: 20 4% 12%;           /* #1F1E1D */
-    --muted-foreground: 30 8% 64%;/* Warm Muted Gray #A4A099 */
+    --muted: #181818;
+    --muted-foreground: #b9b5af;
     
-    --card: 20 4% 11%;            /* #1C1A19 */
-    --card-foreground: 30 20% 95%;
+    --card: #151515;
+    --card-foreground: #f5f2ec;
     
-    --border: 30 6% 16%;          /* #2A2826 */
-    --input: 30 6% 16%;
+    --border: rgba(245, 242, 236, 0.12);
+    --input: rgba(245, 242, 236, 0.08);
     
-    --primary: 35 24% 65%;        /* Champagne Brass #D1BA9C */
-    --primary-foreground: 20 10% 8%; /* High contrast dark brown/charcoal */
+    --primary: #d8c3a5;
+    --primary-foreground: #111111;
     
-    --ring: 35 24% 65%;
+    --ring: #d8c3a5;
     --radius: 0.375rem;           /* 6px */
   }
 }
