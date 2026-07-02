@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Instrument Sans", "sans-serif"],
-        display: ["Instrument Sans", "sans-serif"],
+        sans: ["Inter", "Instrument Sans", "system-ui", "-apple-system", "sans-serif"],
+        display: ["Playfair Display", "serif"],
         mono: ["JetBrains Mono", "monospace"],
       },
       colors: {
@@ -23,30 +23,37 @@ export default {
         input: "var(--input)",
         ring: "var(--ring)",
         background: "var(--background)",
-        foreground: "var(--foreground)",
-        primary: {
-          DEFAULT: "var(--primary)",
-          foreground: "var(--primary-foreground)",
-        },
-        muted: {
-          DEFAULT: "var(--muted)",
-          foreground: "var(--muted-foreground)",
-        },
-        subtle: {
-          foreground: "var(--subtle-foreground)",
-        },
-        destructive: {
-          DEFAULT: "var(--destructive)",
-        },
+        surface: "var(--surface-800)",
+        elevated: "var(--surface-700)",
         card: {
           DEFAULT: "var(--card)",
           foreground: "var(--card-foreground)",
         },
+        foreground: "var(--foreground)",
+        'text-primary': "var(--text-primary)",
+        'text-secondary': "var(--text-secondary)",
+        muted: {
+          DEFAULT: "var(--text-muted)",
+        },
+        primary: {
+          DEFAULT: "var(--accent-500)",
+          600: "var(--accent-600)",
+          100: "var(--accent-100)",
+        },
+        hover: "var(--hover)",
+        active: "var(--active)",
+        selection: "var(--selection)",
+        focus: "var(--focus)",
+        success: "var(--success)",
+        warning: "var(--warning)",
+        destructive: {
+          DEFAULT: "var(--error)",
+        },
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "var(--r-lg)",
+        md: "var(--r-md)",
+        sm: "var(--r-sm)",
       },
       letterSpacing: {
         tighter: "-0.04em",
@@ -54,6 +61,16 @@ export default {
         widest: "0.1em",
       },
       spacing: {
+        1: '4px',
+        2: '8px',
+        3: '12px',
+        4: '16px',
+        6: '24px',
+        8: '32px',
+        12: '48px',
+        16: '64px',
+        24: '96px',
+        32: '128px',
         "section-y": "8rem",
         "section-y-lg": "10rem",
         "content-gap": "3rem",
