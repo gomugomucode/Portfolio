@@ -146,23 +146,28 @@ html {
   }
 
   .label-mono {
-    @apply font-mono text-[11px] uppercase tracking-widest text-subtle-foreground;
+    @apply font-mono text-[11px] uppercase tracking-widest;
+    color: var(--subtle-foreground);
   }
 
   .heading-display {
-    @apply font-display text-3xl sm:text-4xl md:text-[2.75rem] font-medium tracking-tight text-foreground leading-[1.1];
+    @apply font-display text-3xl sm:text-4xl md:text-[2.75rem] font-medium tracking-tight leading-[1.1];
+    color: var(--foreground);
   }
 
   .heading-display-lg {
-    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight text-foreground leading-[1.05];
+    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tight leading-[1.05];
+    color: var(--foreground);
   }
 
   .text-body {
-    @apply font-sans text-base md:text-lg text-muted-foreground leading-relaxed;
+    @apply font-sans text-base md:text-lg leading-relaxed;
+    color: var(--muted-foreground);
   }
 
   .text-body-sm {
-    @apply font-sans text-sm text-muted-foreground leading-relaxed;
+    @apply font-sans text-sm leading-relaxed;
+    color: var(--muted-foreground);
   }
 
   .interactive-focus {
@@ -170,7 +175,13 @@ html {
   }
 
   .social-link {
-    @apply p-2.5 rounded-md border border-border bg-transparent text-muted-foreground hover:bg-muted hover:text-foreground interactive-focus;
+    @apply p-2.5 rounded-md border border-border bg-transparent interactive-focus;
+    color: var(--muted-foreground);
+  }
+
+  .social-link:hover {
+    background-color: var(--muted);
+    color: var(--foreground);
   }
 }
 
