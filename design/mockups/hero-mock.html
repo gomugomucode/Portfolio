@@ -6,7 +6,7 @@
   <title>Hero Mockup — Editorial Split</title>
   <style>
     :root{
-      --bg:#0f0f0f; --fg:#f5f2ec; --muted:#b9b5af; --primary:#d8c3a5;
+      --bg:#111111; --fg:#f5f2ec; --muted:#b9b5af; --primary:#d8c3a5; --primary-muted: rgba(216,195,165,0.06);
       --content-width:720px; --rail-width:320px; --gap:24px; --baseline:8px;
     }
     html,body{height:100%;margin:0;background:var(--bg);color:var(--fg);font-family:Inter, system-ui, -apple-system, "Instrument Sans", sans-serif}
@@ -14,18 +14,18 @@
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:var(--gap);align-items:start}
     .left{grid-column:1 / span 8}
     .rail{grid-column:9 / span 4;position:relative}
-    .badge{display:inline-block;padding:6px 10px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.04);color:var(--muted);font-family:'JetBrains Mono', monospace;font-size:12px;border-radius:4px}
+    .badge{display:inline-block;padding:6px 10px;background:var(--surface-elevated);border:1px solid rgba(255,255,255,0.04);color:var(--muted);font-family:'JetBrains Mono', monospace;font-size:12px;border-radius:4px}
     h1{font-size:56px;line-height:1.06;margin:18px 0 12px 0;letter-spacing:-0.02em}
     p.lead{color:var(--muted);max-width:60ch;font-size:18px;line-height:1.6}
     .ctas{margin-top:20px;display:flex;gap:12px}
-    .btn{background:var(--primary);border-radius:8px;padding:10px 16px;color:#111;border:none;font-weight:600}
+    .btn{background:var(--primary);border-radius:8px;padding:10px 16px;color:var(--primary-foreground);border:none;font-weight:600}
     .btn-outline{background:transparent;border:1px solid rgba(255,255,255,0.08);padding:10px 14px;border-radius:8px;color:var(--fg)}
     /* rail styles */
-    .rail .numeral{position:absolute;right:0;top:-8px;font-size:220px;line-height:0.9;color:rgba(216,195,165,0.06);font-weight:800;pointer-events:none}
+    .rail .numeral{position:absolute;right:0;top:-8px;font-size:220px;line-height:0.9;color:var(--primary-muted);font-weight:800;pointer-events:none}
     .rail .meta{position:relative;display:flex;flex-direction:column;gap:12px;align-items:flex-end}
     .meta .stack{background:transparent;border-radius:6px;padding:8px 10px;color:var(--muted);text-align:right}
     .social-vertical{display:flex;flex-direction:column;gap:8px;margin-top:18px}
-    .social-vertical a{display:inline-block;width:44px;height:44px;border-radius:8px;background:rgba(255,255,255,0.02);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
+    .social-vertical a{display:inline-block;width:44px;height:44px;border-radius:8px;background:var(--surface-elevated);display:flex;align-items:center;justify-content:center;color:var(--muted);text-decoration:none}
     /* responsive */
     @media (max-width:900px){
       .grid{grid-template-columns:1fr;}

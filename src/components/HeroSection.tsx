@@ -124,7 +124,7 @@ const HeroSection = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.6 }}
         transition={{ delay: 1, duration: 0.5 }}
-        className="absolute bottom-8 left-5 sm:left-8 lg:left-12 flex items-center gap-2 label-mono hover:opacity-100 interactive-focus hidden md:flex"
+        className="absolute bottom-8 left-5 sm:left-8 lg:left-12 hidden md:flex items-center gap-2 label-mono hover:opacity-100 interactive-focus"
         onClick={() => handleScroll("about")}
         aria-label="Scroll to about section"
       >
