@@ -33,25 +33,81 @@ html {
   }
 
   :root {
-    --background: #111111;
-    --foreground: #f5f2ec;
+    /* New design system tokens (Phase 0)
+       - Keep legacy variable aliases below for backward compatibility.
+    */
 
-    --muted: #181818;
-    --muted-foreground: #b9b5af;
-    --subtle-foreground: #8b8680;
+    /* Core neutrals */
+    --bg-900: #0f0f0f;
+    --surface-800: #151515;
+    --surface-700: #1b1b1b;
+    --card: #161616;
 
-    --card: #151515;
-    --card-foreground: #f5f2ec;
+    /* Text */
+    --text-primary: #f5f2ec; /* base foreground (approved) */
+    --text-secondary: #d7d2c8;
+    --text-muted: #9e988f;
 
-    --border: rgba(245, 242, 236, 0.1);
-    --input: rgba(245, 242, 236, 0.08);
+    /* Accent */
+    --accent-500: #d8c3a5;
+    --accent-600: #c2a985;
+    --accent-100: rgba(216,195,165,0.06);
 
-    --primary: #d8c3a5;
+    /* Interaction states */
+    --hover: rgba(245,242,236,0.04);
+    --active: rgba(245,242,236,0.06);
+    --selection: rgba(216,195,165,0.16);
+    --focus: rgba(216,195,165,0.28);
+
+    /* Borders & code */
+    --border: rgba(245,242,236,0.10);
+    --code-bg: #0b0b0b;
+    --code-border: rgba(255,255,255,0.03);
+
+    /* Semantic */
+    --success: #8ad38a;
+    --warning: #f7c46c;
+    --error: #e07a6a;
+
+    /* Spacing tokens */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-6: 24px;
+    --space-8: 32px;
+    --space-12: 48px;
+    --space-16: 64px;
+    --space-24: 96px;
+    --space-32: 128px;
+
+    /* Radii */
+    --r-sm: 6px;
+    --r-md: 10px;
+    --r-lg: 16px;
+
+    /* Elevation placeholders */
+    --e-1: 0 1px 6px rgba(0,0,0,0.22), 0 0 0 1px rgba(245,242,236,0.02);
+    --e-2: 0 6px 18px rgba(0,0,0,0.28), 0 0 0 1px rgba(245,242,236,0.03);
+    --e-3: 0 20px 40px rgba(0,0,0,0.32);
+
+    /* Grid */
+    --content-max: 1400px;
+    --content-width: 720px;
+    --rail-width: 320px;
+
+    /* Legacy aliases for gradual migration (do not remove yet) */
+    --background: var(--bg-900);
+    --foreground: var(--text-primary);
+    --muted: var(--surface-800);
+    --muted-foreground: var(--text-muted);
+    --subtle-foreground: var(--text-secondary);
+    --card-foreground: var(--text-primary);
+    --input: rgba(245,242,236,0.08);
+    --primary: var(--accent-500);
     --primary-foreground: #111111;
-
-    --destructive: #c47070;
-    --ring: #d8c3a5;
-    --radius: 0.375rem;
+    --ring: var(--focus);
+    --radius: var(--r-md);
   }
 
   a,
@@ -111,6 +167,7 @@ html {
     display: -webkit-box;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 3;
+    line-clamp: 3;
     overflow: hidden;
   }
 
