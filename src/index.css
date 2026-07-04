@@ -36,20 +36,20 @@ html {
 
   :root {
     /* ─────────────────────────────────────────────
-       WARM THEME — base: #181614 (warm charcoal)
+       LIGHT EDITORIAL THEME — base: #f5f2ec (warm beige)
        All surfaces, text, borders and accents
-       derive from this warm brown-black base.
+       derive from this light warm base.
     ───────────────────────────────────────────── */
 
-    /* Backgrounds — warm brown ladder */
-    --bg-900:      #181614;   /* page background */
-    --surface-800: #211d19;   /* navbar / sidebars */
-    --surface-700: #2a2420;   /* hovered/elevated surface */
-    --card:        #1e1b17;   /* card background */
+    /* Backgrounds — light warm ladder */
+    --bg-900:      #f5f2ec;   /* page background */
+    --surface-800: #ebe7dd;   /* navbar / sidebars */
+    --surface-700: #e0dacd;   /* hovered/elevated surface */
+    --card:        #ffffff;   /* card background */
 
-    /* Text — warm cream scale */
-    --text-primary:   #f2e8d9;   /* warm cream white */
-    --text-secondary: #c9bba8;   /* warm tan */
+    /* Text — dark charcoal scale */
+    --text-primary:   #1a1816;   /* deep charcoal */
+    --text-secondary: #5a5046;   /* medium brown-gray */
     --text-muted:     #8a7d6e;   /* warm stone */
 
     /* Accent — rich amber gold */
@@ -57,21 +57,21 @@ html {
     --accent-600: #a87530;              /* deeper amber */
     --accent-100: rgba(201,146,58,0.08);
 
-    /* Interaction states */
-    --hover:     rgba(242,232,217,0.05);
-    --active:    rgba(242,232,217,0.09);
+    /* Interaction states (dark transparent overlays for light theme) */
+    --hover:     rgba(26, 24, 22, 0.05);
+    --active:    rgba(26, 24, 22, 0.09);
     --selection: rgba(201,146,58,0.20);
     --focus:     rgba(201,146,58,0.32);
 
-    /* Borders — amber-tinted warm lines */
-    --border:       rgba(201,146,58,0.14);
-    --code-bg:      #110e0b;
-    --code-border:  rgba(201,146,58,0.06);
+    /* Borders — dark charcoal tinted */
+    --border:       rgba(26, 24, 22, 0.12);
+    --code-bg:      #faf8f5;
+    --code-border:  rgba(26, 24, 22, 0.08);
 
     /* Semantic */
-    --success: #7ecb7e;
-    --warning: #f0b84a;
-    --error:   #d96b5a;
+    --success: #3a8b3a;
+    --warning: #b37d1d;
+    --error:   #c23b26;
 
     /* Spacing tokens */
     --space-1: 4px;
@@ -90,10 +90,10 @@ html {
     --r-md: 10px;
     --r-lg: 16px;
 
-    /* Elevation — warm shadows */
-    --e-1: 0 1px 6px rgba(10,7,4,0.40), 0 0 0 1px rgba(201,146,58,0.05);
-    --e-2: 0 6px 18px rgba(10,7,4,0.50), 0 0 0 1px rgba(201,146,58,0.07);
-    --e-3: 0 20px 40px rgba(10,7,4,0.55);
+    /* Elevation — subtle dark shadows for light mode */
+    --e-1: 0 1px 4px rgba(26, 24, 22, 0.08), 0 0 0 1px rgba(26, 24, 22, 0.05);
+    --e-2: 0 4px 12px rgba(26, 24, 22, 0.10), 0 0 0 1px rgba(26, 24, 22, 0.06);
+    --e-3: 0 12px 32px rgba(26, 24, 22, 0.12);
 
     /* Grid */
     --content-max:   1400px;
@@ -107,9 +107,9 @@ html {
     --muted-foreground:  var(--text-muted);
     --subtle-foreground: var(--text-secondary);
     --card-foreground:   var(--text-primary);
-    --input:             rgba(242,232,217,0.08);
+    --input:             rgba(26, 24, 22, 0.04);
     --primary:           var(--accent-500);
-    --primary-foreground:#0e0a06;
+    --primary-foreground:#ffffff;
     --ring:              var(--focus);
     --radius:            var(--r-md);
   }
