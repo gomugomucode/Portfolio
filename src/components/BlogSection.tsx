@@ -72,27 +72,27 @@ const BlogSection = () => {
         const resData = await response.json();
 
         if (resData.status === "ok" && resData.items?.length > 0) {
-          const parsedPosts = resData.items.slice(0, 3).map((item: any) => {
+          const parsedPosts = resData.items.slice(0, 3).map((item: Record<string, unknown>) => {
             const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = item.description || "";
+            tempDiv.innerHTML = (item.description as string) || "";
             const plainText = tempDiv.textContent || tempDiv.innerText || "";
             const excerpt = plainText.trim().substring(0, 140) + "...";
             const wordCount = plainText.split(/\s+/).length;
 
-            let finalThumbnail = item.thumbnail;
+            let finalThumbnail = item.thumbnail as string;
             if (!finalThumbnail || finalThumbnail === "") {
               const imgRegex = /<img[^>]+src="([^">]+)"/gi;
-              const match = imgRegex.exec(item.content || item.description || "");
+              const match = imgRegex.exec((item.content as string) || (item.description as string) || "");
               finalThumbnail = match ? match[1] : "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
             }
 
             return {
-              guid: item.guid || item.link,
-              title: item.title,
-              pubDate: item.pubDate,
-              link: item.link,
-              author: item.author || "Anupam Baral",
-              categories: item.categories || ["Engineering"],
+              guid: (item.guid as string) || (item.link as string),
+              title: item.title as string,
+              pubDate: item.pubDate as string,
+              link: item.link as string,
+              author: (item.author as string) || "Anupam Baral",
+              categories: (item.categories as string[]) || ["Engineering"],
               excerpt,
               readingTime: `${Math.max(1, Math.ceil(wordCount / 200))} min read`,
               thumbnail: finalThumbnail,

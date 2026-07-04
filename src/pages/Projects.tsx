@@ -98,7 +98,7 @@ const breadcrumbSchema = {
             <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Sort By</label>
             <select
               value={sortOrder}
-              onChange={(e) => setSortOrder(e.target.value as any)}
+              onChange={(e) => setSortOrder(e.target.value as "featured" | "newest")}
               className="h-10 px-3 rounded-md border border-border bg-background text-sm interactive-focus"
             >
               <option value="featured">Featured First</option>

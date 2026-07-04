@@ -90,29 +90,29 @@ const Blog = () => {
         const resData = await response.json();
         
         if (resData.status === "ok" && resData.items && resData.items.length > 0) {
-          const parsedPosts = resData.items.map((item: any) => {
+          const parsedPosts = resData.items.map((item: Record<string, unknown>) => {
             const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = item.description || "";
+            tempDiv.innerHTML = (item.description as string) || "";
             const plainText = tempDiv.textContent || tempDiv.innerText || "";
             const excerpt = plainText.trim().substring(0, 160) + "...";
             const wordCount = plainText.split(/\s+/).length;
             const readingTime = `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 
-            let finalThumbnail = item.thumbnail;
+            let finalThumbnail = item.thumbnail as string;
             if (!finalThumbnail || finalThumbnail === "") {
               const imgRegex = /<img[^>]+src="([^">]+)"/gi;
-              const match = imgRegex.exec(item.content || item.description || "");
+              const match = imgRegex.exec((item.content as string) || (item.description as string) || "");
               finalThumbnail = match ? match[1] : "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
             }
 
             return {
-              guid: item.guid || item.link,
-              title: item.title,
-              pubDate: item.pubDate,
-              link: item.link,
-              author: item.author || "Anupam Baral",
+              guid: (item.guid as string) || (item.link as string),
+              title: item.title as string,
+              pubDate: item.pubDate as string,
+              link: item.link as string,
+              author: (item.author as string) || "Anupam Baral",
               thumbnail: finalThumbnail,
-              categories: item.categories || ["Engineering"],
+              categories: (item.categories as string[]) || ["Engineering"],
               excerpt,
               readingTime
             };
@@ -145,7 +145,7 @@ const Blog = () => {
   }, [posts]);
 
   const filteredAndSortedPosts = useMemo(() => {
-    let filtered = posts.filter((post) => {
+    const filtered = posts.filter((post) => {
       const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
       const matchesCat = selectedCategory === "All" || post.categories.includes(selectedCategory);
       return matchesSearch && matchesCat;
@@ -238,7 +238,7 @@ const breadcrumbSchema = {
               <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Sort By</label>
               <select
                 value={sortOrder}
-                onChange={(e) => setSortOrder(e.target.value as any)}
+                onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest" | "readingTime")}
                 className="h-9 px-3 rounded-md border border-border bg-background text-sm interactive-focus"
               >
                 <option value="newest">Newest First</option>

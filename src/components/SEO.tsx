@@ -10,7 +10,7 @@ interface SEOProps {
   ogImage?: string;
   ogType?: "website" | "article" | "profile";
   twitterCard?: "summary_large_image" | "summary";
-  schema?: Record<string, any> | Record<string, any>[];
+  schema?: Record<string, unknown> | Record<string, unknown>[];
   author?: string;
   publishDate?: string;
 }
