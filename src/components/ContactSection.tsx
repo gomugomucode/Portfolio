@@ -13,6 +13,7 @@ const ContactSection = () => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
+  const [success, setSuccess] = useState(false);
 
   const validate = () => {
     const e: Record<string, string> = {};
@@ -51,6 +52,7 @@ const ContactSection = () => {
       if (data.success) {
         setForm({ name: "", email: "", message: "" });
         setErrors({});
+        setSuccess(true);
 
         toast({
           title: "Message received.",
@@ -78,72 +80,87 @@ const ContactSection = () => {
         <div className="lg:col-span-7 flex flex-col gap-8">
           <SectionHeader index="06 — Contact" title="Let's build together." />
 
-          <form onSubmit={handleSubmit} className="flex flex-col gap-5 -mt-4 md:-mt-6">
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="name" className="label-mono">
-                Name
-              </label>
-              <Input
-                id="name"
-                type="text"
-                value={form.name}
-                onChange={(e) => setForm({ ...form, name: e.target.value })}
-                placeholder="Jane Doe"
-                aria-invalid={!!errors.name}
-              />
-              {errors.name && (
-                <span className="text-xs text-destructive font-mono mt-1">{errors.name}</span>
-              )}
+          {success ? (
+            <div className="flex flex-col items-center justify-center text-center gap-4 py-12 px-6 border border-border rounded-md bg-card/50">
+              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+                <Send className="w-5 h-5" />
+              </div>
+              <h3 className="font-display font-medium text-xl">Message Sent</h3>
+              <p className="text-body-sm max-w-sm">
+                Thank you for reaching out. I usually respond within 24 hours.
+              </p>
+              <Button variant="outline" onClick={() => setSuccess(false)} className="mt-4">
+                Send another message
+              </Button>
             </div>
+          ) : (
+            <form onSubmit={handleSubmit} className="flex flex-col gap-5 -mt-4 md:-mt-6">
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="name" className="label-mono">
+                  Name
+                </label>
+                <Input
+                  id="name"
+                  type="text"
+                  value={form.name}
+                  onChange={(e) => setForm({ ...form, name: e.target.value })}
+                  placeholder="Jane Doe"
+                  aria-invalid={!!errors.name}
+                />
+                {errors.name && (
+                  <span className="text-xs text-destructive font-mono mt-1">{errors.name}</span>
+                )}
+              </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="email" className="label-mono">
-                Email
-              </label>
-              <Input
-                id="email"
-                type="email"
-                value={form.email}
-                onChange={(e) => setForm({ ...form, email: e.target.value })}
-                placeholder="jane@example.com"
-                aria-invalid={!!errors.email}
-              />
-              {errors.email && (
-                <span className="text-xs text-destructive font-mono mt-1">{errors.email}</span>
-              )}
-            </div>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="email" className="label-mono">
+                  Email
+                </label>
+                <Input
+                  id="email"
+                  type="email"
+                  value={form.email}
+                  onChange={(e) => setForm({ ...form, email: e.target.value })}
+                  placeholder="jane@example.com"
+                  aria-invalid={!!errors.email}
+                />
+                {errors.email && (
+                  <span className="text-xs text-destructive font-mono mt-1">{errors.email}</span>
+                )}
+              </div>
 
-            <div className="flex flex-col gap-1.5">
-              <label htmlFor="message" className="label-mono">
-                Message
-              </label>
-              <Textarea
-                id="message"
-                rows={5}
-                value={form.message}
-                onChange={(e) => setForm({ ...form, message: e.target.value })}
-                placeholder="How can we work together?"
-                aria-invalid={!!errors.message}
-              />
-              {errors.message && (
-                <span className="text-xs text-destructive font-mono mt-1">{errors.message}</span>
-              )}
-            </div>
+              <div className="flex flex-col gap-1.5">
+                <label htmlFor="message" className="label-mono">
+                  Message
+                </label>
+                <Textarea
+                  id="message"
+                  rows={5}
+                  value={form.message}
+                  onChange={(e) => setForm({ ...form, message: e.target.value })}
+                  placeholder="How can we work together?"
+                  aria-invalid={!!errors.message}
+                />
+                {errors.message && (
+                  <span className="text-xs text-destructive font-mono mt-1">{errors.message}</span>
+                )}
+              </div>
 
-            <Button type="submit" disabled={sending} className="mt-2 w-full sm:w-auto self-start">
-              {sending ? (
-                <span className="flex items-center gap-2 label-mono normal-case">
-                  <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
-                  Sending...
-                </span>
-              ) : (
-                <span className="flex items-center gap-2">
-                  <Send className="w-4 h-4" />
-                  Send message
-                </span>
-              )}
-            </Button>
-          </form>
+              <Button type="submit" disabled={sending} className="mt-2 w-full sm:w-auto self-start">
+                {sending ? (
+                  <span className="flex items-center gap-2 label-mono normal-case">
+                    <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" />
+                    Sending...
+                  </span>
+                ) : (
+                  <span className="flex items-center gap-2">
+                    <Send className="w-4 h-4" />
+                    Send message
+                  </span>
+                )}
+              </Button>
+            </form>
+          )}
         </div>
 
         <div className="lg:col-span-5 flex flex-col gap-3">
