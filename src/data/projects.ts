@@ -57,6 +57,6 @@ export const projects: ProjectPreview[] = [
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
     imageUrl: "/greenstar.webp",
     liveLink: "",
-    githubLink: "https://github.com/gomugomucode/grren-star",
+    githubLink: "",
   },
 ];
