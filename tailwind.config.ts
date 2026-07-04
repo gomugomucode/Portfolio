@@ -33,10 +33,12 @@ export default {
         'text-primary': "var(--text-primary)",
         'text-secondary': "var(--text-secondary)",
         muted: {
-          DEFAULT: "var(--text-muted)",
+          DEFAULT: "var(--muted)",
+          foreground: "var(--muted-foreground)",
         },
         primary: {
           DEFAULT: "var(--accent-500)",
+          foreground: "var(--primary-foreground)",
           600: "var(--accent-600)",
           100: "var(--accent-100)",
         },

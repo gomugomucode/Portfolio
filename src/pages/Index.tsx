@@ -11,8 +11,8 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background text-foreground relative overflow-hidden font-inter">
       {/* Background spotlights */}
-      <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary/10 dark:bg-primary/20 blur-[120px] pointer-events-none" />
-      <div className="absolute top-[40%] right-[10%] w-[30%] h-[30%] rounded-full bg-primary/8 dark:bg-primary/15 blur-[120px] pointer-events-none" />
+      <div className="absolute -top-[10%] -left-[10%] w-[40%] h-[40%] rounded-full bg-primary/10 blur-[120px] pointer-events-none" />
+      <div className="absolute top-[40%] right-[10%] w-[30%] h-[30%] rounded-full bg-primary/8 blur-[120px] pointer-events-none" />
 
       {/* 1. Add the Navbar component at the very top */}
       <Navbar />
