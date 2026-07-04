@@ -35,41 +35,43 @@ html {
   }
 
   :root {
-    /* New design system tokens (Phase 0)
-       - Keep legacy variable aliases below for backward compatibility.
-    */
+    /* ─────────────────────────────────────────────
+       WARM THEME — base: #181614 (warm charcoal)
+       All surfaces, text, borders and accents
+       derive from this warm brown-black base.
+    ───────────────────────────────────────────── */
 
-    /* Core neutrals — warm undertone base #181614 */
-    --bg-900: #181614;          /* deepest background — warm charcoal */
-    --surface-800: #1d1a17;     /* raised surface — warm dark brown */
-    --surface-700: #231f1b;     /* card / elevated surface */
-    --card: #1f1c19;            /* card background */
+    /* Backgrounds — warm brown ladder */
+    --bg-900:      #181614;   /* page background */
+    --surface-800: #211d19;   /* navbar / sidebars */
+    --surface-700: #2a2420;   /* hovered/elevated surface */
+    --card:        #1e1b17;   /* card background */
 
-    /* Text */
-    --text-primary: #f5efe6;    /* warm cream white */
-    --text-secondary: #d4c9b8;  /* warm secondary */
-    --text-muted: #9e9080;      /* warm muted */
+    /* Text — warm cream scale */
+    --text-primary:   #f2e8d9;   /* warm cream white */
+    --text-secondary: #c9bba8;   /* warm tan */
+    --text-muted:     #8a7d6e;   /* warm stone */
 
-    /* Accent — warm amber/gold */
-    --accent-500: #d4a96a;      /* warm amber accent */
-    --accent-600: #b88d50;      /* deeper amber */
-    --accent-100: rgba(212,169,106,0.07);
+    /* Accent — rich amber gold */
+    --accent-500: #c9923a;              /* primary amber */
+    --accent-600: #a87530;              /* deeper amber */
+    --accent-100: rgba(201,146,58,0.08);
 
     /* Interaction states */
-    --hover: rgba(245,239,230,0.05);
-    --active: rgba(245,239,230,0.08);
-    --selection: rgba(212,169,106,0.18);
-    --focus: rgba(212,169,106,0.30);
+    --hover:     rgba(242,232,217,0.05);
+    --active:    rgba(242,232,217,0.09);
+    --selection: rgba(201,146,58,0.20);
+    --focus:     rgba(201,146,58,0.32);
 
-    /* Borders & code */
-    --border: rgba(212,169,106,0.12);   /* warm amber-tinted border */
-    --code-bg: #120f0d;
-    --code-border: rgba(212,169,106,0.05);
+    /* Borders — amber-tinted warm lines */
+    --border:       rgba(201,146,58,0.14);
+    --code-bg:      #110e0b;
+    --code-border:  rgba(201,146,58,0.06);
 
     /* Semantic */
-    --success: #8ad38a;
-    --warning: #f7c46c;
-    --error: #e07a6a;
+    --success: #7ecb7e;
+    --warning: #f0b84a;
+    --error:   #d96b5a;
 
     /* Spacing tokens */
     --space-1: 4px;
@@ -88,28 +90,28 @@ html {
     --r-md: 10px;
     --r-lg: 16px;
 
-    /* Elevation placeholders */
-    --e-1: 0 1px 6px rgba(0,0,0,0.28), 0 0 0 1px rgba(212,169,106,0.04);
-    --e-2: 0 6px 18px rgba(0,0,0,0.34), 0 0 0 1px rgba(212,169,106,0.05);
-    --e-3: 0 20px 40px rgba(0,0,0,0.38);
+    /* Elevation — warm shadows */
+    --e-1: 0 1px 6px rgba(10,7,4,0.40), 0 0 0 1px rgba(201,146,58,0.05);
+    --e-2: 0 6px 18px rgba(10,7,4,0.50), 0 0 0 1px rgba(201,146,58,0.07);
+    --e-3: 0 20px 40px rgba(10,7,4,0.55);
 
     /* Grid */
-    --content-max: 1400px;
+    --content-max:   1400px;
     --content-width: 720px;
-    --rail-width: 320px;
+    --rail-width:    320px;
 
-    /* Legacy aliases for gradual migration (do not remove yet) */
-    --background: var(--bg-900);
-    --foreground: var(--text-primary);
-    --muted: var(--surface-800);
-    --muted-foreground: var(--text-muted);
+    /* Legacy aliases */
+    --background:        var(--bg-900);
+    --foreground:        var(--text-primary);
+    --muted:             var(--surface-800);
+    --muted-foreground:  var(--text-muted);
     --subtle-foreground: var(--text-secondary);
-    --card-foreground: var(--text-primary);
-    --input: rgba(245,239,230,0.08);
-    --primary: var(--accent-500);
-    --primary-foreground: #110d08;
-    --ring: var(--focus);
-    --radius: var(--r-md);
+    --card-foreground:   var(--text-primary);
+    --input:             rgba(242,232,217,0.08);
+    --primary:           var(--accent-500);
+    --primary-foreground:#0e0a06;
+    --ring:              var(--focus);
+    --radius:            var(--r-md);
   }
 
   a,

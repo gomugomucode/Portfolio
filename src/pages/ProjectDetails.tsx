@@ -116,6 +116,7 @@ const caseStudies: Record<string, CaseStudy> = {
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
     imageUrl: "/greenstar.webp",
     liveLink: "",
+    githubLink: "The repo is private due to client data . ",
     metrics: [
       { label: "Order Channels", value: "3" },
       { label: "Tech Stack", value: "Next.js 16" },
