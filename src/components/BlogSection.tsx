@@ -72,7 +72,7 @@ const BlogSection = () => {
         const resData = await response.json();
 
         if (resData.status === "ok" && resData.items?.length > 0) {
-          const parsedPosts = resData.items.slice(0, 3).map((item: Record<string, unknown>) => {
+          const parsedPosts = resData.items.slice(0, 6).map((item: Record<string, unknown>) => {
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = (item.description as string) || "";
             const plainText = tempDiv.textContent || tempDiv.innerText || "";
@@ -105,7 +105,7 @@ const BlogSection = () => {
           );
           setPosts(parsedPosts);
         } else {
-          setPosts(FALLBACK_POSTS.slice(0, 3));
+          setPosts(FALLBACK_POSTS.slice(0, 6));
         }
       } catch {
         setPosts(FALLBACK_POSTS.slice(0, 3));
