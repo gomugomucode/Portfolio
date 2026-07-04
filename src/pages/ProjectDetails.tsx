@@ -167,6 +167,18 @@ const ProjectDetails = () => {
         description={project.subtitle}
         keywords={`${project.title}, Anupam Baral Case Study, Software Architecture, React Developer`}
         canonicalUrl={`https://anupambaral.com.np/project/${project.id}`}
+        ogImage={`https://anupambaral.com.np${project.imageUrl}`}
+        ogType="article"
+        schema={{
+          "@type": "Article",
+          "headline": project.title,
+          "description": project.subtitle,
+          "image": `https://anupambaral.com.np${project.imageUrl}`,
+          "author": {
+            "@type": "Person",
+            "name": "Anupam Baral"
+          }
+        }}
       />
 
       {/* Back CTA */}
@@ -227,6 +239,8 @@ const ProjectDetails = () => {
         <img
           src={project.imageUrl}
           alt={project.title}
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover"
           onError={(e) => {
             e.currentTarget.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";

@@ -35,6 +35,15 @@ const Projects = () => {
     return filtered;
   }, [searchQuery, selectedTag, sortOrder]);
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://anupambaral.com.np/" },
+    { "@type": "ListItem", position: 2, name: "Projects", item: "https://anupambaral.com.np/projects" },
+  ],
+};
+
   return (
     <SectionShell bordered={false}>
       <SEO
@@ -42,6 +51,7 @@ const Projects = () => {
         description="Explore projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions."
         keywords="Anupam Baral Projects, gomugomucode GitHub, React Projects, AI/ML Developer Nepal"
         canonicalUrl="https://anupambaral.com.np/projects"
+        schema={breadcrumbSchema}
       />
 
       <AnimatedSection>

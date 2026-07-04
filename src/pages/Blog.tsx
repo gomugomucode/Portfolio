@@ -174,6 +174,15 @@ const Blog = () => {
     setVisibleCount(prev => prev + POSTS_PER_PAGE);
   };
 
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Home", item: "https://anupambaral.com.np/" },
+    { "@type": "ListItem", position: 2, name: "Blog", item: "https://anupambaral.com.np/blog" },
+  ],
+};
+
   return (
     <SectionShell bordered={false}>
       <SEO
@@ -181,6 +190,7 @@ const Blog = () => {
         description="Articles on software engineering, Solana blockchain, TypeScript, and machine learning pipelines."
         keywords="Anupam Baral Blog, Engineering Blog, Solana Web3 Developer Blog, React Articles"
         canonicalUrl="https://anupambaral.com.np/blog"
+        schema={breadcrumbSchema}
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">

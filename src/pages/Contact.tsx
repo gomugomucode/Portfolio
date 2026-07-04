@@ -1,6 +1,13 @@
 import SEO from "@/components/SEO";
 import ContactSection from "@/components/ContactSection";
 
+const contactSchema = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  name: "Contact Anupam Baral",
+  url: "https://anupambaral.com.np/contact"
+};
+
 const Contact = () => {
   return (
     <div className="space-y-20">
@@ -9,6 +16,7 @@ const Contact = () => {
         description="Get in touch with Anupam Baral for freelance development work, open-source collaborations, or full-time opportunities."
         keywords="Hire Anupam Baral, Freelance Developer Nepal, Contact gomugomucode"
         canonicalUrl="https://anupambaral.com.np/contact"
+        schema={contactSchema}
       />
       <h1 className="sr-only">Contact Anupam Baral | Hire a Freelance Developer</h1>
       <div className="pt-8">

@@ -32,6 +32,13 @@ const personSchema = {
   },
 };
 
+const websiteSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "Anupam Baral Portfolio",
+  url: "https://anupambaral.com.np",
+};
+
 const Home = () => {
   return (
     <div className="flex flex-col w-full">
@@ -39,7 +46,7 @@ const Home = () => {
         title="Anupam Baral — Full Stack Developer & AI Engineer"
         description="I engineer production-ready web applications and intelligent systems. Based in Nepal, specializing in React, TypeScript, Node.js, and Python ML pipelines."
         keywords="Anupam Baral, gomugomucode, Developer in Nepal, React Developer Nepal, TypeScript Engineer, AI/ML Builder, Python Developer Nepal"
-        schema={personSchema}
+        schema={[personSchema, websiteSchema]}
       />
       <HeroSection />
       <AboutSection />
