@@ -12,13 +12,13 @@ const NotFound = () => {
   return (
     <div className="flex min-h-[70vh] items-center justify-center py-16">
       <div className="text-center flex flex-col items-center gap-4 max-w-md px-4">
-        <h1 className="font-display text-8xl md:text-9xl font-black tracking-tighter text-muted-foreground/30 leading-none">
+        <h1 className="font-display text-[10rem] md:text-[14rem] font-semibold tracking-tighter text-muted-foreground/20 leading-none select-none">
           404
         </h1>
-        <h2 className="font-display text-2xl md:text-3xl font-bold tracking-tight text-foreground uppercase">
+        <h2 className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-foreground">
           Architecture not found.
         </h2>
-        <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+        <p className="text-sm md:text-base text-muted-foreground leading-relaxed max-w-sm">
           The route you requested doesn't exist in this environment.
         </p>
         <Button variant="default" asChild className="mt-4">

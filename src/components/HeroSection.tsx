@@ -48,7 +48,7 @@ const HeroSection = () => {
           >
             <motion.div variants={itemVariants} className="flex items-center">
               <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-sm bg-foreground/[0.04] border border-border label-mono">
-                <span className="relative flex h-1.5 w-1.5">
+                <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
                 </span>
                 Available for work

@@ -1,15 +1,23 @@
 {
-  "name": "Anupam Baral Portfolio",
-  "short_name": "Anupam.dev",
+  "name": "Anupam Baral",
+  "short_name": "Anupam",
+  "description": "Full Stack Developer & AI/ML Engineer based in Nepal",
   "start_url": "/",
   "display": "standalone",
-  "theme_color": "#111111",
-  "background_color": "#111111",
+  "background_color": "#f5f2ec",
+  "theme_color": "#f5f2ec",
   "icons": [
     {
-      "src": "/favicon.ico",
-      "sizes": "48x48",
-      "type": "image/x-icon"
+      "src": "/logo.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/logo.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
     }
   ]
 }

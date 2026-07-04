@@ -38,12 +38,12 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
         <div className="flex flex-col gap-4 flex-1 order-2 md:order-1">
           <div className="flex items-center gap-4 label-mono">
             <span className="flex items-center gap-1.5">
-              <Calendar className="w-3.5 h-3.5" />
+              <Calendar className="w-3.5 h-3.5" aria-hidden="true" />
               {formatDate(post.pubDate)}
             </span>
-            <span className="h-3 w-px bg-border" />
+            <span className="h-3 w-px bg-border" aria-hidden="true" />
             <span className="flex items-center gap-1.5">
-              <Clock className="w-3.5 h-3.5" />
+              <Clock className="w-3.5 h-3.5" aria-hidden="true" />
               {post.readingTime || "5 min read"}
             </span>
           </div>
@@ -96,7 +96,7 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
             decoding="async"
             className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
             onError={(e) => {
-              e.currentTarget.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
+              e.currentTarget.src = "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800";
             }}
           />
         </a>
@@ -120,7 +120,7 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
           decoding="async"
           className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
           onError={(e) => {
-            e.currentTarget.src = "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
+            e.currentTarget.src = "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800";
           }}
         />
       </a>
@@ -128,12 +128,12 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
       <div className="flex flex-col gap-3 p-5 flex-1">
         <div className="flex items-center gap-3 label-mono">
           <span className="flex items-center gap-1.5">
-            <Calendar className="w-3 h-3" />
+            <Calendar className="w-3 h-3" aria-hidden="true" />
             {formatDate(post.pubDate)}
           </span>
-          <span className="h-3 w-px bg-border" />
+          <span className="h-3 w-px bg-border" aria-hidden="true" />
           <span className="flex items-center gap-1.5">
-            <Clock className="w-3 h-3" />
+            <Clock className="w-3 h-3" aria-hidden="true" />
             {post.readingTime || "5 min read"}
           </span>
         </div>

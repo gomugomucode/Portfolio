@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-border mt-32 bg-card/30">
+    <footer className="border-t border-border mt-16 bg-card/30">
       <div className="max-w-7xl mx-auto px-6 py-20 lg:py-24">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           <div className="lg:col-span-5 flex flex-col gap-6 pr-0 lg:pr-12">
@@ -49,7 +49,7 @@ const Footer = () => {
             <a href="https://twitter.com/gomugomucode" target="_blank" rel="noopener noreferrer" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex items-center gap-2 w-fit">
               <Twitter className="w-4 h-4" /> Twitter
             </a>
-            <a href="mailto:anupam@example.com" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex items-center gap-2 w-fit">
+            <a href="mailto:contact@anupambaral.com.np" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex items-center gap-2 w-fit">
               <Mail className="w-4 h-4" /> Email
             </a>
           </div>

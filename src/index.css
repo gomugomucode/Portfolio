@@ -33,6 +33,11 @@ html {
     overflow-x: hidden;
   }
 
+  ::selection {
+    background-color: var(--selection);
+    color: var(--foreground);
+  }
+
   :root {
     /* ─────────────────────────────────────────────
        LIGHT EDITORIAL THEME — base: #f5f2ec (warm beige)
@@ -154,22 +159,24 @@ html {
   }
 
   .heading-display {
-    @apply font-display text-3xl sm:text-4xl md:text-[2.75rem] font-medium tracking-tighter leading-tight;
+    @apply font-display text-3xl sm:text-4xl md:text-[2.75rem] font-semibold tracking-tighter leading-[1.1];
     color: var(--foreground);
+    letter-spacing: -0.03em;
   }
 
   .heading-display-lg {
-    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[1.05];
+    @apply font-display text-5xl sm:text-6xl md:text-7xl lg:text-[5.5rem] font-semibold tracking-tighter leading-[1.02];
     color: var(--foreground);
+    letter-spacing: -0.04em;
   }
 
   .text-body {
-    @apply font-sans text-base md:text-lg leading-relaxed max-w-prose;
+    @apply font-sans text-base md:text-[17px] leading-[1.75] max-w-prose;
     color: var(--muted-foreground);
   }
 
   .text-body-sm {
-    @apply font-sans text-sm leading-relaxed max-w-prose;
+    @apply font-sans text-sm leading-[1.65] max-w-prose;
     color: var(--muted-foreground);
   }
 
