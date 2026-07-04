@@ -84,10 +84,10 @@ html {
     --space-24: 96px;
     --space-32: 128px;
 
-    /* Radii */
-    --r-sm: 6px;
-    --r-md: 10px;
-    --r-lg: 16px;
+    /* Radii - Vercel/Linear premium feel */
+    --r-sm: 2px;
+    --r-md: 6px;
+    --r-lg: 8px;
 
     /* Elevation — subtle dark shadows for light mode */
     --e-1: 0 1px 4px rgba(26, 24, 22, 0.08), 0 0 0 1px rgba(26, 24, 22, 0.05);
@@ -154,12 +154,12 @@ html {
   }
 
   .heading-display {
-    @apply font-display text-3xl sm:text-4xl md:text-[2.75rem] font-medium tracking-tight leading-tight;
+    @apply font-display text-3xl sm:text-4xl md:text-[2.75rem] font-medium tracking-tighter leading-tight;
     color: var(--foreground);
   }
 
   .heading-display-lg {
-    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-medium tracking-tighter leading-[1.05];
+    @apply font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-semibold tracking-tighter leading-[1.05];
     color: var(--foreground);
   }
 

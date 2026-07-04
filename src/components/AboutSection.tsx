@@ -33,7 +33,7 @@ const AboutSection = () => {
               title="Building architecture that scales."
             />
 
-            <div className="text-body flex flex-col gap-4 -mt-6 md:-mt-8">
+            <div className="text-body flex flex-col gap-4">
               <p>
                 I am a Full Stack Developer and AI/ML Engineer based in Nepal. I specialize in
                 bridging the gap between complex backend architectures and highly performant,

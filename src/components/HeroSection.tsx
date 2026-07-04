@@ -70,14 +70,14 @@ const HeroSection = () => {
 
             <motion.p
               variants={itemVariants}
-              className="text-body max-w-xl mt-1"
+              className="text-body max-w-xl"
             >
               Building production-ready web applications and intelligent systems.
               From scalable SaaS platforms to machine learning pipelines — I engineer
               things that work.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3 mt-2 md:mt-4">
+            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
               <Button variant="default" onClick={() => handleScroll("work")}>
                 View work
               </Button>
