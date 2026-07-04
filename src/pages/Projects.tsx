@@ -103,7 +103,7 @@ const Projects = () => {
                   <span className="font-mono text-[10px] text-primary">{project.index}</span>
                   <div className="flex flex-wrap gap-1">
                     {project.tags.slice(0, 2).map((tag) => (
-                      <Badge key={tag} variant="secondary" className="text-[9px] px-1.5 py-0">
+                      <Badge key={tag} variant="outline" className="text-[9px] px-1.5 py-0">
                         {tag}
                       </Badge>
                     ))}
