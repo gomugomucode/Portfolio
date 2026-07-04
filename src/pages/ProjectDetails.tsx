@@ -349,6 +349,43 @@ const ProjectDetails = () => {
           </div>
         </div>
       </div>
+
+      {/* Next / Prev Navigation */}
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-16 mt-20 border-t border-border">
+        {project.id !== "01" ? (
+          <Link
+            to={`/project/0${parseInt(project.id) - 1}`}
+            className="group flex flex-col gap-2 p-6 border border-border rounded-md bg-card hover:border-primary/50 transition-colors"
+          >
+            <span className="label-mono flex items-center gap-2">
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              Previous Project
+            </span>
+            <span className="font-display text-lg font-medium text-foreground">
+              {caseStudies[`0${parseInt(project.id) - 1}`]?.title || "Previous"}
+            </span>
+          </Link>
+        ) : (
+          <div />
+        )}
+
+        {project.id !== Object.keys(caseStudies).length.toString().padStart(2, "0") ? (
+          <Link
+            to={`/project/0${parseInt(project.id) + 1}`}
+            className="group flex flex-col items-end gap-2 p-6 border border-border rounded-md bg-card hover:border-primary/50 transition-colors text-right"
+          >
+            <span className="label-mono flex items-center gap-2 justify-end">
+              Next Project
+              <ArrowLeft className="w-3.5 h-3.5 rotate-180 group-hover:translate-x-1 transition-transform" />
+            </span>
+            <span className="font-display text-lg font-medium text-foreground">
+              {caseStudies[`0${parseInt(project.id) + 1}`]?.title || "Next"}
+            </span>
+          </Link>
+        ) : (
+          <div />
+        )}
+      </div>
     </SectionShell>
   );
 };

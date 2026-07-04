@@ -1,20 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { ExternalLink, Clock, Calendar, ArrowRight } from "lucide-react";
-import { Badge } from "./ui/badge";
+import { ArrowRight } from "lucide-react";
 import { SectionHeader, SectionShell } from "./layout/SectionShell";
 import AnimatedSection from "./AnimatedSection";
-
-interface BlogPost {
-  title: string;
-  pubDate: string;
-  link: string;
-  guid: string;
-  categories: string[];
-  readingTime?: string;
-  excerpt?: string;
-  thumbnail?: string;
-}
+import { BlogCard, type BlogPost } from "./BlogCard";
 
 const MEDIUM_USERNAME = "gomugomucode";
 const CACHE_KEY = `medium_blog_posts_${MEDIUM_USERNAME}`;
@@ -26,51 +15,39 @@ const FALLBACK_POSTS: BlogPost[] = [
     title: "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana",
     pubDate: "2026-02-15 09:00:00",
     link: "https://medium.com/@gomugomucode/yatra-solana-ride-sharing-protocol",
-    categories: ["Web3", "Solana", "Rust"],
-    excerpt:
-      "Engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems.",
-    readingTime: "8 min read",
+    author: "Anupam Baral",
     thumbnail: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800",
+    categories: ["Web3", "Solana", "Rust", "Architecture"],
+    excerpt: "A comprehensive deep dive into engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems using Rust, Web3.js, and Firebase.",
+    readingTime: "8 min read"
   },
   {
     guid: "fallback-2",
     title: "Decoupling Large-Scale LMS Content Deliveries",
     pubDate: "2025-12-08 14:30:00",
     link: "https://medium.com/@gomugomucode/decoupled-lms-architectures",
-    categories: ["React", "Node.js", "System Design"],
-    excerpt:
-      "MySQL persistence designs, decoupled frontends, and CDN distributions for educational platforms.",
-    readingTime: "6 min read",
+    author: "Anupam Baral",
     thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800",
+    categories: ["React", "Node.js", "Express", "System Design"],
+    excerpt: "Analyzing MySQL persistence designs, decoupling frontend applications, and designing zero-latency CDN distributions for heavy educational platform architectures.",
+    readingTime: "6 min read"
   },
   {
     guid: "fallback-3",
     title: "Type-Safe AI Inference: Connecting Python Models to TS Gateways",
     pubDate: "2025-10-22 11:15:00",
     link: "https://medium.com/@gomugomucode/type-safe-ai-pipelines",
-    categories: ["Python", "AI / ML", "TypeScript"],
-    excerpt:
-      "Bridging Python ML backends with TypeScript API gateways for production inference pipelines.",
-    readingTime: "5 min read",
+    author: "Anupam Baral",
     thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800",
-  },
+    categories: ["Python", "AI / ML", "TypeScript", "Pipelines"],
+    excerpt: "How to bridge Python machine learning backends with TypeScript API gateways. Implement structural runtime validations to protect latency-critical production applications.",
+    readingTime: "5 min read"
+  }
 ];
 
-const formatDate = (dateStr: string) => {
-  try {
-    const dateObj = new Date(dateStr.replace(/-/g, "/"));
-    return dateObj.toLocaleDateString("en-US", {
-      year: "numeric",
-      month: "short",
-      day: "numeric",
-    });
-  } catch {
-    return dateStr;
-  }
-};
-
 const BlogSection = () => {
-  const [posts, setPosts] = useState<BlogPost[]>(FALLBACK_POSTS);
+  const [posts, setPosts] = useState<BlogPost[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchMediumFeed = async () => {
@@ -80,6 +57,7 @@ const BlogSection = () => {
           const { timestamp, data } = JSON.parse(cached);
           if (Date.now() - timestamp < CACHE_DURATION_MS && data?.length > 0) {
             setPosts(data.slice(0, 3));
+            setLoading(false);
             return;
           }
         }
@@ -94,24 +72,30 @@ const BlogSection = () => {
         const resData = await response.json();
 
         if (resData.status === "ok" && resData.items?.length > 0) {
-          const parsedPosts = resData.items.slice(0, 3).map((item: Record<string, string>) => {
+          const parsedPosts = resData.items.slice(0, 3).map((item: any) => {
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = item.description || "";
             const plainText = tempDiv.textContent || tempDiv.innerText || "";
             const excerpt = plainText.trim().substring(0, 140) + "...";
             const wordCount = plainText.split(/\s+/).length;
 
+            let finalThumbnail = item.thumbnail;
+            if (!finalThumbnail || finalThumbnail === "") {
+              const imgRegex = /<img[^>]+src="([^">]+)"/gi;
+              const match = imgRegex.exec(item.content || item.description || "");
+              finalThumbnail = match ? match[1] : "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
+            }
+
             return {
               guid: item.guid || item.link,
               title: item.title,
               pubDate: item.pubDate,
               link: item.link,
+              author: item.author || "Anupam Baral",
               categories: item.categories || ["Engineering"],
               excerpt,
               readingTime: `${Math.max(1, Math.ceil(wordCount / 200))} min read`,
-              thumbnail:
-                item.thumbnail ||
-                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800",
+              thumbnail: finalThumbnail,
             };
           });
 
@@ -120,9 +104,13 @@ const BlogSection = () => {
             JSON.stringify({ timestamp: Date.now(), data: parsedPosts }),
           );
           setPosts(parsedPosts);
+        } else {
+          setPosts(FALLBACK_POSTS.slice(0, 3));
         }
       } catch {
-        setPosts(FALLBACK_POSTS);
+        setPosts(FALLBACK_POSTS.slice(0, 3));
+      } finally {
+        setLoading(false);
       }
     };
 
@@ -141,77 +129,31 @@ const BlogSection = () => {
           />
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 label-mono text-muted-foreground hover:text-foreground transition-colors interactive-focus shrink-0"
+            className="inline-flex items-center gap-2 label-mono text-muted-foreground hover:text-foreground transition-colors interactive-focus shrink-0 group"
           >
             View all
-            <ArrowRight className="w-3.5 h-3.5" />
+            <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-5">
-          {posts.map((post) => (
-            <article
-              key={post.guid}
-              className="group flex flex-col border border-border rounded-md overflow-hidden bg-card hover:border-foreground/20 transition-colors duration-300"
-            >
-              <a
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block aspect-[16/10] overflow-hidden bg-muted"
-              >
-                <img
-                  src={post.thumbnail}
-                  alt=""
-                  className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
-                />
-              </a>
-
-              <div className="flex flex-col gap-3 p-5 flex-1">
-                <div className="flex items-center gap-3 label-mono">
-                  <span className="flex items-center gap-1.5">
-                    <Calendar className="w-3 h-3" />
-                    {formatDate(post.pubDate)}
-                  </span>
-                  <span className="h-3 w-px bg-border" />
-                  <span className="flex items-center gap-1.5">
-                    <Clock className="w-3 h-3" />
-                    {post.readingTime || "5 min read"}
-                  </span>
-                </div>
-
-                <a
-                  href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block group-hover:text-primary transition-colors"
-                >
-                  <h3 className="font-display text-lg font-medium tracking-tight text-foreground leading-snug line-clamp-2">
-                    {post.title}
-                  </h3>
-                </a>
-
-                <p className="text-body-sm line-clamp-3 flex-1">{post.excerpt}</p>
-
-                <div className="flex flex-wrap gap-2">
-                  {post.categories.slice(0, 2).map((tag) => (
-                    <Badge key={tag}>{tag}</Badge>
-                  ))}
-                </div>
-
-                <a
-                  href={post.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 label-mono text-muted-foreground hover:text-foreground transition-colors mt-1"
-                >
-                  Read on Medium
-                  <ExternalLink className="w-3 h-3 opacity-60" />
-                </a>
+        {loading ? (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {[1, 2, 3].map((i) => (
+              <div key={i} className="animate-pulse flex flex-col gap-4 border border-border rounded-md p-4 h-[400px]">
+                <div className="w-full h-40 bg-muted rounded-md shrink-0" />
+                <div className="h-4 bg-muted w-32 rounded-sm" />
+                <div className="h-6 bg-muted w-3/4 rounded-sm" />
+                <div className="h-16 bg-muted w-full rounded-sm" />
               </div>
-            </article>
-          ))}
-        </div>
+            ))}
+          </div>
+        ) : (
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8 items-stretch">
+            {posts.map((post) => (
+              <BlogCard key={post.guid} post={post} layout="vertical" />
+            ))}
+          </div>
+        )}
       </AnimatedSection>
     </SectionShell>
   );

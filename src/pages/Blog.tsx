@@ -1,22 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
-import { ExternalLink, BookOpen, Clock, Calendar } from "lucide-react";
+import { Search } from "lucide-react";
 import SEO from "@/components/SEO";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/layout/SectionShell";
-
-interface BlogPost {
-  title: string;
-  pubDate: string;
-  link: string;
-  guid: string;
-  author: string;
-  thumbnail: string;
-  description: string;
-  categories: string[];
-  readingTime?: string;
-  excerpt?: string;
-}
+import { BlogCard, type BlogPost } from "@/components/BlogCard";
 
 const MEDIUM_USERNAME = "gomugomucode";
 const CACHE_KEY = `medium_blog_posts_${MEDIUM_USERNAME}`;
@@ -31,7 +18,6 @@ const FALLBACK_POSTS: BlogPost[] = [
     link: "https://medium.com/@gomugomucode/yatra-solana-ride-sharing-protocol",
     author: "Anupam Baral",
     thumbnail: "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=800",
-    description: "A comprehensive deep dive into engineering atomic ride contracts...",
     categories: ["Web3", "Solana", "Rust", "Architecture"],
     excerpt: "A comprehensive deep dive into engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems using Rust, Web3.js, and Firebase.",
     readingTime: "8 min read"
@@ -43,7 +29,6 @@ const FALLBACK_POSTS: BlogPost[] = [
     link: "https://medium.com/@gomugomucode/decoupled-lms-architectures",
     author: "Anupam Baral",
     thumbnail: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800",
-    description: "Analyzing MySQL persistence designs...",
     categories: ["React", "Node.js", "Express", "System Design"],
     excerpt: "Analyzing MySQL persistence designs, decoupling frontend applications, and designing zero-latency CDN distributions for heavy educational platform architectures.",
     readingTime: "6 min read"
@@ -55,10 +40,20 @@ const FALLBACK_POSTS: BlogPost[] = [
     link: "https://medium.com/@gomugomucode/type-safe-ai-pipelines",
     author: "Anupam Baral",
     thumbnail: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=800",
-    description: "How to bridge Python machine learning backends with TypeScript...",
     categories: ["Python", "AI / ML", "TypeScript", "Pipelines"],
     excerpt: "How to bridge Python machine learning backends with TypeScript API gateways. Implement structural runtime validations to protect latency-critical production applications.",
     readingTime: "5 min read"
+  },
+  {
+    guid: "fallback-4",
+    title: "Optimizing Next.js Edge Rendering for E-commerce",
+    pubDate: "2025-08-10 10:00:00",
+    link: "https://medium.com/@gomugomucode/nextjs-edge-rendering",
+    author: "Anupam Baral",
+    thumbnail: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800",
+    categories: ["React", "Next.js", "Performance"],
+    excerpt: "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
+    readingTime: "7 min read"
   }
 ];
 
@@ -67,6 +62,10 @@ const Blog = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
+
+  const [searchQuery, setSearchQuery] = useState("");
+  const [selectedCategory, setSelectedCategory] = useState("All");
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "readingTime">("newest");
 
   useEffect(() => {
     const fetchMediumFeed = async () => {
@@ -99,10 +98,9 @@ const Blog = () => {
             const wordCount = plainText.split(/\s+/).length;
             const readingTime = `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 
-            // Extract thumbnail fallback if not explicitly provided
             let finalThumbnail = item.thumbnail;
-            if (!finalThumbnail) {
-              const imgRegex = /<img[^>]+src="([^">]+)"/g;
+            if (!finalThumbnail || finalThumbnail === "") {
+              const imgRegex = /<img[^>]+src="([^">]+)"/gi;
               const match = imgRegex.exec(item.content || item.description || "");
               finalThumbnail = match ? match[1] : "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
             }
@@ -114,7 +112,6 @@ const Blog = () => {
               link: item.link,
               author: item.author || "Anupam Baral",
               thumbnail: finalThumbnail,
-              description: item.description || "",
               categories: item.categories || ["Engineering"],
               excerpt,
               readingTime
@@ -141,21 +138,37 @@ const Blog = () => {
     fetchMediumFeed();
   }, []);
 
-  const formatDate = (dateStr: string) => {
-    try {
-      const dateObj = new Date(dateStr.replace(/-/g, "/"));
-      return dateObj.toLocaleDateString("en-US", {
-        year: "numeric",
-        month: "short",
-        day: "numeric",
-      });
-    } catch {
-      return dateStr;
-    }
-  };
+  const allCategories = useMemo(() => {
+    const cats = new Set<string>();
+    posts.forEach((p) => p.categories.forEach((c) => cats.add(c)));
+    return ["All", ...Array.from(cats).sort()];
+  }, [posts]);
 
-  const visiblePosts = useMemo(() => posts.slice(0, visibleCount), [posts, visibleCount]);
-  const hasMore = visibleCount < posts.length;
+  const filteredAndSortedPosts = useMemo(() => {
+    let filtered = posts.filter((post) => {
+      const matchesSearch = post.title.toLowerCase().includes(searchQuery.toLowerCase()) || post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+      const matchesCat = selectedCategory === "All" || post.categories.includes(selectedCategory);
+      return matchesSearch && matchesCat;
+    });
+
+    filtered.sort((a, b) => {
+      if (sortOrder === "newest") {
+        return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
+      } else if (sortOrder === "oldest") {
+        return new Date(a.pubDate).getTime() - new Date(b.pubDate).getTime();
+      } else if (sortOrder === "readingTime") {
+        const timeA = parseInt(a.readingTime) || 0;
+        const timeB = parseInt(b.readingTime) || 0;
+        return timeA - timeB;
+      }
+      return 0;
+    });
+
+    return filtered;
+  }, [posts, searchQuery, selectedCategory, sortOrder]);
+
+  const visiblePosts = useMemo(() => filteredAndSortedPosts.slice(0, visibleCount), [filteredAndSortedPosts, visibleCount]);
+  const hasMore = visibleCount < filteredAndSortedPosts.length;
 
   const handleLoadMore = () => {
     setVisibleCount(prev => prev + POSTS_PER_PAGE);
@@ -171,116 +184,108 @@ const Blog = () => {
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <div className="lg:col-span-4 flex flex-col gap-3 lg:sticky lg:top-28">
-          <span className="label-mono">05 — Writing</span>
-          <h1 className="heading-display">Engineering logs.</h1>
-          <p className="text-body-sm max-w-sm mt-2">
-            Technical writing on database persistence, blockchain contract verification, and ML deployments. Documenting implementation details and runtime analysis.
-          </p>
+        <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-28">
+          <div>
+            <span className="label-mono block mb-3">05 — Writing</span>
+            <h1 className="heading-display">Engineering logs.</h1>
+            <p className="text-body-sm max-w-sm mt-4">
+              Technical writing on database persistence, blockchain contract verification, and ML deployments. Documenting implementation details and runtime analysis.
+            </p>
+          </div>
+
+          <div className="flex flex-col gap-5 mt-4">
+            <div className="relative w-full">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search articles..."
+                value={searchQuery}
+                onChange={(e) => setSearchQuery(e.target.value)}
+                className="w-full h-10 pl-10 pr-4 rounded-md border border-border bg-background text-sm interactive-focus placeholder:text-muted-foreground"
+              />
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Category</label>
+              <div className="flex flex-wrap gap-2">
+                {allCategories.map((cat) => (
+                  <button
+                    key={cat}
+                    onClick={() => setSelectedCategory(cat)}
+                    className={`px-3 py-1.5 rounded-full text-[11px] font-mono tracking-wide transition-colors interactive-focus ${
+                      selectedCategory === cat
+                        ? "bg-foreground text-background"
+                        : "bg-muted text-muted-foreground hover:bg-border"
+                    }`}
+                  >
+                    {cat}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            <div className="flex flex-col gap-2">
+              <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Sort By</label>
+              <select
+                value={sortOrder}
+                onChange={(e) => setSortOrder(e.target.value as any)}
+                className="h-9 px-3 rounded-md border border-border bg-background text-sm interactive-focus"
+              >
+                <option value="newest">Newest First</option>
+                <option value="oldest">Oldest First</option>
+                <option value="readingTime">Reading Time</option>
+              </select>
+            </div>
+          </div>
         </div>
 
         <div className="lg:col-span-8 flex flex-col gap-12">
           {loading ? (
             <div className="flex flex-col gap-12">
-              {[1, 2].map((i) => (
+              {[1, 2, 3].map((i) => (
                 <div key={i} className="animate-pulse flex flex-col md:flex-row gap-6 border-b border-border pb-10">
-                  <div className="flex-1 flex flex-col gap-4">
-                    <div className="h-4 bg-muted w-24 rounded-sm" />
-                    <div className="h-6 bg-muted w-3/4 rounded-sm" />
-                    <div className="h-16 bg-muted w-full rounded-sm" />
+                  <div className="flex-1 flex flex-col gap-4 order-2 md:order-1">
                     <div className="h-4 bg-muted w-32 rounded-sm" />
+                    <div className="h-8 bg-muted w-3/4 rounded-sm" />
+                    <div className="h-16 bg-muted w-full rounded-sm" />
+                    <div className="h-8 bg-muted w-32 rounded-sm mt-2" />
                   </div>
-                  <div className="w-full md:w-48 h-32 bg-muted rounded-md shrink-0" />
+                  <div className="w-full md:w-56 h-48 md:h-40 bg-muted rounded-md shrink-0 order-1 md:order-2" />
                 </div>
               ))}
             </div>
           ) : (
-            <div className="flex flex-col gap-10">
-              {visiblePosts.map((post) => (
-                <article
-                  key={post.guid}
-                  className="flex flex-col-reverse md:flex-row gap-8 md:gap-10 border-b border-border pb-10 last:border-b-0 last:pb-0 group"
-                >
-                  <div className="flex flex-col gap-4 flex-1">
-                    <div className="flex items-center gap-4 label-mono">
-                      <span className="flex items-center gap-1.5">
-                        <Calendar className="w-3.5 h-3.5" />
-                        {formatDate(post.pubDate)}
-                      </span>
-                      <span className="h-3 w-px bg-border" />
-                      <span className="flex items-center gap-1.5">
-                        <Clock className="w-3.5 h-3.5" />
-                        {post.readingTime || "5 min read"}
-                      </span>
+            <>
+              {visiblePosts.length > 0 ? (
+                <div className="flex flex-col gap-10">
+                  {visiblePosts.map((post) => (
+                    <BlogCard key={post.guid} post={post} layout="horizontal" />
+                  ))}
+
+                  {hasMore && (
+                    <div className="flex justify-center pt-6">
+                      <Button onClick={handleLoadMore} variant="outline" className="gap-2">
+                        Load More Articles
+                      </Button>
                     </div>
-
-                    <a
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block group-hover:text-primary transition-colors duration-300"
-                    >
-                      <h2 className="font-display text-2xl font-medium tracking-tight text-foreground leading-snug">
-                        {post.title}
-                      </h2>
-                    </a>
-
-                    <p className="text-body-sm line-clamp-3">
-                      {post.excerpt}
-                    </p>
-
-                    <div className="flex flex-wrap gap-2 mt-2">
-                      {post.categories.slice(0, 3).map((tag) => (
-                        <Badge key={tag} variant="default" className="font-mono text-[9px] tracking-wider">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-
-                    <a
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 px-4 py-2.5 transition-all self-start mt-3"
-                    >
-                      <BookOpen className="w-3.5 h-3.5" />
-                      Read on Medium
-                      <ExternalLink className="w-3 h-3 opacity-60" />
-                    </a>
-                  </div>
-
-                  {post.thumbnail && (
-                    <a
-                      href={post.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block w-full md:w-48 lg:w-56 h-40 md:h-36 shrink-0 overflow-hidden rounded-md border border-border"
-                    >
-                      <img
-                        src={post.thumbnail}
-                        alt=""
-                        loading="lazy"
-                        decoding="async"
-                        className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
-                      />
-                    </a>
                   )}
-                </article>
-              ))}
-
-              {hasMore && (
-                <div className="flex justify-center pt-6">
-                  <Button onClick={handleLoadMore} variant="outline" className="gap-2">
-                    Load More
+                </div>
+              ) : (
+                <div className="py-20 flex flex-col items-center justify-center text-center gap-4 bg-muted/30 rounded-md border border-border border-dashed">
+                  <p className="text-body text-muted-foreground">
+                    No articles found matching your criteria.
+                  </p>
+                  <Button variant="outline" onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}>
+                    Clear Filters
                   </Button>
                 </div>
               )}
-            </div>
+            </>
           )}
 
           {error && !loading && (
-            <p className="text-xs text-muted-foreground font-mono mt-4 text-center">
-              Showing cached fallback logs due to connection rate-limits.
+            <p className="text-[11px] text-muted-foreground font-mono text-center">
+              Showing cached logs due to Medium API rate-limits.
             </p>
           )}
         </div>
