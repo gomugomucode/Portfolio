@@ -105,6 +105,34 @@ const caseStudies: Record<string, CaseStudy> = {
     ],
     challenges: "Handling smooth wallet connection edge cases across multiple mobile browsers where wallet injection APIs frequently conflict.",
     lessons: "Clean, asynchronous state management wrapper logic around third-party wallet interfaces prevents critical page crashes and improves mobile customer conversion rates."
+  },
+  "04": {
+    id: "04",
+    title: "Greenstar Suppliers",
+    subtitle: "A Next.js 16 product catalogue and order enquiry platform for Nepal's leading entrance and home automation supplier.",
+    role: "Full Stack Developer",
+    year: "2025",
+    client: "Greenstar Suppliers, Nepal",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
+    imageUrl: "/greenstar.webp",
+    liveLink: "",
+    githubLink: "https://github.com/gomugomucode/grren-star",
+    metrics: [
+      { label: "Order Channels", value: "3" },
+      { label: "Tech Stack", value: "Next.js 16" },
+      { label: "Market", value: "Nepal" }
+    ],
+    problem: "Local hardware and home automation suppliers in Nepal lacked a professional online presence to showcase entrance products — gate automation, boom barriers, and garage systems — and had no streamlined way to collect enquiries or route orders.",
+    solution: "Built a full-featured Next.js 16 (App Router) website for Greenstar Suppliers with a animated hero product carousel, a structured product catalogue, per-product Call and WhatsApp order CTAs, a floating WhatsApp button, and a contact/enquiry form backed by a Prisma + PostgreSQL API with optional Nodemailer email notifications.",
+    architecture: [
+      "Next.js 16 App Router with React 19 and TypeScript for the frontend.",
+      "Tailwind CSS 4 and Framer Motion for responsive layouts and smooth animations.",
+      "Prisma ORM with PostgreSQL for persistent enquiry storage.",
+      "Nodemailer backend for email notifications on new enquiries.",
+      "Environment-driven contact config (phone, WhatsApp, email) via .env.local."
+    ],
+    challenges: "Ensuring the WhatsApp and call order flows worked reliably across Nepal's diverse mobile device landscape while keeping the product catalogue easy to manage and extend without a CMS.",
+    lessons: "Environment-variable-driven contact details and a clean component architecture allow non-technical clients to update phone numbers and branding without touching application code."
   }
 };
 

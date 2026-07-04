@@ -47,4 +47,16 @@ export const projects: ProjectPreview[] = [
     liveLink: "https://solana-loyalty-d-app.vercel.app/",
     githubLink: "https://github.com/gomugomucode/Solana-Loyalty-dApp",
   },
+  {
+    index: "04",
+    title: "Greenstar Suppliers",
+    problem: "Local hardware suppliers in Nepal lack a professional online presence to showcase entrance and home automation products and receive orders.",
+    impact:
+      "Built a full-featured Next.js 16 product catalogue and enquiry platform for Greenstar Suppliers. Features a hero carousel, per-product Call/WhatsApp order buttons, a floating contact widget, and a backend enquiry form — all tailored for Nepal's market.",
+    metric: { label: "Order channels", value: "3" },
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
+    imageUrl: "/greenstar.webp",
+    liveLink: "",
+    githubLink: "https://github.com/gomugomucode/grren-star",
+  },
 ];
