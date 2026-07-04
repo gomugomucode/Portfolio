@@ -3,6 +3,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { Container } from "./layout/Container";
 
 const navLinks = [
   { name: "About", href: "about", isPage: false },
@@ -102,7 +103,7 @@ const Navbar = () => {
           : "py-5 bg-transparent border-b border-transparent",
       )}
     >
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <Container>
         <div className="flex items-center justify-between h-10">
           <Link
             to="/"
@@ -114,7 +115,7 @@ const Navbar = () => {
               }
             }}
           >
-            Anupam Baral
+            <img src="/logo.png" alt="logo" className="h-12 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
@@ -150,7 +151,7 @@ const Navbar = () => {
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </div>
-      </div>
+      </Container>
 
       <AnimatePresence>
         {isMobileMenuOpen && (

@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
 import { cn } from "@/lib/utils";
+import { Container } from "./Container";
 
 interface SectionShellProps {
   id?: string;
@@ -18,13 +18,14 @@ export const SectionShell = ({
   <section
     id={id}
     className={cn(
-      "w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12",
-      "py-20 md:py-28 lg:py-32",
+      "w-full py-20 md:py-28 lg:py-32",
       bordered && "border-t border-border",
       className,
     )}
   >
-    {children}
+    <Container>
+      {children}
+    </Container>
   </section>
 );
 

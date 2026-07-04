@@ -77,7 +77,7 @@ const AboutSection = () => {
               </div>
             </Card>
 
-            <a href="mailto:contact@anupambaral.com.np" className="group block">
+            <a href="mailto:contact@anupambaral.com.np" className="group block" aria-label="Send email to Anupam Baral">
               <Card className="p-5 bg-foreground/[0.03] hover:bg-foreground/[0.06] hover:border-foreground/25 transition-all duration-300">
                 <div className="flex items-start gap-4">
                   <Mail className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" />

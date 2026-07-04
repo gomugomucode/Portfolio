@@ -4,6 +4,7 @@ import SEO from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
+import { SectionShell } from "@/components/layout/SectionShell";
 
 interface CaseStudy {
   id: string;
@@ -160,7 +161,7 @@ const ProjectDetails = () => {
   }
 
   return (
-    <div className="w-full max-w-7xl mx-auto px-5 sm:px-8 lg:px-12 py-20 md:py-28 lg:py-32">
+    <SectionShell bordered={false}>
       <SEO
         title={`${project.title} | Case Study`}
         description={project.subtitle}
@@ -348,7 +349,7 @@ const ProjectDetails = () => {
           </div>
         </div>
       </div>
-    </div>
+    </SectionShell>
   );
 };
 

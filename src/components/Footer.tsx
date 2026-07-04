@@ -1,5 +1,6 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Github, Linkedin, Mail } from "lucide-react";
+import { Container } from "./layout/Container";
 
 const footerNavLinks = [
   { name: "About", href: "about", isPage: false },
@@ -28,7 +29,7 @@ const Footer = () => {
 
   return (
     <footer className="w-full border-t border-border pt-12 pb-8 bg-background">
-      <div className="max-w-7xl mx-auto px-5 sm:px-8 lg:px-12">
+      <Container>
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-10">
           <div className="flex flex-col gap-2 max-w-sm">
             <span className="font-display font-medium text-sm text-foreground">Anupam Baral</span>
@@ -101,7 +102,7 @@ const Footer = () => {
             </p>
           </div>
         </div>
-      </div>
+      </Container>
     </footer>
   );
 };

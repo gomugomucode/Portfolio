@@ -15,7 +15,7 @@ const ProjectsSection = () => {
       </AnimatedSection>
 
       <div className="flex flex-col gap-20 md:gap-28">
-        {projects.map((project, i) => {
+        {projects.slice(0, 3).map((project, i) => {
           const reversed = i % 2 === 1;
 
           return (
@@ -37,6 +37,8 @@ const ProjectsSection = () => {
                     <img
                       src={project.imageUrl}
                       alt={project.title}
+                      loading="lazy"
+                      decoding="async"
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 ease-out"
                       onError={(e) => {
                         e.currentTarget.src =
@@ -104,6 +106,17 @@ const ProjectsSection = () => {
           );
         })}
       </div>
+
+      <AnimatedSection delay={0.2}>
+        <div className="mt-20 flex justify-center">
+          <Button variant="outline" asChild className="group">
+            <Link to="/projects" className="gap-2 font-mono uppercase tracking-widest text-[11px]">
+              View All Projects
+              <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
+            </Link>
+          </Button>
+        </div>
+      </AnimatedSection>
     </SectionShell>
   );
 };
