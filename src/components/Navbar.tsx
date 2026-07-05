@@ -115,7 +115,7 @@ const Navbar = () => {
               }
             }}
           >
-            <img src="/logo.png" alt="logo" className="h-12 w-auto" />
+            <img src="/logo.webp" alt="logo" className="h-12 w-auto" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">
