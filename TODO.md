@@ -22,8 +22,9 @@
 
 
 ## Step 2 — Global Color Consistency Standardization
-- [ ] Normalize shared surfaces/borders/hover/shadows to ONE design system using tokens from `src/index.css`
-- [ ] Remove ad-hoc background/border/hover classes in Blog/Projects pages and align to UI primitives.
+- [x] Normalize shared surfaces/borders/hover/shadows to ONE design system using tokens from `src/index.css`
+- [x] Remove ad-hoc background/border/hover classes in Blog/Projects pages and align to UI primitives.
+
 
 ## Step 3 — Blog Homepage (exactly 3)
 - [x] Enforce latest 3 on fresh + cached paths in `src/components/BlogSection.tsx`

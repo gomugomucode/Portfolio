@@ -106,7 +106,8 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
 
   // Vertical layout for homepage
   return (
-    <article className="group flex flex-col h-full border border-border rounded-md overflow-hidden bg-card hover:border-foreground/20 transition-colors duration-300">
+    <article className="group flex flex-col h-full border border-border rounded-md overflow-hidden bg-card hover:border-foreground/20 hover:[box-shadow:var(--e-2)] transition-all duration-300">
+
       <a
         href={post.link}
         target="_blank"
