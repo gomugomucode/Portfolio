@@ -72,7 +72,7 @@ const BlogSection = () => {
         const resData = await response.json();
 
         if (resData.status === "ok" && resData.items?.length > 0) {
-          const parsedPosts = resData.items.slice(0, 6).map((item: Record<string, unknown>) => {
+          const parsedPosts = resData.items.slice(0, 3).map((item: Record<string, unknown>) => {
             const tempDiv = document.createElement("div");
             tempDiv.innerHTML = (item.description as string) || "";
             const plainText = tempDiv.textContent || tempDiv.innerText || "";
@@ -82,8 +82,12 @@ const BlogSection = () => {
             let finalThumbnail = item.thumbnail as string;
             if (!finalThumbnail || finalThumbnail === "") {
               const imgRegex = /<img[^>]+src="([^">]+)"/gi;
-              const match = imgRegex.exec((item.content as string) || (item.description as string) || "");
-              finalThumbnail = match ? match[1] : "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
+              const match = imgRegex.exec(
+                (item.content as string) || (item.description as string) || "",
+              );
+              finalThumbnail =
+                match?.[1] ||
+                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
             }
 
             return {
@@ -105,7 +109,7 @@ const BlogSection = () => {
           );
           setPosts(parsedPosts);
         } else {
-          setPosts(FALLBACK_POSTS.slice(0, 6));
+          setPosts(FALLBACK_POSTS.slice(0, 3));
         }
       } catch {
         setPosts(FALLBACK_POSTS.slice(0, 3));
@@ -131,7 +135,7 @@ const BlogSection = () => {
             to="/blog"
             className="inline-flex items-center gap-2 label-mono text-muted-foreground hover:text-foreground transition-colors interactive-focus shrink-0 group"
           >
-            View all
+            Show More Articles
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>

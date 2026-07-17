@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -22,6 +22,51 @@ const Navbar = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const isHome = location.pathname === "/";
+
+  const burgerButtonRef = useRef<HTMLButtonElement | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement | null>(null);
+
+  const setBodyScrollLocked = (locked: boolean) => {
+    if (typeof document === "undefined") return;
+    const body = document.body;
+    if (!body) return;
+
+    if (locked) {
+      body.style.overflow = "hidden";
+      body.style.touchAction = "none";
+    } else {
+      body.style.overflow = "";
+      body.style.touchAction = "";
+    }
+  };
+
+  useEffect(() => {
+    setBodyScrollLocked(isMobileMenuOpen);
+
+    if (isMobileMenuOpen) {
+      // Focus close button for immediate keyboard access
+      window.setTimeout(() => closeButtonRef.current?.focus(), 0);
+    } else {
+      // Restore focus to hamburger button
+      window.setTimeout(() => burgerButtonRef.current?.focus(), 0);
+    }
+  }, [isMobileMenuOpen]);
+
+  useEffect(() => {
+    if (!isMobileMenuOpen) return;
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        setIsMobileMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, [isMobileMenuOpen]);
+
+
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -142,11 +187,13 @@ const Navbar = () => {
           </div>
 
           <button
+            ref={burgerButtonRef}
             type="button"
             className="md:hidden p-2 -mr-2 text-muted-foreground hover:text-foreground interactive-focus"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
+            aria-controls="mobile-nav-drawer"
           >
             {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
@@ -156,35 +203,82 @@ const Navbar = () => {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.2 }}
-            className="md:hidden absolute top-full left-0 right-0 bg-background/95 backdrop-blur-md border-b border-border px-5 py-6"
+            className="md:hidden fixed inset-0 z-[60]"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.18 }}
           >
-            <div className="flex flex-col gap-1">
-              {navLinks.map((link) =>
-                link.isPage ? (
-                  <Link
-                    key={link.name}
-                    to={`/${link.href}`}
+            {/* Backdrop (solid + blur) */}
+            <button
+              type="button"
+              aria-label="Close menu"
+              className="absolute inset-0 w-full h-full bg-background/80 backdrop-blur-sm"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Drawer */}
+            <motion.aside
+              role="dialog"
+              aria-modal="true"
+              initial={{ y: -12, opacity: 0, transformOrigin: "top center" }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -12, opacity: 0 }}
+              transition={{ duration: 0.22, ease: "easeOut" }}
+              className="absolute top-0 left-0 right-0"
+            >
+              <div className="bg-background/95 backdrop-blur-md border-b border-border px-5 py-6">
+                <div className="flex items-center justify-between gap-4">
+                  <span className="label-mono">Menu</span>
+                  <button
+                    ref={closeButtonRef}
+                    type="button"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="label-mono text-muted-foreground hover:text-foreground py-3 border-b border-border"
+                    className="p-2 -m-2 text-muted-foreground hover:text-foreground interactive-focus rounded-md"
+                    aria-label="Close menu"
                   >
-                    {link.name}
-                  </Link>
-                ) : (
-                  <a
-                    key={link.name}
-                    href={`/#${link.href}`}
-                    onClick={(e) => handleNavClick(e, link.href)}
-                    className="label-mono text-muted-foreground hover:text-foreground py-3 border-b border-border"
-                  >
-                    {link.name}
-                  </a>
-                ),
-              )}
-            </div>
+                    <X className="w-5 h-5" />
+                  </button>
+                </div>
+
+                <div className="mt-5 flex flex-col gap-1">
+                  {navLinks.map((link) => {
+                    const isActive =
+                      (link.isPage && location.pathname === `/${link.href}`) ||
+                      (!link.isPage && isHome && activeSection === link.href);
+
+                    const sharedClass = cn(
+                      "label-mono py-3 border-b border-border transition-colors",
+                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                    );
+
+                    if (link.isPage) {
+                      return (
+                        <Link
+                          key={link.name}
+                          to={`/${link.href}`}
+                          onClick={() => setIsMobileMenuOpen(false)}
+                          className={sharedClass}
+                        >
+                          {link.name}
+                        </Link>
+                      );
+                    }
+
+                    return (
+                      <a
+                        key={link.name}
+                        href={`/#${link.href}`}
+                        onClick={(e) => handleNavClick(e, link.href)}
+                        className={sharedClass}
+                      >
+                        {link.name}
+                      </a>
+                    );
+                  })}
+                </div>
+              </div>
+            </motion.aside>
           </motion.div>
         )}
       </AnimatePresence>
