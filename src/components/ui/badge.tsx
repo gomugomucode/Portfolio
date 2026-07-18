@@ -3,7 +3,6 @@ import { cva, type VariantProps } from "class-variance-authority";
 
 import { cn } from "@/lib/utils";
 
-// eslint-disable-next-line react-refresh/only-export-components
 const badgeVariants = cva(
   "inline-flex items-center border border-border bg-foreground/[0.04] text-muted-foreground font-mono text-[11px] uppercase tracking-widest px-2 py-0.5 rounded-sm transition-colors",
   {
@@ -27,3 +26,6 @@ function Badge({ className, variant, ...props }: BadgeProps) {
 }
 
 export { Badge, badgeVariants };
+
+// Keep react-refresh fast-refresh happy by exporting only components by default.
+export const __badgeVariants = badgeVariants;
