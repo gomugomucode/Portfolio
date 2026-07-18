@@ -8,7 +8,7 @@ import { BlogCard, type BlogPost } from "@/components/BlogCard";
 const MEDIUM_USERNAME = "gomugomucode";
 const CACHE_KEY = `medium_blog_posts_${MEDIUM_USERNAME}`;
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
-const POSTS_PER_PAGE = 4;
+const POSTS_PER_PAGE = 3;
 
 const FALLBACK_POSTS: BlogPost[] = [
   {
@@ -61,7 +61,7 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(POSTS_PER_PAGE);
+  const [visibleCount, setVisibleCount] = useState(6);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
@@ -98,12 +98,34 @@ const Blog = () => {
             const wordCount = plainText.split(/\s+/).length;
             const readingTime = `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
 
-            let finalThumbnail = item.thumbnail as string;
-            if (!finalThumbnail || finalThumbnail === "") {
-              const imgRegex = /<img[^>]+src="([^">]+)"/gi;
-              const match = imgRegex.exec((item.content as string) || (item.description as string) || "");
-              finalThumbnail = match ? match[1] : "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
-            }
+            const FALLBACK_THUMBNAIL =
+              "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
+
+            const descriptionHtml =
+              (item.description as string) || "";
+            const contentHtml =
+              (item.content as string) || "";
+
+            // 1) media:thumbnail/media:content first
+            // rss2json typically provides `thumbnail`, but when missing, try og:image
+            // and then first img.
+            const thumbnailFromField =
+              (item.thumbnail as string) || "";
+
+            // 2) first <img> inside content
+            const firstImgRegex =
+              /<img[^>]+src="([^"]+)"/i;
+            const firstImgMatch = firstImgRegex.exec(contentHtml || descriptionHtml);
+            const firstImg = firstImgMatch?.[1] || "";
+
+            // 3) OpenGraph image fallback
+            const ogImageRegex = /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i;
+            const ogMatch = ogImageRegex.exec(contentHtml || descriptionHtml);
+            const ogImage = ogMatch?.[1] || "";
+
+            // 4) final fallback
+            const finalThumbnail =
+              thumbnailFromField || firstImg || ogImage || FALLBACK_THUMBNAIL;
 
             return {
               guid: (item.guid as string) || (item.link as string),

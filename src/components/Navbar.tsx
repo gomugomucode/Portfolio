@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -227,7 +227,7 @@ const Navbar = () => {
               transition={{ duration: 0.22, ease: "easeOut" }}
               className="absolute top-0 left-0 right-0"
             >
-              <div className="bg-background/95 backdrop-blur-md border-b border-border px-5 py-6">
+          <div className="bg-background backdrop-blur-md border-b border-border px-5 py-6">
                 <div className="flex items-center justify-between gap-4">
                   <span className="label-mono">Menu</span>
                   <button
