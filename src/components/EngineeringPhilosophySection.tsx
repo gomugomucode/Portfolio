@@ -79,7 +79,7 @@ const EngineeringPhilosophySection = () => {
     <SectionShell id="philosophy">
       <AnimatedSection>
         <SectionGrid>
-          <div className="lg:col-span-12 flex flex-col gap-10">
+          <div className="lg:col-span-12 flex flex-col gap-8">
             <SectionHeader
               index="02 — Mindset"
               title="Engineering philosophy & values."
