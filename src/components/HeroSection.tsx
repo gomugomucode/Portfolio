@@ -51,38 +51,36 @@ const HeroSection = () => {
                 <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
                   <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
                 </span>
-                Available for work
+                Available for Freelance & Full-time
               </div>
             </motion.div>
 
             <motion.span variants={itemVariants} className="label-mono">
-              Anupam Baral
+              Anupam Baral — Portfolio
             </motion.span>
 
             <motion.h1
               variants={itemVariants}
-              className="heading-display-lg max-w-[14ch]"
+              className="heading-display-lg max-w-[15ch]"
             >
-              Full stack
+              Full Stack &
               <br />
-              developer.
+              AI Developer.
             </motion.h1>
 
             <motion.p
               variants={itemVariants}
               className="text-body max-w-xl"
             >
-              Building production-ready web applications and intelligent systems.
-              From scalable SaaS platforms to machine learning pipelines — I engineer
-              things that work.
+              Building production-ready web applications, AI-powered software, and scalable SaaS products. Specializing in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Supabase</strong>, <strong>Firebase</strong>, and <strong>Solana</strong>.
             </motion.p>
 
             <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
               <Button variant="default" onClick={() => handleScroll("work")}>
-                View work
+                Explore Work & Case Studies
               </Button>
               <Button variant="outline" onClick={() => handleScroll("contact")}>
-                Get in touch
+                Hire Me / Get in Touch
               </Button>
             </motion.div>
           </motion.div>
@@ -95,8 +93,7 @@ const HeroSection = () => {
           >
             <div className="hidden lg:block h-px w-full bg-border" />
             <p className="text-body-sm max-w-xs">
-              React, Next.js, Node.js, Python, TypeScript, Solana — full-stack
-              systems from interface to infrastructure.
+              Full Stack Developer Nepal crafting enterprise software from intuitive React frontend interfaces to scalable Python AI pipelines and Web3 protocols.
             </p>
             <div className="flex items-center gap-2">
               <a
@@ -104,7 +101,7 @@ const HeroSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
-                aria-label="GitHub"
+                aria-label="GitHub Profile"
               >
                 <Github className="w-4 h-4" />
               </a>
@@ -113,7 +110,7 @@ const HeroSection = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
-                aria-label="LinkedIn"
+                aria-label="LinkedIn Profile"
               >
                 <Linkedin className="w-4 h-4" />
               </a>
@@ -131,7 +128,7 @@ const HeroSection = () => {
         onClick={() => handleScroll("about")}
         aria-label="Scroll to about section"
       >
-        <ArrowDown className="w-3.5 h-3.5" />
+        <ArrowDown className="w-3.5 h-3.5" aria-hidden="true" />
         Scroll
       </motion.button>
     </section>

@@ -9,16 +9,16 @@ const timelineItems = [
   {
     date: "2023 — Present",
     title: "Bachelor of Computer Applications (BCA)",
-    subtitle: "Butwal Kalika Campus",
+    subtitle: "Butwal Kalika Campus, Nepal",
     description:
-      "Pursuing advanced studies in software engineering, database architecture, network security, and computer system design.",
+      "Advanced coursework in software engineering, relational database management systems, network security, and computer algorithms.",
   },
   {
     date: "2022 — Present",
-    title: "Full Stack Freelance Developer",
-    subtitle: "Remote / Independent",
+    title: "Full Stack & AI Freelance Developer",
+    subtitle: "Remote / Global Client Engagement",
     description:
-      "Architecting and deploying responsive web applications, decentralized blockchain protocols, and custom machine learning inference integrations for clients worldwide.",
+      "Engineering responsive Next.js applications, intelligent Python machine learning workflows, Supabase / Firebase cloud architectures, and Solana Web3 protocols.",
   },
 ];
 
@@ -30,25 +30,20 @@ const AboutSection = () => {
           <div className="lg:col-span-7 flex flex-col gap-6">
             <SectionHeader
               index="01 — About"
-              title="Building architecture that scales."
+              title="Architecting web systems & AI software that scale."
             />
 
             <div className="text-body flex flex-col gap-4">
               <p>
-                I am a Full Stack Developer and AI/ML Engineer based in Nepal. I specialize in
-                bridging the gap between complex backend architectures and highly performant,
-                intuitive user interfaces.
+                I am <strong>Anupam Baral</strong>, a Senior <strong>Full Stack Developer</strong> and <strong>AI Developer in Nepal</strong>. I specialize in bridging complex cloud infrastructures with performant, accessible user interfaces built on <strong>React</strong> and <strong>Next.js</strong>.
               </p>
               <p>
-                My focus is on engineering resilient systems. Whether I'm deploying decentralized
-                protocols on Solana or building monolithic LMS platforms in React and Node.js, I
-                care deeply about clean code, developer experience, and shipping products that solve
-                actual business problems.
+                My focus is engineering production-ready software. Whether deploying intelligent <strong>Python</strong> machine learning pipelines, building real-time backend systems with <strong>Supabase</strong> and <strong>Firebase</strong>, or writing smart programs on <strong>Solana</strong>, I prioritize clean architecture, sub-second LCP performance, and long-term maintainability.
               </p>
             </div>
 
             <div className="flex flex-wrap gap-2">
-              {["React", "Next.js", "Node.js", "TypeScript", "Python", "Solana"].map((tag) => (
+              {["React", "Next.js", "TypeScript", "Python", "Supabase", "Firebase", "Solana", "AI / ML"].map((tag) => (
                 <Badge key={tag}>{tag}</Badge>
               ))}
             </div>
@@ -57,17 +52,17 @@ const AboutSection = () => {
           <div className="lg:col-span-5 flex flex-col gap-3">
             <Card className="p-5 hover:border-foreground/20 transition-colors duration-300">
               <div className="flex items-start gap-4">
-                <MapPin className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" />
+                <MapPin className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" aria-hidden="true" />
                 <div className="flex flex-col gap-1">
                   <span className="label-mono">Location</span>
-                  <span className="text-sm text-foreground">Butwal, Nepal</span>
+                  <span className="text-sm text-foreground">Butwal, Nepal (Available Worldwide)</span>
                 </div>
               </div>
             </Card>
 
             <Card className="p-5 hover:border-foreground/20 transition-colors duration-300">
               <div className="flex items-start gap-4">
-                <GraduationCap className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" />
+                <GraduationCap className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" aria-hidden="true" />
                 <div className="flex flex-col gap-1">
                   <span className="label-mono">Education</span>
                   <span className="text-sm text-foreground">
@@ -77,10 +72,10 @@ const AboutSection = () => {
               </div>
             </Card>
 
-            <a href="mailto:contact@anupambaral.com.np" className="group block" aria-label="Send email to Anupam Baral">
+            <a href="mailto:contact@anupambaral.com.np" className="group block" aria-label="Send direct email to Anupam Baral">
               <Card className="p-5 bg-foreground/[0.03] hover:bg-foreground/[0.06] hover:border-foreground/25 transition-all duration-300">
                 <div className="flex items-start gap-4">
-                  <Mail className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" />
+                  <Mail className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" aria-hidden="true" />
                   <div className="flex flex-col gap-1">
                     <span className="label-mono">Direct contact</span>
                     <span className="text-sm text-foreground group-hover:text-primary transition-colors">
