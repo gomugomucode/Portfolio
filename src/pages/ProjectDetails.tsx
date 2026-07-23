@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Database, Cpu, Calendar, Shield, CheckCircle2, Image as ImageIcon, ChevronRight, BookOpen } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Database, Cpu, Calendar, Shield, CheckCircle2, Image as ImageIcon, ChevronRight, BookOpen, Layers, Lightbulb, Scale } from "lucide-react";
 import SEO from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -30,11 +30,14 @@ export interface CaseStudy {
   githubLink: string;
   metrics: { label: string; value: string }[];
   problem: string;
+  requirements: string[];
   solution: string;
   architecture: string[];
+  tradeoffs: string;
   features: string[];
   challenges: string;
   lessons: string;
+  futureImprovements: string;
   relatedArticleLink?: string;
   relatedArticleTitle?: string;
 }
@@ -67,6 +70,12 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Database Speedup", value: "40%" }
     ],
     problem: "Traditional LMS solutions suffer from slow page load speeds and tightly coupled architectures. High payload delivery and excessive database roundtrips degrade search and dashboard performance when multiple courses load concurrently.",
+    requirements: [
+      "Sub-1.5s worldwide content initial load speed across mobile devices.",
+      "Decoupled architecture enabling client and backend deployments to scale independently.",
+      "Relational course hierarchy support with efficient database fetch queries.",
+      "Stateless user session handling with zero server-side memory leaks."
+    ],
     solution: "Decoupled the architecture completely by serving a static, highly optimized React client via global CDNs and running a lightweight, stateless Node.js/Express API. Built database query optimizations using precompiled joins and index mappings in MySQL to handle nested course structures.",
     architecture: [
       "Decoupled React Client served from global edge CDNs.",
@@ -74,6 +83,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Relational MySQL persistence layer utilizing relational indexing for course trees.",
       "Vercel Edge caching configurations for static route delivery."
     ],
+    tradeoffs: "Chose MySQL relational indexing over NoSQL document stores to guarantee strong relational integrity for prerequisite course dependencies, trading minor write flexibility for deterministic read query speeds.",
     features: [
       "Sub-second course catalog searching with client-side indexing.",
       "Hierarchical course category trees with single-query relational fetches.",
@@ -81,7 +91,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Responsive progress tracking & video streaming playback integration."
     ],
     challenges: "Handling recursive folder structures and hierarchical course categories efficiently in a relational MySQL database without triggering exponential query loops.",
-    lessons: "Leveraging structured database indexes and flattening dynamic relational queries into indexed lookup arrays dramatically increases runtime response speed and resource efficiency."
+    lessons: "Leveraging structured database indexes and flattening dynamic relational queries into indexed lookup arrays dramatically increases runtime response speed and resource efficiency.",
+    futureImprovements: "Migrating media asset storage to Cloudflare R2 bucket storage and implementing real-time WebSocket progress synchronization across devices."
   },
   "02": {
     id: "02",
@@ -110,6 +121,12 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Signaling Delay", value: "50ms" }
     ],
     problem: "Centralized ride-sharing apps take up to a 30% cut of driver earnings and suffer from centralized data security risks. Drivers have no sovereign ownership over their profile history, trip records, or reputational scores.",
+    requirements: [
+      "Atomic escrow smart contracts preventing unilateral ride fee cancellation.",
+      "Sub-100ms real-time coordinate signaling between passenger and driver mobile apps.",
+      "Cryptographic wallet-based identity verification eliminating centralized passwords.",
+      "Sub-cent transaction fees ensuring protocol economic viability."
+    ],
     solution: "Created an open-source decentralized ride-sharing engine on Solana. All trip status shifts (requested, accepted, completed) are verified using atomic smart contracts written in Rust. Used Firebase RTDB for sub-second location updates, and Web3.js client-side signatures to authenticate every trip event.",
     architecture: [
       "Rust Smart Program compiled to Solana BPF bytecode.",
@@ -117,6 +134,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Firebase Realtime Database for quick coordinate syncing.",
       "Anchor framework testing suite mapping instruction executions."
     ],
+    tradeoffs: "Separated real-time location telemetry off-chain (Firebase RTDB) while keeping ride payment state transitions on-chain (Solana Rust program), balancing instant UI updates with immutable financial verification.",
     features: [
       "Atomic ride transaction escrow on Solana blockchain ledger.",
       "Decentralized driver reputation scoring verified on-chain.",
@@ -124,7 +142,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Cryptographic wallet authentication eliminating centralized passwords."
     ],
     challenges: "Managing asynchronous off-chain signaling coordinates (Firebase) while enforcing absolute trust boundaries via atomic on-chain verification steps on the blockchain ledger.",
-    lessons: "Decoupled real-time coordination feeds (off-chain) from critical state transitions (on-chain) are key to scaling blockchain architectures without overloading blocks."
+    lessons: "Decoupled real-time coordination feeds (off-chain) from critical state transitions (on-chain) are key to scaling blockchain architectures without overloading blocks.",
+    futureImprovements: "Integrating Solana state compression for zero-cost reputation badges and implementing decentralized dispute resolution via community arbitration tokens."
   },
   "03": {
     id: "03",
@@ -151,6 +170,12 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Wallet Setup Time", value: "<2 Min" }
     ],
     problem: "Traditional corporate rewards programs suffer from fragmented platforms, high transaction friction, and dynamic expiration rules that build distrust with program members.",
+    requirements: [
+      "Instant programmatic minting and issuance of SPL loyalty tokens upon purchase triggers.",
+      "Zero wallet setup friction for non-crypto native users.",
+      "Sub-cent transaction gas overhead for enterprise rewards issuing.",
+      "Transparent on-chain customer tier verification."
+    ],
     solution: "Built a loyalty dApp that mints and issues dynamic program points directly to consumer cryptographic wallets. Built smart program distributions to handle points transfers, program enrollment, and reward redemptions with instant settlement times.",
     architecture: [
       "Solana program handles state for loyalty program balances.",
@@ -158,6 +183,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "TypeScript Web3.js transaction builders with automated wallet signature flows.",
       "Edge-cached REST requests fetching off-chain loyalty product details."
     ],
+    tradeoffs: "Used Phantom & Solflare browser extensions for signature verification rather than custodial private keys, prioritizing user data sovereignty over zero-wallet signup flows.",
     features: [
       "Instant token minting and transfer settlement on Solana.",
       "Automated loyalty point rewards distribution upon checkout triggers.",
@@ -165,7 +191,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Responsive customer reward dashboard with real-time balance feeds."
     ],
     challenges: "Handling smooth wallet connection edge cases across multiple mobile browsers where wallet injection APIs frequently conflict.",
-    lessons: "Clean, asynchronous state management wrapper logic around third-party wallet interfaces prevents critical page crashes and improves mobile customer conversion rates."
+    lessons: "Clean, asynchronous state management wrapper logic around third-party wallet interfaces prevents critical page crashes and improves mobile customer conversion rates.",
+    futureImprovements: "Adding account abstraction (web3auth) for email-based social signups and automated reward redemption webhooks for Shopify/WooCommerce integrations."
   },
   "04": {
     id: "04",
@@ -194,6 +221,12 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Market", value: "Nepal" }
     ],
     problem: "Local hardware and home automation suppliers in Nepal lacked a professional online presence to showcase entrance products — gate automation, boom barriers, and garage systems — and had no streamlined way to collect enquiries or route orders.",
+    requirements: [
+      "Dynamic hardware product catalogue with instant category filtering.",
+      "Multi-channel order inquiry routes (Direct Call, WhatsApp, and Web Form).",
+      "Persistent enquiry database storage backed by Prisma & PostgreSQL.",
+      "Zero-downtime deployment architecture managed easily without non-technical CMS overhead."
+    ],
     solution: "Built a full-featured Next.js 16 (App Router) website for Greenstar Suppliers with an animated hero product carousel, a structured product catalogue, per-product Call and WhatsApp order CTAs, a floating WhatsApp button, and a contact/enquiry form backed by a Prisma + PostgreSQL API with optional Nodemailer email notifications.",
     architecture: [
       "Next.js 16 App Router with React 19 and TypeScript for the frontend.",
@@ -202,6 +235,7 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Nodemailer backend for email notifications on new enquiries.",
       "Environment-driven contact config (phone, WhatsApp, email) via environment variables."
     ],
+    tradeoffs: "Utilized environment-variable configuration for contact routing instead of an expensive headless CMS, enabling non-technical client team members to update phone numbers and branding without application maintenance fees.",
     features: [
       "Dynamic product catalogue with instant category filtering.",
       "Direct Call & WhatsApp ordering integrations tailored for Nepal's market.",
@@ -209,7 +243,8 @@ export const caseStudies: Record<string, CaseStudy> = {
       "Floating contact widget and animated hero banner carousel."
     ],
     challenges: "Ensuring the WhatsApp and call order flows worked reliably across Nepal's diverse mobile device landscape while keeping the product catalogue easy to manage and extend without a CMS.",
-    lessons: "Environment-variable-driven contact details and a clean component architecture allow non-technical clients to update phone numbers and branding without touching application code."
+    lessons: "Environment-variable-driven contact details and a clean component architecture allow non-technical clients to update phone numbers and branding without touching application code.",
+    futureImprovements: "Integrating a lightweight admin portal for real-time inventory updates and adding multi-language support for English and Nepali."
   }
 };
 
@@ -221,10 +256,10 @@ const ProjectDetails = () => {
     return (
       <div className="w-full max-w-6xl mx-auto px-4 md:px-8 py-32 text-center flex flex-col items-center justify-center min-h-[60vh] gap-6">
         <h1 className="font-display text-2xl font-medium tracking-tight text-foreground">
-          Project Not Found
+          Project Case Study Not Found
         </h1>
         <p className="text-sm text-muted-foreground max-w-md">
-          The project case study you requested could not be resolved in this environment.
+          The requested project case study could not be resolved.
         </p>
         <Link to="/projects">
           <Button variant="outline" className="gap-2 font-mono uppercase text-[11px] tracking-widest">
@@ -286,12 +321,19 @@ const ProjectDetails = () => {
       <div className="mb-12">
         <Link to="/projects" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
           <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-          Back to All Projects
+          Back to All Projects Archive
         </Link>
       </div>
 
       {/* Header Info */}
       <div className="flex flex-col gap-6 mb-12">
+        <div className="flex items-center gap-3">
+          <Badge variant="outline" className="font-mono text-xs text-primary border-primary/30">
+            Case Study • {project.year}
+          </Badge>
+          <span className="text-xs font-mono text-muted-foreground">{project.client}</span>
+        </div>
+
         <h1 className="heading-display max-w-4xl">
           {project.title}
         </h1>
@@ -367,7 +409,7 @@ const ProjectDetails = () => {
             <div className="h-[1px] bg-border/40" />
             <div>
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block">
-                Year
+                Timeline / Year
               </span>
               <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
                 <Calendar className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
@@ -387,7 +429,7 @@ const ProjectDetails = () => {
 
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-              Performance metrics
+              Verified Performance Metrics
             </span>
             <div className="flex flex-col gap-3">
               {project.metrics.map((metric) => (
@@ -424,37 +466,53 @@ const ProjectDetails = () => {
           )}
         </div>
 
-        {/* Right Editorial Section */}
+        {/* Right Editorial Storytelling Section */}
         <div className="lg:col-span-8 flex flex-col gap-10">
-          {/* The Problem */}
+          {/* Problem */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Cpu className="w-5 h-5 text-primary" aria-hidden="true" />
-              The Problem
+              1. The Problem
             </h3>
-            <p className="text-body-sm sm:text-base">
+            <p className="text-body-sm sm:text-base leading-relaxed">
               {project.problem}
             </p>
           </div>
 
-          {/* The Solution */}
+          {/* Context & Requirements */}
+          <div className="flex flex-col gap-3">
+            <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
+              <Layers className="w-5 h-5 text-primary" aria-hidden="true" />
+              2. Context & Core Requirements
+            </h3>
+            <ul className="flex flex-col gap-2 pt-1">
+              {project.requirements.map((req, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 p-3 rounded-md border border-border bg-card/40 text-body-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true" />
+                  <span>{req}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Solution */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Database className="w-5 h-5 text-primary" aria-hidden="true" />
-              The Solution
+              3. The Technical Solution
             </h3>
-            <p className="text-body-sm sm:text-base">
+            <p className="text-body-sm sm:text-base leading-relaxed">
               {project.solution}
             </p>
           </div>
 
-          {/* Features List */}
+          {/* Key Features */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <CheckCircle2 className="w-5 h-5 text-primary" aria-hidden="true" />
-              Key Features & Capabilities
+              4. Key Capabilities & Features
             </h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-1">
               {project.features.map((feature, idx) => (
                 <li key={idx} className="flex items-start gap-2.5 p-3 rounded-md border border-border bg-card/40 text-body-sm">
                   <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true" />
@@ -464,11 +522,11 @@ const ProjectDetails = () => {
             </ul>
           </div>
 
-          {/* Architecture block */}
+          {/* Architecture */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
-              Technical Architecture
+              5. Architecture Breakdown
             </h3>
             <ul className="flex flex-col gap-3 text-body-sm sm:text-base pl-4 border-l border-border">
               {project.architecture.map((item, idx) => (
@@ -479,12 +537,23 @@ const ProjectDetails = () => {
             </ul>
           </div>
 
+          {/* Trade-offs & Decisions */}
+          <div className="flex flex-col gap-3 p-5 rounded-lg border border-border bg-muted/30">
+            <h3 className="font-display text-base font-medium text-foreground flex items-center gap-2">
+              <Scale className="w-4 h-4 text-primary" aria-hidden="true" />
+              6. Technical Decisions & Trade-offs
+            </h3>
+            <p className="text-body-sm text-muted-foreground leading-relaxed font-mono text-xs">
+              {project.tradeoffs}
+            </p>
+          </div>
+
           {/* Screenshots Gallery */}
           {project.screenshots && project.screenshots.length > 0 && (
-            <div className="flex flex-col gap-4 pt-4">
+            <div className="flex flex-col gap-4 pt-2">
               <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
                 <ImageIcon className="w-5 h-5 text-primary" aria-hidden="true" />
-                Screenshots & Previews
+                7. Screenshots & Interface Previews
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {project.screenshots.map((shot, idx) => (
@@ -504,24 +573,34 @@ const ProjectDetails = () => {
             </div>
           )}
 
-          {/* Challenges & Learning */}
+          {/* Challenges & Lessons */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
             <div className="flex flex-col gap-2">
-              <h4 className="label-mono text-foreground">
+              <h4 className="label-mono text-foreground flex items-center gap-1.5">
                 Challenges
               </h4>
-              <p className="text-body-sm">
+              <p className="text-body-sm leading-relaxed">
                 {project.challenges}
               </p>
             </div>
             <div className="flex flex-col gap-2">
-              <h4 className="label-mono text-foreground">
+              <h4 className="label-mono text-foreground flex items-center gap-1.5">
                 Lessons learned
               </h4>
-              <p className="text-body-sm">
+              <p className="text-body-sm leading-relaxed">
                 {project.lessons}
               </p>
             </div>
+          </div>
+
+          {/* Future Improvements */}
+          <div className="p-5 rounded-lg border border-primary/20 bg-primary/[0.03] flex flex-col gap-2">
+            <h4 className="label-mono text-primary flex items-center gap-1.5">
+              <Lightbulb className="w-3.5 h-3.5" aria-hidden="true" /> Future Improvements & Roadmap
+            </h4>
+            <p className="text-body-sm text-foreground/90 font-mono text-xs">
+              {project.futureImprovements}
+            </p>
           </div>
         </div>
       </div>
@@ -535,7 +614,7 @@ const ProjectDetails = () => {
           >
             <span className="label-mono flex items-center gap-2">
               <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
-              Previous Project
+              Previous Case Study
             </span>
             <span className="font-display text-lg font-medium text-foreground">
               {caseStudies[`0${parseInt(project.id) - 1}`]?.title || "Previous"}
@@ -551,7 +630,7 @@ const ProjectDetails = () => {
             className="group flex flex-col items-end gap-2 p-6 border border-border rounded-md bg-card hover:border-primary/50 transition-colors text-right"
           >
             <span className="label-mono flex items-center gap-2 justify-end">
-              Next Project
+              Next Case Study
               <ArrowLeft className="w-3.5 h-3.5 rotate-180 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </span>
             <span className="font-display text-lg font-medium text-foreground">
