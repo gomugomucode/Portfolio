@@ -1,8 +1,9 @@
 import { Helmet } from "react-helmet-async";
+import { siteConfig } from "@/lib/siteConfig";
 
-interface SEOProps {
-  title: string;
-  description: string;
+export interface SEOProps {
+  title?: string;
+  description?: string;
   keywords?: string;
   canonicalUrl?: string;
   ogTitle?: string;
@@ -13,43 +14,61 @@ interface SEOProps {
   schema?: Record<string, unknown> | Record<string, unknown>[];
   author?: string;
   publishDate?: string;
+  noIndex?: boolean;
 }
 
 export default function SEO({
   title,
-  description,
-  keywords = "Anupam Baral, Full Stack Developer, AI/ML Engineer, React Developer, Node.js Developer, Solana Developer",
+  description = siteConfig.description,
+  keywords,
   canonicalUrl,
   ogTitle,
   ogDescription,
-  ogImage = "https://anupambaral.com.np/og-image.webp",
+  ogImage = siteConfig.ogImage,
   ogType = "website",
   twitterCard = "summary_large_image",
   schema,
-  author = "Anupam Baral",
+  author = siteConfig.author.name,
   publishDate,
+  noIndex = false,
 }: SEOProps) {
-  const currentUrl = canonicalUrl || "https://anupambaral.com.np";
-  const finalTitle = title;
-  const finalOgTitle = ogTitle || title;
+  const fullTitle = title
+    ? `${title} | ${siteConfig.name} - Full Stack Developer Nepal`
+    : `${siteConfig.name} | Full Stack Developer Nepal | React, Next.js, AI`;
+
+  const finalOgTitle = ogTitle || title || `${siteConfig.name} | Full Stack Developer Nepal`;
   const finalOgDescription = ogDescription || description;
+  const currentUrl = canonicalUrl || siteConfig.url;
+  const combinedKeywords = keywords
+    ? `${keywords}, ${siteConfig.primaryKeywords.join(", ")}, ${siteConfig.secondaryKeywords.join(", ")}`
+    : `${siteConfig.primaryKeywords.join(", ")}, ${siteConfig.secondaryKeywords.join(", ")}`;
 
   return (
     <Helmet>
-      {/* Basic Metadata */}
-      <title>{finalTitle}</title>
+      {/* Primary Metadata */}
+      <title>{fullTitle}</title>
       <meta name="description" content={description} />
-      {keywords && <meta name="keywords" content={keywords} />}
+      <meta name="keywords" content={combinedKeywords} />
       <meta name="author" content={author} />
+      <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <link rel="canonical" href={currentUrl} />
 
-      {/* Open Graph / Facebook */}
-      <meta property="og:site_name" content="Anupam Baral Portfolio" />
+      {/* Theme & PWA */}
+      <meta name="theme-color" content="#0f172a" />
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+      {/* OpenGraph / Facebook */}
+      <meta property="og:site_name" content={siteConfig.name} />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={finalOgTitle} />
       <meta property="og:description" content={finalOgDescription} />
       {ogImage && <meta property="og:image" content={ogImage} />}
+      <meta property="og:image:width" content="1200" />
+      <meta property="og:image:height" content="630" />
+      <meta property="og:image:alt" content={`${siteConfig.name} Portfolio`} />
+      <meta property="og:locale" content="en_US" />
 
       {/* Article Specific Meta */}
       {ogType === "article" && publishDate && (
@@ -57,16 +76,16 @@ export default function SEO({
       )}
       {ogType === "article" && <meta property="article:author" content={author} />}
 
-      {/* Twitter */}
+      {/* Twitter Cards */}
       <meta name="twitter:card" content={twitterCard} />
-      <meta name="twitter:creator" content="@gomugomucode" />
-      <meta name="twitter:site" content="@gomugomucode" />
+      <meta name="twitter:creator" content={siteConfig.handle} />
+      <meta name="twitter:site" content={siteConfig.handle} />
       <meta name="twitter:url" content={currentUrl} />
       <meta name="twitter:title" content={finalOgTitle} />
       <meta name="twitter:description" content={finalOgDescription} />
       {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-      {/* Schema.org JSON-LD */}
+      {/* Structured Data (JSON-LD) */}
       {schema && (
         <script type="application/ld+json">
           {JSON.stringify(

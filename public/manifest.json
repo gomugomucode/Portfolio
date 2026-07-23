@@ -1,11 +1,12 @@
 {
-  "name": "Anupam Baral",
-  "short_name": "Anupam",
-  "description": "Full Stack Developer & AI/ML Engineer based in Nepal",
+  "name": "Anupam Baral | Full Stack Developer Nepal",
+  "short_name": "Anupam Baral",
+  "description": "Portfolio of Anupam Baral - Full Stack Developer and AI Engineer specializing in React, Next.js, Python, Supabase, and Solana.",
   "start_url": "/",
   "display": "standalone",
-  "background_color": "#f5f2ec",
-  "theme_color": "#f5f2ec",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary",
   "icons": [
     {
       "src": "/logo.png",

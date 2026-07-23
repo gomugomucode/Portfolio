@@ -1,114 +1,60 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f5f2ec">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="theme-color" content="#0f172a" />
+  <meta name="color-scheme" content="dark light" />
 
   <!-- Primary Meta Tags -->
-  <title>Anupam Baral | Full Stack Developer & AI/ML Engineer Nepal</title>
-  <meta name="title" content="Anupam Baral | Full Stack Developer & AI/ML Engineer Nepal">
+  <title>Anupam Baral | Full Stack Developer Nepal | React, Next.js, AI</title>
+  <meta name="title" content="Anupam Baral | Full Stack Developer Nepal | React, Next.js, AI" />
   <meta name="description"
-    content="Anupam Baral is a Full Stack Developer and AI/ML Engineer from Butwal, Nepal. Specializing in React, TypeScript, Node.js, Python, and Solana Web3 development.">
-  <meta name="author" content="Anupam Baral">
-  <meta name="robots" content="index, follow">
+    content="Anupam Baral is a Full Stack Developer and AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development." />
+  <meta name="author" content="Anupam Baral" />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
   <meta name="keywords"
-    content="Anupam Baral, gomugomucode, Full Stack Developer Nepal, React Developer Nepal, Python Developer Nepal, AI ML Engineer Nepal, MERN Stack Developer, Node.js Developer, TypeScript Developer, Solana Developer, Butwal Developer, BCA Nepal">
-  <link rel="canonical" href="https://anupambaral.com.np/">
-  <!-- Favicons -->
+    content="Full Stack Developer Nepal, React Developer Nepal, Next.js Developer, Python Developer, AI Developer Nepal, Machine Learning Developer, Supabase Developer, Firebase Developer, Software Engineer Nepal, Solana Developer, Anupam Baral, gomugomucode" />
+  <link rel="canonical" href="https://anupambaral.com.np/" />
+
+  <!-- Favicons & Touch Icons -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/logo.png" type="image/png" />
   <link rel="shortcut icon" href="/logo.png" type="image/png" />
   <link rel="apple-touch-icon" href="/logo.png" />
   <link rel="manifest" href="/manifest.json" />
 
   <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://anupambaral.com.np/">
-  <meta property="og:site_name" content="Anupam Baral Portfolio">
-  <meta property="og:title" content="Anupam Baral | Full Stack Developer & AI/ML Engineer Nepal">
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://anupambaral.com.np/" />
+  <meta property="og:site_name" content="Anupam Baral Portfolio" />
+  <meta property="og:title" content="Anupam Baral | Full Stack Developer Nepal | React, Next.js, AI" />
   <meta property="og:description"
-    content="Anupam Baral is a Full Stack Developer and AI/ML Engineer from Butwal, Nepal. Specializing in React, TypeScript, Node.js, Python, and Solana Web3 development.">
-  <meta property="og:image" content="https://anupambaral.com.np/og-image.png">
-  <meta property="og:image:width" content="1200">
-  <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Anupam Baral - Full Stack Developer Portfolio">
-  <meta property="og:locale" content="en_US">
+    content="Anupam Baral is a Full Stack Developer and AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development." />
+  <meta property="og:image" content="https://anupambaral.com.np/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Anupam Baral - Full Stack Developer Portfolio" />
+  <meta property="og:locale" content="en_US" />
 
-  <!-- Twitter -->
-  <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://anupambaral.com.np/">
-  <meta property="twitter:title" content="Anupam Baral | Full Stack Developer & AI/ML Engineer Nepal">
-  <meta property="twitter:description"
-    content="Anupam Baral is a Full Stack Developer and AI/ML Engineer from Butwal, Nepal. Specializing in React, TypeScript, Node.js, Python, and Solana Web3 development.">
-  <meta property="twitter:image" content="https://anupambaral.com.np/og-image.png">
-  <meta property="twitter:creator" content="@gomugomucode">
+  <!-- Twitter Cards -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:url" content="https://anupambaral.com.np/" />
+  <meta name="twitter:title" content="Anupam Baral | Full Stack Developer Nepal | React, Next.js, AI" />
+  <meta name="twitter:description"
+    content="Anupam Baral is a Full Stack Developer and AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development." />
+  <meta name="twitter:image" content="https://anupambaral.com.np/og-image.png" />
+  <meta name="twitter:creator" content="@gomugomucode" />
+  <meta name="twitter:site" content="@gomugomucode" />
 
-  <!-- Performance Meta Tags -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Preconnect & Fonts Performance -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
-  <link rel="preload" href="/my-photo.webp" as="image">
-
-  <!-- Structured Data (JSON-LD) -->
-  <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Anupam Baral",
-      "alternateName": "gomugomucode",
-      "url": "https://anupambaral.com.np",
-      "image": "https://anupambaral.com.np/og-image.png",
-      "jobTitle": "Full Stack Developer & AI/ML Engineer",
-      "description": "Anupam Baral is a Full Stack Developer and AI/ML Engineer from Butwal, Nepal. Specializing in React, TypeScript, Node.js, Python, and Solana Web3 development.",
-      "address": {
-        "@type": "PostalAddress",
-        "addressLocality": "Butwal",
-        "addressCountry": "NP"
-      },
-      "sameAs": [
-        "https://github.com/gomugomucode",
-        "https://linkedin.com/in/gomugomucode"
-      ],
-      "knowsAbout": [
-        "React",
-        "TypeScript",
-        "Node.js",
-        "Next.js",
-        "Python",
-        "Solana",
-        "AI/ML",
-        "MERN Stack"
-      ]
-    }
-  </script>
-  <!-- Google Analytics 4 (GA4) Placeholder -->
-  <!--
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-XXXXXXXXXX');
-  </script>
-  -->
-
-  <!-- Microsoft Clarity Placeholder -->
-  <!--
-  <script type="text/javascript">
-      (function(c,l,a,r,i,t,y){
-          c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-          t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-          y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-      })(window, document, "clarity", "script", "XXXXXXXXXX");
-  </script>
-  -->
-
-  <!-- Google Search Console Verification Placeholder -->
-  <!-- <meta name="google-site-verification" content="YOUR_VERIFICATION_CODE" /> -->
 </head>
 
-<body>
+<body class="antialiased text-foreground bg-background selection:bg-primary/20 selection:text-primary">
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>
