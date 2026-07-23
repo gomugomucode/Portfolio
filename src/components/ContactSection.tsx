@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import { Card } from "./ui/card";
 import { SectionGrid, SectionHeader, SectionShell } from "./layout/SectionShell";
 import AnimatedSection from "./AnimatedSection";
+import { trackContactFormSubmit } from "@/lib/analytics";
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -53,6 +54,7 @@ const ContactSection = () => {
         setForm({ name: "", email: "", message: "" });
         setErrors({});
         setSuccess(true);
+        trackContactFormSubmit("web3forms");
 
         toast({
           title: "Message received.",

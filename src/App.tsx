@@ -1,8 +1,9 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useEffect } from "react";
 import Layout from "./components/Layout";
+import { trackPageView } from "@/lib/analytics";
 
 // Lazy load pages for code splitting and better performance
 const Home = lazy(() => import("./pages/Home"));
@@ -24,32 +25,44 @@ const PageLoader = () => (
   </div>
 );
 
+// SPA Analytics PageView Listener
+const AnalyticsTracker = () => {
+  const location = useLocation();
+
+  useEffect(() => {
+    trackPageView(location.pathname + location.search);
+  }, [location]);
+
+  return null;
+};
+
 const App = () => (
   <QueryClientProvider client={queryClient}>
-      <BrowserRouter
-        future={{
-          v7_startTransition: true,
-          v7_relativeSplatPath: true,
-        }}
-      >
-        <Toaster />
-        <Layout>
-          <Suspense fallback={<PageLoader />}>
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/project/:id" element={<ProjectDetails />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </Layout>
-      </BrowserRouter>
-    </QueryClientProvider>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
+      <AnalyticsTracker />
+      <Toaster />
+      <Layout>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/projects" element={<Projects />} />
+            <Route path="/project/:id" element={<ProjectDetails />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/contact" element={<Contact />} />
+            <Route path="/privacy" element={<Privacy />} />
+            <Route path="/terms" element={<Terms />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </Suspense>
+      </Layout>
+    </BrowserRouter>
+  </QueryClientProvider>
 );
 
-export default App;
+export default App;
