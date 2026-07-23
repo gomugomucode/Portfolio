@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Database, Cpu, Calendar, Shield, CheckCircle2, Image as ImageIcon } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Database, Cpu, Calendar, Shield, CheckCircle2, Image as ImageIcon, ChevronRight, BookOpen } from "lucide-react";
 import SEO from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -35,6 +35,8 @@ export interface CaseStudy {
   features: string[];
   challenges: string;
   lessons: string;
+  relatedArticleLink?: string;
+  relatedArticleTitle?: string;
 }
 
 export const caseStudies: Record<string, CaseStudy> = {
@@ -57,6 +59,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     liveLink: "https://elearn-lake.vercel.app",
     githubLink: "https://github.com/gomugomucode/elearn",
+    relatedArticleLink: "https://medium.com/@gomugomucode/decoupled-lms-architectures",
+    relatedArticleTitle: "Decoupling Large-Scale LMS Content Deliveries",
     metrics: [
       { label: "Content Load Time", value: "<1.2s" },
       { label: "System Uptime", value: "99.9%" },
@@ -98,6 +102,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     liveLink: "https://yatraa-zeta.vercel.app/",
     githubLink: "https://github.com/gomugomucode/Yatra",
+    relatedArticleLink: "https://medium.com/@gomugomucode/yatra-solana-ride-sharing-protocol",
+    relatedArticleTitle: "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana",
     metrics: [
       { label: "Tx Confirmation", value: "~400ms" },
       { label: "Gas Fee Per Ride", value: "<$0.0001" },
@@ -180,6 +186,8 @@ export const caseStudies: Record<string, CaseStudy> = {
     ],
     liveLink: "",
     githubLink: "",
+    relatedArticleLink: "https://medium.com/@gomugomucode/nextjs-edge-rendering",
+    relatedArticleTitle: "Optimizing Next.js Edge Rendering for Production",
     metrics: [
       { label: "Order Channels", value: "3" },
       { label: "Tech Stack", value: "Next.js 16" },
@@ -265,11 +273,20 @@ const ProjectDetails = () => {
         schema={schemas}
       />
 
+      {/* Visual Breadcrumb Trail */}
+      <nav aria-label="Breadcrumb navigation" className="flex items-center gap-2 mb-6 label-mono text-xs text-muted-foreground">
+        <Link to="/" className="hover:text-foreground transition-colors">Home</Link>
+        <ChevronRight className="w-3 h-3" aria-hidden="true" />
+        <Link to="/projects" className="hover:text-foreground transition-colors">Projects</Link>
+        <ChevronRight className="w-3 h-3" aria-hidden="true" />
+        <span className="text-foreground font-medium line-clamp-1">{project.title}</span>
+      </nav>
+
       {/* Back CTA */}
       <div className="mb-12">
         <Link to="/projects" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
           <ArrowLeft className="w-4 h-4" aria-hidden="true" />
-          Back to Work
+          Back to All Projects
         </Link>
       </div>
 
@@ -385,6 +402,26 @@ const ProjectDetails = () => {
               ))}
             </div>
           </div>
+
+          {/* Contextual Link to Engineering Article */}
+          {project.relatedArticleLink && (
+            <Card className="p-6 bg-primary/[0.04] border-primary/20 flex flex-col gap-3">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-primary flex items-center gap-1.5">
+                <BookOpen className="w-3.5 h-3.5" aria-hidden="true" /> Related Engineering Log
+              </span>
+              <h4 className="font-display text-sm font-medium leading-snug">
+                {project.relatedArticleTitle}
+              </h4>
+              <a
+                href={project.relatedArticleLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-primary hover:underline"
+              >
+                Read Article on Medium →
+              </a>
+            </Card>
+          )}
         </div>
 
         {/* Right Editorial Section */}
@@ -489,7 +526,7 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      {/* Navigation Footer */}
+      {/* Internal Navigation Footer: Prev / Next */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-16 mt-20 border-t border-border">
         {project.id !== "01" ? (
           <Link
