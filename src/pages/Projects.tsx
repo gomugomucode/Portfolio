@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/layout/SectionShell";
 import AnimatedSection from "@/components/AnimatedSection";
 import { ProjectCard } from "@/components/ProjectCard";
+import GitHubSection from "@/components/GitHubSection";
 import { siteConfig } from "@/lib/siteConfig";
 import {
   getBreadcrumbSchema,
@@ -152,7 +153,11 @@ const Projects = () => {
         )}
       </div>
 
-      <div className="text-center mt-20">
+      <div className="mt-16">
+        <GitHubSection />
+      </div>
+
+      <div className="text-center mt-16">
         <p className="text-sm text-muted-foreground">
           Want to discuss a project? <Link to="/contact" className="text-primary hover:underline">Reach out here.</Link>
         </p>
