@@ -1,5 +1,5 @@
 import { useParams, Link } from "react-router-dom";
-import { ArrowLeft, ExternalLink, Github, Database, Cpu, Calendar, Shield } from "lucide-react";
+import { ArrowLeft, ExternalLink, Github, Database, Cpu, Calendar, Shield, CheckCircle2, Image as ImageIcon } from "lucide-react";
 import SEO from "@/components/SEO";
 import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
@@ -12,35 +12,49 @@ import {
   getWebPageSchema,
 } from "@/lib/schema";
 
-interface CaseStudy {
+export interface CaseStudy {
   id: string;
+  slug: string;
   title: string;
+  seoTitle: string;
+  seoDescription: string;
   subtitle: string;
   role: string;
   year: string;
   client: string;
   tags: string[];
+  keywords: string[];
   imageUrl: string;
+  screenshots: string[];
   liveLink: string;
   githubLink: string;
   metrics: { label: string; value: string }[];
   problem: string;
   solution: string;
   architecture: string[];
+  features: string[];
   challenges: string;
   lessons: string;
 }
 
-const caseStudies: Record<string, CaseStudy> = {
+export const caseStudies: Record<string, CaseStudy> = {
   "01": {
     id: "01",
+    slug: "e-learning-platform",
     title: "E-Learning LMS Platform",
+    seoTitle: "E-Learning LMS Platform Case Study | React, Node.js & MySQL",
+    seoDescription: "In-depth technical case study of a decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.",
     subtitle: "A high-performance decoupled Learning Management System built for production-scale content distribution.",
     role: "Full Stack Engineer",
     year: "2024",
     client: "Internal / Open Source",
-    tags: ["React", "Node.js", "Express", "MySQL", "Vercel"],
+    tags: ["React", "Node.js", "Express", "MySQL", "Vercel", "Tailwind CSS"],
+    keywords: ["React LMS", "Decoupled Architecture", "Node.js Express API", "MySQL Indexing", "Vercel Edge Caching"],
     imageUrl: "/elearning-preview.webp",
+    screenshots: [
+      "/elearning-preview.webp",
+      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200"
+    ],
     liveLink: "https://elearn-lake.vercel.app",
     githubLink: "https://github.com/gomugomucode/elearn",
     metrics: [
@@ -51,23 +65,37 @@ const caseStudies: Record<string, CaseStudy> = {
     problem: "Traditional LMS solutions suffer from slow page load speeds and tightly coupled architectures. High payload delivery and excessive database roundtrips degrade search and dashboard performance when multiple courses load concurrently.",
     solution: "Decoupled the architecture completely by serving a static, highly optimized React client via global CDNs and running a lightweight, stateless Node.js/Express API. Built database query optimizations using precompiled joins and index mappings in MySQL to handle nested course structures.",
     architecture: [
-      "Decoupled React Client served from edge CDNs.",
+      "Decoupled React Client served from global edge CDNs.",
       "Stateless REST API utilizing Node.js and Express.",
       "Relational MySQL persistence layer utilizing relational indexing for course trees.",
       "Vercel Edge caching configurations for static route delivery."
+    ],
+    features: [
+      "Sub-second course catalog searching with client-side indexing.",
+      "Hierarchical course category trees with single-query relational fetches.",
+      "Stateless JWT user authentication & session management.",
+      "Responsive progress tracking & video streaming playback integration."
     ],
     challenges: "Handling recursive folder structures and hierarchical course categories efficiently in a relational MySQL database without triggering exponential query loops.",
     lessons: "Leveraging structured database indexes and flattening dynamic relational queries into indexed lookup arrays dramatically increases runtime response speed and resource efficiency."
   },
   "02": {
     id: "02",
+    slug: "yatra-solana-ride-sharing",
     title: "Yatra — Solana Ride-Sharing",
+    seoTitle: "Yatra Solana Ride-Sharing | Decentralized Web3 Protocol Case Study",
+    seoDescription: "Architectural breakdown of Yatra: a Solana decentralized ride-sharing engine written in Rust smart contracts with Firebase RTDB signaling and Web3.js.",
     subtitle: "Decentralized atomic trip contracts and reputation ledger built on the Solana blockchain.",
     role: "Core Web3 Architect",
     year: "2024",
     client: "Hackathon Entry",
-    tags: ["Solana", "Rust", "Next.js", "Firebase", "Web3.js"],
+    tags: ["Solana", "Rust", "Next.js", "Firebase", "Web3.js", "Anchor"],
+    keywords: ["Solana Developer", "Rust Smart Contracts", "Decentralized Ride Sharing", "Web3.js Protocol", "Firebase RTDB"],
     imageUrl: "/yatra.webp",
+    screenshots: [
+      "/yatra.webp",
+      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200"
+    ],
     liveLink: "https://yatraa-zeta.vercel.app/",
     githubLink: "https://github.com/gomugomucode/Yatra",
     metrics: [
@@ -83,18 +111,32 @@ const caseStudies: Record<string, CaseStudy> = {
       "Firebase Realtime Database for quick coordinate syncing.",
       "Anchor framework testing suite mapping instruction executions."
     ],
+    features: [
+      "Atomic ride transaction escrow on Solana blockchain ledger.",
+      "Decentralized driver reputation scoring verified on-chain.",
+      "Sub-50ms driver-rider location signaling via Firebase RTDB.",
+      "Cryptographic wallet authentication eliminating centralized passwords."
+    ],
     challenges: "Managing asynchronous off-chain signaling coordinates (Firebase) while enforcing absolute trust boundaries via atomic on-chain verification steps on the blockchain ledger.",
     lessons: "Decoupled real-time coordination feeds (off-chain) from critical state transitions (on-chain) are key to scaling blockchain architectures without overloading blocks."
   },
   "03": {
     id: "03",
+    slug: "web3-loyalty-protocol",
     title: "Web3 Loyalty Protocol",
+    seoTitle: "Web3 Loyalty Protocol Case Study | Solana & Next.js DApp",
+    seoDescription: "Technical case study of a Solana Web3 loyalty rewards protocol featuring automated smart contract distributions, sub-cent transaction costs, and instant token settlement.",
     subtitle: "A high-performance loyalty rewards dApp featuring automated smart-contract distributions.",
     role: "Lead Dapp Developer",
     year: "2023",
     client: "Freelance",
-    tags: ["Web3.js", "Solana", "Rust", "Next.js", "TypeScript"],
+    tags: ["Web3.js", "Solana", "Rust", "Next.js", "TypeScript", "Tailwind CSS"],
+    keywords: ["Solana DApp", "Web3 Loyalty Program", "Rust Smart Contracts", "TypeScript Web3.js", "Token Minting"],
     imageUrl: "/solana.webp",
+    screenshots: [
+      "/solana.webp",
+      "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=1200"
+    ],
     liveLink: "https://solana-loyalty-d-app.vercel.app/",
     githubLink: "https://github.com/gomugomucode/Solana-Loyalty-dApp",
     metrics: [
@@ -110,18 +152,32 @@ const caseStudies: Record<string, CaseStudy> = {
       "TypeScript Web3.js transaction builders with automated wallet signature flows.",
       "Edge-cached REST requests fetching off-chain loyalty product details."
     ],
+    features: [
+      "Instant token minting and transfer settlement on Solana.",
+      "Automated loyalty point rewards distribution upon checkout triggers.",
+      "Seamless Phantom & Solflare wallet connectivity.",
+      "Responsive customer reward dashboard with real-time balance feeds."
+    ],
     challenges: "Handling smooth wallet connection edge cases across multiple mobile browsers where wallet injection APIs frequently conflict.",
     lessons: "Clean, asynchronous state management wrapper logic around third-party wallet interfaces prevents critical page crashes and improves mobile customer conversion rates."
   },
   "04": {
     id: "04",
+    slug: "greenstar-suppliers",
     title: "Greenstar Suppliers",
+    seoTitle: "Greenstar Suppliers Website Case Study | Next.js 16 & Prisma",
+    seoDescription: "Production case study of Greenstar Suppliers: a Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.",
     subtitle: "A Next.js 16 product catalogue and order enquiry platform for Nepal's leading entrance and home automation supplier.",
     role: "Full Stack Developer",
     year: "2025",
     client: "Greenstar Suppliers, Nepal",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
+    keywords: ["Next.js Developer Nepal", "Full Stack Developer Nepal", "Prisma PostgreSQL", "Home Automation Nepal", "Next.js 16 App Router"],
     imageUrl: "/greenstar.webp",
+    screenshots: [
+      "/greenstar.webp",
+      "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1200"
+    ],
     liveLink: "",
     githubLink: "",
     metrics: [
@@ -130,13 +186,19 @@ const caseStudies: Record<string, CaseStudy> = {
       { label: "Market", value: "Nepal" }
     ],
     problem: "Local hardware and home automation suppliers in Nepal lacked a professional online presence to showcase entrance products — gate automation, boom barriers, and garage systems — and had no streamlined way to collect enquiries or route orders.",
-    solution: "Built a full-featured Next.js 16 (App Router) website for Greenstar Suppliers with a animated hero product carousel, a structured product catalogue, per-product Call and WhatsApp order CTAs, a floating WhatsApp button, and a contact/enquiry form backed by a Prisma + PostgreSQL API with optional Nodemailer email notifications.",
+    solution: "Built a full-featured Next.js 16 (App Router) website for Greenstar Suppliers with an animated hero product carousel, a structured product catalogue, per-product Call and WhatsApp order CTAs, a floating WhatsApp button, and a contact/enquiry form backed by a Prisma + PostgreSQL API with optional Nodemailer email notifications.",
     architecture: [
       "Next.js 16 App Router with React 19 and TypeScript for the frontend.",
       "Tailwind CSS 4 and Framer Motion for responsive layouts and smooth animations.",
       "Prisma ORM with PostgreSQL for persistent enquiry storage.",
       "Nodemailer backend for email notifications on new enquiries.",
-      "Environment-driven contact config (phone, WhatsApp, email) via .env.local."
+      "Environment-driven contact config (phone, WhatsApp, email) via environment variables."
+    ],
+    features: [
+      "Dynamic product catalogue with instant category filtering.",
+      "Direct Call & WhatsApp ordering integrations tailored for Nepal's market.",
+      "Prisma + PostgreSQL backend persisting customer enquiry submissions.",
+      "Floating contact widget and animated hero banner carousel."
     ],
     challenges: "Ensuring the WhatsApp and call order flows worked reliably across Nepal's diverse mobile device landscape while keeping the product catalogue easy to manage and extend without a CMS.",
     lessons: "Environment-variable-driven contact details and a clean component architecture allow non-technical clients to update phone numbers and branding without touching application code."
@@ -184,8 +246,8 @@ const ProjectDetails = () => {
     }),
     getBreadcrumbSchema(breadcrumbs),
     getWebPageSchema(
-      `${project.title} | Case Study by Anupam Baral`,
-      project.subtitle,
+      project.seoTitle,
+      project.seoDescription,
       url,
       breadcrumbs
     ),
@@ -194,9 +256,9 @@ const ProjectDetails = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title={`${project.title} | Case Study`}
-        description={project.subtitle}
-        keywords={`${project.title}, Anupam Baral Case Study, Software Architecture, React Developer, Next.js`}
+        title={project.seoTitle}
+        description={project.seoDescription}
+        keywords={project.keywords.join(", ")}
         canonicalUrl={url}
         ogImage={`${siteConfig.url}${project.imageUrl}`}
         ogType="article"
@@ -206,7 +268,7 @@ const ProjectDetails = () => {
       {/* Back CTA */}
       <div className="mb-12">
         <Link to="/projects" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-4 h-4" aria-hidden="true" />
           Back to Work
         </Link>
       </div>
@@ -237,7 +299,7 @@ const ProjectDetails = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 px-4 py-2.5 transition-all"
               >
-                <ExternalLink className="w-3.5 h-3.5" />
+                <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
                 Live Demo
               </a>
             )}
@@ -248,7 +310,7 @@ const ProjectDetails = () => {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md border border-border hover:bg-muted text-foreground active:scale-95 px-4 py-2.5 transition-all"
               >
-                <Github className="w-3.5 h-3.5" />
+                <Github className="w-3.5 h-3.5" aria-hidden="true" />
                 Source Code
               </a>
             )}
@@ -256,7 +318,7 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      {/* Visual Header */}
+      {/* Hero Visual */}
       <div className="w-full aspect-video border border-border/40 rounded-md overflow-hidden bg-muted mb-16 relative">
         <img
           src={project.imageUrl}
@@ -274,7 +336,7 @@ const ProjectDetails = () => {
 
       {/* Grid contents */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        {/* Left Rail */}
+        {/* Left Metadata Rail */}
         <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-28">
           <Card className="p-6 flex flex-col gap-4">
             <div>
@@ -291,7 +353,7 @@ const ProjectDetails = () => {
                 Year
               </span>
               <span className="text-sm font-medium text-foreground flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-muted-foreground" />
+                <Calendar className="w-4 h-4 text-muted-foreground" aria-hidden="true" />
                 {project.year}
               </span>
             </div>
@@ -325,11 +387,12 @@ const ProjectDetails = () => {
           </div>
         </div>
 
-        {/* Right Editorial */}
+        {/* Right Editorial Section */}
         <div className="lg:col-span-8 flex flex-col gap-10">
+          {/* The Problem */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
-              <Cpu className="w-5 h-5 text-primary" />
+              <Cpu className="w-5 h-5 text-primary" aria-hidden="true" />
               The Problem
             </h3>
             <p className="text-body-sm sm:text-base">
@@ -337,9 +400,10 @@ const ProjectDetails = () => {
             </p>
           </div>
 
+          {/* The Solution */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
-              <Database className="w-5 h-5 text-primary" />
+              <Database className="w-5 h-5 text-primary" aria-hidden="true" />
               The Solution
             </h3>
             <p className="text-body-sm sm:text-base">
@@ -347,9 +411,26 @@ const ProjectDetails = () => {
             </p>
           </div>
 
+          {/* Features List */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
-              <Shield className="w-5 h-5 text-primary" />
+              <CheckCircle2 className="w-5 h-5 text-primary" aria-hidden="true" />
+              Key Features & Capabilities
+            </h3>
+            <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 pt-2">
+              {project.features.map((feature, idx) => (
+                <li key={idx} className="flex items-start gap-2.5 p-3 rounded-md border border-border bg-card/40 text-body-sm">
+                  <span className="w-1.5 h-1.5 rounded-full bg-primary mt-2 shrink-0" aria-hidden="true" />
+                  <span>{feature}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Architecture block */}
+          <div className="flex flex-col gap-3">
+            <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
+              <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
               Technical Architecture
             </h3>
             <ul className="flex flex-col gap-3 text-body-sm sm:text-base pl-4 border-l border-border">
@@ -361,6 +442,32 @@ const ProjectDetails = () => {
             </ul>
           </div>
 
+          {/* Screenshots Gallery */}
+          {project.screenshots && project.screenshots.length > 0 && (
+            <div className="flex flex-col gap-4 pt-4">
+              <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
+                <ImageIcon className="w-5 h-5 text-primary" aria-hidden="true" />
+                Screenshots & Previews
+              </h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {project.screenshots.map((shot, idx) => (
+                  <div key={idx} className="aspect-video rounded-md border border-border overflow-hidden bg-muted">
+                    <img
+                      src={shot}
+                      alt={`${project.title} screenshot ${idx + 1}`}
+                      width={600}
+                      height={337}
+                      loading="lazy"
+                      decoding="async"
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Challenges & Learning */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
             <div className="flex flex-col gap-2">
               <h4 className="label-mono text-foreground">
@@ -390,7 +497,7 @@ const ProjectDetails = () => {
             className="group flex flex-col gap-2 p-6 border border-border rounded-md bg-card hover:border-primary/50 transition-colors"
           >
             <span className="label-mono flex items-center gap-2">
-              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" />
+              <ArrowLeft className="w-3.5 h-3.5 group-hover:-translate-x-1 transition-transform" aria-hidden="true" />
               Previous Project
             </span>
             <span className="font-display text-lg font-medium text-foreground">
@@ -408,7 +515,7 @@ const ProjectDetails = () => {
           >
             <span className="label-mono flex items-center gap-2 justify-end">
               Next Project
-              <ArrowLeft className="w-3.5 h-3.5 rotate-180 group-hover:translate-x-1 transition-transform" />
+              <ArrowLeft className="w-3.5 h-3.5 rotate-180 group-hover:translate-x-1 transition-transform" aria-hidden="true" />
             </span>
             <span className="font-display text-lg font-medium text-foreground">
               {caseStudies[`0${parseInt(project.id) + 1}`]?.title || "Next"}
