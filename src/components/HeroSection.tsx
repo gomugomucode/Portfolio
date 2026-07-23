@@ -92,14 +92,14 @@ const HeroSection = () => {
                   Hire Me for Projects / Full-time
                 </Button>
                 <a
-                  href="/resume.pdf"
+                  href="\Anupambaral-cv.docx"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackResumeDownload()}
                   className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border hover:bg-muted text-foreground font-mono text-xs font-medium uppercase tracking-wider transition-colors interactive-focus"
                 >
                   <Download className="w-4 h-4 text-primary" aria-hidden="true" />
-                  Download Resume (PDF)
+                  Download CV
                 </a>
               </motion.div>
             </motion.div>
