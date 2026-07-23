@@ -2,7 +2,7 @@ export const siteConfig = {
   name: "Anupam Baral",
   handle: "@gomugomucode",
   url: "https://anupambaral.com.np",
-  ogImage: "https://anupambaral.com.np/og-image.png",
+  ogImage: "https://anupambaral.com.np/og-image.webp",
   description:
     "Anupam Baral is a Full Stack Developer and AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development.",
   primaryKeywords: [

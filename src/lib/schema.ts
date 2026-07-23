@@ -1,4 +1,5 @@
 import { siteConfig } from "./siteConfig";
+import { type GoogleReview } from "@/data/googleReviews";
 
 /**
  * Standard Schema.org JSON-LD Builders for Anupam Baral's Developer Portfolio
@@ -225,3 +226,63 @@ export const getFAQSchema = (faqs: FAQItem[]) => ({
     },
   })),
 });
+
+// 9. AggregateRating Schema
+export const getAggregateRatingSchema = (reviews: GoogleReview[]) => {
+  if (!reviews || reviews.length === 0) return null;
+  const ratingValue = (
+    reviews.reduce((acc, r) => acc + r.rating, 0) / reviews.length
+  ).toFixed(1);
+
+  return {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "@id": `${siteConfig.url}/#localbusiness`,
+    name: `${siteConfig.name} - Full Stack Developer & AI Engineer`,
+    image: siteConfig.ogImage,
+    url: siteConfig.url,
+    telephone: "+977-9800000000",
+    priceRange: "$$",
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Butwal",
+      addressRegion: "Lumbini",
+      addressCountry: "NP",
+    },
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue,
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: String(reviews.length),
+      reviewCount: String(reviews.length),
+    },
+  };
+};
+
+// 10. Review Schema List
+export const getReviewSchema = (reviews: GoogleReview[]) => {
+  if (!reviews || reviews.length === 0) return [];
+  return reviews.map((r) => ({
+    "@context": "https://schema.org",
+    "@type": "Review",
+    itemReviewed: {
+      "@id": `${siteConfig.url}/#localbusiness`,
+    },
+    author: {
+      "@type": "Person",
+      name: r.name,
+    },
+    reviewRating: {
+      "@type": "Rating",
+      ratingValue: String(r.rating),
+      bestRating: "5",
+      worstRating: "1",
+    },
+    reviewBody: r.review,
+    publisher: {
+      "@type": "Organization",
+      name: "Google",
+    },
+  }));
+};

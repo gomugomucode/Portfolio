@@ -6,7 +6,7 @@ import DeveloperTimeline from "@/components/DeveloperTimeline";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import PerformanceDashboard from "@/components/PerformanceDashboard";
-import TestimonialsSection from "@/components/TestimonialsSection";
+import GoogleReviews from "@/components/GoogleReviews";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import { siteConfig } from "@/lib/siteConfig";
@@ -15,7 +15,10 @@ import {
   getWebSiteSchema,
   getOrganizationSchema,
   getFAQSchema,
+  getAggregateRatingSchema,
+  getReviewSchema,
 } from "@/lib/schema";
+import { googleReviews } from "@/data/googleReviews";
 
 const homepageFaqs = [
   {
@@ -41,6 +44,8 @@ const Home = () => {
     getWebSiteSchema(),
     getOrganizationSchema(),
     getFAQSchema(homepageFaqs),
+    getAggregateRatingSchema(googleReviews),
+    ...getReviewSchema(googleReviews),
   ];
 
   return (
@@ -59,7 +64,7 @@ const Home = () => {
       <ProjectsSection />
       <SkillsSection />
       <PerformanceDashboard />
-      <TestimonialsSection />
+      <GoogleReviews />
       <BlogSection />
       <ContactSection />
     </div>

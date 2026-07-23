@@ -114,9 +114,10 @@ const HeroSection = () => {
               <div className="flex items-center gap-4">
                 <img
                   src="/my-photo.webp"
-                  alt="Anupam Baral"
+                  alt="Anupam Baral - Full Stack Developer & AI Engineer"
                   width={72}
                   height={72}
+                  decoding="async"
                   fetchPriority="high"
                   className="w-18 h-18 rounded-full border-2 border-primary/20 object-cover shadow-sm"
                   onError={(e) => {
