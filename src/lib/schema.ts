@@ -25,6 +25,10 @@ export const getPersonSchema = () => ({
     siteConfig.social.github,
     siteConfig.social.linkedin,
     siteConfig.social.twitter,
+    siteConfig.social.medium,
+    siteConfig.social.youtube,
+    siteConfig.social.facebook,
+    siteConfig.social.instagram,
   ],
   knowsAbout: [
     "React",
@@ -83,6 +87,10 @@ export const getOrganizationSchema = () => ({
     siteConfig.social.github,
     siteConfig.social.linkedin,
     siteConfig.social.twitter,
+    siteConfig.social.medium,
+    siteConfig.social.youtube,
+    siteConfig.social.facebook,
+    siteConfig.social.instagram,
   ],
   contactPoint: {
     "@type": "ContactPoint",

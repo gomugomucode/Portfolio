@@ -29,6 +29,10 @@ export const siteConfig = {
     github: "https://github.com/gomugomucode",
     linkedin: "https://linkedin.com/in/gomugomucode",
     twitter: "https://x.com/gomugomucode",
+    medium: "https://medium.com/@gomugomucode",
+    youtube: "https://youtube.com/@gomugomucode",
+    facebook: "https://facebook.com/gomugomucode",
+    instagram: "https://instagram.com/gomugomucode",
   },
   author: {
     name: "Anupam Baral",

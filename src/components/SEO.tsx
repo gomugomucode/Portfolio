@@ -53,6 +53,15 @@ export default function SEO({
       <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <link rel="canonical" href={currentUrl} />
 
+      {/* Social Identity Links (rel="me") */}
+      <link rel="me" href={siteConfig.social.github} />
+      <link rel="me" href={siteConfig.social.linkedin} />
+      <link rel="me" href={siteConfig.social.twitter} />
+      <link rel="me" href={siteConfig.social.medium} />
+      <link rel="me" href={siteConfig.social.youtube} />
+      <link rel="me" href={siteConfig.social.facebook} />
+      <link rel="me" href={siteConfig.social.instagram} />
+
       {/* Theme & PWA */}
       <meta name="theme-color" content="#0f172a" />
       <meta name="apple-mobile-web-app-capable" content="yes" />
