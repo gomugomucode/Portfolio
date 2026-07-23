@@ -1,7 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
-import { Search, Rss } from "lucide-react";
+import { Search, Rss, BookMarked, Sparkles, ArrowRight } from "lucide-react";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Card } from "@/components/ui/card";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { BlogCard, type BlogPost } from "@/components/BlogCard";
 import { siteConfig } from "@/lib/siteConfig";
@@ -15,6 +17,42 @@ const MEDIUM_USERNAME = "gomugomucode";
 const CACHE_KEY = `medium_blog_posts_${MEDIUM_USERNAME}`;
 const CACHE_DURATION_MS = 60 * 60 * 1000; // 1 hour
 const POSTS_PER_PAGE = 3;
+
+export interface ReadingPath {
+  id: string;
+  title: string;
+  category: string;
+  description: string;
+  articleCount: string;
+  link: string;
+}
+
+const readingPaths: ReadingPath[] = [
+  {
+    id: "solana-web3",
+    title: "Solana & Web3 Protocol Architecture",
+    category: "Web3",
+    description: "Deep dives into Rust Anchor smart programs, atomic escrow contracts, BPF compilation, and Web3.js transaction builders.",
+    articleCount: "2 Articles",
+    link: "https://medium.com/@gomugomucode/yatra-solana-ride-sharing-protocol"
+  },
+  {
+    id: "fullstack-perf",
+    title: "Decoupled Systems & Database Optimization",
+    category: "System Design",
+    description: "Analyzing sub-1.2s content delivery budgets, relational MySQL index tuning, and stateless Express API gateways.",
+    articleCount: "2 Articles",
+    link: "https://medium.com/@gomugomucode/decoupled-lms-architectures"
+  },
+  {
+    id: "ai-microservices",
+    title: "Type-Safe AI & Python Microservices",
+    category: "AI / ML",
+    description: "Bridging Python machine learning inference engines to TypeScript clients with structural Pydantic validation schemas.",
+    articleCount: "2 Articles",
+    link: "https://medium.com/@gomugomucode/type-safe-ai-pipelines"
+  }
+];
 
 const FALLBACK_POSTS: BlogPost[] = [
   {
@@ -230,125 +268,164 @@ const Blog = () => {
         schema={schemas}
       />
 
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-28">
-          <div>
-            <div className="flex items-center justify-between gap-4 mb-3">
-              <span className="label-mono">05 — Writing</span>
-              <a
-                href="/rss.xml"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
-                aria-label="Subscribe to RSS Feed"
-              >
-                <Rss className="w-3 h-3 text-primary" aria-hidden="true" />
-                RSS Feed
-              </a>
-            </div>
-            <h1 className="heading-display">Engineering logs.</h1>
-            <p className="text-body-sm max-w-sm mt-4">
-              Technical writing on database persistence, blockchain contract verification, and ML deployments. Documenting implementation details and runtime analysis.
-            </p>
+      <div className="flex flex-col gap-12">
+        {/* Recommended Reading Paths Section */}
+        <div className="flex flex-col gap-4">
+          <div className="flex items-center justify-between gap-4">
+            <span className="label-mono flex items-center gap-1.5 text-primary">
+              <BookMarked className="w-3.5 h-3.5" aria-hidden="true" /> Curated Reading Paths
+            </span>
+            <a
+              href="/rss.xml"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+              aria-label="Subscribe to RSS Feed"
+            >
+              <Rss className="w-3 h-3 text-primary" aria-hidden="true" />
+              RSS 2.0 Feed
+            </a>
           </div>
 
-          <div className="flex flex-col gap-5 mt-4">
-            <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
-              <input
-                type="text"
-                placeholder="Search articles..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full h-10 pl-10 pr-4 rounded-md border border-border bg-background text-sm interactive-focus placeholder:text-muted-foreground"
-                aria-label="Search articles"
-              />
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {readingPaths.map((path) => (
+              <Card key={path.id} className="p-5 flex flex-col justify-between gap-4 border-border bg-card/40 hover:border-primary/40 transition-colors">
+                <div className="flex flex-col gap-2">
+                  <div className="flex items-center justify-between">
+                    <Badge variant="outline" className="font-mono text-[10px] text-primary border-primary/30">
+                      {path.category}
+                    </Badge>
+                    <span className="text-[10px] font-mono text-muted-foreground">{path.articleCount}</span>
+                  </div>
+                  <h3 className="font-display text-base font-semibold text-foreground">
+                    {path.title}
+                  </h3>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    {path.description}
+                  </p>
+                </div>
 
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Category</label>
-              <div className="flex flex-wrap gap-2">
-                {allCategories.map((cat) => (
-                  <button
-                    key={cat}
-                    onClick={() => setSelectedCategory(cat)}
-                    className={`px-3 py-1.5 rounded-full text-[11px] font-mono tracking-wide transition-colors interactive-focus ${
-                      selectedCategory === cat
-                        ? "bg-foreground text-background"
-                        : "bg-muted text-muted-foreground hover:bg-border"
-                    }`}
-                  >
-                    {cat}
-                  </button>
-                ))}
-              </div>
-            </div>
-
-            <div className="flex flex-col gap-2">
-              <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Sort By</label>
-              <select
-                value={sortOrder}
-                onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest" | "readingTime")}
-                className="h-9 px-3 rounded-md border border-border bg-background text-sm interactive-focus"
-                aria-label="Sort articles by"
-              >
-                <option value="newest">Newest First</option>
-                <option value="oldest">Oldest First</option>
-                <option value="readingTime">Reading Time</option>
-              </select>
-            </div>
+                <a
+                  href={path.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-xs font-mono font-medium text-primary hover:underline inline-flex items-center gap-1 mt-1"
+                >
+                  Explore Path <ArrowRight className="w-3 h-3" aria-hidden="true" />
+                </a>
+              </Card>
+            ))}
           </div>
         </div>
 
-        <div className="lg:col-span-8 flex flex-col gap-12">
-          {loading ? (
-            <div className="flex flex-col gap-12">
-              {[1, 2, 3].map((i) => (
-                <div key={i} className="animate-pulse flex flex-col md:flex-row gap-6 border-b border-border pb-10">
-                  <div className="flex-1 flex flex-col gap-4 order-2 md:order-1">
-                    <div className="h-4 bg-muted w-32 rounded-sm" />
-                    <div className="h-8 bg-muted w-3/4 rounded-sm" />
-                    <div className="h-16 bg-muted w-full rounded-sm" />
-                    <div className="h-8 bg-muted w-32 rounded-sm mt-2" />
-                  </div>
-                  <div className="w-full md:w-56 h-48 md:h-40 bg-muted rounded-md shrink-0 order-1 md:order-2" />
-                </div>
-              ))}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start pt-4 border-t border-border">
+          <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-28">
+            <div>
+              <span className="label-mono block mb-3">05 — Engineering Logs</span>
+              <h1 className="heading-display">Technical writing.</h1>
+              <p className="text-body-sm max-w-sm mt-4">
+                In-depth articles on database persistence, Solana Rust smart contracts, and Python ML pipelines. Documenting runtime benchmarks and production trade-offs.
+              </p>
             </div>
-          ) : (
-            <>
-              {visiblePosts.length > 0 ? (
-                <div className="flex flex-col gap-10">
-                  {visiblePosts.map((post) => (
-                    <BlogCard key={post.guid} post={post} layout="horizontal" />
+
+            <div className="flex flex-col gap-5 mt-4">
+              <div className="relative w-full">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
+                <input
+                  type="text"
+                  placeholder="Search engineering logs..."
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="w-full h-10 pl-10 pr-4 rounded-md border border-border bg-background text-sm interactive-focus placeholder:text-muted-foreground"
+                  aria-label="Search articles"
+                />
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Topic Category</label>
+                <div className="flex flex-wrap gap-2">
+                  {allCategories.map((cat) => (
+                    <button
+                      key={cat}
+                      onClick={() => setSelectedCategory(cat)}
+                      className={`px-3 py-1.5 rounded-full text-[11px] font-mono tracking-wide transition-colors interactive-focus ${
+                        selectedCategory === cat
+                          ? "bg-foreground text-background"
+                          : "bg-muted text-muted-foreground hover:bg-border"
+                      }`}
+                    >
+                      {cat}
+                    </button>
                   ))}
+                </div>
+              </div>
 
-                  {hasMore && (
-                    <div className="flex justify-center pt-6">
-                      <Button onClick={handleLoadMore} variant="outline" className="gap-2">
-                        Load More Articles
-                      </Button>
+              <div className="flex flex-col gap-2">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Sort By</label>
+                <select
+                  value={sortOrder}
+                  onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest" | "readingTime")}
+                  className="h-9 px-3 rounded-md border border-border bg-background text-sm interactive-focus"
+                  aria-label="Sort articles by"
+                >
+                  <option value="newest">Newest First</option>
+                  <option value="oldest">Oldest First</option>
+                  <option value="readingTime">Reading Time</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-8 flex flex-col gap-12">
+            {loading ? (
+              <div className="flex flex-col gap-12">
+                {[1, 2, 3].map((i) => (
+                  <div key={i} className="animate-pulse flex flex-col md:flex-row gap-6 border-b border-border pb-10">
+                    <div className="flex-1 flex flex-col gap-4 order-2 md:order-1">
+                      <div className="h-4 bg-muted w-32 rounded-sm" />
+                      <div className="h-8 bg-muted w-3/4 rounded-sm" />
+                      <div className="h-16 bg-muted w-full rounded-sm" />
+                      <div className="h-8 bg-muted w-32 rounded-sm mt-2" />
                     </div>
-                  )}
-                </div>
-              ) : (
-                <div className="py-20 flex flex-col items-center justify-center text-center gap-4 bg-muted/30 rounded-md border border-border border-dashed">
-                  <p className="text-body text-muted-foreground">
-                    No articles found matching your criteria.
-                  </p>
-                  <Button variant="outline" onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}>
-                    Clear Filters
-                  </Button>
-                </div>
-              )}
-            </>
-          )}
+                    <div className="w-full md:w-56 h-48 md:h-40 bg-muted rounded-md shrink-0 order-1 md:order-2" />
+                  </div>
+                ))}
+              </div>
+            ) : (
+              <>
+                {visiblePosts.length > 0 ? (
+                  <div className="flex flex-col gap-10">
+                    {visiblePosts.map((post) => (
+                      <BlogCard key={post.guid} post={post} layout="horizontal" />
+                    ))}
 
-          {error && !loading && (
-            <p className="text-[11px] text-muted-foreground font-mono text-center">
-              Showing cached logs due to Medium API rate-limits.
-            </p>
-          )}
+                    {hasMore && (
+                      <div className="flex justify-center pt-6">
+                        <Button onClick={handleLoadMore} variant="outline" className="gap-2">
+                          Load More Articles
+                        </Button>
+                      </div>
+                    )}
+                  </div>
+                ) : (
+                  <div className="py-20 flex flex-col items-center justify-center text-center gap-4 bg-muted/30 rounded-md border border-border border-dashed">
+                    <p className="text-body text-muted-foreground">
+                      No articles found matching your criteria.
+                    </p>
+                    <Button variant="outline" onClick={() => { setSearchQuery(""); setSelectedCategory("All"); }}>
+                      Clear Filters
+                    </Button>
+                  </div>
+                )}
+              </>
+            )}
+
+            {error && !loading && (
+              <p className="text-[11px] text-muted-foreground font-mono text-center">
+                Showing cached logs due to Medium API rate-limits.
+              </p>
+            )}
+          </div>
         </div>
       </div>
     </SectionShell>
