@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<channel>
+  <title>Anupam Baral — Technical Engineering Blog</title>
+  <link>https://anupambaral.com.np/blog</link>
+  <description>Technical articles on software engineering, Solana Web3 smart contracts, React/Next.js performance, and Python machine learning pipelines by Anupam Baral.</description>
+  <language>en-us</language>
+  <copyright>Copyright 2026 Anupam Baral</copyright>
+  <lastBuildDate>Thu, 23 Jul 2026 00:00:00 GMT</lastBuildDate>
+  <atom:link href="https://anupambaral.com.np/rss.xml" rel="self" type="application/rss+xml" />
+
+  <item>
+    <title>Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana</title>
+    <link>https://medium.com/@gomugomucode/yatra-solana-ride-sharing-protocol</link>
+    <description>A comprehensive deep dive into engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems using Rust, Web3.js, and Firebase.</description>
+    <pubDate>Thu, 15 Feb 2026 09:00:00 GMT</pubDate>
+    <guid>https://medium.com/@gomugomucode/yatra-solana-ride-sharing-protocol</guid>
+    <category>Web3</category>
+    <category>Solana</category>
+    <category>Rust</category>
+  </item>
+
+  <item>
+    <title>Decoupling Large-Scale LMS Content Deliveries</title>
+    <link>https://medium.com/@gomugomucode/decoupled-lms-architectures</link>
+    <description>Analyzing MySQL persistence designs, decoupling frontend applications, and designing zero-latency CDN distributions for heavy educational platform architectures.</description>
+    <pubDate>Mon, 08 Dec 2025 14:30:00 GMT</pubDate>
+    <guid>https://medium.com/@gomugomucode/decoupled-lms-architectures</guid>
+    <category>React</category>
+    <category>Node.js</category>
+    <category>System Design</category>
+  </item>
+
+  <item>
+    <title>Type-Safe AI Inference: Connecting Python Models to TS Gateways</title>
+    <link>https://medium.com/@gomugomucode/type-safe-ai-pipelines</link>
+    <description>How to bridge Python machine learning backends with TypeScript API gateways. Implement structural runtime validations to protect latency-critical production applications.</description>
+    <pubDate>Wed, 22 Oct 2025 11:15:00 GMT</pubDate>
+    <guid>https://medium.com/@gomugomucode/type-safe-ai-pipelines</guid>
+    <category>Python</category>
+    <category>AI / ML</category>
+    <category>TypeScript</category>
+  </item>
+
+  <item>
+    <title>Optimizing Next.js Edge Rendering for E-commerce</title>
+    <link>https://medium.com/@gomugomucode/nextjs-edge-rendering</link>
+    <description>Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.</description>
+    <pubDate>Sun, 10 Aug 2025 10:00:00 GMT</pubDate>
+    <guid>https://medium.com/@gomugomucode/nextjs-edge-rendering</guid>
+    <category>React</category>
+    <category>Next.js</category>
+    <category>Performance</category>
+  </item>
+</channel>
+</rss>

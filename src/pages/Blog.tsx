@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from "react";
-import { Search } from "lucide-react";
+import { Search, Rss } from "lucide-react";
 import SEO from "@/components/SEO";
 import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/layout/SectionShell";
@@ -233,7 +233,19 @@ const Blog = () => {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
         <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-28">
           <div>
-            <span className="label-mono block mb-3">05 — Writing</span>
+            <div className="flex items-center justify-between gap-4 mb-3">
+              <span className="label-mono">05 — Writing</span>
+              <a
+                href="/rss.xml"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 text-[10px] font-mono uppercase tracking-widest text-muted-foreground hover:text-primary transition-colors"
+                aria-label="Subscribe to RSS Feed"
+              >
+                <Rss className="w-3 h-3 text-primary" aria-hidden="true" />
+                RSS Feed
+              </a>
+            </div>
             <h1 className="heading-display">Engineering logs.</h1>
             <p className="text-body-sm max-w-sm mt-4">
               Technical writing on database persistence, blockchain contract verification, and ML deployments. Documenting implementation details and runtime analysis.
@@ -242,13 +254,14 @@ const Blog = () => {
 
           <div className="flex flex-col gap-5 mt-4">
             <div className="relative w-full">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" aria-hidden="true" />
               <input
                 type="text"
                 placeholder="Search articles..."
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full h-10 pl-10 pr-4 rounded-md border border-border bg-background text-sm interactive-focus placeholder:text-muted-foreground"
+                aria-label="Search articles"
               />
             </div>
 
@@ -277,6 +290,7 @@ const Blog = () => {
                 value={sortOrder}
                 onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest" | "readingTime")}
                 className="h-9 px-3 rounded-md border border-border bg-background text-sm interactive-focus"
+                aria-label="Sort articles by"
               >
                 <option value="newest">Newest First</option>
                 <option value="oldest">Oldest First</option>
