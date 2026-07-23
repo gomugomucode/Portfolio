@@ -7,6 +7,12 @@ import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/layout/SectionShell";
 import AnimatedSection from "@/components/AnimatedSection";
 import { ProjectCard } from "@/components/ProjectCard";
+import { siteConfig } from "@/lib/siteConfig";
+import {
+  getBreadcrumbSchema,
+  getWebPageSchema,
+  getProjectSchema,
+} from "@/lib/schema";
 
 const Projects = () => {
   const [searchQuery, setSearchQuery] = useState("");
@@ -29,29 +35,48 @@ const Projects = () => {
     });
 
     if (sortOrder === "newest") {
-      filtered = filtered.reverse();
+      filtered = filtered.slice().reverse();
     }
 
     return filtered;
   }, [searchQuery, selectedTag, sortOrder]);
 
-const breadcrumbSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  itemListElement: [
-    { "@type": "ListItem", position: 1, name: "Home", item: "https://anupambaral.com.np/" },
-    { "@type": "ListItem", position: 2, name: "Projects", item: "https://anupambaral.com.np/projects" },
-  ],
-};
+  const url = `${siteConfig.url}/projects`;
+  const breadcrumbs = [
+    { name: "Home", item: "/" },
+    { name: "Projects", item: "/projects" },
+  ];
+
+  const projectSchemas = projects.map((p) =>
+    getProjectSchema({
+      title: p.title,
+      description: p.problem,
+      tags: p.tags,
+      githubLink: p.githubLink,
+      liveLink: p.liveLink,
+      imageUrl: p.imageUrl,
+    })
+  );
+
+  const schemas = [
+    getBreadcrumbSchema(breadcrumbs),
+    getWebPageSchema(
+      "Projects by Anupam Baral | Full Stack & AI Case Studies",
+      "Explore projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and Solana Web3 software.",
+      url,
+      breadcrumbs
+    ),
+    ...projectSchemas,
+  ];
 
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Projects by Anupam Baral | React, Python & AI/ML"
-        description="Explore projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions."
-        keywords="Anupam Baral Projects, gomugomucode GitHub, React Projects, AI/ML Developer Nepal"
-        canonicalUrl="https://anupambaral.com.np/projects"
-        schema={breadcrumbSchema}
+        title="Projects by Anupam Baral | React, Next.js, Python & Solana"
+        description="Explore production projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions."
+        keywords="Anupam Baral Projects, gomugomucode GitHub, React Projects, Next.js Case Studies, Solana Developer Nepal"
+        canonicalUrl={url}
+        schema={schemas}
       />
 
       <AnimatedSection>
@@ -59,7 +84,7 @@ const breadcrumbSchema = {
           <span className="label-mono">03 — Complete Archive</span>
           <h1 className="heading-display">All selected work.</h1>
           <p className="text-body-sm">
-            A comprehensive list of case studies, open source contributions, and client projects built with React, Node, Python, and Solana.
+            A comprehensive list of case studies, open source contributions, and client projects built with React, Next.js, Python, Supabase, and Solana.
           </p>
         </div>
 

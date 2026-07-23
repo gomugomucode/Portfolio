@@ -5,6 +5,12 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/layout/SectionShell";
+import { siteConfig } from "@/lib/siteConfig";
+import {
+  getProjectSchema,
+  getBreadcrumbSchema,
+  getWebPageSchema,
+} from "@/lib/schema";
 
 interface CaseStudy {
   id: string;
@@ -117,7 +123,7 @@ const caseStudies: Record<string, CaseStudy> = {
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
     imageUrl: "/greenstar.webp",
     liveLink: "",
-    githubLink: "The repo is private due to client data . ",
+    githubLink: "",
     metrics: [
       { label: "Order Channels", value: "3" },
       { label: "Tech Stack", value: "Next.js 16" },
@@ -160,30 +166,46 @@ const ProjectDetails = () => {
     );
   }
 
+  const url = `${siteConfig.url}/project/${project.id}`;
+  const breadcrumbs = [
+    { name: "Home", item: "/" },
+    { name: "Projects", item: "/projects" },
+    { name: project.title, item: `/project/${project.id}` },
+  ];
+
+  const schemas = [
+    getProjectSchema({
+      title: project.title,
+      description: project.subtitle,
+      tags: project.tags,
+      githubLink: project.githubLink,
+      liveLink: project.liveLink,
+      imageUrl: project.imageUrl,
+    }),
+    getBreadcrumbSchema(breadcrumbs),
+    getWebPageSchema(
+      `${project.title} | Case Study by Anupam Baral`,
+      project.subtitle,
+      url,
+      breadcrumbs
+    ),
+  ];
+
   return (
     <SectionShell bordered={false}>
       <SEO
         title={`${project.title} | Case Study`}
         description={project.subtitle}
-        keywords={`${project.title}, Anupam Baral Case Study, Software Architecture, React Developer`}
-        canonicalUrl={`https://anupambaral.com.np/project/${project.id}`}
-        ogImage={`https://anupambaral.com.np${project.imageUrl}`}
+        keywords={`${project.title}, Anupam Baral Case Study, Software Architecture, React Developer, Next.js`}
+        canonicalUrl={url}
+        ogImage={`${siteConfig.url}${project.imageUrl}`}
         ogType="article"
-        schema={{
-          "@type": "Article",
-          "headline": project.title,
-          "description": project.subtitle,
-          "image": `https://anupambaral.com.np${project.imageUrl}`,
-          "author": {
-            "@type": "Person",
-            "name": "Anupam Baral"
-          }
-        }}
+        schema={schemas}
       />
 
       {/* Back CTA */}
       <div className="mb-12">
-        <Link to="/#work" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
+        <Link to="/projects" className="inline-flex items-center gap-2 text-xs font-mono uppercase tracking-widest text-muted-foreground hover:text-foreground transition-colors">
           <ArrowLeft className="w-4 h-4" />
           Back to Work
         </Link>
@@ -234,7 +256,7 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      {/* Full-width visual wrapper */}
+      {/* Visual Header */}
       <div className="w-full aspect-video border border-border/40 rounded-md overflow-hidden bg-muted mb-16 relative">
         <img
           src={project.imageUrl}
@@ -248,11 +270,10 @@ const ProjectDetails = () => {
         />
       </div>
 
-      {/* Grid contents: Info Rails (col-4) and Narrative (col-8) */}
+      {/* Grid contents */}
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-start">
-        {/* Left Side: Metadata & Metrics (col-span-4) */}
+        {/* Left Rail */}
         <div className="lg:col-span-4 flex flex-col gap-6 lg:sticky lg:top-28">
-          {/* Metadata details */}
           <Card className="p-6 flex flex-col gap-4">
             <div>
               <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground block">
@@ -283,7 +304,6 @@ const ProjectDetails = () => {
             </div>
           </Card>
 
-          {/* Quantitative Metrics */}
           <div className="flex flex-col gap-2">
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
               Performance metrics
@@ -303,9 +323,8 @@ const ProjectDetails = () => {
           </div>
         </div>
 
-        {/* Right Side: Editorial Case Study Text (col-span-8) */}
+        {/* Right Editorial */}
         <div className="lg:col-span-8 flex flex-col gap-10">
-          {/* The Problem */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Cpu className="w-5 h-5 text-primary" />
@@ -316,7 +335,6 @@ const ProjectDetails = () => {
             </p>
           </div>
 
-          {/* The Solution */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Database className="w-5 h-5 text-primary" />
@@ -327,7 +345,6 @@ const ProjectDetails = () => {
             </p>
           </div>
 
-          {/* Architecture block */}
           <div className="flex flex-col gap-3">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" />
@@ -342,7 +359,6 @@ const ProjectDetails = () => {
             </ul>
           </div>
 
-          {/* Challenges & Learning */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-6 border-t border-border">
             <div className="flex flex-col gap-2">
               <h4 className="label-mono text-foreground">
@@ -364,7 +380,7 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      {/* Next / Prev Navigation */}
+      {/* Navigation Footer */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-16 mt-20 border-t border-border">
         {project.id !== "01" ? (
           <Link
