@@ -15,6 +15,7 @@ const ProjectDetails = lazy(() => import("./pages/ProjectDetails"));
 const Now = lazy(() => import("./pages/Now"));
 const RecruiterExperience = lazy(() => import("./pages/RecruiterExperience"));
 const AIPortfolio = lazy(() => import("./pages/AIPortfolio"));
+const OpenSourceHub = lazy(() => import("./pages/OpenSourceHub"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -60,6 +61,7 @@ const App = () => (
             <Route path="/now" element={<Now />} />
             <Route path="/for-recruiters" element={<RecruiterExperience />} />
             <Route path="/ai" element={<AIPortfolio />} />
+            <Route path="/open-source" element={<OpenSourceHub />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
