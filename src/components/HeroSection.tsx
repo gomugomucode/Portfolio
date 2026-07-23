@@ -1,7 +1,8 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, ArrowDown } from "lucide-react";
+import { Github, Linkedin, ArrowDown, Download, Briefcase, Code2, Sparkles, CheckCircle2, ShieldCheck } from "lucide-react";
 import { Button } from "./ui/button";
 import { Container } from "./layout/Container";
+import { trackResumeDownload, trackSocialClick } from "@/lib/analytics";
 
 const HeroSection = () => {
   const handleScroll = (id: string) => {
@@ -17,7 +18,7 @@ const HeroSection = () => {
       opacity: 1,
       transition: {
         staggerChildren: 0.08,
-        delayChildren: 0.15,
+        delayChildren: 0.1,
       },
     },
   };
@@ -35,85 +36,213 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative min-h-[88vh] lg:min-h-[92vh] flex flex-col justify-center pt-28 pb-16 md:pt-32 md:pb-20 overflow-hidden">
-      <div className="absolute top-1/3 left-0 w-[480px] h-[480px] bg-primary/[0.04] rounded-full blur-[120px] pointer-events-none" />
+    <section className="relative min-h-[92vh] flex flex-col justify-center pt-28 pb-16 md:pt-32 md:pb-24 overflow-hidden">
+      {/* Background glow radial */}
+      <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-primary/[0.04] rounded-full blur-[140px] pointer-events-none" aria-hidden="true" />
 
       <Container>
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-end">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-            className="lg:col-span-8 flex flex-col gap-5 md:gap-6"
-          >
-            <motion.div variants={itemVariants} className="flex items-center">
-              <div className="inline-flex items-center gap-2.5 px-3 py-1.5 rounded-sm bg-foreground/[0.04] border border-border label-mono">
-                <span className="relative flex h-1.5 w-1.5" aria-hidden="true">
-                  <span className="relative inline-flex rounded-full h-1.5 w-1.5 bg-primary" />
-                </span>
-                Available for Freelance & Full-time
+        <div className="flex flex-col gap-12 md:gap-16">
+          {/* Main Hero Header */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-start">
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              className="lg:col-span-8 flex flex-col gap-6"
+            >
+              {/* Availability & Role Tag */}
+              <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
+                <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-xs font-mono font-medium text-primary">
+                  <span className="relative flex h-2 w-2" aria-hidden="true">
+                    <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary/40 opacity-75"></span>
+                    <span className="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                  </span>
+                  Available for Full-time Roles & Freelance Contracts
+                </div>
+              </motion.div>
+
+              <motion.span variants={itemVariants} className="label-mono">
+                Anupam Baral — Full Stack & AI Engineer
+              </motion.span>
+
+              {/* Punchy Headline */}
+              <motion.h1
+                variants={itemVariants}
+                className="heading-display-lg max-w-[16ch] tracking-tight"
+              >
+                Building production web apps & AI systems that scale.
+              </motion.h1>
+
+              {/* Subheadline Value Proposition */}
+              <motion.p
+                variants={itemVariants}
+                className="text-body max-w-2xl text-muted-foreground leading-relaxed"
+              >
+                I help tech startups, companies, and founders build production-grade web applications, AI-powered software pipelines, and Web3 protocols. Specialized in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Supabase</strong>, <strong>Firebase</strong>, and <strong>Solana</strong>.
+              </motion.p>
+
+              {/* Dual Action Conversion CTAs */}
+              <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-4 pt-2">
+                <Button
+                  variant="default"
+                  onClick={() => handleScroll("contact")}
+                  className="gap-2 px-6 py-6 text-sm font-medium interactive-focus"
+                >
+                  <Briefcase className="w-4 h-4" aria-hidden="true" />
+                  Hire Me for Projects / Full-time
+                </Button>
+                <a
+                  href="/resume.pdf"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackResumeDownload()}
+                  className="inline-flex items-center gap-2 px-6 py-3 rounded-md border border-border hover:bg-muted text-foreground font-mono text-xs font-medium uppercase tracking-wider transition-colors interactive-focus"
+                >
+                  <Download className="w-4 h-4 text-primary" aria-hidden="true" />
+                  Download Resume (PDF)
+                </a>
+              </motion.div>
+            </motion.div>
+
+            {/* Right Profile & Quick Social Proof Rail */}
+            <motion.div
+              variants={itemVariants}
+              initial="hidden"
+              animate="visible"
+              className="lg:col-span-4 flex flex-col gap-6 lg:pl-6 border-l border-border/40"
+            >
+              <div className="flex items-center gap-4">
+                <img
+                  src="/my-photo.webp"
+                  alt="Anupam Baral"
+                  width={72}
+                  height={72}
+                  fetchPriority="high"
+                  className="w-18 h-18 rounded-full border-2 border-primary/20 object-cover shadow-sm"
+                  onError={(e) => {
+                    e.currentTarget.src = "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=300";
+                  }}
+                />
+                <div>
+                  <h3 className="font-display text-base font-semibold text-foreground">Anupam Baral</h3>
+                  <p className="text-xs font-mono text-muted-foreground">Full Stack & AI Engineer</p>
+                  <p className="text-[11px] text-muted-foreground mt-0.5">Butwal, Nepal • GMT+5:45</p>
+                </div>
+              </div>
+
+              <p className="text-body-sm text-muted-foreground leading-relaxed">
+                Over 4+ production applications engineered with sub-second page loads, strict TypeScript type safety, and 99.9% uptime architecture.
+              </p>
+
+              {/* Verified Badges */}
+              <div className="flex flex-col gap-2 pt-2 border-t border-border/40">
+                <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                  <ShieldCheck className="w-4 h-4 text-primary shrink-0" aria-hidden="true" />
+                  <span>100% Type-Safe TypeScript & Python</span>
+                </div>
+                <div className="flex items-center gap-2 text-xs font-mono text-muted-foreground">
+                  <CheckCircle2 className="w-4 h-4 text-primary shrink-0" aria-hidden="true" />
+                  <span>Solana Web3 Hackathon Participant</span>
+                </div>
+              </div>
+
+              <div className="flex items-center gap-3 pt-2">
+                <a
+                  href="https://github.com/gomugomucode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackSocialClick("github", "https://github.com/gomugomucode")}
+                  className="social-link"
+                  aria-label="GitHub Profile"
+                >
+                  <Github className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://linkedin.com/in/gomugomucode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackSocialClick("linkedin", "https://linkedin.com/in/gomugomucode")}
+                  className="social-link"
+                  aria-label="LinkedIn Profile"
+                >
+                  <Linkedin className="w-4 h-4" />
+                </a>
               </div>
             </motion.div>
+          </div>
 
-            <motion.span variants={itemVariants} className="label-mono">
-              Anupam Baral — Portfolio
-            </motion.span>
-
-            <motion.h1
-              variants={itemVariants}
-              className="heading-display-lg max-w-[15ch]"
-            >
-              Full Stack &
-              <br />
-              AI Developer.
-            </motion.h1>
-
-            <motion.p
-              variants={itemVariants}
-              className="text-body max-w-xl"
-            >
-              Building production-ready web applications, AI-powered software, and scalable SaaS products. Specializing in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Supabase</strong>, <strong>Firebase</strong>, and <strong>Solana</strong>.
-            </motion.p>
-
-            <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
-              <Button variant="default" onClick={() => handleScroll("work")}>
-                Explore Work & Case Studies
-              </Button>
-              <Button variant="outline" onClick={() => handleScroll("contact")}>
-                Hire Me / Get in Touch
-              </Button>
-            </motion.div>
-          </motion.div>
-
+          {/* High-Impact Proof & Metrics Grid Bar */}
           <motion.div
             variants={itemVariants}
             initial="hidden"
             animate="visible"
-            className="lg:col-span-4 lg:col-start-9 flex flex-col gap-6 lg:pb-2"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-lg border border-border bg-card/40 backdrop-blur-sm"
           >
-            <div className="hidden lg:block h-px w-full bg-border" />
-            <p className="text-body-sm max-w-xs">
-              Full Stack Developer Nepal crafting enterprise software from intuitive React frontend interfaces to scalable Python AI pipelines and Web3 protocols.
-            </p>
-            <div className="flex items-center gap-2">
-              <a
-                href="https://github.com/gomugomucode"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                aria-label="GitHub Profile"
+            <div className="flex flex-col gap-1 border-r border-border/40 last:border-0 pr-4">
+              <span className="font-display text-2xl md:text-3xl font-bold text-foreground">4+</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Production Apps</span>
+            </div>
+            <div className="flex flex-col gap-1 border-r border-border/40 last:border-0 pr-4 pl-0 md:pl-4">
+              <span className="font-display text-2xl md:text-3xl font-bold text-primary">&lt;1.2s</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">LMS Content Delivery</span>
+            </div>
+            <div className="flex flex-col gap-1 border-r border-border/40 last:border-0 pr-4 pl-0 md:pl-4">
+              <span className="font-display text-2xl md:text-3xl font-bold text-foreground">~400ms</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Solana Tx Confirmation</span>
+            </div>
+            <div className="flex flex-col gap-1 pl-0 md:pl-4">
+              <span className="font-display text-2xl md:text-3xl font-bold text-primary">99.9%</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">System Uptime</span>
+            </div>
+          </motion.div>
+
+          {/* Dual Recruiter / Client Targeted High-Intent Callout Split */}
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          >
+            <div className="p-6 rounded-lg border border-border bg-gradient-to-br from-card/80 to-card/20 flex flex-col justify-between gap-4">
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-primary flex items-center gap-1.5">
+                  <Code2 className="w-3.5 h-3.5" aria-hidden="true" /> For Recruiters & Hiring Managers
+                </span>
+                <h3 className="font-display text-base font-medium text-foreground">
+                  Looking for a Full Stack or AI Engineer?
+                </h3>
+                <p className="text-body-sm text-muted-foreground">
+                  Proficient in React 19, Next.js 16, TypeScript, Python ML pipelines, Supabase RLS, and PostgreSQL. Immediately available for remote roles.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => handleScroll("skills")}
+                className="self-start text-xs font-mono font-medium text-primary hover:underline flex items-center gap-1 mt-2"
               >
-                <Github className="w-4 h-4" />
-              </a>
-              <a
-                href="https://linkedin.com/in/gomugomucode"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="social-link"
-                aria-label="LinkedIn Profile"
+                Review Technical Stack & Expertise →
+              </button>
+            </div>
+
+            <div className="p-6 rounded-lg border border-border bg-gradient-to-br from-card/80 to-card/20 flex flex-col justify-between gap-4">
+              <div className="flex flex-col gap-2">
+                <span className="font-mono text-[10px] uppercase tracking-widest text-primary flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5" aria-hidden="true" /> For Founders & Freelance Clients
+                </span>
+                <h3 className="font-display text-base font-medium text-foreground">
+                  Need a Production Web App or MVP Built?
+                </h3>
+                <p className="text-body-sm text-muted-foreground">
+                  From initial software architecture to edge deployment, I deliver scalable SaaS products, AI integrations, and Web3 applications with clean maintainable code.
+                </p>
+              </div>
+              <button
+                type="button"
+                onClick={() => handleScroll("contact")}
+                className="self-start text-xs font-mono font-medium text-primary hover:underline flex items-center gap-1 mt-2"
               >
-                <Linkedin className="w-4 h-4" />
-              </a>
+                Schedule Project Consultation →
+              </button>
             </div>
           </motion.div>
         </div>
