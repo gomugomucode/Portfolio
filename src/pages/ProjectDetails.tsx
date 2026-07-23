@@ -5,6 +5,7 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/layout/SectionShell";
+import { ArchitectureDiagram, getProjectArchitectureNodes } from "@/components/ArchitectureDiagram";
 import { siteConfig } from "@/lib/siteConfig";
 import {
   getProjectSchema,
@@ -522,13 +523,20 @@ const ProjectDetails = () => {
             </ul>
           </div>
 
-          {/* Architecture */}
-          <div className="flex flex-col gap-3">
+          {/* Architecture block & Visual Flow Diagram */}
+          <div className="flex flex-col gap-6">
             <h3 className="font-display text-xl font-medium tracking-tight text-foreground flex items-center gap-2">
               <Shield className="w-5 h-5 text-primary" aria-hidden="true" />
-              5. Architecture Breakdown
+              5. Architecture & System Flow Diagram
             </h3>
-            <ul className="flex flex-col gap-3 text-body-sm sm:text-base pl-4 border-l border-border">
+
+            {/* Visual SVG Flow Diagram */}
+            <ArchitectureDiagram
+              projectTitle={project.title}
+              nodes={getProjectArchitectureNodes(project.id)}
+            />
+
+            <ul className="flex flex-col gap-3 text-body-sm sm:text-base pl-4 border-l border-border mt-2">
               {project.architecture.map((item, idx) => (
                 <li key={idx} className="leading-relaxed">
                   {item}
