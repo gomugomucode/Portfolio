@@ -5,6 +5,7 @@ import EngineeringPhilosophySection from "@/components/EngineeringPhilosophySect
 import DeveloperTimeline from "@/components/DeveloperTimeline";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
+import TestimonialsSection from "@/components/TestimonialsSection";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import { siteConfig } from "@/lib/siteConfig";
@@ -56,6 +57,7 @@ const Home = () => {
       <DeveloperTimeline />
       <ProjectsSection />
       <SkillsSection />
+      <TestimonialsSection />
       <BlogSection />
       <ContactSection />
     </div>
