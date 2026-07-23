@@ -260,7 +260,9 @@ const ProjectDetails = () => {
       <div className="w-full aspect-video border border-border/40 rounded-md overflow-hidden bg-muted mb-16 relative">
         <img
           src={project.imageUrl}
-          alt={project.title}
+          alt={`Visual mockup of ${project.title}`}
+          width={1200}
+          height={675}
           fetchPriority="high"
           decoding="async"
           className="w-full h-full object-cover"

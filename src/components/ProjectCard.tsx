@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-
 import { ExternalLink, Github, BookOpen } from "lucide-react";
 import { Badge } from "./ui/badge";
 import { Button } from "./ui/button";
@@ -12,14 +11,15 @@ interface ProjectCardProps {
 export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <article className="group flex flex-col h-full border border-border rounded-md overflow-hidden bg-card hover:border-foreground/20 hover:[box-shadow:var(--e-2)] transition-all duration-300">
-
       <Link
         to={`/project/${project.index}`}
-        className="block aspect-video overflow-hidden bg-muted relative"
+        className="block aspect-video overflow-hidden bg-muted relative w-full"
       >
         <img
           src={project.imageUrl}
-          alt={project.title}
+          alt={`Screenshot of ${project.title}`}
+          width={800}
+          height={450}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
@@ -29,7 +29,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
           }}
         />
       </Link>
-      
+
       <div className="flex flex-col flex-1 p-6 gap-4">
         <div className="flex items-center justify-between gap-4">
           <span className="font-mono text-[10px] text-primary">{project.index}</span>

@@ -91,7 +91,9 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
         >
           <img
             src={post.thumbnail}
-            alt={post.title}
+            alt={`Thumbnail image for article: ${post.title}`}
+            width={400}
+            height={280}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-105 transition-all duration-500"
@@ -104,19 +106,19 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
     );
   }
 
-  // Vertical layout for homepage
   return (
     <article className="group flex flex-col h-full border border-border rounded-md overflow-hidden bg-card hover:border-foreground/20 hover:[box-shadow:var(--e-2)] transition-all duration-300">
-
       <a
         href={post.link}
         target="_blank"
         rel="noopener noreferrer"
-        className="block aspect-[16/10] overflow-hidden bg-muted relative"
+        className="block aspect-[16/10] overflow-hidden bg-muted relative w-full"
       >
         <img
           src={post.thumbnail}
-          alt={post.title}
+          alt={`Thumbnail image for article: ${post.title}`}
+          width={640}
+          height={400}
           loading="lazy"
           decoding="async"
           className="w-full h-full object-cover opacity-85 group-hover:opacity-100 group-hover:scale-[1.02] transition-all duration-500"
