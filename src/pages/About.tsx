@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import SEO from "@/components/SEO";
 import AboutSection from "@/components/AboutSection";
+import DeveloperTimeline from "@/components/DeveloperTimeline";
 import SkillsSection from "@/components/SkillsSection";
 import { siteConfig } from "@/lib/siteConfig";
 import {
@@ -40,9 +41,12 @@ const About = () => {
       <div>
         <AboutSection />
       </div>
-      <div className="text-center">
+      <div>
+        <DeveloperTimeline />
+      </div>
+      <div className="text-center py-6">
         <p className="text-sm text-muted-foreground">
-          Ready to collaborate? <Link to="/contact" className="text-primary underline">Contact me</Link> for freelance work, SaaS development, and technical partnerships.
+          Ready to collaborate? <Link to="/contact" className="text-primary underline font-medium">Contact me</Link> for freelance work, SaaS development, and technical partnerships.
         </p>
       </div>
       <div>

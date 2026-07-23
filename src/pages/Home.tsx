@@ -2,6 +2,7 @@ import SEO from "@/components/SEO";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
 import EngineeringPhilosophySection from "@/components/EngineeringPhilosophySection";
+import DeveloperTimeline from "@/components/DeveloperTimeline";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import BlogSection from "@/components/BlogSection";
@@ -52,6 +53,7 @@ const Home = () => {
       <HeroSection />
       <AboutSection />
       <EngineeringPhilosophySection />
+      <DeveloperTimeline />
       <ProjectsSection />
       <SkillsSection />
       <BlogSection />
