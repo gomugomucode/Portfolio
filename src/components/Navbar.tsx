@@ -10,6 +10,7 @@ const navLinks = [
   { name: "Work", href: "work", isPage: false },
   { name: "Skills", href: "skills", isPage: false },
   { name: "Blog", href: "blog", isPage: true },
+  { name: "Now", href: "now", isPage: true },
   { name: "Contact", href: "contact", isPage: false },
 ];
 

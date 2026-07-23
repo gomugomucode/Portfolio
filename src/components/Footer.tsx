@@ -34,6 +34,7 @@ const Footer = () => {
             <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">About</Link>
             <Link to="/projects" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Projects Archive</Link>
             <Link to="/blog" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Engineering Blog</Link>
+            <Link to="/now" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">What I'm Doing Now (/now)</Link>
             <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Hire Me / Contact</Link>
           </div>
 
