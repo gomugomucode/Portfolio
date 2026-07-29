@@ -381,8 +381,10 @@ const parseMediumXml = (xmlString: string): MediumArticle[] => {
   return articles;
 };
 
+import { apiClient } from "./apiClient";
+
 /**
- * Fetch Medium Articles with 6-Hour Cache and Failover Strategy
+ * Fetch Medium Articles with 6-Hour Cache and Resilient Failover Strategy
  */
 export const fetchMediumArticles = async (): Promise<MediumArticle[]> => {
   // Check LocalStorage Cache
@@ -402,15 +404,15 @@ export const fetchMediumArticles = async (): Promise<MediumArticle[]> => {
 
   // Strategy 1: Direct Fetch via AllOrigins Raw Proxy (XML parsing)
   try {
-    const res = await fetch(`https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`);
-    if (res.ok) {
-      const xmlText = await res.text();
-      if (xmlText && xmlText.includes("<rss")) {
-        const parsed = parseMediumXml(xmlText);
-        if (parsed.length > 0) {
-          localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: parsed }));
-          return parsed;
-        }
+    const xmlText = await apiClient.get<string>(
+      `https://api.allorigins.win/raw?url=${encodeURIComponent(feedUrl)}`,
+      { timeoutMs: 6000, retries: 1 }
+    );
+    if (typeof xmlText === "string" && xmlText.includes("<rss")) {
+      const parsed = parseMediumXml(xmlText);
+      if (parsed.length > 0) {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: parsed }));
+        return parsed;
       }
     }
   } catch (e1) {
@@ -419,15 +421,15 @@ export const fetchMediumArticles = async (): Promise<MediumArticle[]> => {
 
   // Strategy 2: CORSProxy.io (XML parsing)
   try {
-    const res = await fetch(`https://corsproxy.io/?${encodeURIComponent(feedUrl)}`);
-    if (res.ok) {
-      const xmlText = await res.text();
-      if (xmlText && xmlText.includes("<rss")) {
-        const parsed = parseMediumXml(xmlText);
-        if (parsed.length > 0) {
-          localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: parsed }));
-          return parsed;
-        }
+    const xmlText = await apiClient.get<string>(
+      `https://corsproxy.io/?${encodeURIComponent(feedUrl)}`,
+      { timeoutMs: 6000, retries: 1 }
+    );
+    if (typeof xmlText === "string" && xmlText.includes("<rss")) {
+      const parsed = parseMediumXml(xmlText);
+      if (parsed.length > 0) {
+        localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: parsed }));
+        return parsed;
       }
     }
   } catch (e2) {
@@ -436,42 +438,42 @@ export const fetchMediumArticles = async (): Promise<MediumArticle[]> => {
 
   // Strategy 3: RSS2JSON API Fallback
   try {
-    const res = await fetch(`https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`);
-    if (res.ok) {
-      const data = await res.json();
-      if (data.status === "ok" && Array.isArray(data.items) && data.items.length > 0) {
-        const parsed: MediumArticle[] = data.items.map((item: Record<string, unknown>) => {
-          const contentHtml = (item.content as string) || (item.description as string) || "";
-          const { wordCount, readingTime, excerpt } = extractContentDetails(contentHtml);
-          const title = item.title as string;
-          const slug = slugify(title);
+    const data = await apiClient.get<Record<string, unknown>>(
+      `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(feedUrl)}`,
+      { timeoutMs: 6000, retries: 1 }
+    );
+    if (data && data.status === "ok" && Array.isArray(data.items) && data.items.length > 0) {
+      const parsed: MediumArticle[] = data.items.map((item: Record<string, unknown>) => {
+        const contentHtml = (item.content as string) || (item.description as string) || "";
+        const { wordCount, readingTime, excerpt } = extractContentDetails(contentHtml);
+        const title = item.title as string;
+        const slug = slugify(title);
 
-          const imgMatch = /<img[^>]+src=["']([^"']+)["']/i.exec(contentHtml);
-          const featuredImage =
-            (item.thumbnail as string) ||
-            imgMatch?.[1] ||
-            "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800";
+        const imgMatch = /<img[^>]+src=["']([^"']+)["']/i.exec(contentHtml);
+        const featuredImage =
+          (item.thumbnail as string) ||
+          imgMatch?.[1] ||
+          "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800";
 
-          return {
-            id: (item.guid as string) || (item.link as string) || slug,
-            title,
-            slug,
-            link: item.link as string,
-            publishDate: item.pubDate as string,
-            updatedDate: item.pubDate as string,
-            categories: (item.categories as string[]) || ["Engineering"],
-            readingTime,
-            author: (item.author as string) || "Anupam Baral",
-            featuredImage,
-            content: contentHtml,
-            excerpt,
-            wordCount,
-          };
-        });
+        return {
+          id: (item.guid as string) || (item.link as string) || slug,
+          title,
+          slug,
+          link: item.link as string,
+          publishDate: item.pubDate as string,
+          updatedDate: item.pubDate as string,
+          categories: (item.categories as string[]) || ["Engineering"],
+          readingTime,
+          author: (item.author as string) || "Anupam Baral",
+          featuredImage,
+          content: contentHtml,
+          excerpt,
+          wordCount,
+        };
+      });
 
-        localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: parsed }));
-        return parsed;
-      }
+      localStorage.setItem(CACHE_KEY, JSON.stringify({ timestamp: Date.now(), data: parsed }));
+      return parsed;
     }
   } catch (e3) {
     console.warn("[Medium RSS] Strategy 3 (RSS2JSON) failed:", e3);
