@@ -33,8 +33,10 @@ export default function SEO({
   noIndex = false,
 }: SEOProps) {
   const fullTitle = title
-    ? `${title} | ${siteConfig.name} - Full Stack Developer Nepal`
-    : `${siteConfig.name} | Full Stack Developer Nepal | React, Next.js, AI`;
+    ? title.includes(siteConfig.name)
+      ? title
+      : `${title} | ${siteConfig.name}`
+    : `${siteConfig.name} | Full Stack Developer & AI Engineer Nepal`;
 
   const finalOgTitle = ogTitle || title || `${siteConfig.name} | Full Stack Developer Nepal`;
   const finalOgDescription = ogDescription || description;
@@ -47,11 +49,21 @@ export default function SEO({
     <Helmet>
       {/* Primary Metadata */}
       <title>{fullTitle}</title>
+      <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
       <meta name="keywords" content={combinedKeywords} />
       <meta name="author" content={author} />
+      <meta name="publisher" content={siteConfig.name} />
       <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
       <link rel="canonical" href={currentUrl} />
+
+      {/* Search Console & Webmaster Verification */}
+      {siteConfig.verification.google && (
+        <meta name="google-site-verification" content={siteConfig.verification.google} />
+      )}
+      {siteConfig.verification.bing && (
+        <meta name="msvalidate.01" content={siteConfig.verification.bing} />
+      )}
 
       {/* Social Identity Links (rel="me") */}
       <link rel="me" href={siteConfig.social.github} />
@@ -107,3 +119,4 @@ export default function SEO({
     </Helmet>
   );
 }
+

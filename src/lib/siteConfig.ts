@@ -9,11 +9,13 @@ export const siteConfig = {
     "Full Stack Developer Nepal",
     "React Developer Nepal",
     "Next.js Developer",
+    "TypeScript Developer",
+    "Node.js Developer",
     "Python Developer",
     "AI Developer Nepal",
     "Machine Learning Developer",
-    "Supabase Developer",
-    "Firebase Developer",
+    "Solana Developer",
+    "Software Engineer Nepal",
   ],
   secondaryKeywords: [
     "React Portfolio",
@@ -25,6 +27,11 @@ export const siteConfig = {
     "Anupam Baral",
     "gomugomucode",
   ],
+  verification: {
+    google: "",
+    bing: "",
+    clarity: "",
+  },
   social: {
     github: "https://github.com/gomugomucode",
     linkedin: "https://linkedin.com/in/gomugomucode",

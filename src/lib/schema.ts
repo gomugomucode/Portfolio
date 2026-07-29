@@ -286,3 +286,17 @@ export const getReviewSchema = (reviews: GoogleReview[]) => {
     },
   }));
 };
+
+// 11. ContactPage Schema
+export const getContactPageSchema = (url: string) => ({
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${url}#contactpage`,
+  url,
+  name: `Contact ${siteConfig.name} | Full Stack & AI Developer Nepal`,
+  description: `Get in touch with ${siteConfig.name} for freelance web development, AI software engineering, or technical partnerships.`,
+  mainEntity: {
+    "@id": `${siteConfig.url}/#person`,
+  },
+});
+

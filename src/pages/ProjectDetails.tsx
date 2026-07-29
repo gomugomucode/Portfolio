@@ -251,7 +251,9 @@ export const caseStudies: Record<string, CaseStudy> = {
 
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();
-  const project = id ? caseStudies[id] : null;
+  const project = id
+    ? caseStudies[id] || Object.values(caseStudies).find((cs) => cs.slug === id)
+    : null;
 
   if (!project) {
     return (

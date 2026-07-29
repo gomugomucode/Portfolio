@@ -98,6 +98,61 @@ const FALLBACK_POSTS: BlogPost[] = [
     categories: ["React", "Next.js", "Performance"],
     excerpt: "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
     readingTime: "7 min read"
+  },
+  {
+    guid: "fallback-5",
+    title: "Containerizing Complex Machine Learning Pipelines with Docker",
+    pubDate: "2025-06-18 16:45:00",
+    link: "https://medium.com/@gomugomucode/docker-ml-pipelines",
+    author: "Anupam Baral",
+    thumbnail: "https://images.unsplash.com/photo-1605745341112-85968b19335b?q=80&w=800",
+    categories: ["Docker", "Python", "DevOps", "AI / ML"],
+    excerpt: "A practical guide to packaging Python ML inference workflows into lightweight, multi-stage Docker containers with GPU acceleration and reproducible builds.",
+    readingTime: "9 min read"
+  },
+  {
+    guid: "fallback-6",
+    title: "Mastering Row Level Security (RLS) in Supabase & PostgreSQL",
+    pubDate: "2025-04-12 13:20:00",
+    link: "https://medium.com/@gomugomucode/supabase-rls-security",
+    author: "Anupam Baral",
+    thumbnail: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800",
+    categories: ["Supabase", "PostgreSQL", "Security", "Backend"],
+    excerpt: "Designing bulletproof data access policies using PostgreSQL RLS and Supabase Auth JWT tokens for multi-tenant web applications.",
+    readingTime: "6 min read"
+  },
+  {
+    guid: "fallback-7",
+    title: "Solana Smart Contract Security: Common Pitfalls in Rust Anchor",
+    pubDate: "2025-02-28 08:30:00",
+    link: "https://medium.com/@gomugomucode/solana-rust-security",
+    author: "Anupam Baral",
+    thumbnail: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?q=80&w=800",
+    categories: ["Solana", "Rust", "Security", "Web3"],
+    excerpt: "Preventing account reentrancy, signer verification bypasses, and integer overflow vulnerabilities in Solana Anchor programs.",
+    readingTime: "10 min read"
+  },
+  {
+    guid: "fallback-8",
+    title: "Building High-Throughput Node.js Microservices",
+    pubDate: "2024-11-14 15:10:00",
+    link: "https://medium.com/@gomugomucode/nodejs-microservices-throughput",
+    author: "Anupam Baral",
+    thumbnail: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=800",
+    categories: ["Node.js", "TypeScript", "Microservices", "Backend"],
+    excerpt: "Architecting non-blocking asynchronous event loops, message queues, and Redis cluster caching for high-concurrency Node.js microservices.",
+    readingTime: "7 min read"
+  },
+  {
+    guid: "fallback-9",
+    title: "Core Web Vitals Blueprint: Achieving 100/100 Lighthouse Scores",
+    pubDate: "2024-09-05 12:00:00",
+    link: "https://medium.com/@gomugomucode/core-web-vitals-100-blueprint",
+    author: "Anupam Baral",
+    thumbnail: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800",
+    categories: ["Performance", "React", "SEO", "Frontend"],
+    excerpt: "Comprehensive strategies for eliminating CLS shifts, optimizing LCP image loading, and reducing INP main-thread execution delays.",
+    readingTime: "8 min read"
   }
 ];
 
@@ -105,11 +160,11 @@ const Blog = () => {
   const [posts, setPosts] = useState<BlogPost[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [visibleCount, setVisibleCount] = useState(6);
+  const [visibleCount, setVisibleCount] = useState(9);
 
   const [searchQuery, setSearchQuery] = useState("");
   const [selectedCategory, setSelectedCategory] = useState("All");
-  const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "readingTime">("newest");
+  const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "alphabetical" | "readingTime">("newest");
 
   useEffect(() => {
     const fetchMediumFeed = async () => {
@@ -211,6 +266,8 @@ const Blog = () => {
         return new Date(b.pubDate).getTime() - new Date(a.pubDate).getTime();
       } else if (sortOrder === "oldest") {
         return new Date(a.pubDate).getTime() - new Date(b.pubDate).getTime();
+      } else if (sortOrder === "alphabetical") {
+        return a.title.localeCompare(b.title);
       } else if (sortOrder === "readingTime") {
         const timeA = parseInt(a.readingTime) || 0;
         const timeB = parseInt(b.readingTime) || 0;
@@ -364,12 +421,13 @@ const Blog = () => {
                 <label className="text-[10px] font-mono uppercase tracking-widest text-muted-foreground">Sort By</label>
                 <select
                   value={sortOrder}
-                  onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest" | "readingTime")}
+                  onChange={(e) => setSortOrder(e.target.value as "newest" | "oldest" | "alphabetical" | "readingTime")}
                   className="h-9 px-3 rounded-md border border-border bg-background text-sm interactive-focus"
                   aria-label="Sort articles by"
                 >
                   <option value="newest">Newest First</option>
                   <option value="oldest">Oldest First</option>
+                  <option value="alphabetical">Alphabetical (A-Z)</option>
                   <option value="readingTime">Reading Time</option>
                 </select>
               </div>
@@ -425,6 +483,27 @@ const Blog = () => {
                 Showing cached logs due to Medium API rate-limits.
               </p>
             )}
+
+            {/* Read More on Medium Footer Banner */}
+            <div className="mt-8 p-6 rounded-lg border border-border bg-card/60 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div className="flex flex-col gap-1 text-center sm:text-left">
+                <h4 className="font-display text-base font-semibold text-foreground">
+                  Looking for more engineering articles?
+                </h4>
+                <p className="text-xs text-muted-foreground">
+                  Read all full-length articles, code walkthroughs, and technical breakdowns on my Medium publication.
+                </p>
+              </div>
+              <a
+                href="https://medium.com/@gomugomucode"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="shrink-0 inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-foreground text-background hover:bg-foreground/90 px-4 py-2.5 transition-all interactive-focus"
+              >
+                Read more on Medium
+                <ArrowRight className="w-3.5 h-3.5" aria-hidden="true" />
+              </a>
+            </div>
           </div>
         </div>
       </div>
