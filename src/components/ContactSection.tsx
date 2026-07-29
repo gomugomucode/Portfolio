@@ -249,11 +249,14 @@ const ContactSection = () => {
           </Card>
 
           <Card className="p-5 bg-foreground/[0.03]">
-            <div className="flex flex-col gap-2">
-              <span className="label-mono">Availability</span>
-              <p className="text-body-sm">
-                Available for freelance opportunities and full-time roles. Standard response time is under 24 hours.
-              </p>
+            <div className="flex flex-col gap-3 font-mono text-xs">
+              <span className="label-mono">Hiring & Response SLA</span>
+              <div className="flex flex-col gap-1 text-muted-foreground">
+                <p>• <strong>Response SLA:</strong> &lt; 24 Hours</p>
+                <p>• <strong>Location & Timezone:</strong> Butwal, Nepal (GMT+5:45)</p>
+                <p>• <strong>Availability:</strong> Full-time Roles & Contracts</p>
+                <p>• <strong>Preferred Projects:</strong> React/Next.js Apps, Python AI Pipelines, Web3 Systems</p>
+              </div>
             </div>
           </Card>
         </div>

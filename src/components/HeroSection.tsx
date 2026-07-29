@@ -70,7 +70,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="heading-display-lg max-w-[16ch] tracking-tight"
               >
-                Building production web apps & AI systems that scale.
+                Building web applications & AI pipelines.
               </motion.h1>
 
               {/* Subheadline Value Proposition */}
@@ -78,7 +78,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="text-body max-w-2xl text-muted-foreground leading-relaxed"
               >
-                I engineer production-grade web applications, intelligent AI pipelines, and scalable cloud architectures. Specialized in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Supabase</strong>, <strong>Firebase</strong>, and <strong>Solana</strong>.
+                Full-Stack & AI Engineer specializing in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, and <strong>Python</strong>. Focused on clean architecture, type safety, sub-second performance, and real-world system impact.
               </motion.p>
 
               {/* Dual Action Conversion CTAs */}

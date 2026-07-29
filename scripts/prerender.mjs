@@ -294,6 +294,21 @@ const routeMetadata = [
     ]
   },
   {
+    route: "/uses",
+    title: "Uses — Development Setup & Tooling | Anupam Baral",
+    description: "A detailed list of the hardware, code editor setup, terminal configuration, and AI tools used daily by Anupam Baral.",
+    keywords: "Anupam Baral Uses, Development Hardware, VS Code Setup, Developer Workstation Nepal",
+    ogImage: DEFAULT_IMAGE,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Uses — Development Setup & Tooling",
+        "url": `${SITE_URL}/uses`
+      }
+    ]
+  },
+  {
     route: "/privacy",
     title: "Privacy Policy | Anupam Baral",
     description: "Privacy policy and data protection standards for Anupam Baral's developer portfolio website.",

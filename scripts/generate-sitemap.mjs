@@ -27,6 +27,7 @@ const routes = [
   { url: "/ai", priority: "0.9", changefreq: "weekly" },
   { url: "/open-source", priority: "0.8", changefreq: "weekly" },
   { url: "/contact", priority: "0.8", changefreq: "monthly" },
+  { url: "/uses", priority: "0.7", changefreq: "monthly" },
   { url: "/privacy", priority: "0.3", changefreq: "yearly" },
   { url: "/terms", priority: "0.3", changefreq: "yearly" },
 ];

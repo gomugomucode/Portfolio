@@ -20,6 +20,7 @@ const AIPortfolio = lazy(() => import("./pages/AIPortfolio"));
 const OpenSourceHub = lazy(() => import("./pages/OpenSourceHub"));
 const Privacy = lazy(() => import("./pages/Privacy"));
 const Terms = lazy(() => import("./pages/Terms"));
+const Uses = lazy(() => import("./pages/Uses"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
@@ -69,6 +70,7 @@ const App = () => (
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
+            <Route path="/uses" element={<Uses />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

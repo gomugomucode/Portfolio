@@ -38,6 +38,7 @@ const Footer = () => {
             <Link to="/ai" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">AI Showcase (/ai)</Link>
             <Link to="/now" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">What I'm Doing Now (/now)</Link>
             <Link to="/for-recruiters" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">For Recruiters Portal</Link>
+            <Link to="/uses" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit font-semibold text-primary">Developer Setup (/uses)</Link>
             <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Hire Me / Contact</Link>
           </div>
 
