@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes, useLocation } from "react-router-dom";
 import { Toaster } from "@/components/ui/toaster";
 import { Suspense, lazy, useEffect } from "react";
 import Layout from "./components/Layout";
+import ErrorBoundary from "@/components/ErrorBoundary";
 import { trackPageView } from "@/lib/analytics";
 
 // Lazy load pages for code splitting and better performance
@@ -42,17 +43,18 @@ const AnalyticsTracker = () => {
 };
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter
-      future={{
-        v7_startTransition: true,
-        v7_relativeSplatPath: true,
-      }}
-    >
-      <AnalyticsTracker />
-      <Toaster />
-      <Layout>
-        <Suspense fallback={<PageLoader />}>
+  <ErrorBoundary>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter
+        future={{
+          v7_startTransition: true,
+          v7_relativeSplatPath: true,
+        }}
+      >
+        <AnalyticsTracker />
+        <Toaster />
+        <Layout>
+          <Suspense fallback={<PageLoader />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -73,6 +75,7 @@ const App = () => (
       </Layout>
     </BrowserRouter>
   </QueryClientProvider>
+</ErrorBoundary>
 );
 
 export default App;

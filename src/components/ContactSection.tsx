@@ -8,6 +8,10 @@ import { Card } from "./ui/card";
 import { SectionGrid, SectionHeader, SectionShell } from "./layout/SectionShell";
 import AnimatedSection from "./AnimatedSection";
 import { trackContactFormSubmit } from "@/lib/analytics";
+import { contactSchema, SlidingWindowRateLimiter, escapeHtml } from "@/lib/security";
+import { logger } from "@/lib/logger";
+
+const rateLimiter = new SlidingWindowRateLimiter("contact_form", 3, 60000);
 
 const ContactSection = () => {
   const { toast } = useToast();
@@ -17,29 +21,50 @@ const ContactSection = () => {
   const [success, setSuccess] = useState(false);
 
   const validate = () => {
-    const e: Record<string, string> = {};
-    if (!form.name.trim()) e.name = "This field is required.";
-    if (!form.email.trim()) e.email = "This field is required.";
-    else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) e.email = "Please enter a valid email address.";
-    if (!form.message.trim()) e.message = "This field is required.";
-
-    setErrors(e);
-    return Object.keys(e).length === 0;
+    const result = contactSchema.safeParse(form);
+    if (!result.success) {
+      const formattedErrors: Record<string, string> = {};
+      result.error.issues.forEach((issue) => {
+        if (issue.path[0]) {
+          formattedErrors[issue.path[0].toString()] = issue.message;
+        }
+      });
+      setErrors(formattedErrors);
+      return false;
+    }
+    setErrors({});
+    return true;
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate schema
     if (!validate()) return;
+
+    // Check rate limit
+    const limitCheck = rateLimiter.isAllowed();
+    if (!limitCheck.allowed) {
+      toast({
+        title: "Rate limit exceeded.",
+        description: `Too many submission attempts. Please wait ${limitCheck.retryAfterSeconds} seconds before trying again.`,
+        variant: "destructive",
+      });
+      return;
+    }
 
     setSending(true);
 
-    const userEmail = form.email;
+    const safeName = escapeHtml(form.name.trim());
+    const safeEmail = form.email.trim();
+    const safeMessage = escapeHtml(form.message.trim());
+
     const formData = new FormData();
     formData.append("access_key", "fbe72730-5191-4c44-bf5c-ac45ed87b137");
-    formData.append("name", form.name);
-    formData.append("email", form.email);
-    formData.append("subject", `[Portfolio] Message from ${form.name}`);
-    formData.append("message", form.message);
+    formData.append("name", safeName);
+    formData.append("email", safeEmail);
+    formData.append("subject", `[Portfolio] Message from ${safeName}`);
+    formData.append("message", safeMessage);
     formData.append("from_name", "Anupam's Portfolio");
 
     try {
@@ -58,13 +83,14 @@ const ContactSection = () => {
 
         toast({
           title: "Message received.",
-          description: `I'll get back to you within 24 hours at ${userEmail}.`,
+          description: `I'll get back to you within 24 hours at ${safeEmail}.`,
           duration: 6000,
         });
       } else {
         throw new Error("Submission Failed");
       }
-    } catch {
+    } catch (err) {
+      logger.error("Contact form submission error:", err);
       toast({
         title: "Transmission failed.",
         description: "Please email me directly at contact@anupambaral.com.np.",
