@@ -78,7 +78,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="text-body max-w-2xl text-muted-foreground leading-relaxed"
               >
-                Full-Stack & AI Engineer specializing in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, and <strong>Python</strong>. Focused on clean architecture, type safety, sub-second performance, and real-world system impact.
+                Full-Stack & AI Engineer specializing in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, and <strong>Python</strong>. Built the Yatra ride-sharing protocol on Solana, decoupled LMS read-replica architectures, and type-safe AI pipelines.
               </motion.p>
 
               {/* Dual Action Conversion CTAs */}

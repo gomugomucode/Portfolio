@@ -191,7 +191,7 @@ const Navbar = () => {
           <button
             ref={burgerButtonRef}
             type="button"
-            className="md:hidden p-2 -mr-2 text-muted-foreground hover:text-foreground interactive-focus"
+            className="md:hidden min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2 -mr-2 text-muted-foreground hover:text-foreground interactive-focus rounded-md"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
