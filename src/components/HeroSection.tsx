@@ -48,7 +48,7 @@ const HeroSection = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-8 flex flex-col gap-6"
+              className="order-2 lg:order-1 lg:col-span-8 flex flex-col gap-6"
             >
               {/* Availability & Role Tag */}
               <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-3">
@@ -104,12 +104,12 @@ const HeroSection = () => {
               </motion.div>
             </motion.div>
 
-            {/* Right Profile & Quick Social Proof Rail */}
+            {/* Right Profile & Quick Social Proof Rail (First on Mobile) */}
             <motion.div
               variants={itemVariants}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-4 flex flex-col gap-6 lg:pl-6 border-l border-border/40"
+              className="order-1 lg:order-2 lg:col-span-4 flex flex-col gap-6 lg:pl-6 border-b lg:border-b-0 border-l-0 lg:border-l border-border/40 pb-6 lg:pb-0"
             >
               <div className="flex items-center gap-4">
                 <img
