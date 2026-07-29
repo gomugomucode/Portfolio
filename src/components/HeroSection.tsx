@@ -113,7 +113,7 @@ const HeroSection = () => {
             >
               <div className="flex items-center gap-4">
                 <img
-                  src="/my-photo.webp"
+                  src="/mypic1.webp"
                   alt="Anupam Baral - Full Stack Developer & AI Engineer"
                   width={72}
                   height={72}
