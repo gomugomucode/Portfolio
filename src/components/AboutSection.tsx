@@ -14,7 +14,7 @@ const timelineItems = [
       "Advanced coursework in software engineering, relational database management systems, network security, and computer algorithms.",
   },
   {
-    date: "2022 — Present",
+    date: "2024 — Present",
     title: "Full Stack & AI Freelance Developer",
     subtitle: "Remote / Global Client Engagement",
     description:
@@ -81,6 +81,7 @@ const AboutSection = () => {
                     <span className="text-sm text-foreground group-hover:text-primary transition-colors">
                       contact@anupambaral.com.np
                     </span>
+                    
                   </div>
                 </div>
               </Card>

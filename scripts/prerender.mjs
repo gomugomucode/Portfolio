@@ -173,6 +173,52 @@ const routeMetadata = [
     ]
   },
   {
+    route: "/blog/yatra-solana-ride-sharing-protocol",
+    title: "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana | Anupam Baral",
+    description: "A comprehensive deep dive into engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems using Rust, Web3.js, and Firebase.",
+    keywords: "Solana, Web3, Rust, Architecture, Yatra",
+    ogImage: `${SITE_URL}/yatra.webp`,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana",
+        "description": "Deep dive into engineering atomic ride contracts on Solana using Rust & Firebase.",
+        "url": `${SITE_URL}/blog/yatra-solana-ride-sharing-protocol`
+      }
+    ]
+  },
+  {
+    route: "/blog/decoupled-lms-architectures",
+    title: "Decoupling Large-Scale LMS Content Deliveries | Anupam Baral",
+    description: "Analyzing MySQL persistence designs, decoupling frontend applications, and designing zero-latency CDN distributions for heavy educational platform architectures.",
+    keywords: "React, Node.js, Express, MySQL, Decoupled Architecture",
+    ogImage: `${SITE_URL}/elearning-preview.webp`,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Decoupling Large-Scale LMS Content Deliveries",
+        "url": `${SITE_URL}/blog/decoupled-lms-architectures`
+      }
+    ]
+  },
+  {
+    route: "/blog/type-safe-ai-pipelines",
+    title: "Type-Safe AI Inference: Connecting Python Models to TS Gateways | Anupam Baral",
+    description: "How to bridge Python machine learning backends with TypeScript API gateways. Implement structural runtime validations to protect latency-critical production applications.",
+    keywords: "Python, FastAPI, TypeScript, Pydantic, Zod, AI / ML",
+    ogImage: DEFAULT_IMAGE,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Type-Safe AI Inference: Connecting Python Models to TS Gateways",
+        "url": `${SITE_URL}/blog/type-safe-ai-pipelines`
+      }
+    ]
+  },
+  {
     route: "/now",
     title: "What I'm Doing Now | Anupam Baral",
     description: "A real-time snapshot of current engineering projects, active learning roadmap, reading list, and availability of Anupam Baral.",

@@ -1,9 +1,12 @@
-import { Calendar, Clock, ExternalLink, BookOpen } from "lucide-react";
+import { Link } from "react-router-dom";
+import { Calendar, Clock, ExternalLink, BookOpen, ArrowRight } from "lucide-react";
 import { Badge } from "./ui/badge";
+import { slugify } from "@/lib/mediumFeed";
 
 export interface BlogPost {
   guid: string;
   title: string;
+  slug?: string;
   pubDate: string;
   link: string;
   thumbnail: string;
@@ -32,6 +35,9 @@ const formatDate = (dateStr: string) => {
 };
 
 export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
+  const articleSlug = post.slug || slugify(post.title);
+  const previewUrl = `/blog/${articleSlug}`;
+
   if (layout === "horizontal") {
     return (
       <article className="group flex flex-col md:flex-row gap-6 md:gap-8 border-b border-border pb-10 last:border-b-0 last:pb-0 transition-colors duration-300">
@@ -48,16 +54,14 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
             </span>
           </div>
 
-          <a
-            href={post.link}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            to={previewUrl}
             className="block group-hover:text-primary transition-colors duration-300"
           >
             <h2 className="font-display text-2xl font-medium tracking-tight text-foreground leading-snug">
               {post.title}
             </h2>
-          </a>
+          </Link>
 
           <p className="text-body-sm line-clamp-3">
             {post.excerpt}
@@ -71,22 +75,28 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
             ))}
           </div>
 
-          <a
-            href={post.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 px-4 py-2.5 transition-all self-start mt-3"
-          >
-            <BookOpen className="w-3.5 h-3.5" />
-            Read on Medium
-            <ExternalLink className="w-3 h-3 opacity-60" />
-          </a>
+          <div className="flex flex-wrap items-center gap-3 mt-3">
+            <Link
+              to={previewUrl}
+              className="inline-flex items-center gap-2 text-xs font-mono font-medium rounded-md bg-primary text-primary-foreground hover:bg-primary/90 active:scale-95 px-4 py-2.5 transition-all"
+            >
+              <BookOpen className="w-3.5 h-3.5" />
+              Read Preview
+              <ArrowRight className="w-3 h-3" />
+            </Link>
+            <a
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 text-xs font-mono text-muted-foreground hover:text-foreground transition-colors px-3 py-2.5"
+            >
+              Medium <ExternalLink className="w-3 h-3 opacity-60" />
+            </a>
+          </div>
         </div>
 
-        <a
-          href={post.link}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={previewUrl}
           className="block w-full md:w-56 h-48 md:h-40 shrink-0 overflow-hidden rounded-md border border-border bg-muted order-1 md:order-2 relative"
         >
           <img
@@ -101,17 +111,15 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
               e.currentTarget.src = "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800";
             }}
           />
-        </a>
+        </Link>
       </article>
     );
   }
 
   return (
     <article className="group flex flex-col h-full border border-border rounded-md overflow-hidden bg-card hover:border-foreground/20 hover:[box-shadow:var(--e-2)] transition-all duration-300">
-      <a
-        href={post.link}
-        target="_blank"
-        rel="noopener noreferrer"
+      <Link
+        to={previewUrl}
         className="block aspect-[16/10] overflow-hidden bg-muted relative w-full"
       >
         <img
@@ -126,7 +134,7 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
             e.currentTarget.src = "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=800";
           }}
         />
-      </a>
+      </Link>
 
       <div className="flex flex-col gap-3 p-5 flex-1">
         <div className="flex items-center gap-3 label-mono">
@@ -141,16 +149,14 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
           </span>
         </div>
 
-        <a
-          href={post.link}
-          target="_blank"
-          rel="noopener noreferrer"
+        <Link
+          to={previewUrl}
           className="block group-hover:text-primary transition-colors"
         >
           <h3 className="font-display text-lg font-medium tracking-tight text-foreground leading-snug line-clamp-2">
             {post.title}
           </h3>
-        </a>
+        </Link>
 
         <p className="text-body-sm line-clamp-3 flex-1">{post.excerpt}</p>
 
@@ -160,16 +166,24 @@ export const BlogCard = ({ post, layout = "vertical" }: BlogCardProps) => {
           ))}
         </div>
 
-        <a
-          href={post.link}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 label-mono text-muted-foreground hover:text-foreground transition-colors mt-3"
-        >
-          Read on Medium
-          <ExternalLink className="w-3 h-3 opacity-60" />
-        </a>
+        <div className="flex items-center justify-between mt-3 pt-3 border-t border-border/60">
+          <Link
+            to={previewUrl}
+            className="inline-flex items-center gap-1.5 text-xs font-mono font-medium text-primary hover:underline"
+          >
+            Read Preview <ArrowRight className="w-3 h-3" />
+          </Link>
+          <a
+            href={post.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 text-[11px] font-mono text-muted-foreground hover:text-foreground transition-colors"
+          >
+            Medium <ExternalLink className="w-3 h-3 opacity-60" />
+          </a>
+        </div>
       </div>
     </article>
   );
 };
+

@@ -7,6 +7,7 @@ import { Card } from "@/components/ui/card";
 import { SectionShell } from "@/components/layout/SectionShell";
 import { BlogCard, type BlogPost } from "@/components/BlogCard";
 import { siteConfig } from "@/lib/siteConfig";
+import { fetchMediumArticles, FALLBACK_ARTICLES } from "@/lib/mediumFeed";
 import {
   getBlogPostingSchema,
   getBreadcrumbSchema,
@@ -167,85 +168,50 @@ const Blog = () => {
   const [sortOrder, setSortOrder] = useState<"newest" | "oldest" | "alphabetical" | "readingTime">("newest");
 
   useEffect(() => {
-    const fetchMediumFeed = async () => {
-      try {
-        const cached = localStorage.getItem(CACHE_KEY);
-        if (cached) {
-          const { timestamp, data } = JSON.parse(cached);
-          if (Date.now() - timestamp < CACHE_DURATION_MS && data && data.length > 0) {
-            setPosts(data);
-            setLoading(false);
-            return;
-          }
+    let isMounted = true;
+    fetchMediumArticles()
+      .then((data) => {
+        if (isMounted) {
+          const blogPosts: BlogPost[] = data.map((art) => ({
+            guid: art.id,
+            title: art.title,
+            slug: art.slug,
+            pubDate: art.publishDate,
+            link: art.link,
+            thumbnail: art.featuredImage,
+            categories: art.categories,
+            readingTime: art.readingTime,
+            excerpt: art.excerpt,
+            author: art.author,
+          }));
+          setPosts(blogPosts);
+          setLoading(false);
         }
-
-        const rssUrl = `https://medium.com/feed/@${MEDIUM_USERNAME}`;
-        const response = await fetch(
-          `https://api.rss2json.com/v1/api.json?rss_url=${encodeURIComponent(rssUrl)}`
-        );
-
-        if (!response.ok) throw new Error("Network request failed");
-        
-        const resData = await response.json();
-        
-        if (resData.status === "ok" && resData.items && resData.items.length > 0) {
-          const parsedPosts = resData.items.map((item: Record<string, unknown>) => {
-            const tempDiv = document.createElement("div");
-            tempDiv.innerHTML = (item.description as string) || "";
-            const plainText = tempDiv.textContent || tempDiv.innerText || "";
-            const excerpt = plainText.trim().substring(0, 160) + "...";
-            const wordCount = plainText.split(/\s+/).length;
-            const readingTime = `${Math.max(1, Math.ceil(wordCount / 200))} min read`;
-
-            const FALLBACK_THUMBNAIL =
-              "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=800";
-
-            const descriptionHtml = (item.description as string) || "";
-            const contentHtml = (item.content as string) || "";
-
-            const thumbnailFromField = (item.thumbnail as string) || "";
-            const firstImgRegex = /<img[^>]+src="([^"]+)"/i;
-            const firstImgMatch = firstImgRegex.exec(contentHtml || descriptionHtml);
-            const firstImg = firstImgMatch?.[1] || "";
-
-            const ogImageRegex = /<meta[^>]+property=["']og:image["'][^>]+content=["']([^"']+)["']/i;
-            const ogMatch = ogImageRegex.exec(contentHtml || descriptionHtml);
-            const ogImage = ogMatch?.[1] || "";
-
-            const finalThumbnail =
-              thumbnailFromField || firstImg || ogImage || FALLBACK_THUMBNAIL;
-
-            return {
-              guid: (item.guid as string) || (item.link as string),
-              title: item.title as string,
-              pubDate: item.pubDate as string,
-              link: item.link as string,
-              author: (item.author as string) || "Anupam Baral",
-              thumbnail: finalThumbnail,
-              categories: (item.categories as string[]) || ["Engineering"],
-              excerpt,
-              readingTime
-            };
-          });
-
-          localStorage.setItem(
-            CACHE_KEY,
-            JSON.stringify({ timestamp: Date.now(), data: parsedPosts })
-          );
-          setPosts(parsedPosts);
-        } else {
-          setPosts(FALLBACK_POSTS);
+      })
+      .catch((err) => {
+        console.error("Medium articles fetch error:", err);
+        if (isMounted) {
+          setError(true);
+          const fallbackBlogPosts: BlogPost[] = FALLBACK_ARTICLES.map((art) => ({
+            guid: art.id,
+            title: art.title,
+            slug: art.slug,
+            pubDate: art.publishDate,
+            link: art.link,
+            thumbnail: art.featuredImage,
+            categories: art.categories,
+            readingTime: art.readingTime,
+            excerpt: art.excerpt,
+            author: art.author,
+          }));
+          setPosts(fallbackBlogPosts);
+          setLoading(false);
         }
-      } catch (err) {
-        console.error("Medium feed failed to load, loading graceful fallbacks.", err);
-        setError(true);
-        setPosts(FALLBACK_POSTS);
-      } finally {
-        setLoading(false);
-      }
+      });
+
+    return () => {
+      isMounted = false;
     };
-
-    fetchMediumFeed();
   }, []);
 
   const allCategories = useMemo(() => {
