@@ -35,7 +35,7 @@ const AboutSection = () => {
 
             <div className="text-body flex flex-col gap-4">
               <p>
-                I am <strong>Anupam Baral</strong>, a Senior <strong>Full Stack Developer</strong> and <strong>AI Developer in Nepal</strong>. I specialize in bridging complex cloud infrastructures with performant, accessible user interfaces built on <strong>React</strong> and <strong>Next.js</strong>.
+                I am <strong>Anupam Baral</strong>, a <strong>Full-Stack & AI Engineer</strong> based in Nepal. I specialize in bridging cloud infrastructures with performant, accessible user interfaces built on <strong>React</strong>, <strong>Next.js</strong>, and <strong>Python</strong>.
               </p>
               <p>
                 My focus is engineering production-ready software. Whether deploying intelligent <strong>Python</strong> machine learning pipelines, building real-time backend systems with <strong>Supabase</strong> and <strong>Firebase</strong>, or writing smart programs on <strong>Solana</strong>, I prioritize clean architecture, sub-second LCP performance, and long-term maintainability.

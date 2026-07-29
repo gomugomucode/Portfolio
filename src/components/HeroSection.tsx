@@ -192,8 +192,8 @@ const HeroSection = () => {
               <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Solana Tx Confirmation</span>
             </div>
             <div className="flex flex-col gap-1 pl-0 md:pl-4">
-              <span className="font-display text-2xl md:text-3xl font-bold text-primary">99.9%</span>
-              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">System Uptime</span>
+              <span className="font-display text-2xl md:text-3xl font-bold text-primary">100%</span>
+              <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">Code Type Safety</span>
             </div>
           </motion.div>
 

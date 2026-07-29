@@ -67,7 +67,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     relatedArticleTitle: "Decoupling Large-Scale LMS Content Deliveries",
     metrics: [
       { label: "Content Load Time", value: "<1.2s" },
-      { label: "System Uptime", value: "99.9%" },
+      { label: "Code Type Safety", value: "100%" },
       { label: "Database Speedup", value: "40%" }
     ],
     problem: "Traditional LMS solutions suffer from slow page load speeds and tightly coupled architectures. High payload delivery and excessive database roundtrips degrade search and dashboard performance when multiple courses load concurrently.",

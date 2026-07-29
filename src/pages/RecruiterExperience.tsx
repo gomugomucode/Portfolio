@@ -16,9 +16,9 @@ const recruiterData = {
   timezone: "GMT+5:45 (Flexible 4-6 hours overlap with US, EU, and APAC teams)",
   languages: ["English (Professional Fluent)", "Nepali (Native)"],
   targetRoles: [
-    { title: "Senior Full Stack Engineer", match: "High Match" },
+    { title: "Full-Stack & AI Engineer", match: "High Match" },
     { title: "AI Software Engineer", match: "High Match" },
-    { title: "Frontend Lead / Engineer", match: "High Match" },
+    { title: "Frontend / React Engineer", match: "High Match" },
     { title: "Web3 Solana Developer", match: "High Match" }
   ],
   stackHighlights: {
@@ -45,7 +45,7 @@ const RecruiterExperience = () => {
   const schemas = [
     getWebPageSchema(
       "Recruiter Portal & Hiring Info | Anupam Baral",
-      "Dedicated portal for recruiters and hiring managers evaluating Anupam Baral for Full Stack & AI Engineering roles.",
+      "Dedicated portal for recruiters and hiring managers evaluating Anupam Baral for Full-Stack & AI Engineering roles.",
       url,
       breadcrumbs
     ),
@@ -56,7 +56,7 @@ const RecruiterExperience = () => {
     <SectionShell bordered={false}>
       <SEO
         title="For Recruiters & Hiring Managers | Anupam Baral"
-        description="Dedicated portal for engineering recruiters evaluating Anupam Baral for Senior Full Stack, React, Next.js, Python AI, and Web3 roles."
+        description="Dedicated portal for engineering recruiters evaluating Anupam Baral for Full-Stack, React, Next.js, Python AI, and Web3 roles."
         keywords="Hire Anupam Baral, Full Stack Developer Nepal Resume, React Engineer For Hire, AI Developer Nepal Hiring"
         canonicalUrl={url}
         schema={schemas}

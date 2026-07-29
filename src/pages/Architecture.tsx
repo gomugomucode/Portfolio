@@ -57,7 +57,7 @@ export const ARCHITECTURE_DIAGRAMS: ArchitectureDiagramSpec[] = [
     metrics: [
       { label: "Concurrent Users Tested", value: "10,000" },
       { label: "Catalogue Load Latency", value: "1.1s" },
-      { label: "System Uptime", value: "99.9%" },
+      { label: "Code Type Safety", value: "100%" },
     ],
   },
 ];
