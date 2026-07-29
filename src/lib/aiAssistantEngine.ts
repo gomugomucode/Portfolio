@@ -66,7 +66,31 @@ export const aiAssistantEngine = {
       };
     }
 
-    // Query 5: Backend Stack / Python / Node.js
+    // Query 5: Best Performance / Speed / Core Web Vitals
+    if (q.includes("performance") || q.includes("speed") || q.includes("fast") || q.includes("vitals")) {
+      return {
+        matchedTopic: "Performance Benchmarks & Web Vitals",
+        answer: "The LMS Decoupled Architecture achieved a 67% load time reduction (from 3.4s to 1.1s) under 10,000 concurrent users. This portfolio itself runs with 0.00 CLS, < 1.2s LCP, and 18 static pre-rendered SSG pages.",
+        citations: [
+          { title: "LMS Performance Case Study", url: "/project/02" },
+          { title: "Production Readiness Spec", url: "/about" },
+        ],
+      };
+    }
+
+    // Query 6: Biggest Challenge / Architecture Failures
+    if (q.includes("challenge") || q.includes("failure") || q.includes("reentrancy") || q.includes("difficult")) {
+      return {
+        matchedTopic: "Engineering Challenges & Lock Resolution",
+        answer: "Anupam's biggest challenge was resolving Account Reentrancy bugs in Yatra's Solana Anchor smart contract when riders cancelled fares simultaneously during driver acceptance. Solved via state locks in Rust PDA contexts.",
+        citations: [
+          { title: "Yatra Systems Design", url: "/project/01" },
+          { title: "Interactive Architecture Diagrams", url: "/architecture" },
+        ],
+      };
+    }
+
+    // Query 7: Backend Stack / Python / Node.js
     if (q.includes("backend") || q.includes("python") || q.includes("node") || q.includes("api")) {
       return {
         matchedTopic: "Backend Architecture",

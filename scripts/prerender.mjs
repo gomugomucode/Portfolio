@@ -309,6 +309,36 @@ const routeMetadata = [
     ]
   },
   {
+    route: "/architecture",
+    title: "Interactive System Architecture & Systems Design | Anupam Baral",
+    description: "Interactive systems design, database schemas, API gateway flows, and architecture diagrams built by Anupam Baral.",
+    keywords: "System Architecture, Systems Design, Solana Escrow Architecture, MySQL Read Replicas",
+    ogImage: DEFAULT_IMAGE,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Interactive System Architecture",
+        "url": `${SITE_URL}/architecture`
+      }
+    ]
+  },
+  {
+    route: "/playground",
+    title: "Developer Playground & Algorithmic Demos | Anupam Baral",
+    description: "Interactive code playground showcasing security sanitization, rate limiting algorithms, and multi-domain fuzzy search engines.",
+    keywords: "Developer Playground, XSS Sanitizer, Multi Domain Fuzzy Search, JavaScript Algorithms",
+    ogImage: DEFAULT_IMAGE,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Developer Playground",
+        "url": `${SITE_URL}/playground`
+      }
+    ]
+  },
+  {
     route: "/privacy",
     title: "Privacy Policy | Anupam Baral",
     description: "Privacy policy and data protection standards for Anupam Baral's developer portfolio website.",
