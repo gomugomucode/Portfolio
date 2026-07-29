@@ -78,7 +78,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="text-body max-w-2xl text-muted-foreground leading-relaxed"
               >
-                I help tech startups, companies, and founders build production-grade web applications, AI-powered software pipelines, and Web3 protocols. Specialized in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Supabase</strong>, <strong>Firebase</strong>, and <strong>Solana</strong>.
+                I engineer production-grade web applications, intelligent AI pipelines, and scalable cloud architectures. Specialized in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, <strong>Python</strong>, <strong>Supabase</strong>, <strong>Firebase</strong>, and <strong>Solana</strong>.
               </motion.p>
 
               {/* Dual Action Conversion CTAs */}
@@ -132,7 +132,7 @@ const HeroSection = () => {
               </div>
 
               <p className="text-body-sm text-muted-foreground leading-relaxed">
-                Over 4+ production applications engineered with sub-second page loads, strict TypeScript type safety, and 99.9% uptime architecture.
+                Full-Stack & AI Engineer building production web applications, Python AI models, real-time backends with Supabase & Firebase, and Solana protocols.
               </p>
 
               {/* Verified Badges */}
