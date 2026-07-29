@@ -211,11 +211,11 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
           >
-            {/* Backdrop (solid + blur) */}
+            {/* Backdrop (solid glass surface + blur) */}
             <button
               type="button"
               aria-label="Close menu"
-              className="absolute inset-0 w-full h-full bg-background/80 backdrop-blur-sm"
+              className="absolute inset-0 w-full h-full bg-background/90 backdrop-blur-md"
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
@@ -223,13 +223,13 @@ const Navbar = () => {
             <motion.aside
               role="dialog"
               aria-modal="true"
-              initial={{ y: -12, opacity: 0, transformOrigin: "top center" }}
+              initial={{ y: -16, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              exit={{ y: -12, opacity: 0 }}
-              transition={{ duration: 0.22, ease: "easeOut" }}
-              className="absolute top-0 left-0 right-0"
+              exit={{ y: -16, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+              className="absolute top-0 left-0 right-0 z-10"
             >
-          <div className="bg-background backdrop-blur-md border-b border-border px-5 py-6">
+              <div className="bg-background/98 backdrop-blur-xl border-b border-border/80 shadow-2xl px-6 py-6">
                 <div className="flex items-center justify-between gap-4">
                   <span className="label-mono">Menu</span>
                   <button
