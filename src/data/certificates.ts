@@ -16,17 +16,6 @@ export interface Certificate {
 
 export const certificates: Certificate[] = [
   {
-    id: "dlytica-1-month-data-ai-2026",
-    title: "1-Month Data & AI Training Program",
-    issuer: "DLYTICA Academy",
-    issueDate: "2026-07-10",
-    certificateNo: "DLY-001-2026",
-    image: "/certification-1-month-workshop.png",
-    badge: "ISO 27001:2022 Certified",
-    skills: ["Data Analytics", "Artificial Intelligence", "Machine Learning", "Cloud Systems", "Python Data Pipelines"],
-    description: "Certificate of Participation and Appreciation for successful completion of the intensive 1-Month Data & AI Training Program at Dlytica Academy.",
-  },
-  {
     id: "dlytica-data-analytics-ai-2026",
     title: "Data Analytics with AI Workshop",
     issuer: "DLYTICA Academy",
@@ -48,5 +37,27 @@ export const certificates: Certificate[] = [
       "Intern Nepal",
       "Recruit Nepal"
     ]
+  },
+  {
+    id: "dlytica-1-month-data-ai-2026",
+    title: "1-Month Data & AI Training Program",
+    issuer: "DLYTICA Academy",
+    issueDate: "2026-07-10",
+    certificateNo: "DLY-001-2026",
+    image: "/certification-1-month-workshop.png",
+    badge: "ISO 27001:2022 Certified",
+    skills: ["Data Analytics", "Artificial Intelligence", "Machine Learning", "Cloud Systems", "Python Data Pipelines"],
+    description: "Certificate of Participation and Appreciation for successful completion of the intensive 1-Month Data & AI Training Program at Dlytica Academy.",
+  },
+  {
+    id: "dlytica-1-day-workshop-2026",
+    title: "Career Guidance: Data, AI, DevOps & Cybersecurity",
+    issuer: "DLYTICA Academy",
+    issueDate: "2026-07-10",
+    certificateNo: "DLYTICA-011-2026",
+    image: "/certification-1-day-workshop.png",
+    badge: "ISO 27001:2022 Certified",
+    skills: ["Data Analytics", "Artificial Intelligence", "DevOps", "Cybersecurity", "Cloud Infrastructure"],
+    description: "Certificate of Participation and Appreciation for completing the specialized career guidance session on Data, AI, DevOps, and Cybersecurity held by Dlytica Academy.",
   }
 ];

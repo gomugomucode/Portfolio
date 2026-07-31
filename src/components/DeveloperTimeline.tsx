@@ -19,6 +19,21 @@ export interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
+    id: "t0-dlytica",
+    year: "2026",
+    quarter: "Q3 (July 2026)",
+    title: "DLYTICA Data Analytics & AI Certification Training",
+    category: "Active Learning",
+    organization: "DLYTICA Academy (ISO 27001:2022 Certified)",
+    description: "Completed intensive training & live workshops on Data Analytics, Artificial Intelligence, Python data pipelines, DevOps, and Cybersecurity in partnership with leading tech institutes.",
+    highlights: [
+      "Completed 1-Month Data & AI Training Program with high distinction",
+      "Earned 3-Credit-Hour Certificate in Data Analytics with AI (Live Session)",
+      "Participated in Career Guidance Workshop on AI, DevOps, & Cloud Security"
+    ],
+    techStack: ["Data Analytics", "Python", "Artificial Intelligence", "DevOps", "Cybersecurity"]
+  },
+  {
     id: "t1",
     year: "2026",
     quarter: "Q1 — Present",

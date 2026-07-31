@@ -2,8 +2,14 @@ import { describe, it, expect } from "vitest";
 import { certificates } from "@/data/certificates";
 
 describe("Certificates Data Integrity", () => {
-  it("should contain all verified certificates", () => {
-    expect(certificates.length).toBe(2);
+  it("should contain all 3 verified DLYTICA certificates", () => {
+    expect(certificates.length).toBe(3);
+
+    const dayCert = certificates.find((c) => c.id === "dlytica-1-day-workshop-2026");
+    expect(dayCert).toBeDefined();
+    expect(dayCert?.title).toContain("Career Guidance");
+    expect(dayCert?.certificateNo).toBe("DLYTICA-011-2026");
+    expect(dayCert?.issueDate).toBe("2026-07-10");
 
     const monthCert = certificates.find((c) => c.id === "dlytica-1-month-data-ai-2026");
     expect(monthCert).toBeDefined();

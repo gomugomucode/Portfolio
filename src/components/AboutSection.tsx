@@ -7,6 +7,13 @@ import AnimatedSection from "./AnimatedSection";
 
 const timelineItems = [
   {
+    date: "July 2026",
+    title: "Data Analytics & AI Certification Training",
+    subtitle: "DLYTICA Academy (ISO 27001:2022 Certified)",
+    description:
+      "Completed 1-Month Data & AI Training Program, 3-Credit-Hour Data Analytics with AI Workshop, and Cloud DevOps/Cybersecurity guidance sessions.",
+  },
+  {
     date: "2023 — Present",
     title: "Bachelor of Computer Applications (BCA)",
     subtitle: "Butwal Kalika Campus, Nepal",
