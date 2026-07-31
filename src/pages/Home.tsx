@@ -5,6 +5,7 @@ import EngineeringPhilosophySection from "@/components/EngineeringPhilosophySect
 import DeveloperTimeline from "@/components/DeveloperTimeline";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
+import CertificatesSection from "@/components/CertificatesSection";
 import PerformanceDashboard from "@/components/PerformanceDashboard";
 import GoogleReviews from "@/components/GoogleReviews";
 import BlogSection from "@/components/BlogSection";
@@ -63,6 +64,7 @@ const Home = () => {
       <DeveloperTimeline />
       <ProjectsSection />
       <SkillsSection />
+      <CertificatesSection />
       <PerformanceDashboard />
       <GoogleReviews />
       <BlogSection />
