@@ -106,7 +106,7 @@ const ContactSection = () => {
       <AnimatedSection>
         <SectionGrid>
         <div className="lg:col-span-7 flex flex-col gap-8">
-          <SectionHeader index="06 — Contact" title="Let's build together." />
+          <SectionHeader index="10 — Contact" title="Let's build together." />
 
           {success ? (
             <div

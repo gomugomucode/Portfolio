@@ -115,7 +115,7 @@ const SkillsSection = () => {
   return (
     <SectionShell id="skills">
       <AnimatedSection>
-        <SectionHeader index="04 — Expertise" title="Technical domain & engineering expertise." />
+        <SectionHeader index="05 — Expertise" title="Technical domain & engineering expertise." />
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
           {/* Left Category Selection Navigation */}

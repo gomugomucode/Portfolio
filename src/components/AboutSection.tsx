@@ -93,7 +93,7 @@ const AboutSection = () => {
       <AnimatedSection className="mt-20 md:mt-24 pt-16 md:pt-20 border-t border-border">
         <SectionGrid>
           <div className="lg:col-span-4 flex flex-col gap-3">
-            <span className="label-mono">02 — Experience</span>
+            <span className="label-mono">Experience</span>
             <h2 className="heading-display text-2xl md:text-3xl">Track record.</h2>
           </div>
           <div className="lg:col-span-8">

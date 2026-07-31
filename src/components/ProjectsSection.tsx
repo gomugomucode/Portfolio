@@ -11,7 +11,7 @@ const ProjectsSection = () => {
   return (
     <SectionShell id="work">
       <AnimatedSection>
-        <SectionHeader index="03 — Selected work" title="Case studies." />
+        <SectionHeader index="04 — Selected work" title="Case studies." />
       </AnimatedSection>
 
       <div className="flex flex-col gap-20 md:gap-28">

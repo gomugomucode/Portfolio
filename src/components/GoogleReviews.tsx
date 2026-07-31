@@ -22,7 +22,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
       <AnimatedSection>
         {showTitle && (
           <SectionHeader
-            index="06 — Verified Reviews"
+            index="08 — Verified Reviews"
             title="Google Reviews & verified client endorsements."
           />
         )}
