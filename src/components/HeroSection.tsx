@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Github, Linkedin, ArrowDown, Download, Briefcase, Code2, Sparkles, CheckCircle2, ShieldCheck } from "lucide-react";
+import { Github, Linkedin, ArrowDown, Download, Briefcase, Code2, Sparkles, CheckCircle2, ShieldCheck, FileText } from "lucide-react";
 import { Button } from "./ui/button";
 import { Container } from "./layout/Container";
 import { trackResumeDownload, trackSocialClick } from "@/lib/analytics";
@@ -65,12 +65,12 @@ const HeroSection = () => {
                 Anupam Baral — Full Stack & AI Engineer
               </motion.span>
 
-              {/* Punchy Headline */}
+              {/* Clear Entity H1 Headline */}
               <motion.h1
                 variants={itemVariants}
-                className="heading-display-lg max-w-[16ch] tracking-tight"
+                className="heading-display-lg max-w-[20ch] tracking-tight"
               >
-                Building web applications & AI pipelines.
+                Anupam Baral — Full-Stack Developer & AI Engineer
               </motion.h1>
 
               {/* Subheadline Value Proposition */}
@@ -78,7 +78,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="text-body max-w-2xl text-muted-foreground leading-relaxed"
               >
-                Full-Stack & AI Engineer specializing in <strong>React</strong>, <strong>Next.js</strong>, <strong>TypeScript</strong>, and <strong>Python</strong>. Built the Yatra ride-sharing protocol on Solana, decoupled LMS read-replica architectures, and type-safe AI pipelines.
+                I'm Anupam Baral (<strong>@gomugomucode</strong>), a Full-Stack Developer and AI Engineer based in Nepal. I specialize in building modern web applications with <strong>React</strong>, <strong>Next.js</strong>, and <strong>TypeScript</strong>, engineering intelligent <strong>Python</strong> microservices, and architecting decentralized systems on <strong>Solana</strong>.
               </motion.p>
 
               {/* Dual Action Conversion CTAs */}
@@ -126,7 +126,7 @@ const HeroSection = () => {
                 />
                 <div>
                   <h3 className="font-display text-base font-semibold text-foreground">Anupam Baral</h3>
-                  <p className="text-xs font-mono text-muted-foreground">Full Stack & AI Engineer</p>
+                  <p className="text-xs font-mono text-primary font-medium">@gomugomucode</p>
                   <p className="text-[11px] text-muted-foreground mt-0.5">Butwal, Nepal • GMT+5:45</p>
                 </div>
               </div>
@@ -154,7 +154,7 @@ const HeroSection = () => {
                   rel="noopener noreferrer"
                   onClick={() => trackSocialClick("github", "https://github.com/gomugomucode")}
                   className="social-link"
-                  aria-label="GitHub Profile"
+                  aria-label="GitHub Profile (@gomugomucode)"
                 >
                   <Github className="w-4 h-4" />
                 </a>
@@ -167,6 +167,16 @@ const HeroSection = () => {
                   aria-label="LinkedIn Profile"
                 >
                   <Linkedin className="w-4 h-4" />
+                </a>
+                <a
+                  href="https://medium.com/@gomugomucode"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  onClick={() => trackSocialClick("medium", "https://medium.com/@gomugomucode")}
+                  className="social-link"
+                  aria-label="Medium Publications (@gomugomucode)"
+                >
+                  <FileText className="w-4 h-4" />
                 </a>
               </div>
             </motion.div>
