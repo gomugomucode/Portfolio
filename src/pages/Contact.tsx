@@ -2,7 +2,7 @@ import SEO from "@/components/SEO";
 import ContactSection from "@/components/ContactSection";
 import { siteConfig } from "@/lib/siteConfig";
 import {
-  getOrganizationSchema,
+  getContactPageSchema,
   getFAQSchema,
   getBreadcrumbSchema,
   getWebPageSchema,
@@ -27,7 +27,7 @@ const Contact = () => {
   ];
 
   const schemas = [
-    getOrganizationSchema(),
+    getContactPageSchema(url),
     getFAQSchema(contactFaqs),
     getBreadcrumbSchema(breadcrumbs),
     getWebPageSchema(

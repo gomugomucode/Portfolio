@@ -123,13 +123,18 @@ const SkillsSection = () => {
             <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
               Select Engineering Domain
             </span>
-            <div className="flex flex-col gap-1.5">
+            <div role="tablist" aria-label="Engineering Expertise Domains" className="flex flex-col gap-1.5">
               {expertiseCategories.map((cat) => {
                 const Icon = cat.icon;
                 const isActive = cat.id === activeTab;
                 return (
                   <button
                     key={cat.id}
+                    id={`tab-${cat.id}`}
+                    role="tab"
+                    aria-selected={isActive}
+                    aria-controls={`panel-${cat.id}`}
+                    tabIndex={isActive ? 0 : -1}
                     onClick={() => setActiveTab(cat.id)}
                     className={`flex items-center gap-3 p-3.5 rounded-lg border text-left transition-all duration-200 interactive-focus ${
                       isActive
@@ -159,7 +164,12 @@ const SkillsSection = () => {
           </div>
 
           {/* Right Expertise Detail Panel */}
-          <div className="lg:col-span-8 p-6 md:p-8 rounded-xl border border-border bg-card/60 backdrop-blur-sm flex flex-col gap-6">
+          <div
+            role="tabpanel"
+            id={`panel-${selectedCategory.id}`}
+            aria-labelledby={`tab-${selectedCategory.id}`}
+            className="lg:col-span-8 p-6 md:p-8 rounded-xl border border-border bg-card/60 backdrop-blur-sm flex flex-col gap-6"
+          >
             {/* Header Title & Icon */}
             <div className="flex items-center gap-4 pb-4 border-b border-border">
               <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">

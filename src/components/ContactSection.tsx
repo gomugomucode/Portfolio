@@ -133,7 +133,9 @@ const ContactSection = () => {
                 </label>
                 <Input
                   id="name"
+                  name="name"
                   type="text"
+                  autoComplete="name"
                   required
                   aria-required="true"
                   value={form.name}
@@ -155,7 +157,9 @@ const ContactSection = () => {
                 </label>
                 <Input
                   id="email"
+                  name="email"
                   type="email"
+                  autoComplete="email"
                   required
                   aria-required="true"
                   value={form.email}
@@ -177,6 +181,7 @@ const ContactSection = () => {
                 </label>
                 <Textarea
                   id="message"
+                  name="message"
                   rows={5}
                   required
                   aria-required="true"

@@ -83,11 +83,11 @@ const BlogArticlePreview = () => {
           <p className="text-body-sm text-muted-foreground">
             The requested engineering article preview could not be resolved.
           </p>
-          <Link to="/blog">
-            <Button variant="outline" className="gap-2">
+          <Button variant="outline" asChild className="gap-2">
+            <Link to="/blog">
               <ArrowLeft className="w-4 h-4" /> Back to All Articles
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </SectionShell>
     );

@@ -29,21 +29,21 @@ const Footer = () => {
           </div>
 
           <div className="lg:col-span-2 flex flex-col gap-4">
-            <h4 className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Navigation</h4>
+            <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Navigation</p>
             <Link to="/" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Home</Link>
             <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">About</Link>
             <Link to="/projects" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Projects Archive</Link>
             <Link to="/blog" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Engineering Blog</Link>
-            <Link to="/open-source" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit font-semibold text-primary">Open Source Hub (/open-source)</Link>
-            <Link to="/ai" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">AI Showcase (/ai)</Link>
-            <Link to="/now" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">What I'm Doing Now (/now)</Link>
-            <Link to="/for-recruiters" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">For Recruiters Portal</Link>
-            <Link to="/uses" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit font-semibold text-primary">Developer Setup (/uses)</Link>
+            <Link to="/open-source" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Open Source Hub</Link>
+            <Link to="/ai" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">AI Showcase</Link>
+            <Link to="/now" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Now Page</Link>
+            <Link to="/for-recruiters" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">For Recruiters</Link>
+            <Link to="/uses" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Uses & Setup</Link>
             <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Hire Me / Contact</Link>
           </div>
 
           <div className="lg:col-span-3 flex flex-col gap-4">
-            <h4 className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Featured Case Studies</h4>
+            <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Featured Case Studies</p>
             <Link to="/project/01" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">01. E-Learning LMS Platform</Link>
             <Link to="/project/02" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">02. Yatra — Solana Ride-Sharing</Link>
             <Link to="/project/03" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">03. Web3 Loyalty Protocol</Link>
@@ -51,7 +51,7 @@ const Footer = () => {
           </div>
 
           <div className="lg:col-span-3 flex flex-col gap-4">
-            <h4 className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Connect & Location</h4>
+            <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Connect & Location</p>
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <a href="https://github.com/gomugomucode" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="GitHub Profile">
                 <Github className="w-4 h-4" />
@@ -59,7 +59,7 @@ const Footer = () => {
               <a href="https://linkedin.com/in/gomugomucode" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="LinkedIn Profile">
                 <Linkedin className="w-4 h-4" />
               </a>
-              <a href="https://twitter.com/gomugomucode" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter Profile">
+              <a href="https://x.com/gomugomucode" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="Twitter / X Profile">
                 <Twitter className="w-4 h-4" />
               </a>
               <a href="mailto:contact@anupambaral.com.np" className="social-link" aria-label="Direct Email">

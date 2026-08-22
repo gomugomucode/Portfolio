@@ -92,7 +92,7 @@ const HeroSection = () => {
                   Hire Me for Projects / Full-time
                 </Button>
                 <a
-                  href="\Anupambaral-cv.docx"
+                  href="/Anupambaral-cv.docx"
                   target="_blank"
                   rel="noopener noreferrer"
                   onClick={() => trackResumeDownload()}

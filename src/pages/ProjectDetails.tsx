@@ -5,249 +5,18 @@ import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { SectionShell } from "@/components/layout/SectionShell";
-import { ArchitectureDiagram, getProjectArchitectureNodes } from "@/components/ArchitectureDiagram";
+import { ArchitectureDiagram } from "@/components/ArchitectureDiagram";
+import { getProjectArchitectureNodes } from "@/data/architecture";
 import { siteConfig } from "@/lib/siteConfig";
 import {
   getProjectSchema,
   getBreadcrumbSchema,
   getWebPageSchema,
 } from "@/lib/schema";
+import { caseStudies, type CaseStudy } from "@/data/caseStudies";
 
-export interface CaseStudy {
-  id: string;
-  slug: string;
-  title: string;
-  seoTitle: string;
-  seoDescription: string;
-  subtitle: string;
-  role: string;
-  year: string;
-  client: string;
-  tags: string[];
-  keywords: string[];
-  imageUrl: string;
-  screenshots: string[];
-  liveLink: string;
-  githubLink: string;
-  metrics: { label: string; value: string }[];
-  problem: string;
-  requirements: string[];
-  solution: string;
-  architecture: string[];
-  tradeoffs: string;
-  features: string[];
-  challenges: string;
-  lessons: string;
-  futureImprovements: string;
-  relatedArticleLink?: string;
-  relatedArticleTitle?: string;
-}
+export type { CaseStudy };
 
-export const caseStudies: Record<string, CaseStudy> = {
-  "01": {
-    id: "01",
-    slug: "e-learning-platform",
-    title: "E-Learning LMS Platform",
-    seoTitle: "E-Learning LMS Platform Case Study | React, Node.js & MySQL",
-    seoDescription: "In-depth technical case study of a decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.",
-    subtitle: "A high-performance decoupled Learning Management System built for production-scale content distribution.",
-    role: "Full Stack Engineer",
-    year: "2024",
-    client: "Internal / Open Source",
-    tags: ["React", "Node.js", "Express", "MySQL", "Vercel", "Tailwind CSS"],
-    keywords: ["React LMS", "Decoupled Architecture", "Node.js Express API", "MySQL Indexing", "Vercel Edge Caching"],
-    imageUrl: "/elearning-preview.webp",
-    screenshots: [
-      "/elearning-preview.webp",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1200"
-    ],
-    liveLink: "https://elearn-lake.vercel.app",
-    githubLink: "https://github.com/gomugomucode/elearn",
-    relatedArticleLink: "https://medium.com/@gomugomucode/decoupled-lms-architectures",
-    relatedArticleTitle: "Decoupling Large-Scale LMS Content Deliveries",
-    metrics: [
-      { label: "Content Load Time", value: "<1.2s" },
-      { label: "Code Type Safety", value: "100%" },
-      { label: "Database Speedup", value: "40%" }
-    ],
-    problem: "Traditional LMS solutions suffer from slow page load speeds and tightly coupled architectures. High payload delivery and excessive database roundtrips degrade search and dashboard performance when multiple courses load concurrently.",
-    requirements: [
-      "Sub-1.5s worldwide content initial load speed across mobile devices.",
-      "Decoupled architecture enabling client and backend deployments to scale independently.",
-      "Relational course hierarchy support with efficient database fetch queries.",
-      "Stateless user session handling with zero server-side memory leaks."
-    ],
-    solution: "Decoupled the architecture completely by serving a static, highly optimized React client via global CDNs and running a lightweight, stateless Node.js/Express API. Built database query optimizations using precompiled joins and index mappings in MySQL to handle nested course structures.",
-    architecture: [
-      "Decoupled React Client served from global edge CDNs.",
-      "Stateless REST API utilizing Node.js and Express.",
-      "Relational MySQL persistence layer utilizing relational indexing for course trees.",
-      "Vercel Edge caching configurations for static route delivery."
-    ],
-    tradeoffs: "Chose MySQL relational indexing over NoSQL document stores to guarantee strong relational integrity for prerequisite course dependencies, trading minor write flexibility for deterministic read query speeds.",
-    features: [
-      "Sub-second course catalog searching with client-side indexing.",
-      "Hierarchical course category trees with single-query relational fetches.",
-      "Stateless JWT user authentication & session management.",
-      "Responsive progress tracking & video streaming playback integration."
-    ],
-    challenges: "Handling recursive folder structures and hierarchical course categories efficiently in a relational MySQL database without triggering exponential query loops.",
-    lessons: "Leveraging structured database indexes and flattening dynamic relational queries into indexed lookup arrays dramatically increases runtime response speed and resource efficiency.",
-    futureImprovements: "Migrating media asset storage to Cloudflare R2 bucket storage and implementing real-time WebSocket progress synchronization across devices."
-  },
-  "02": {
-    id: "02",
-    slug: "yatra-solana-ride-sharing",
-    title: "Yatra — Solana Ride-Sharing",
-    seoTitle: "Yatra Solana Ride-Sharing | Decentralized Web3 Protocol Case Study",
-    seoDescription: "Architectural breakdown of Yatra: a Solana decentralized ride-sharing engine written in Rust smart contracts with Firebase RTDB signaling and Web3.js.",
-    subtitle: "Decentralized atomic trip contracts and reputation ledger built on the Solana blockchain.",
-    role: "Core Web3 Architect",
-    year: "2024",
-    client: "Hackathon Entry",
-    tags: ["Solana", "Rust", "Next.js", "Firebase", "Web3.js", "Anchor"],
-    keywords: ["Solana Developer", "Rust Smart Contracts", "Decentralized Ride Sharing", "Web3.js Protocol", "Firebase RTDB"],
-    imageUrl: "/yatra.webp",
-    screenshots: [
-      "/yatra.webp",
-      "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?q=80&w=1200"
-    ],
-    liveLink: "https://yatraa-zeta.vercel.app/",
-    githubLink: "https://github.com/gomugomucode/Yatra",
-    relatedArticleLink: "https://medium.com/@gomugomucode/yatra-solana-ride-sharing-protocol",
-    relatedArticleTitle: "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana",
-    metrics: [
-      { label: "Tx Confirmation", value: "~400ms" },
-      { label: "Gas Fee Per Ride", value: "<$0.0001" },
-      { label: "Signaling Delay", value: "50ms" }
-    ],
-    problem: "Centralized ride-sharing apps take up to a 30% cut of driver earnings and suffer from centralized data security risks. Drivers have no sovereign ownership over their profile history, trip records, or reputational scores.",
-    requirements: [
-      "Atomic escrow smart contracts preventing unilateral ride fee cancellation.",
-      "Sub-100ms real-time coordinate signaling between passenger and driver mobile apps.",
-      "Cryptographic wallet-based identity verification eliminating centralized passwords.",
-      "Sub-cent transaction fees ensuring protocol economic viability."
-    ],
-    solution: "Created an open-source decentralized ride-sharing engine on Solana. All trip status shifts (requested, accepted, completed) are verified using atomic smart contracts written in Rust. Used Firebase RTDB for sub-second location updates, and Web3.js client-side signatures to authenticate every trip event.",
-    architecture: [
-      "Rust Smart Program compiled to Solana BPF bytecode.",
-      "Next.js client application with Web3 provider wallet connections.",
-      "Firebase Realtime Database for quick coordinate syncing.",
-      "Anchor framework testing suite mapping instruction executions."
-    ],
-    tradeoffs: "Separated real-time location telemetry off-chain (Firebase RTDB) while keeping ride payment state transitions on-chain (Solana Rust program), balancing instant UI updates with immutable financial verification.",
-    features: [
-      "Atomic ride transaction escrow on Solana blockchain ledger.",
-      "Decentralized driver reputation scoring verified on-chain.",
-      "Sub-50ms driver-rider location signaling via Firebase RTDB.",
-      "Cryptographic wallet authentication eliminating centralized passwords."
-    ],
-    challenges: "Managing asynchronous off-chain signaling coordinates (Firebase) while enforcing absolute trust boundaries via atomic on-chain verification steps on the blockchain ledger.",
-    lessons: "Decoupled real-time coordination feeds (off-chain) from critical state transitions (on-chain) are key to scaling blockchain architectures without overloading blocks.",
-    futureImprovements: "Integrating Solana state compression for zero-cost reputation badges and implementing decentralized dispute resolution via community arbitration tokens."
-  },
-  "03": {
-    id: "03",
-    slug: "web3-loyalty-protocol",
-    title: "Web3 Loyalty Protocol",
-    seoTitle: "Web3 Loyalty Protocol Case Study | Solana & Next.js DApp",
-    seoDescription: "Technical case study of a Solana Web3 loyalty rewards protocol featuring automated smart contract distributions, sub-cent transaction costs, and instant token settlement.",
-    subtitle: "A high-performance loyalty rewards dApp featuring automated smart-contract distributions.",
-    role: "Lead Dapp Developer",
-    year: "2023",
-    client: "Freelance",
-    tags: ["Web3.js", "Solana", "Rust", "Next.js", "TypeScript", "Tailwind CSS"],
-    keywords: ["Solana DApp", "Web3 Loyalty Program", "Rust Smart Contracts", "TypeScript Web3.js", "Token Minting"],
-    imageUrl: "/solana.webp",
-    screenshots: [
-      "/solana.webp",
-      "https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=1200"
-    ],
-    liveLink: "https://solana-loyalty-d-app.vercel.app/",
-    githubLink: "https://github.com/gomugomucode/Solana-Loyalty-dApp",
-    metrics: [
-      { label: "Token Transfer", value: "Instant" },
-      { label: "Tx Cost", value: "<$0.01" },
-      { label: "Wallet Setup Time", value: "<2 Min" }
-    ],
-    problem: "Traditional corporate rewards programs suffer from fragmented platforms, high transaction friction, and dynamic expiration rules that build distrust with program members.",
-    requirements: [
-      "Instant programmatic minting and issuance of SPL loyalty tokens upon purchase triggers.",
-      "Zero wallet setup friction for non-crypto native users.",
-      "Sub-cent transaction gas overhead for enterprise rewards issuing.",
-      "Transparent on-chain customer tier verification."
-    ],
-    solution: "Built a loyalty dApp that mints and issues dynamic program points directly to consumer cryptographic wallets. Built smart program distributions to handle points transfers, program enrollment, and reward redemptions with instant settlement times.",
-    architecture: [
-      "Solana program handles state for loyalty program balances.",
-      "Next.js frontend with Tailwind interface details.",
-      "TypeScript Web3.js transaction builders with automated wallet signature flows.",
-      "Edge-cached REST requests fetching off-chain loyalty product details."
-    ],
-    tradeoffs: "Used Phantom & Solflare browser extensions for signature verification rather than custodial private keys, prioritizing user data sovereignty over zero-wallet signup flows.",
-    features: [
-      "Instant token minting and transfer settlement on Solana.",
-      "Automated loyalty point rewards distribution upon checkout triggers.",
-      "Seamless Phantom & Solflare wallet connectivity.",
-      "Responsive customer reward dashboard with real-time balance feeds."
-    ],
-    challenges: "Handling smooth wallet connection edge cases across multiple mobile browsers where wallet injection APIs frequently conflict.",
-    lessons: "Clean, asynchronous state management wrapper logic around third-party wallet interfaces prevents critical page crashes and improves mobile customer conversion rates.",
-    futureImprovements: "Adding account abstraction (web3auth) for email-based social signups and automated reward redemption webhooks for Shopify/WooCommerce integrations."
-  },
-  "04": {
-    id: "04",
-    slug: "greenstar-suppliers",
-    title: "Greenstar Suppliers",
-    seoTitle: "Greenstar Suppliers Website Case Study | Next.js 16 & Prisma",
-    seoDescription: "Production case study of Greenstar Suppliers: a Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.",
-    subtitle: "A Next.js 16 product catalogue and order enquiry platform for Nepal's leading entrance and home automation supplier.",
-    role: "Full Stack Developer",
-    year: "2025",
-    client: "Greenstar Suppliers, Nepal",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
-    keywords: ["Next.js Developer Nepal", "Full Stack Developer Nepal", "Prisma PostgreSQL", "Home Automation Nepal", "Next.js 16 App Router"],
-    imageUrl: "/greenstar.webp",
-    screenshots: [
-      "/greenstar.webp",
-      "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1200"
-    ],
-    liveLink: "",
-    githubLink: "",
-    relatedArticleLink: "https://medium.com/@gomugomucode/nextjs-edge-rendering",
-    relatedArticleTitle: "Optimizing Next.js Edge Rendering for Production",
-    metrics: [
-      { label: "Order Channels", value: "3" },
-      { label: "Tech Stack", value: "Next.js 16" },
-      { label: "Market", value: "Nepal" }
-    ],
-    problem: "Local hardware and home automation suppliers in Nepal lacked a professional online presence to showcase entrance products — gate automation, boom barriers, and garage systems — and had no streamlined way to collect enquiries or route orders.",
-    requirements: [
-      "Dynamic hardware product catalogue with instant category filtering.",
-      "Multi-channel order inquiry routes (Direct Call, WhatsApp, and Web Form).",
-      "Persistent enquiry database storage backed by Prisma & PostgreSQL.",
-      "Zero-downtime deployment architecture managed easily without non-technical CMS overhead."
-    ],
-    solution: "Built a full-featured Next.js 16 (App Router) website for Greenstar Suppliers with an animated hero product carousel, a structured product catalogue, per-product Call and WhatsApp order CTAs, a floating WhatsApp button, and a contact/enquiry form backed by a Prisma + PostgreSQL API with optional Nodemailer email notifications.",
-    architecture: [
-      "Next.js 16 App Router with React 19 and TypeScript for the frontend.",
-      "Tailwind CSS 4 and Framer Motion for responsive layouts and smooth animations.",
-      "Prisma ORM with PostgreSQL for persistent enquiry storage.",
-      "Nodemailer backend for email notifications on new enquiries.",
-      "Environment-driven contact config (phone, WhatsApp, email) via environment variables."
-    ],
-    tradeoffs: "Utilized environment-variable configuration for contact routing instead of an expensive headless CMS, enabling non-technical client team members to update phone numbers and branding without application maintenance fees.",
-    features: [
-      "Dynamic product catalogue with instant category filtering.",
-      "Direct Call & WhatsApp ordering integrations tailored for Nepal's market.",
-      "Prisma + PostgreSQL backend persisting customer enquiry submissions.",
-      "Floating contact widget and animated hero banner carousel."
-    ],
-    challenges: "Ensuring the WhatsApp and call order flows worked reliably across Nepal's diverse mobile device landscape while keeping the product catalogue easy to manage and extend without a CMS.",
-    lessons: "Environment-variable-driven contact details and a clean component architecture allow non-technical clients to update phone numbers and branding without touching application code.",
-    futureImprovements: "Integrating a lightweight admin portal for real-time inventory updates and adding multi-language support for English and Nepali."
-  }
-};
 
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();
@@ -264,12 +33,12 @@ const ProjectDetails = () => {
         <p className="text-sm text-muted-foreground max-w-md">
           The requested project case study could not be resolved.
         </p>
-        <Link to="/projects">
-          <Button variant="outline" className="gap-2 font-mono uppercase text-[11px] tracking-widest">
+        <Button variant="outline" asChild className="gap-2 font-mono uppercase text-[11px] tracking-widest">
+          <Link to="/projects">
             <ArrowLeft className="w-4 h-4" />
             Back to All Work
-          </Button>
-        </Link>
+          </Link>
+        </Button>
       </div>
     );
   }

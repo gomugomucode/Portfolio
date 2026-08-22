@@ -122,11 +122,11 @@ const Now = () => {
               {nowData.availability.details}
             </p>
           </div>
-          <Link to="/contact">
-            <Button variant="default" className="gap-2 shrink-0">
+          <Button variant="default" asChild className="gap-2 shrink-0">
+            <Link to="/contact">
               Get in Touch
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </Card>
       </div>
 

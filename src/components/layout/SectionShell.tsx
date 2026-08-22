@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { cn } from "@/lib/utils";
 import { Container } from "./Container";
 
@@ -34,6 +35,7 @@ interface SectionHeaderProps {
   title: ReactNode;
   description?: string;
   className?: string;
+  as?: "h1" | "h2" | "h3";
 }
 
 export const SectionHeader = ({
@@ -41,10 +43,11 @@ export const SectionHeader = ({
   title,
   description,
   className,
+  as: HeadingTag = "h2",
 }: SectionHeaderProps) => (
   <div className={cn("flex flex-col gap-3 mb-12 md:mb-16", className)}>
     <span className="label-mono">{index}</span>
-    <h2 className="heading-display">{title}</h2>
+    <HeadingTag className="heading-display">{title}</HeadingTag>
     {description && (
       <p className="text-body-sm max-w-xl">{description}</p>
     )}
@@ -66,3 +69,4 @@ export const SectionGrid = ({ children, className }: SectionGridProps) => (
     {children}
   </div>
 );
+

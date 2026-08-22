@@ -232,11 +232,11 @@ const AIPortfolio = () => {
         </Card>
 
         <div className="text-center pt-4">
-          <Link to="/contact">
-            <Button variant="default" className="gap-2">
+          <Button variant="default" asChild className="gap-2">
+            <Link to="/contact">
               Collaborate on AI Projects
-            </Button>
-          </Link>
+            </Link>
+          </Button>
         </div>
       </div>
     </SectionShell>

@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { ARCHITECTURE_DIAGRAMS } from "../pages/Architecture";
+import { ARCHITECTURE_DIAGRAMS } from "../data/architecture";
 
 describe("Architecture & Developer Playground Suite", () => {
   it("should contain valid architecture diagram specifications", () => {

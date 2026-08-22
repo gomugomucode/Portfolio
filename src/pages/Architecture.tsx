@@ -6,61 +6,8 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/lib/siteConfig";
+import { ARCHITECTURE_DIAGRAMS, type ArchitectureDiagramSpec } from "@/data/architecture";
 
-export interface ArchitectureDiagramSpec {
-  id: string;
-  title: string;
-  category: "Blockchain" | "Full-Stack" | "AI & ML" | "DevOps & Edge";
-  description: string;
-  components: { name: string; role: string; tech: string }[];
-  flowSteps: string[];
-  metrics: { label: string; value: string }[];
-}
-
-export const ARCHITECTURE_DIAGRAMS: ArchitectureDiagramSpec[] = [
-  {
-    id: "yatra-solana-escrow",
-    title: "Yatra — Solana Ride-Sharing Escrow Architecture",
-    category: "Blockchain",
-    description: "Decoupled architecture separating high-frequency 50ms GPS telemetry from immutable 400ms Solana on-chain escrow account finality.",
-    components: [
-      { name: "React 18 Mobile UI", role: "Rider & Driver Interface", tech: "TypeScript + Tailwind" },
-      { name: "Firebase Realtime DB", role: "50ms Telemetry Stream", tech: "WebSocket Signal Engine" },
-      { name: "Solana Anchor Program", role: "Escrow & Rating NFTs", tech: "Rust + PDA Accounts" },
-    ],
-    flowSteps: [
-      "1. Passenger requests trip -> Solana Anchor Program locks fare in PDA Escrow Account.",
-      "2. Driver accepts ride -> Firebase Realtime DB streams 50ms vehicle GPS coordinates off-chain.",
-      "3. Trip completes -> Solana Anchor Program releases escrow payout & mints rating NFT.",
-    ],
-    metrics: [
-      { label: "Block Finality", value: "400ms" },
-      { label: "Telemetry Latency", value: "50ms" },
-      { label: "Driver Overhead Savings", value: "98%" },
-    ],
-  },
-  {
-    id: "lms-read-replicas",
-    title: "High-Concurrency LMS Read-Replica MySQL Architecture",
-    category: "Full-Stack",
-    description: "Decoupled presentation layer with stateless Express API gateways querying indexed MySQL read-replicas during high-concurrency exam windows.",
-    components: [
-      { name: "Vite Edge Presentation", role: "Static Asset Distribution", tech: "React 18 + Edge CDN" },
-      { name: "Express API Gateway", role: "Stateless Auth & Routing", tech: "Node.js + JWT" },
-      { name: "MySQL Read Replicas", role: "Exam Queries & Lookup", tech: "Indexed MySQL Database" },
-    ],
-    flowSteps: [
-      "1. Student logs in -> Express API verifies stateless JWT signature without session lookup.",
-      "2. Course catalogue queried -> Load balancer routes read traffic to MySQL read-replicas.",
-      "3. Exam submission -> Master MySQL node processes transactional writes cleanly.",
-    ],
-    metrics: [
-      { label: "Concurrent Users Tested", value: "10,000" },
-      { label: "Catalogue Load Latency", value: "1.1s" },
-      { label: "Code Type Safety", value: "100%" },
-    ],
-  },
-];
 
 const Architecture = () => {
   const [selectedDiagram, setSelectedDiagram] = useState<ArchitectureDiagramSpec>(ARCHITECTURE_DIAGRAMS[0]);

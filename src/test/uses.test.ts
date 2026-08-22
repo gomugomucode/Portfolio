@@ -1,5 +1,5 @@
 import { describe, it, expect } from "vitest";
-import { USES_CATEGORIES } from "../pages/Uses";
+import { USES_CATEGORIES } from "../data/uses";
 
 describe("Uses Developer Setup Module Suite", () => {
   it("should contain valid tech setup categories", () => {

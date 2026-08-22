@@ -255,11 +255,11 @@ const RecruiterExperience = () => {
             <p className="text-body-sm text-muted-foreground leading-relaxed">
               I am available for technical interview loops, coding assessments, and architecture reviews. standard response time is under 24 hours.
             </p>
-            <Link to="/contact" className="mt-2">
-              <Button variant="default" className="w-full">
+            <Button variant="default" asChild className="w-full mt-2">
+              <Link to="/contact">
                 Schedule Technical Interview
-              </Button>
-            </Link>
+              </Link>
+            </Button>
           </Card>
         </div>
       </div>

@@ -44,7 +44,5 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-export { Button, buttonVariants };
+export { Button };
 
-// Keep react-refresh fast-refresh happy by exporting only components by default.
-export const __buttonVariants = buttonVariants;

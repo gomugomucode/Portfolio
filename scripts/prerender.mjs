@@ -14,41 +14,48 @@ const DEFAULT_IMAGE = `${SITE_URL}/og-image.webp`;
 const routeMetadata = [
   {
     route: "/",
-    title: "Anupam Baral | Full Stack Developer & AI Engineer Nepal",
-    description: "Anupam Baral is a Full Stack Developer & AI Engineer in Nepal. Specialized in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana.",
+    title: "Anupam Baral | Full-Stack & AI Engineer",
+    description: "Anupam Baral is a Full Stack Developer & AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana.",
     keywords: "Full Stack Developer Nepal, React Developer Nepal, Next.js Developer, Python Developer, AI Developer Nepal, Supabase Developer, Firebase Developer, Solana Developer",
     ogImage: DEFAULT_IMAGE,
     schema: [
       {
         "@context": "https://schema.org",
-        "@type": "Person",
-        "@id": `${SITE_URL}/#person`,
-        "name": SITE_NAME,
-        "alternateName": "@gomugomucode",
-        "url": SITE_URL,
-        "image": DEFAULT_IMAGE,
-        "jobTitle": "Full Stack Developer & AI Engineer",
-        "description": "Anupam Baral is a Full Stack Developer & AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development.",
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": "Butwal",
-          "addressRegion": "Lumbini",
-          "addressCountry": "NP"
-        },
-        "sameAs": [
-          "https://github.com/gomugomucode",
-          "https://linkedin.com/in/gomugomucode",
-          "https://x.com/gomugomucode",
-          "https://medium.com/@gomugomucode",
-          "https://youtube.com/@gomugomucode"
-        ]
+        "@type": "ProfilePage",
+        "@id": `${SITE_URL}/#profile`,
+        "url": `${SITE_URL}/`,
+        "name": "Anupam Baral | Full-Stack & AI Engineer",
+        "description": "Anupam Baral is a Full Stack Developer & AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana.",
+        "mainEntity": {
+          "@type": "Person",
+          "@id": `${SITE_URL}/#person`,
+          "name": SITE_NAME,
+          "alternateName": "@gomugomucode",
+          "url": `${SITE_URL}/`,
+          "image": DEFAULT_IMAGE,
+          "jobTitle": "Full-Stack Developer & AI Engineer",
+          "description": "Anupam Baral is a Full Stack Developer and AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development.",
+          "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Butwal",
+            "addressRegion": "Lumbini",
+            "addressCountry": "NP"
+          },
+          "sameAs": [
+            "https://github.com/gomugomucode",
+            "https://linkedin.com/in/gomugomucode",
+            "https://x.com/gomugomucode",
+            "https://medium.com/@gomugomucode",
+            "https://youtube.com/@gomugomucode"
+          ]
+        }
       },
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        "url": SITE_URL,
-        "name": `${SITE_NAME} - Full Stack Developer Nepal`,
+        "url": `${SITE_URL}/`,
+        "name": `${SITE_NAME} - Full Stack & AI Developer Portfolio`,
         "description": "Portfolio of Anupam Baral, Full Stack Developer and AI Engineer in Nepal."
       }
     ]

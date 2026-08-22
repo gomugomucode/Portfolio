@@ -162,7 +162,7 @@ const Navbar = () => {
               }
             }}
           >
-            <img src="/logo.webp" alt="logo" className="h-12 w-auto" />
+            <img src="/logo.webp" alt="Anupam Baral Logo" className="h-12 w-auto" width="48" height="48" />
           </Link>
 
           <div className="hidden md:flex items-center gap-8">

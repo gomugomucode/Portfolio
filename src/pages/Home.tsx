@@ -12,14 +12,10 @@ import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import { siteConfig } from "@/lib/siteConfig";
 import {
-  getPersonSchema,
+  getProfilePageSchema,
   getWebSiteSchema,
-  getOrganizationSchema,
   getFAQSchema,
-  getAggregateRatingSchema,
-  getReviewSchema,
 } from "@/lib/schema";
-import { googleReviews } from "@/data/googleReviews";
 
 const homepageFaqs = [
   {
@@ -41,19 +37,16 @@ const homepageFaqs = [
 
 const Home = () => {
   const schemas = [
-    getPersonSchema(),
+    getProfilePageSchema(),
     getWebSiteSchema(),
-    getOrganizationSchema(),
     getFAQSchema(homepageFaqs),
-    getAggregateRatingSchema(googleReviews),
-    ...getReviewSchema(googleReviews),
   ];
 
   return (
     <div className="flex flex-col w-full">
       <SEO
-        title="Full Stack Developer Nepal | React, Next.js & AI Engineer"
-        description="Anupam Baral is a Full Stack Developer & AI Engineer in Nepal. Specialized in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana."
+        title="Anupam Baral | Full-Stack & AI Engineer"
+        description="Anupam Baral is a Full Stack Developer & AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana."
         keywords="Full Stack Developer Nepal, React Developer Nepal, Next.js Developer, Python Developer, AI Developer Nepal, Supabase Developer, Firebase Developer"
         canonicalUrl={siteConfig.url}
         schema={schemas}

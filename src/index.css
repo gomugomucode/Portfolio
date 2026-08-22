@@ -1,3 +1,4 @@
+@import "./styles/tokens.css";
 
 @tailwind base;
 @tailwind components;
@@ -36,86 +37,6 @@ html {
   ::selection {
     background-color: var(--selection);
     color: var(--foreground);
-  }
-
-  :root {
-    /* ─────────────────────────────────────────────
-       LIGHT EDITORIAL THEME — base: #f5f2ec (warm beige)
-       All surfaces, text, borders and accents
-       derive from this light warm base.
-    ───────────────────────────────────────────── */
-
-    /* Backgrounds — light warm ladder */
-    --bg-900:      #f5f2ec;   /* page background */
-    --surface-800: #ebe7dd;   /* navbar / sidebars */
-    --surface-700: #e0dacd;   /* hovered/elevated surface */
-    --card:        #ffffff;   /* card background */
-
-    /* Text — dark charcoal scale */
-    --text-primary:   #1a1816;   /* deep charcoal */
-    --text-secondary: #5a5046;   /* medium brown-gray */
-    --text-muted:     #8a7d6e;   /* warm stone */
-
-    /* Accent — rich amber gold */
-    --accent-500: #c9923a;              /* primary amber */
-    --accent-600: #a87530;              /* deeper amber */
-    --accent-100: rgba(201,146,58,0.08);
-
-    /* Interaction states (dark transparent overlays for light theme) */
-    --hover:     rgba(26, 24, 22, 0.05);
-    --active:    rgba(26, 24, 22, 0.09);
-    --selection: rgba(201,146,58,0.20);
-    --focus:     rgba(201,146,58,0.32);
-
-    /* Borders — dark charcoal tinted */
-    --border:       rgba(26, 24, 22, 0.12);
-    --code-bg:      #faf8f5;
-    --code-border:  rgba(26, 24, 22, 0.08);
-
-    /* Semantic */
-    --success: #3a8b3a;
-    --warning: #b37d1d;
-    --error:   #c23b26;
-
-    /* Spacing tokens */
-    --space-1: 4px;
-    --space-2: 8px;
-    --space-3: 12px;
-    --space-4: 16px;
-    --space-6: 24px;
-    --space-8: 32px;
-    --space-12: 48px;
-    --space-16: 64px;
-    --space-24: 96px;
-    --space-32: 128px;
-
-    /* Radii - Vercel/Linear premium feel */
-    --r-sm: 2px;
-    --r-md: 6px;
-    --r-lg: 8px;
-
-    /* Elevation — subtle dark shadows for light mode */
-    --e-1: 0 1px 4px rgba(26, 24, 22, 0.08), 0 0 0 1px rgba(26, 24, 22, 0.05);
-    --e-2: 0 4px 12px rgba(26, 24, 22, 0.10), 0 0 0 1px rgba(26, 24, 22, 0.06);
-    --e-3: 0 12px 32px rgba(26, 24, 22, 0.12);
-
-    /* Grid */
-    --content-max:   1400px;
-    --content-width: 720px;
-    --rail-width:    320px;
-
-    /* Legacy aliases */
-    --background:        var(--bg-900);
-    --foreground:        var(--text-primary);
-    --muted:             var(--surface-800);
-    --muted-foreground:  var(--text-muted);
-    --subtle-foreground: var(--text-secondary);
-    --card-foreground:   var(--text-primary);
-    --input:             rgba(26, 24, 22, 0.04);
-    --primary:           var(--accent-500);
-    --primary-foreground:#ffffff;
-    --ring:              var(--focus);
-    --radius:            var(--r-md);
   }
 
   a,

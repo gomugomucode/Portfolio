@@ -25,7 +25,5 @@ function Badge({ className, variant, ...props }: BadgeProps) {
   return <div className={cn(badgeVariants({ variant }), className)} {...props} />;
 }
 
-export { Badge, badgeVariants };
+export { Badge };
 
-// Keep react-refresh fast-refresh happy by exporting only components by default.
-export const __badgeVariants = badgeVariants;

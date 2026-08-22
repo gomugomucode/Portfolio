@@ -64,22 +64,25 @@ export const CertificatesSection = () => {
                 </div>
 
                 {/* Image Preview Thumbnail */}
-                <div className="relative group/img overflow-hidden rounded-lg border border-border/80 bg-black/40 aspect-[4/3] flex items-center justify-center cursor-pointer"
+                <button
+                  type="button"
+                  aria-label={`Expand certificate: ${cert.title}`}
+                  className="relative group/img overflow-hidden rounded-lg border border-border/80 bg-black/40 aspect-[4/3] flex items-center justify-center cursor-pointer text-left w-full interactive-focus"
                   onClick={() => setSelectedCert(cert)}
                 >
                   <img
                     src={cert.image}
-                    alt={cert.title}
+                    alt={`Certificate preview for ${cert.title}`}
                     className="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-background/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-xs">
-                    <Button variant="secondary" size="sm" className="gap-1.5 font-mono text-xs shadow-lg">
+                    <span className="inline-flex items-center gap-1.5 font-mono text-xs font-medium px-3 py-1.5 rounded-md bg-secondary text-secondary-foreground shadow-lg">
                       <Eye className="w-3.5 h-3.5" aria-hidden="true" />
                       View Full Certificate
-                    </Button>
+                    </span>
                   </div>
-                </div>
+                </button>
 
                 {/* Description */}
                 <p className="text-body-sm text-muted-foreground leading-relaxed">
