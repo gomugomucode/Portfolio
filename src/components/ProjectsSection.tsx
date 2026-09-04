@@ -75,6 +75,8 @@ const WorkCard = ({ project, className = "" }: WorkCardProps) => {
     badge: "Featured Project",
   };
 
+  const projectLink = project.slug ? `/projects/${project.slug}` : `/projects/${project.index}`;
+
   return (
     <motion.article
       variants={cardMotionVariants}
@@ -87,7 +89,7 @@ const WorkCard = ({ project, className = "" }: WorkCardProps) => {
         {/* Visual Preview / Thumbnail (48% on sm+) */}
         <div className="relative sm:w-[48%] min-h-[15rem] sm:min-h-full overflow-hidden bg-muted">
           <Link
-            to={`/project/${project.index}`}
+            to={projectLink}
             aria-label={`Open case study for ${project.title}`}
             className="block w-full h-full focus-visible:outline-none"
           >
@@ -126,7 +128,7 @@ const WorkCard = ({ project, className = "" }: WorkCardProps) => {
               {meta.badge}
             </p>
             <Link
-              to={`/project/${project.index}`}
+              to={projectLink}
               className="block mt-2 focus-visible:outline-none"
             >
               <h3 className="font-display text-2xl sm:text-3xl lg:text-[1.85rem] xl:text-[2rem] font-normal uppercase leading-[0.95] tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
@@ -165,7 +167,7 @@ const WorkCard = ({ project, className = "" }: WorkCardProps) => {
                 </a>
               )}
               <Link
-                to={`/project/${project.index}`}
+                to={projectLink}
                 aria-label={`View ${project.title} case study`}
                 className="grid size-11 sm:size-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/90 active:scale-95"
               >
@@ -247,9 +249,6 @@ const WorkHeader = () => (
 );
 
 const ProjectsSection = () => {
-  const oddProjects = projects.filter((_, i) => i % 2 === 0); // 01, 03, 05
-  const evenProjects = projects.filter((_, i) => i % 2 === 1); // 02, 04
-
   return (
     <SectionShell id="work" className="relative overflow-hidden">
       {/* Background ambient lighting */}
@@ -262,30 +261,26 @@ const ProjectsSection = () => {
         aria-hidden="true"
       />
 
-      {/* Desktop Asymmetric Staggered 2-Column Grid (>= 1024px) */}
-      <div className="hidden lg:grid lg:grid-cols-2 gap-12 xl:gap-14 items-start">
-        {/* Left Column: Header + Even Projects (02, 04) */}
-        <div className="flex flex-col gap-12 xl:gap-16">
-          <WorkHeader />
-          {evenProjects.map((project) => (
-            <WorkCard key={project.index} project={project} />
-          ))}
-        </div>
-
-        {/* Right Column: Odd Projects (01, 03, 05) */}
-        <div className="flex flex-col gap-12 xl:gap-16 lg:pt-4">
-          {oddProjects.map((project) => (
-            <WorkCard key={project.index} project={project} />
-          ))}
-        </div>
+      {/* Section Header */}
+      <div className="mb-14 sm:mb-20 lg:mb-24">
+        <WorkHeader />
       </div>
 
-      {/* Mobile / Tablet Sequential Stream (< 1024px) */}
-      <div className="flex flex-col gap-10 lg:hidden">
-        <WorkHeader />
-        {projects.map((project) => (
-          <WorkCard key={project.index} project={project} />
-        ))}
+      {/* Alternating Staggered Stream (One left in one line, another right in next line, then next in left) */}
+      <div className="flex flex-col gap-12 sm:gap-16 lg:gap-24">
+        {projects.map((project, index) => {
+          const isLeft = index % 2 === 0;
+          return (
+            <div
+              key={project.index}
+              className={`w-full flex ${isLeft ? "lg:justify-start" : "lg:justify-end"}`}
+            >
+              <div className="w-full lg:w-[54%] xl:w-[50%]">
+                <WorkCard project={project} />
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* View All Projects CTA */}
