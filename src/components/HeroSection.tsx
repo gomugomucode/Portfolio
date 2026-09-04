@@ -125,7 +125,7 @@ const HeroSection = () => {
                   }}
                 />
                 <div>
-                  <h3 className="font-display text-base font-semibold text-foreground">Anupam Baral</h3>
+                  <div className="font-display text-base font-semibold text-foreground">Anupam Baral</div>
                   <p className="text-xs font-mono text-primary font-medium">@gomugomucode</p>
                   <p className="text-[11px] text-muted-foreground mt-0.5">Butwal, Nepal • GMT+5:45</p>
                 </div>

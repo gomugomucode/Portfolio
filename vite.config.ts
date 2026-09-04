@@ -30,17 +30,23 @@ export default defineConfig(({ mode }) => ({
       output: {
         manualChunks(id) {
           if (id.includes("node_modules")) {
-            if (id.includes("react") || id.includes("react-dom") || id.includes("react-router-dom")) {
-              return "vendor-react";
-            }
-            if (id.includes("@radix-ui") || id.includes("framer-motion")) {
-              return "vendor-ui";
+            if (id.includes("lucide-react")) {
+              return "vendor-icons";
             }
             if (id.includes("@tanstack") || id.includes("react-query")) {
               return "vendor-query";
             }
-            if (id.includes("lucide-react")) {
-              return "vendor-icons";
+            if (id.includes("@radix-ui") || id.includes("framer-motion")) {
+              return "vendor-ui";
+            }
+            if (
+              id.includes("/react/") ||
+              id.includes("/react-dom/") ||
+              id.includes("react-router") ||
+              id.includes("react-helmet") ||
+              id.includes("scheduler")
+            ) {
+              return "vendor-react";
             }
             return "vendor";
           }

@@ -45,8 +45,8 @@ const sharedFooterHtml = `
 const routeMetadata = [
   {
     route: "/",
-    title: "Anupam Baral | Full-Stack & AI Engineer",
-    description: "Anupam Baral is a Full Stack Developer & AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana.",
+    title: "Anupam Baral (gomugomucode) | Full Stack & AI Engineer",
+    description: "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer & AI Engineer in Nepal building React, Next.js, Python, and Solana Web3 systems.",
     keywords: "Full Stack Developer Nepal, React Developer Nepal, Next.js Developer, Python Developer, AI Developer Nepal, Supabase Developer, Firebase Developer, Solana Developer, Anupam Baral, gomugomucode",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
@@ -62,23 +62,23 @@ const routeMetadata = [
         <section>
           <h2>Featured Production Projects & Case Studies</h2>
           <article>
-            <h3><a href="/project/01">E-Learning LMS Platform</a></h3>
+            <h3><a href="/projects/e-learning-platform">E-Learning LMS Platform</a></h3>
             <p>Decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.</p>
           </article>
           <article>
-            <h3><a href="/project/02">Yatra — Solana Ride-Sharing Protocol</a></h3>
+            <h3><a href="/projects/yatra-solana-ride-sharing">Yatra — Solana Ride-Sharing Protocol</a></h3>
             <p>Decentralized ride-sharing engine on Solana with atomic trip escrow smart contracts, driver reputation tokens, and Firebase RTDB signaling.</p>
           </article>
           <article>
-            <h3><a href="/project/03">Web3 Loyalty Protocol</a></h3>
+            <h3><a href="/projects/web3-loyalty-protocol">Web3 Loyalty Protocol</a></h3>
             <p>High-performance loyalty rewards dApp featuring automated smart-contract distributions, sub-cent transaction costs, and instant token settlement on Solana.</p>
           </article>
           <article>
-            <h3><a href="/project/04">Greenstar Suppliers</a></h3>
+            <h3><a href="/projects/greenstar-suppliers">Greenstar Suppliers</a></h3>
             <p>Next.js 16 product catalogue and order enquiry platform for entrance & home automation in Nepal.</p>
           </article>
           <article>
-            <h3><a href="/project/05">YarshaByte — Creative Digital Agency</a></h3>
+            <h3><a href="/projects/yarshabyte-agency">YarshaByte — Creative Digital Agency</a></h3>
             <p>Modern creative digital agency platform built with Next.js, fluid typography, and bespoke web design.</p>
           </article>
         </section>
@@ -96,6 +96,7 @@ const routeMetadata = [
             <li><a href="https://medium.com/@gomugomucode" target="_blank" rel="noopener noreferrer">Medium: @gomugomucode</a></li>
             <li><a href="https://x.com/gomugomucode" target="_blank" rel="noopener noreferrer">X (Twitter): @gomugomucode</a></li>
             <li><a href="https://youtube.com/@gomugomucode" target="_blank" rel="noopener noreferrer">YouTube: @gomugomucode</a></li>
+            <li><a href="https://www.google.com/maps/place/Anupam+Baral+-+AI%2FML+%26+Full-Stack+Developer/@28.397455,84.1301506,7z/data=!3m1!4b1!4m6!3m5!1s0x85dbafd39ae92f89:0x13b3b1f0138c19d0!8m2!3d28.397455!4d84.1301506!16s%2Fg%2F11zc_q7f9c" target="_blank" rel="noopener noreferrer">Google Business Profile</a></li>
           </ul>
         </section>
       </main>
@@ -107,29 +108,39 @@ const routeMetadata = [
         "@type": "ProfilePage",
         "@id": `${SITE_URL}/#profile`,
         "url": `${SITE_URL}/`,
-        "name": "Anupam Baral | Full-Stack & AI Engineer",
-        "description": "Anupam Baral is a Full Stack Developer & AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana.",
+        "name": "Anupam Baral (gomugomucode) | Full Stack & AI Engineer",
+        "description": "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer & AI Engineer in Nepal building React, Next.js, Python, and Solana Web3 systems.",
         "mainEntity": {
           "@type": "Person",
           "@id": `${SITE_URL}/#person`,
           "name": SITE_NAME,
-          "alternateName": "@gomugomucode",
+          "alternateName": ["gomugomucode", "@gomugomucode"],
           "url": `${SITE_URL}/`,
-          "image": DEFAULT_IMAGE,
+          "image": `${SITE_URL}/my-photo.webp`,
           "jobTitle": "Full-Stack Developer & AI Engineer",
           "description": "Anupam Baral is a Full Stack Developer and AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development.",
+          "nationality": {
+            "@type": "Country",
+            "name": "Nepal"
+          },
           "address": {
             "@type": "PostalAddress",
             "addressLocality": "Butwal",
             "addressRegion": "Lumbini",
             "addressCountry": "NP"
           },
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Tribhuvan University",
+            "sameAs": "https://en.wikipedia.org/wiki/Tribhuvan_University"
+          },
           "sameAs": [
             "https://github.com/gomugomucode",
             "https://linkedin.com/in/gomugomucode",
             "https://x.com/gomugomucode",
             "https://medium.com/@gomugomucode",
-            "https://youtube.com/@gomugomucode"
+            "https://youtube.com/@gomugomucode",
+            "https://www.google.com/maps/place/Anupam+Baral+-+AI%2FML+%26+Full-Stack+Developer/@28.397455,84.1301506,7z/data=!3m1!4b1!4m6!3m5!1s0x85dbafd39ae92f89:0x13b3b1f0138c19d0!8m2!3d28.397455!4d84.1301506!16s%2Fg%2F11zc_q7f9c"
           ]
         }
       },
@@ -139,6 +150,7 @@ const routeMetadata = [
         "@id": `${SITE_URL}/#website`,
         "url": `${SITE_URL}/`,
         "name": `${SITE_NAME} - Full Stack & AI Developer Portfolio`,
+        "alternateName": "gomugomucode",
         "description": "Portfolio of Anupam Baral, Full Stack Developer and AI Engineer in Nepal."
       }
     ]
@@ -207,23 +219,23 @@ const routeMetadata = [
         <p>Explore production web applications, decentralized Web3 protocols, and AI microservices built by Anupam Baral.</p>
         <section>
           <article>
-            <h2><a href="/project/01">E-Learning LMS Platform</a></h2>
+            <h2><a href="/projects/e-learning-platform">E-Learning LMS Platform</a></h2>
             <p>Decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.</p>
           </article>
           <article>
-            <h2><a href="/project/02">Yatra — Solana Ride-Sharing Protocol</a></h2>
+            <h2><a href="/projects/yatra-solana-ride-sharing">Yatra — Solana Ride-Sharing Protocol</a></h2>
             <p>Decentralized ride-sharing engine on Solana with atomic trip escrow smart contracts and Firebase RTDB signaling.</p>
           </article>
           <article>
-            <h2><a href="/project/03">Web3 Loyalty Protocol</a></h2>
+            <h2><a href="/projects/web3-loyalty-protocol">Web3 Loyalty Protocol</a></h2>
             <p>Solana Web3 loyalty rewards protocol featuring automated smart contract distributions and instant token settlement.</p>
           </article>
           <article>
-            <h2><a href="/project/04">Greenstar Suppliers</a></h2>
+            <h2><a href="/projects/greenstar-suppliers">Greenstar Suppliers</a></h2>
             <p>Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.</p>
           </article>
           <article>
-            <h2><a href="/project/05">YarshaByte — Creative Digital Agency</a></h2>
+            <h2><a href="/projects/yarshabyte-agency">YarshaByte — Creative Digital Agency</a></h2>
             <p>Modern creative digital agency platform built with Next.js, fluid typography, and bespoke web design.</p>
           </article>
         </section>
@@ -242,7 +254,7 @@ const routeMetadata = [
     ]
   },
   {
-    route: "/project/01",
+    route: "/projects/e-learning-platform",
     title: "E-Learning LMS Platform Case Study | React, Node.js & MySQL",
     description: "In-depth technical case study of a decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.",
     keywords: "React LMS, Decoupled Architecture, Node.js Express API, MySQL Indexing, Vercel Edge Caching",
@@ -273,16 +285,20 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
+        "@id": `${SITE_URL}/projects/e-learning-platform#software`,
         "name": "E-Learning LMS Platform",
         "description": "Decoupled React LMS platform with MySQL query optimizations.",
         "codeRepository": "https://github.com/gomugomucode/elearn",
         "programmingLanguage": "React, Node.js, Express, MySQL",
-        "url": "https://elearn-lake.vercel.app"
+        "url": `${SITE_URL}/projects/e-learning-platform`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
   {
-    route: "/project/02",
+    route: "/projects/yatra-solana-ride-sharing",
     title: "Yatra Solana Ride-Sharing | Decentralized Web3 Protocol Case Study",
     description: "Architectural breakdown of Yatra: a Solana decentralized ride-sharing engine written in Rust smart contracts with Firebase RTDB signaling and Web3.js.",
     keywords: "Solana Developer, Rust Smart Contracts, Decentralized Ride Sharing, Web3.js Protocol, Firebase RTDB",
@@ -313,16 +329,20 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
+        "@id": `${SITE_URL}/projects/yatra-solana-ride-sharing#software`,
         "name": "Yatra Solana Ride-Sharing",
         "description": "Decentralized ride-sharing engine on Solana.",
         "codeRepository": "https://github.com/gomugomucode/Yatra",
         "programmingLanguage": "Rust, Solana, Next.js, Firebase",
-        "url": "https://yatraa-zeta.vercel.app/"
+        "url": `${SITE_URL}/projects/yatra-solana-ride-sharing`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
   {
-    route: "/project/03",
+    route: "/projects/web3-loyalty-protocol",
     title: "Web3 Loyalty Protocol Case Study | Solana & Next.js DApp",
     description: "Technical case study of a Solana Web3 loyalty rewards protocol featuring automated smart contract distributions, sub-cent transaction costs, and instant token settlement.",
     keywords: "Solana DApp, Web3 Loyalty Program, Rust Smart Contracts, TypeScript Web3.js, Token Minting",
@@ -349,16 +369,20 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
+        "@id": `${SITE_URL}/projects/web3-loyalty-protocol#software`,
         "name": "Web3 Loyalty Protocol",
         "description": "Solana Web3 loyalty rewards protocol featuring automated smart contract distributions.",
         "codeRepository": "https://github.com/gomugomucode/Solana-Loyalty-dApp",
         "programmingLanguage": "Rust, Solana, Next.js, TypeScript",
-        "url": "https://solana-loyalty-d-app.vercel.app/"
+        "url": `${SITE_URL}/projects/web3-loyalty-protocol`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
   {
-    route: "/project/04",
+    route: "/projects/greenstar-suppliers",
     title: "Greenstar Suppliers Website Case Study | Next.js 16 & Prisma",
     description: "Production case study of Greenstar Suppliers: a Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.",
     keywords: "Next.js Developer Nepal, Full Stack Developer Nepal, Prisma PostgreSQL, Home Automation Nepal, Next.js 16 App Router",
@@ -381,14 +405,19 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
+        "@id": `${SITE_URL}/projects/greenstar-suppliers#software`,
         "name": "Greenstar Suppliers Website",
         "description": "Next.js 16 product catalogue and order enquiry platform.",
-        "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Prisma, PostgreSQL"
+        "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Prisma, PostgreSQL",
+        "url": `${SITE_URL}/projects/greenstar-suppliers`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
   {
-    route: "/project/05",
+    route: "/projects/yarshabyte-agency",
     title: "YarshaByte Creative Agency Case Study | Next.js & Modern Web Design",
     description: "In-depth case study of YarshaByte: a cutting-edge creative digital agency and web development platform built with Next.js, Tailwind CSS, and fluid motion design.",
     keywords: "YarshaByte, Creative Digital Agency Nepal, Next.js Portfolio, Web Design Nepal, Framer Motion UI",
@@ -415,10 +444,14 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
+        "@id": `${SITE_URL}/projects/yarshabyte-agency#software`,
         "name": "YarshaByte Creative Digital Agency",
         "description": "Next.js creative digital agency platform with fluid motion design.",
         "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Framer Motion",
-        "url": "https://yarshabyte.vercel.app/"
+        "url": `${SITE_URL}/projects/yarshabyte-agency`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
@@ -445,6 +478,10 @@ const routeMetadata = [
           <article>
             <h2><a href="/blog/type-safe-ai-pipelines">Type-Safe AI Inference: Connecting Python Models to TS Gateways</a></h2>
             <p>How to bridge Python machine learning backends with TypeScript API gateways using Pydantic and Zod structural runtime validations.</p>
+          </article>
+          <article>
+            <h2><a href="/blog/nextjs-edge-rendering">Optimizing Next.js Edge Rendering for E-commerce</a></h2>
+            <p>Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.</p>
           </article>
         </section>
       </main>
@@ -485,7 +522,10 @@ const routeMetadata = [
         "@type": "BlogPosting",
         "headline": "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana",
         "description": "Deep dive into engineering atomic ride contracts on Solana using Rust & Firebase.",
-        "url": `${SITE_URL}/blog/yatra-solana-ride-sharing-protocol`
+        "url": `${SITE_URL}/blog/yatra-solana-ride-sharing-protocol`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
@@ -514,7 +554,10 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": "Decoupling Large-Scale LMS Content Deliveries",
-        "url": `${SITE_URL}/blog/decoupled-lms-architectures`
+        "url": `${SITE_URL}/blog/decoupled-lms-architectures`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
@@ -541,7 +584,43 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "BlogPosting",
         "headline": "Type-Safe AI Inference: Connecting Python Models to TS Gateways",
-        "url": `${SITE_URL}/blog/type-safe-ai-pipelines`
+        "url": `${SITE_URL}/blog/type-safe-ai-pipelines`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
+      }
+    ]
+  },
+  {
+    route: "/blog/nextjs-edge-rendering",
+    title: "Optimizing Next.js Edge Rendering for E-commerce | Anupam Baral",
+    description: "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
+    keywords: "Next.js, Edge Rendering, React, E-commerce, Performance, Anupam Baral",
+    ogImage: DEFAULT_IMAGE,
+    bodyHtml: `
+      ${sharedNavHtml}
+      <main>
+        <p><a href="/blog">&larr; Back to Engineering Blog</a></p>
+        <h1>Optimizing Next.js Edge Rendering for E-commerce</h1>
+        <p>Written by Anupam Baral (@gomugomucode) | Published on Medium</p>
+        <article>
+          <p>Sub-second page load times directly correlate with e-commerce conversion rates. Next.js App Router and Edge Workers enable dynamic server-side rendering directly at global CDN nodes.</p>
+          <p>Rather than blocking page renders on slow database queries, dynamic product detail grids stream down asynchronously using React Suspense boundaries.</p>
+          <p><a href="https://medium.com/@gomugomucode/nextjs-edge-rendering" target="_blank" rel="noopener noreferrer">Read Full Article on Medium &rarr;</a></p>
+        </article>
+      </main>
+      ${sharedFooterHtml}
+    `,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": "Optimizing Next.js Edge Rendering for E-commerce",
+        "description": "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
+        "url": `${SITE_URL}/blog/nextjs-edge-rendering`,
+        "author": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
@@ -803,28 +882,28 @@ const prerender = () => {
     const currentUrl = meta.route === "/" ? `${SITE_URL}/` : `${SITE_URL}${meta.route}`;
 
     // Inject Title & Description
-    html = html.replace(/<title>.*?<\/title>/gi, `<title>${meta.title}</title>`);
-    html = html.replace(/<meta name="title" content=".*?" \/>/gi, `<meta name="title" content="${meta.title}" />`);
-    html = html.replace(/<meta name="description" content=".*?" \/>/gi, `<meta name="description" content="${meta.description}" />`);
-    html = html.replace(/<meta name="keywords" content=".*?" \/>/gi, `<meta name="keywords" content="${meta.keywords}" />`);
-    html = html.replace(/<link rel="canonical" href=".*?" \/>/gi, `<link rel="canonical" href="${currentUrl}" />`);
+    html = html.replace(/<title>.*?<\/title>/gis, `<title>${meta.title}</title>`);
+    html = html.replace(/<meta\s+name="title"\s+content=".*?"\s*\/?>/gis, `<meta name="title" content="${meta.title}" />`);
+    html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gis, `<meta name="description" content="${meta.description}" />`);
+    html = html.replace(/<meta\s+name="keywords"\s+content=".*?"\s*\/?>/gis, `<meta name="keywords" content="${meta.keywords}" />`);
+    html = html.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis, `<link rel="canonical" href="${currentUrl}" />`);
 
     // Inject OpenGraph
-    html = html.replace(/<meta property="og:title" content=".*?" \/>/gi, `<meta property="og:title" content="${meta.title}" />`);
-    html = html.replace(/<meta property="og:description" content=".*?" \/>/gi, `<meta property="og:description" content="${meta.description}" />`);
-    html = html.replace(/<meta property="og:url" content=".*?" \/>/gi, `<meta property="og:url" content="${currentUrl}" />`);
-    html = html.replace(/<meta property="og:image" content=".*?" \/>/gi, `<meta property="og:image" content="${meta.ogImage}" />`);
+    html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/gis, `<meta property="og:title" content="${meta.title}" />`);
+    html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/gis, `<meta property="og:description" content="${meta.description}" />`);
+    html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/gis, `<meta property="og:url" content="${currentUrl}" />`);
+    html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/gis, `<meta property="og:image" content="${meta.ogImage}" />`);
 
     // Inject Twitter
-    html = html.replace(/<meta name="twitter:title" content=".*?" \/>/gi, `<meta name="twitter:title" content="${meta.title}" />`);
-    html = html.replace(/<meta name="twitter:description" content=".*?" \/>/gi, `<meta name="twitter:description" content="${meta.description}" />`);
-    html = html.replace(/<meta name="twitter:url" content=".*?" \/>/gi, `<meta name="twitter:url" content="${currentUrl}" />`);
-    html = html.replace(/<meta name="twitter:image" content=".*?" \/>/gi, `<meta name="twitter:image" content="${meta.ogImage}" />`);
+    html = html.replace(/<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:title" content="${meta.title}" />`);
+    html = html.replace(/<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:description" content="${meta.description}" />`);
+    html = html.replace(/<meta\s+name="twitter:url"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:url" content="${currentUrl}" />`);
+    html = html.replace(/<meta\s+name="twitter:image"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:image" content="${meta.ogImage}" />`);
 
     // Inject Schema.org JSON-LD if present
     if (meta.schema) {
       const jsonLd = JSON.stringify(meta.schema);
-      const schemaTag = `\n    <script type="application/ld+json">${jsonLd}</script>\n  `;
+      const schemaTag = `\n    <script type="application/ld+json" id="schema-jsonld" data-rh="true">${jsonLd}</script>\n  `;
       html = html.replace("</head>", `${schemaTag}</head>`);
     }
 
