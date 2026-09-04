@@ -44,11 +44,11 @@ const Footer = () => {
 
           <div className="lg:col-span-3 flex flex-col gap-4">
             <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Featured Case Studies</p>
-            <Link to="/project/01" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">01. E-Learning LMS Platform</Link>
-            <Link to="/project/02" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">02. Yatra — Solana Ride-Sharing</Link>
-            <Link to="/project/03" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">03. Web3 Loyalty Protocol</Link>
-            <Link to="/project/04" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">04. Greenstar Suppliers Catalogue</Link>
-            <Link to="/project/05" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">05. YarshaByte — Creative Agency</Link>
+            <Link to="/projects/e-learning-platform" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">01. E-Learning LMS Platform</Link>
+            <Link to="/projects/yatra-solana-ride-sharing" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">02. Yatra — Solana Ride-Sharing</Link>
+            <Link to="/projects/web3-loyalty-protocol" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">03. Web3 Loyalty Protocol</Link>
+            <Link to="/projects/greenstar-suppliers" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">04. Greenstar Suppliers Catalogue</Link>
+            <Link to="/projects/yarshabyte-agency" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">05. YarshaByte — Creative Agency</Link>
           </div>
 
           <div className="lg:col-span-3 flex flex-col gap-4">
@@ -75,7 +75,7 @@ const Footer = () => {
 
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12 mt-12 border-t border-border/50">
           <p className="text-xs text-muted-foreground">
-            &copy; {currentYear} Anupam Baral. All rights reserved.
+            &copy; {currentYear} Anupam Baral (@gomugomucode). All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link to="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link>

@@ -36,11 +36,19 @@ export default function SEO({
     ? title.includes(siteConfig.name)
       ? title
       : `${title} | ${siteConfig.name}`
-    : `${siteConfig.name} | Full Stack Developer & AI Engineer Nepal`;
+    : `${siteConfig.name} (${siteConfig.username}) | Full Stack & AI Engineer`;
 
-  const finalOgTitle = ogTitle || title || `${siteConfig.name} | Full Stack Developer Nepal`;
+  const finalOgTitle = ogTitle || title || `${siteConfig.name} (${siteConfig.username}) | Full Stack Developer Nepal`;
   const finalOgDescription = ogDescription || description;
-  const currentUrl = canonicalUrl || siteConfig.url;
+
+  // Normalize canonical: Root always has trailing slash, subroutes have no trailing slash
+  let currentUrl = canonicalUrl || `${siteConfig.url}/`;
+  if (currentUrl === siteConfig.url) {
+    currentUrl = `${siteConfig.url}/`;
+  } else if (currentUrl.length > `${siteConfig.url}/`.length && currentUrl.endsWith("/")) {
+    currentUrl = currentUrl.replace(/\/+$/, "");
+  }
+
   const combinedKeywords = keywords
     ? `${keywords}, ${siteConfig.primaryKeywords.join(", ")}, ${siteConfig.secondaryKeywords.join(", ")}`
     : `${siteConfig.primaryKeywords.join(", ")}, ${siteConfig.secondaryKeywords.join(", ")}`;
@@ -71,8 +79,7 @@ export default function SEO({
       <link rel="me" href={siteConfig.social.twitter} />
       <link rel="me" href={siteConfig.social.medium} />
       <link rel="me" href={siteConfig.social.youtube} />
-      <link rel="me" href={siteConfig.social.facebook} />
-      <link rel="me" href={siteConfig.social.instagram} />
+      <link rel="me" href={siteConfig.social.googleMaps} />
 
       {/* Theme & PWA */}
       <meta name="theme-color" content="#0f172a" />
@@ -80,7 +87,7 @@ export default function SEO({
       <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
       {/* OpenGraph / Facebook */}
-      <meta property="og:site_name" content={siteConfig.name} />
+      <meta property="og:site_name" content={`${siteConfig.name} (@${siteConfig.username})`} />
       <meta property="og:type" content={ogType} />
       <meta property="og:url" content={currentUrl} />
       <meta property="og:title" content={finalOgTitle} />
@@ -88,7 +95,7 @@ export default function SEO({
       {ogImage && <meta property="og:image" content={ogImage} />}
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:image:alt" content={`${siteConfig.name} Portfolio`} />
+      <meta property="og:image:alt" content={`${siteConfig.name} (${siteConfig.username}) Portfolio`} />
       <meta property="og:locale" content="en_US" />
 
       {/* Article Specific Meta */}
@@ -106,9 +113,9 @@ export default function SEO({
       <meta name="twitter:description" content={finalOgDescription} />
       {ogImage && <meta name="twitter:image" content={ogImage} />}
 
-      {/* Structured Data (JSON-LD) */}
+      {/* Structured Data (JSON-LD) with data-rh for Helmet Hydration */}
       {schema && (
-        <script type="application/ld+json">
+        <script type="application/ld+json" id="schema-jsonld" data-rh="true">
           {JSON.stringify(
             Array.isArray(schema)
               ? schema.map((s) => ({ "@context": "https://schema.org", ...s }))
@@ -119,4 +126,3 @@ export default function SEO({
     </Helmet>
   );
 }
-

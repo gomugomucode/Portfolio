@@ -6,12 +6,12 @@ import { cn } from "@/lib/utils";
 import { Container } from "./layout/Container";
 
 const navLinks = [
-  { name: "About", href: "about", isPage: false },
-  { name: "Work", href: "work", isPage: false },
+  { name: "About", href: "about", isPage: true },
+  { name: "Projects", href: "projects", isPage: true },
   { name: "Skills", href: "skills", isPage: false },
   { name: "Blog", href: "blog", isPage: true },
   { name: "Now", href: "now", isPage: true },
-  { name: "Contact", href: "contact", isPage: false },
+  { name: "Contact", href: "contact", isPage: true },
 ];
 
 const sectionIds = navLinks.filter((l) => !l.isPage).map((l) => l.href);

@@ -24,8 +24,8 @@ export const aiAssistantEngine = {
         matchedTopic: "Payment & Escrow Systems",
         answer: "Yes! Anupam engineered Yatra, a decentralized ride-sharing protocol on Solana that processes atomic ride escrows via Rust Anchor smart contracts. Trip funds are securely locked in Program Derived Address (PDA) accounts prior to driver dispatch.",
         citations: [
-          { title: "Yatra Solana Protocol Case Study", url: "/project/01" },
-          { title: "Solana Loyalty Rewards Protocol", url: "/project/03" },
+          { title: "Yatra Solana Protocol Case Study", url: "/projects/yatra-solana-ride-sharing" },
+          { title: "Solana Loyalty Rewards Protocol", url: "/projects/web3-loyalty-protocol" },
         ],
       };
     }
@@ -48,8 +48,8 @@ export const aiAssistantEngine = {
         matchedTopic: "PostgreSQL & Database Architecture",
         answer: "Anupam works extensively with PostgreSQL, Prisma ORM, MySQL, and Supabase RLS. He built Greenstar Suppliers (Next.js 16 + Prisma/PostgreSQL) and engineered read-replica MySQL indexing for high-concurrency LMS architectures.",
         citations: [
-          { title: "Greenstar Suppliers Catalogue", url: "/project/04" },
-          { title: "Decoupled LMS Case Study", url: "/project/02" },
+          { title: "Greenstar Suppliers Catalogue", url: "/projects/greenstar-suppliers" },
+          { title: "Decoupled LMS Case Study", url: "/projects/e-learning-platform" },
         ],
       };
     }
@@ -72,7 +72,7 @@ export const aiAssistantEngine = {
         matchedTopic: "Performance Benchmarks & Web Vitals",
         answer: "The LMS Decoupled Architecture achieved a 67% load time reduction (from 3.4s to 1.1s) under 10,000 concurrent users. This portfolio itself runs with 0.00 CLS, < 1.2s LCP, and 18 static pre-rendered SSG pages.",
         citations: [
-          { title: "LMS Performance Case Study", url: "/project/02" },
+          { title: "LMS Performance Case Study", url: "/projects/e-learning-platform" },
           { title: "Production Readiness Spec", url: "/about" },
         ],
       };
@@ -84,7 +84,7 @@ export const aiAssistantEngine = {
         matchedTopic: "Engineering Challenges & Lock Resolution",
         answer: "Anupam's biggest challenge was resolving Account Reentrancy bugs in Yatra's Solana Anchor smart contract when riders cancelled fares simultaneously during driver acceptance. Solved via state locks in Rust PDA contexts.",
         citations: [
-          { title: "Yatra Systems Design", url: "/project/01" },
+          { title: "Yatra Systems Design", url: "/projects/yatra-solana-ride-sharing" },
           { title: "Interactive Architecture Diagrams", url: "/architecture" },
         ],
       };
@@ -111,7 +111,7 @@ export const aiAssistantEngine = {
       return {
         matchedTopic: matchingStudy.title,
         answer: `${matchingStudy.title}: ${matchingStudy.problem} ${matchingStudy.architectureOverview}`,
-        citations: [{ title: matchingStudy.title, url: `/project/${matchingStudy.id}` }],
+        citations: [{ title: matchingStudy.title, url: `/projects/${matchingStudy.slug}` }],
       };
     }
 
