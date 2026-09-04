@@ -204,7 +204,6 @@ export const getProjectArchitectureNodes = (projectId: string): ArchitectureNode
         },
       ];
     case "04":
-    default:
       return [
         {
           layer: "1. Frontend Layer",
@@ -246,6 +245,52 @@ export const getProjectArchitectureNodes = (projectId: string): ArchitectureNode
           name: "Production Cloud",
           technology: "Vercel + Cloud PostgreSQL",
           description: "Sub-second static catalog delivery across Nepal.",
+          icon: Cloud,
+        },
+      ];
+    case "05":
+    default:
+      return [
+        {
+          layer: "1. Frontend Layer",
+          name: "Agency Experience UI",
+          technology: "Next.js App Router + TypeScript",
+          description: "Fluid editorial layout, custom typography, and responsive grid.",
+          icon: Layout,
+        },
+        {
+          layer: "2. Motion & Interaction",
+          name: "Animation Engine",
+          technology: "Framer Motion + Tailwind CSS",
+          description: "GPU-accelerated SVG draw paths and smooth section transitions.",
+          icon: Server,
+        },
+        {
+          layer: "3. Design System",
+          name: "Custom Design Tokens",
+          technology: "CSS Variables + HSL Colors",
+          description: "Curated harmonious color palette and fluid typography scales.",
+          icon: Database,
+        },
+        {
+          layer: "4. Communication Gateway",
+          name: "Client Ingestion Routes",
+          technology: "Multi-Channel Action Triggers",
+          description: "Direct WhatsApp, Phone, and structured inquiry touchpoints.",
+          icon: KeyRound,
+        },
+        {
+          layer: "5. Edge Optimization",
+          name: "Image & Asset Optimization",
+          technology: "Next/Image + WebP Pipeline",
+          description: "Responsive srcset image delivery and font preloading.",
+          icon: Globe,
+        },
+        {
+          layer: "6. Deployment",
+          name: "Global Edge Hosting",
+          technology: "Vercel Platform",
+          description: "Zero-configuration edge CDN deployment with global caching.",
           icon: Cloud,
         },
       ];

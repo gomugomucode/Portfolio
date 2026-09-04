@@ -77,6 +77,10 @@ const routeMetadata = [
             <h3><a href="/project/04">Greenstar Suppliers</a></h3>
             <p>Next.js 16 product catalogue and order enquiry platform for entrance & home automation in Nepal.</p>
           </article>
+          <article>
+            <h3><a href="/project/05">YarshaByte — Creative Digital Agency</a></h3>
+            <p>Modern creative digital agency platform built with Next.js, fluid typography, and bespoke web design.</p>
+          </article>
         </section>
         <section>
           <h2>Core Capabilities & Engineering Stack</h2>
@@ -217,6 +221,10 @@ const routeMetadata = [
           <article>
             <h2><a href="/project/04">Greenstar Suppliers</a></h2>
             <p>Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.</p>
+          </article>
+          <article>
+            <h2><a href="/project/05">YarshaByte — Creative Digital Agency</a></h2>
+            <p>Modern creative digital agency platform built with Next.js, fluid typography, and bespoke web design.</p>
           </article>
         </section>
       </main>
@@ -376,6 +384,41 @@ const routeMetadata = [
         "name": "Greenstar Suppliers Website",
         "description": "Next.js 16 product catalogue and order enquiry platform.",
         "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Prisma, PostgreSQL"
+      }
+    ]
+  },
+  {
+    route: "/project/05",
+    title: "YarshaByte Creative Agency Case Study | Next.js & Modern Web Design",
+    description: "In-depth case study of YarshaByte: a cutting-edge creative digital agency and web development platform built with Next.js, Tailwind CSS, and fluid motion design.",
+    keywords: "YarshaByte, Creative Digital Agency Nepal, Next.js Portfolio, Web Design Nepal, Framer Motion UI",
+    ogImage: `${SITE_URL}/yarshabyte.webp`,
+    bodyHtml: `
+      ${sharedNavHtml}
+      <main>
+        <p><a href="/projects">&larr; Back to Projects</a></p>
+        <h1>YarshaByte — Creative Digital Agency Case Study</h1>
+        <p>Author: Anupam Baral (@gomugomucode) | Lead Creative Technologist & Engineer</p>
+        <p>A modern digital agency platform showcasing bespoke web design, interactive branding, and high-performance development.</p>
+        <section>
+          <h2>Problem & Solution</h2>
+          <p>Designed and built YarshaByte using Next.js App Router, Tailwind CSS, and modern motion principles. Integrated custom SVG path morphing, responsive typography scaling, and modular component architecture to deliver a visceral, agency-grade digital experience.</p>
+        </section>
+        <section>
+          <h2>Links</h2>
+          <p><a href="https://yarshabyte.vercel.app/" target="_blank" rel="noopener noreferrer">Live Agency Site</a></p>
+        </section>
+      </main>
+      ${sharedFooterHtml}
+    `,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "name": "YarshaByte Creative Digital Agency",
+        "description": "Next.js creative digital agency platform with fluid motion design.",
+        "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Framer Motion",
+        "url": "https://yarshabyte.vercel.app/"
       }
     ]
   },

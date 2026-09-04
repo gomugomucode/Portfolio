@@ -17,6 +17,7 @@ const routes = [
   { url: "/project/02", priority: "0.8", changefreq: "monthly" },
   { url: "/project/03", priority: "0.8", changefreq: "monthly" },
   { url: "/project/04", priority: "0.8", changefreq: "monthly" },
+  { url: "/project/05", priority: "0.8", changefreq: "monthly" },
   { url: "/blog", priority: "0.9", changefreq: "daily" },
   { url: "/blog/yatra-solana-ride-sharing-protocol", priority: "0.8", changefreq: "monthly" },
   { url: "/blog/decoupled-lms-architectures", priority: "0.8", changefreq: "monthly" },

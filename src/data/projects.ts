@@ -56,7 +56,20 @@ export const projects: ProjectPreview[] = [
     metric: { label: "Order channels", value: "3" },
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
     imageUrl: "/greenstar.webp",
-    liveLink: "",
+    liveLink: "https://www.greenstarsuppliers.com.np/",
+    githubLink: "",
+  },
+  {
+    index: "05",
+    title: "YarshaByte — Creative Digital Agency",
+    problem:
+      "Businesses and modern brands in Nepal struggle with generic, slow web presences that fail to reflect brand identity, communicate credibility, and engage digital-first clients.",
+    impact:
+      "Architected and built a high-performance creative agency platform featuring interactive brand storytelling, fluid micro-animations, fast Edge CDN delivery, and modern client acquisition funnels.",
+    metric: { label: "Performance", value: "99+" },
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    imageUrl: "/yarshabyte.webp",
+    liveLink: "https://yarshabyte.vercel.app/",
     githubLink: "",
   },
 ];

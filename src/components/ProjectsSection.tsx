@@ -15,7 +15,7 @@ const ProjectsSection = () => {
       </AnimatedSection>
 
       <div className="flex flex-col gap-20 md:gap-28">
-        {projects.slice(0, 3).map((project, i) => {
+        {projects.map((project, i) => {
           const reversed = i % 2 === 1;
 
           return (
