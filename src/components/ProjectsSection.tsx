@@ -1,122 +1,316 @@
-import { Github, ExternalLink, BookOpen } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
-import { projects } from "@/data/projects";
-import { Badge } from "./ui/badge";
+import { projects, type ProjectPreview } from "@/data/projects";
 import { Button } from "./ui/button";
-import { SectionHeader, SectionShell } from "./layout/SectionShell";
-import AnimatedSection from "./AnimatedSection";
-import { cn } from "@/lib/utils";
+import { SectionShell } from "./layout/SectionShell";
+
+const projectMetadata: Record<string, { category: string; year: string; badge: string }> = {
+  "01": { category: "EdTech & LMS", year: "2024", badge: "Case Study" },
+  "02": { category: "Solana Ride-Sharing", year: "2024", badge: "Live Protocol" },
+  "03": { category: "Web3 Loyalty Protocol", year: "2023", badge: "Live DApp" },
+  "04": { category: "Automation Solutions", year: "2025", badge: "Company Website" },
+  "05": { category: "Creative Agency", year: "2026", badge: "Live Project" },
+};
+
+const headingContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.035,
+      delayChildren: 0.1,
+    },
+  },
+};
+
+const charVariants = {
+  hidden: { y: "115%", opacity: 0 },
+  visible: {
+    y: "0%",
+    opacity: 1,
+    transition: {
+      duration: 0.75,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const textFadeVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.7,
+      delay: 0.35,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+const cardMotionVariants = {
+  hidden: { opacity: 0, y: 45 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
+
+interface WorkCardProps {
+  project: ProjectPreview;
+  className?: string;
+}
+
+const WorkCard = ({ project, className = "" }: WorkCardProps) => {
+  const meta = projectMetadata[project.index] || {
+    category: "Full Stack",
+    year: "2026",
+    badge: "Featured Project",
+  };
+
+  return (
+    <motion.article
+      variants={cardMotionVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-70px" }}
+      className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-card shadow-[0_20px_60px_rgba(26,24,22,0.06)] hover:shadow-[0_28px_80px_rgba(26,24,22,0.14)] hover:border-foreground/20 transition-all duration-700 ${className}`}
+    >
+      <div className="flex flex-col sm:flex-row min-h-[19rem] sm:min-h-[22rem]">
+        {/* Visual Preview / Thumbnail (48% on sm+) */}
+        <div className="relative sm:w-[48%] min-h-[15rem] sm:min-h-full overflow-hidden bg-muted">
+          <Link
+            to={`/project/${project.index}`}
+            aria-label={`Open case study for ${project.title}`}
+            className="block w-full h-full focus-visible:outline-none"
+          >
+            <img
+              src={project.imageUrl}
+              alt={project.title}
+              loading="lazy"
+              decoding="async"
+              className="w-full h-full object-cover object-top transition duration-700 ease-out group-hover:scale-105 group-hover:brightness-[1.02]"
+              onError={(e) => {
+                e.currentTarget.src =
+                  "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";
+              }}
+            />
+            {/* Ambient vignette gradient */}
+            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-black/10 pointer-events-none" />
+          </Link>
+
+          {/* Floating Index Pill */}
+          <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-background/85 backdrop-blur-md px-3 py-0.5 text-[0.65rem] font-mono font-semibold tracking-widest text-foreground border border-foreground/10 shadow-sm">
+            {project.index}
+          </span>
+        </div>
+
+        {/* Editorial Information Panel (52% on sm+) */}
+        <div className="sm:w-[52%] flex flex-col justify-between p-6 sm:p-7 md:p-8 bg-[color-mix(in_srgb,var(--background)_84%,var(--primary)_16%)]/40 dark:bg-card/80 border-t sm:border-t-0 sm:border-l border-border/30">
+          {/* Top Metadata Row */}
+          <div className="flex items-center justify-between gap-4 text-[0.68rem] font-mono font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            <span className="truncate">{meta.category}</span>
+            <span className="shrink-0">{meta.year}</span>
+          </div>
+
+          {/* Main Content Info */}
+          <div className="py-5 sm:py-6">
+            <p className="text-[0.7rem] font-mono font-semibold uppercase tracking-[0.2em] text-primary">
+              {meta.badge}
+            </p>
+            <Link
+              to={`/project/${project.index}`}
+              className="block mt-2 focus-visible:outline-none"
+            >
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-[1.85rem] xl:text-[2rem] font-normal uppercase leading-[0.95] tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
+                {project.title}
+              </h3>
+            </Link>
+            <p className="mt-3.5 text-xs sm:text-sm leading-relaxed text-subtle-foreground line-clamp-3">
+              {project.problem}
+            </p>
+          </div>
+
+          {/* Bottom Tags & Interaction */}
+          <div className="flex items-end justify-between gap-3 pt-3 border-t border-border/30">
+            <div className="flex flex-wrap gap-1.5 max-w-[70%]">
+              {project.tags.slice(0, 3).map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-full border border-foreground/12 bg-background/60 backdrop-blur-sm px-2.5 py-0.5 text-[0.62rem] font-mono uppercase tracking-wider text-muted-foreground"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+
+            <div className="flex items-center gap-2 shrink-0">
+              {project.liveLink && (
+                <a
+                  href={project.liveLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="grid size-9 place-items-center rounded-full border border-foreground/15 bg-background/80 hover:bg-muted text-foreground transition-all duration-200 active:scale-95"
+                  aria-label={`Visit live site for ${project.title}`}
+                  title="Visit Live Site"
+                >
+                  <ExternalLink className="size-3.5" />
+                </a>
+              )}
+              <Link
+                to={`/project/${project.index}`}
+                aria-label={`View ${project.title} case study`}
+                className="grid size-11 sm:size-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/90 active:scale-95"
+              >
+                <ArrowUpRight className="size-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </motion.article>
+  );
+};
+
+const WorkHeader = () => (
+  <div className="flex flex-col items-start lg:pt-4">
+    {/* Eyebrow badge with glowing indicator */}
+    <motion.div
+      initial={{ opacity: 0, y: 15 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.6 }}
+      className="flex items-center gap-3 mb-6 sm:mb-8"
+    >
+      <span className="grid size-4 place-items-center rounded-full border border-foreground/20">
+        <span className="size-1.5 rounded-full bg-primary animate-pulse" />
+      </span>
+      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground/90">
+        Work
+      </p>
+    </motion.div>
+
+    {/* Cinematic character-split heading with square accent */}
+    <motion.h2
+      variants={headingContainerVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, margin: "-60px" }}
+      className="max-w-[35rem] text-[clamp(2.75rem,5.8vw,5.25rem)] font-display font-medium uppercase leading-[0.92] tracking-tight text-foreground"
+    >
+      <span className="block overflow-hidden whitespace-nowrap pb-[0.05em] -mb-[0.05em]">
+        {"RECENT".split("").map((char, i) => (
+          <motion.span
+            key={i}
+            variants={charVariants}
+            className="inline-block will-change-transform"
+          >
+            {char}
+          </motion.span>
+        ))}
+      </span>
+      <span className="block overflow-hidden whitespace-nowrap pb-[0.05em] -mb-[0.05em]">
+        {"WORKS".split("").map((char, i) => (
+          <motion.span
+            key={i}
+            variants={charVariants}
+            className="inline-block will-change-transform"
+          >
+            {char}
+          </motion.span>
+        ))}
+        <motion.span
+          variants={charVariants}
+          className="ml-3 sm:ml-4 inline-block size-3.5 sm:size-4 lg:size-5 translate-y-[-0.2em] rounded-sm bg-primary align-middle will-change-transform"
+          aria-hidden="true"
+        />
+      </span>
+    </motion.h2>
+
+    <motion.p
+      variants={textFadeVariants}
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true }}
+      className="mt-7 sm:mt-8 max-w-md text-base leading-7 text-subtle-foreground"
+    >
+      A curated showcase of production applications, decentralized Web3 protocols, and modern creative agency platforms.
+    </motion.p>
+  </div>
+);
 
 const ProjectsSection = () => {
+  const oddProjects = projects.filter((_, i) => i % 2 === 0); // 01, 03, 05
+  const evenProjects = projects.filter((_, i) => i % 2 === 1); // 02, 04
+
   return (
-    <SectionShell id="work">
-      <AnimatedSection>
-        <SectionHeader index="04 — Selected work" title="Case studies." />
-      </AnimatedSection>
+    <SectionShell id="work" className="relative overflow-hidden">
+      {/* Background ambient lighting */}
+      <div
+        className="pointer-events-none absolute -top-32 right-0 w-[30rem] h-[30rem] rounded-full bg-primary/[0.04] blur-[120px] -z-10"
+        aria-hidden="true"
+      />
+      <div
+        className="pointer-events-none absolute top-2/3 -left-32 w-[26rem] h-[26rem] rounded-full bg-primary/[0.03] blur-[100px] -z-10"
+        aria-hidden="true"
+      />
 
-      <div className="flex flex-col gap-20 md:gap-28">
-        {projects.map((project, i) => {
-          const reversed = i % 2 === 1;
+      {/* Desktop Asymmetric Staggered 2-Column Grid (>= 1024px) */}
+      <div className="hidden lg:grid lg:grid-cols-2 gap-12 xl:gap-14 items-start">
+        {/* Left Column: Header + Even Projects (02, 04) */}
+        <div className="flex flex-col gap-12 xl:gap-16">
+          <WorkHeader />
+          {evenProjects.map((project) => (
+            <WorkCard key={project.index} project={project} />
+          ))}
+        </div>
 
-          return (
-            <AnimatedSection key={project.index} delay={i * 0.05}>
-              <article
-                key={project.index}
-                className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start group"
-              >
-                <div
-                  className={cn(
-                    "lg:col-span-7 flex flex-col",
-                    reversed ? "lg:col-start-6 lg:order-2" : "lg:order-1",
-                  )}
-                >
-                  <Link
-                    to={`/project/${project.index}`}
-                    className="block aspect-[16/10] w-full rounded-md border border-border overflow-hidden bg-muted"
-                  >
-                    <img
-                      src={project.imageUrl}
-                      alt={project.title}
-                      loading="lazy"
-                      decoding="async"
-                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 group-hover:scale-[1.01] transition-all duration-500 ease-out"
-                      onError={(e) => {
-                        e.currentTarget.src =
-                          "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";
-                      }}
-                    />
-                  </Link>
-                </div>
-
-                <div
-                  className={cn(
-                    "lg:col-span-5 flex flex-col gap-4",
-                    reversed ? "lg:col-start-1 lg:row-start-1 lg:order-1" : "lg:order-2",
-                  )}
-                >
-                  <div className="flex items-center justify-between gap-4">
-                    <span className="font-mono text-sm text-primary">{project.index}</span>
-                    <div className="flex items-baseline gap-2 text-right">
-                      <span className="label-mono">{project.metric.label}</span>
-                      <span className="font-mono text-sm text-foreground">{project.metric.value}</span>
-                    </div>
-                  </div>
-
-                  <h3 className="font-display text-2xl md:text-[1.75rem] font-medium tracking-tight text-foreground leading-tight">
-                    {project.title}
-                  </h3>
-
-                  <p className="text-body-sm text-subtle-foreground">{project.problem}</p>
-
-                  <p className="text-body-sm">{project.impact}</p>
-
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <Badge key={tag}>{tag}</Badge>
-                    ))}
-                  </div>
-
-                  <div className="flex flex-wrap items-center gap-2 pt-2">
-                    <Button variant="default" size="sm" asChild>
-                      <Link to={`/project/${project.index}`}>
-                        <BookOpen className="w-3.5 h-3.5" />
-                        Case study
-                      </Link>
-                    </Button>
-                    {project.liveLink && (
-                      <Button variant="outline" size="sm" asChild>
-                        <a href={project.liveLink} target="_blank" rel="noopener noreferrer">
-                          <ExternalLink className="w-3.5 h-3.5" />
-                          Live
-                        </a>
-                      </Button>
-                    )}
-                    {project.githubLink && (
-                      <Button variant="ghost" size="sm" asChild>
-                        <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
-                          <Github className="w-3.5 h-3.5" />
-                          Source
-                        </a>
-                      </Button>
-                    )}
-                  </div>
-                </div>
-              </article>
-            </AnimatedSection>
-          );
-        })}
+        {/* Right Column: Odd Projects (01, 03, 05) */}
+        <div className="flex flex-col gap-12 xl:gap-16 lg:pt-4">
+          {oddProjects.map((project) => (
+            <WorkCard key={project.index} project={project} />
+          ))}
+        </div>
       </div>
 
-      <AnimatedSection delay={0.2}>
-        <div className="mt-20 flex justify-center">
-          <Button variant="outline" asChild className="group">
-            <Link to="/projects" className="gap-2 font-mono uppercase tracking-widest text-[11px]">
-              View All Projects
-              <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
-            </Link>
-          </Button>
-        </div>
-      </AnimatedSection>
+      {/* Mobile / Tablet Sequential Stream (< 1024px) */}
+      <div className="flex flex-col gap-10 lg:hidden">
+        <WorkHeader />
+        {projects.map((project) => (
+          <WorkCard key={project.index} project={project} />
+        ))}
+      </div>
+
+      {/* View All Projects CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 24 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6, delay: 0.2 }}
+        className="mt-16 sm:mt-24 md:mt-28 flex justify-center"
+      >
+        <Button
+          variant="outline"
+          size="lg"
+          asChild
+          className="group rounded-full px-8 py-6 border-foreground/15 hover:border-foreground/30 hover:bg-muted/50 transition-all duration-300 shadow-sm"
+        >
+          <Link
+            to="/projects"
+            className="gap-3 font-mono uppercase tracking-[0.18em] text-xs font-semibold"
+          >
+            View All Projects Archive
+            <span className="group-hover:translate-x-1.5 transition-transform duration-300 inline-block font-sans">
+              →
+            </span>
+          </Link>
+        </Button>
+      </motion.div>
     </SectionShell>
   );
 };
