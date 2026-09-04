@@ -65,10 +65,11 @@ const cardMotionVariants: Variants = {
 
 interface WorkCardProps {
   project: ProjectPreview;
+  isReversed?: boolean;
   className?: string;
 }
 
-const WorkCard = ({ project, className = "" }: WorkCardProps) => {
+const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps) => {
   const meta = projectMetadata[project.index] || {
     category: "Full Stack",
     year: "2026",
@@ -83,11 +84,15 @@ const WorkCard = ({ project, className = "" }: WorkCardProps) => {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-70px" }}
-      className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-card shadow-[0_20px_60px_rgba(26,24,22,0.06)] hover:shadow-[0_28px_80px_rgba(26,24,22,0.14)] hover:border-foreground/20 transition-all duration-700 ${className}`}
+      className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-card shadow-[0_20px_60px_rgba(26,24,22,0.06)] hover:shadow-[0_28px_80px_rgba(26,24,22,0.14)] hover:border-foreground/20 transition-all duration-700 w-full ${className}`}
     >
-      <div className="flex flex-col sm:flex-row min-h-[19rem] sm:min-h-[22rem]">
-        {/* Visual Preview / Thumbnail (48% on sm+) */}
-        <div className="relative sm:w-[48%] min-h-[15rem] sm:min-h-full overflow-hidden bg-muted">
+      <div
+        className={`flex flex-col ${
+          isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
+        } min-h-[20rem] sm:min-h-[22rem] lg:min-h-[26rem] xl:min-h-[28rem]`}
+      >
+        {/* Visual Preview / Thumbnail (50% on lg+) */}
+        <div className="relative w-full lg:w-1/2 min-h-[16rem] sm:min-h-[20rem] lg:min-h-full overflow-hidden bg-muted">
           <Link
             to={projectLink}
             aria-label={`Open case study for ${project.title}`}
@@ -105,71 +110,81 @@ const WorkCard = ({ project, className = "" }: WorkCardProps) => {
               }}
             />
             {/* Ambient vignette gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent sm:bg-gradient-to-r sm:from-transparent sm:to-black/10 pointer-events-none" />
+            <div
+              className={`absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent ${
+                isReversed
+                  ? "lg:bg-gradient-to-l lg:from-transparent lg:to-black/10"
+                  : "lg:bg-gradient-to-r lg:from-transparent lg:to-black/10"
+              } pointer-events-none`}
+            />
           </Link>
 
           {/* Floating Index Pill */}
-          <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-background/85 backdrop-blur-md px-3 py-0.5 text-[0.65rem] font-mono font-semibold tracking-widest text-foreground border border-foreground/10 shadow-sm">
+          <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-background/85 backdrop-blur-md px-3.5 py-1 text-[0.7rem] font-mono font-semibold tracking-widest text-foreground border border-foreground/10 shadow-sm">
             {project.index}
           </span>
         </div>
 
-        {/* Editorial Information Panel (52% on sm+) */}
-        <div className="sm:w-[52%] flex flex-col justify-between p-6 sm:p-7 md:p-8 bg-[color-mix(in_srgb,var(--background)_84%,var(--primary)_16%)]/40 dark:bg-card/80 border-t sm:border-t-0 sm:border-l border-border/30">
+        {/* Editorial Information Panel (50% on lg+) */}
+        <div
+          className={`w-full lg:w-1/2 flex flex-col justify-between p-6 sm:p-8 md:p-10 xl:p-12 bg-[color-mix(in_srgb,var(--background)_84%,var(--primary)_16%)]/40 dark:bg-card/80 border-t lg:border-t-0 ${
+            isReversed ? "lg:border-r" : "lg:border-l"
+          } border-border/30`}
+        >
           {/* Top Metadata Row */}
-          <div className="flex items-center justify-between gap-4 text-[0.68rem] font-mono font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+          <div className="flex items-center justify-between gap-4 text-[0.72rem] font-mono font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             <span className="truncate">{meta.category}</span>
             <span className="shrink-0">{meta.year}</span>
           </div>
 
           {/* Main Content Info */}
-          <div className="py-5 sm:py-6">
-            <p className="text-[0.7rem] font-mono font-semibold uppercase tracking-[0.2em] text-primary">
+          <div className="py-6 sm:py-8">
+            <p className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-primary">
               {meta.badge}
             </p>
             <Link
               to={projectLink}
-              className="block mt-2 focus-visible:outline-none"
+              className="block mt-2.5 focus-visible:outline-none"
             >
-              <h3 className="font-display text-2xl sm:text-3xl lg:text-[1.85rem] xl:text-[2rem] font-normal uppercase leading-[0.95] tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
+              <h3 className="font-display text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.25rem] font-normal uppercase leading-[0.98] tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
                 {project.title}
               </h3>
             </Link>
-            <p className="mt-3.5 text-xs sm:text-sm leading-relaxed text-subtle-foreground line-clamp-3">
+            <p className="mt-4 text-sm sm:text-base leading-relaxed text-subtle-foreground line-clamp-3">
               {project.problem}
             </p>
           </div>
 
           {/* Bottom Tags & Interaction */}
-          <div className="flex items-end justify-between gap-3 pt-3 border-t border-border/30">
-            <div className="flex flex-wrap gap-1.5 max-w-[70%]">
-              {project.tags.slice(0, 3).map((tag) => (
+          <div className="flex items-end justify-between gap-4 pt-4 border-t border-border/30">
+            <div className="flex flex-wrap gap-2 max-w-[70%]">
+              {project.tags.slice(0, 4).map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-foreground/12 bg-background/60 backdrop-blur-sm px-2.5 py-0.5 text-[0.62rem] font-mono uppercase tracking-wider text-muted-foreground"
+                  className="rounded-full border border-foreground/12 bg-background/60 backdrop-blur-sm px-3 py-1 text-[0.68rem] font-mono uppercase tracking-wider text-muted-foreground"
                 >
                   {tag}
                 </span>
               ))}
             </div>
 
-            <div className="flex items-center gap-2 shrink-0">
+            <div className="flex items-center gap-2.5 shrink-0">
               {project.liveLink && (
                 <a
                   href={project.liveLink}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="grid size-9 place-items-center rounded-full border border-foreground/15 bg-background/80 hover:bg-muted text-foreground transition-all duration-200 active:scale-95"
+                  className="grid size-10 place-items-center rounded-full border border-foreground/15 bg-background/80 hover:bg-muted text-foreground transition-all duration-200 active:scale-95"
                   aria-label={`Visit live site for ${project.title}`}
                   title="Visit Live Site"
                 >
-                  <ExternalLink className="size-3.5" />
+                  <ExternalLink className="size-4" />
                 </a>
               )}
               <Link
                 to={projectLink}
                 aria-label={`View ${project.title} case study`}
-                className="grid size-11 sm:size-12 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/90 active:scale-95"
+                className="grid size-12 sm:size-13 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/90 active:scale-95"
               >
                 <ArrowUpRight className="size-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </Link>
@@ -266,21 +281,15 @@ const ProjectsSection = () => {
         <WorkHeader />
       </div>
 
-      {/* Alternating Staggered Stream (One left in one line, another right in next line, then next in left) */}
-      <div className="flex flex-col gap-12 sm:gap-16 lg:gap-24">
-        {projects.map((project, index) => {
-          const isLeft = index % 2 === 0;
-          return (
-            <div
-              key={project.index}
-              className={`w-full flex ${isLeft ? "lg:justify-start" : "lg:justify-end"}`}
-            >
-              <div className="w-full lg:w-[54%] xl:w-[50%]">
-                <WorkCard project={project} />
-              </div>
-            </div>
-          );
-        })}
+      {/* Alternating Full-Width Rows (Line 1: Image Left / Text Right; Line 2: Text Left / Image Right, etc.) */}
+      <div className="flex flex-col gap-14 sm:gap-20 lg:gap-24">
+        {projects.map((project, index) => (
+          <WorkCard
+            key={project.index}
+            project={project}
+            isReversed={index % 2 === 1}
+          />
+        ))}
       </div>
 
       {/* View All Projects CTA */}
