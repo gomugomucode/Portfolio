@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight, ExternalLink } from "lucide-react";
+import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects, type ProjectPreview } from "@/data/projects";
 import { Button } from "./ui/button";
@@ -78,118 +78,145 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
 
   const projectLink = project.slug ? `/projects/${project.slug}` : `/projects/${project.index}`;
 
+  // Client websites should not render repository links
+  const isClientWebsite =
+    project.slug === "greenstar-suppliers" ||
+    project.slug === "yarshabyte-agency" ||
+    meta.badge === "Company Website" ||
+    meta.badge === "Live Project" ||
+    !project.githubLink ||
+    project.githubLink.trim() === "";
+
+  const hasRepoLink = !isClientWebsite && Boolean(project.githubLink && project.githubLink.trim() !== "");
+
   return (
     <motion.article
       variants={cardMotionVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-70px" }}
-      className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-card shadow-[0_20px_60px_rgba(26,24,22,0.06)] hover:shadow-[0_28px_80px_rgba(26,24,22,0.14)] hover:border-foreground/20 transition-all duration-700 w-full ${className}`}
+      className={`w-full grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-10 xl:gap-12 items-stretch ${className}`}
     >
+      {/* Box 1: Image Showcase Box */}
       <div
-        className={`flex flex-col ${
-          isReversed ? "lg:flex-row-reverse" : "lg:flex-row"
-        } min-h-[20rem] sm:min-h-[22rem] lg:min-h-[26rem] xl:min-h-[28rem]`}
+        className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-card shadow-[0_16px_50px_rgba(26,24,22,0.06)] hover:shadow-[0_24px_70px_rgba(26,24,22,0.12)] hover:border-foreground/20 transition-all duration-500 min-h-[19rem] sm:min-h-[22rem] lg:min-h-[27rem] xl:min-h-[29rem] flex flex-col ${
+          isReversed ? "lg:order-2" : "lg:order-1"
+        }`}
       >
-        {/* Visual Preview / Thumbnail (50% on lg+) */}
-        <div className="relative w-full lg:w-1/2 min-h-[16rem] sm:min-h-[20rem] lg:min-h-full overflow-hidden bg-muted">
-          <Link
-            to={projectLink}
-            aria-label={`Open case study for ${project.title}`}
-            className="block w-full h-full focus-visible:outline-none"
-          >
-            <img
-              src={project.imageUrl}
-              alt={project.title}
-              loading="lazy"
-              decoding="async"
-              className="w-full h-full object-cover object-top transition duration-700 ease-out group-hover:scale-105 group-hover:brightness-[1.02]"
-              onError={(e) => {
-                e.currentTarget.src =
-                  "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";
-              }}
-            />
-            {/* Ambient vignette gradient */}
-            <div
-              className={`absolute inset-0 bg-gradient-to-t from-background/70 via-transparent to-transparent ${
-                isReversed
-                  ? "lg:bg-gradient-to-l lg:from-transparent lg:to-black/10"
-                  : "lg:bg-gradient-to-r lg:from-transparent lg:to-black/10"
-              } pointer-events-none`}
-            />
-          </Link>
+        <Link
+          to={projectLink}
+          aria-label={`Open case study for ${project.title}`}
+          className="relative block w-full h-full focus-visible:outline-none flex-1 overflow-hidden"
+        >
+          <img
+            src={project.imageUrl}
+            alt={project.title}
+            loading="lazy"
+            decoding="async"
+            className="w-full h-full object-cover object-top transition duration-700 ease-out group-hover:scale-105 group-hover:brightness-[1.03]"
+            onError={(e) => {
+              e.currentTarget.src =
+                "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";
+            }}
+          />
+          {/* Ambient vignette gradient */}
+          <div className="absolute inset-0 bg-gradient-to-t from-background/50 via-transparent to-transparent pointer-events-none" />
 
-          {/* Floating Index Pill */}
-          <span className="pointer-events-none absolute left-4 top-4 rounded-full bg-background/85 backdrop-blur-md px-3.5 py-1 text-[0.7rem] font-mono font-semibold tracking-widest text-foreground border border-foreground/10 shadow-sm">
+          {/* Floating Index Badge */}
+          <span className="pointer-events-none absolute left-4 top-4 sm:left-6 sm:top-6 rounded-full bg-background/90 backdrop-blur-md px-3.5 py-1 text-xs font-mono font-bold tracking-widest text-foreground border border-foreground/10 shadow-sm">
             {project.index}
           </span>
+        </Link>
+      </div>
+
+      {/* Box 2: Detail Box (Title, Description, Tech Stack, Live Site, Repo) */}
+      <div
+        className={`group relative rounded-2xl sm:rounded-3xl border border-foreground/10 bg-card p-6 sm:p-8 lg:p-10 xl:p-12 shadow-[0_16px_50px_rgba(26,24,22,0.06)] hover:shadow-[0_24px_70px_rgba(26,24,22,0.12)] hover:border-foreground/20 transition-all duration-500 flex flex-col justify-between ${
+          isReversed ? "lg:order-1" : "lg:order-2"
+        }`}
+      >
+        {/* Top Meta Row */}
+        <div className="flex items-center justify-between gap-4 text-xs font-mono font-semibold uppercase tracking-[0.16em] text-muted-foreground pb-4 border-b border-border/40">
+          <div className="flex items-center gap-2.5">
+            <span className="size-2 rounded-full bg-primary" />
+            <span className="truncate text-foreground/90 font-medium">{meta.category}</span>
+          </div>
+          <div className="flex items-center gap-3 shrink-0">
+            <span className="rounded-full bg-primary/10 text-primary px-2.5 py-0.5 text-[0.7rem] font-bold">
+              {meta.badge}
+            </span>
+            <span>{meta.year}</span>
+          </div>
         </div>
 
-        {/* Editorial Information Panel (50% on lg+) */}
-        <div
-          className={`w-full lg:w-1/2 flex flex-col justify-between p-6 sm:p-8 md:p-10 xl:p-12 bg-[color-mix(in_srgb,var(--background)_84%,var(--primary)_16%)]/40 dark:bg-card/80 border-t lg:border-t-0 ${
-            isReversed ? "lg:border-r" : "lg:border-l"
-          } border-border/30`}
-        >
-          {/* Top Metadata Row */}
-          <div className="flex items-center justify-between gap-4 text-[0.72rem] font-mono font-semibold uppercase tracking-[0.18em] text-muted-foreground">
-            <span className="truncate">{meta.category}</span>
-            <span className="shrink-0">{meta.year}</span>
-          </div>
+        {/* Main Content Info */}
+        <div className="py-6 sm:py-7 flex-1 flex flex-col justify-center">
+          <Link to={projectLink} className="block focus-visible:outline-none group/title">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.1rem] xl:text-[2.35rem] font-medium uppercase leading-[1.05] tracking-tight text-foreground group-hover/title:text-primary transition-colors duration-300">
+              {project.title}
+            </h3>
+          </Link>
 
-          {/* Main Content Info */}
-          <div className="py-6 sm:py-8">
-            <p className="text-xs font-mono font-semibold uppercase tracking-[0.2em] text-primary">
-              {meta.badge}
-            </p>
-            <Link
-              to={projectLink}
-              className="block mt-2.5 focus-visible:outline-none"
-            >
-              <h3 className="font-display text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.25rem] font-normal uppercase leading-[0.98] tracking-tight text-foreground group-hover:text-primary transition-colors duration-300">
-                {project.title}
-              </h3>
-            </Link>
-            <p className="mt-4 text-sm sm:text-base leading-relaxed text-subtle-foreground line-clamp-3">
-              {project.problem}
-            </p>
-          </div>
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-subtle-foreground">
+            {project.problem}
+          </p>
 
-          {/* Bottom Tags & Interaction */}
-          <div className="flex items-end justify-between gap-4 pt-4 border-t border-border/30">
-            <div className="flex flex-wrap gap-2 max-w-[70%]">
-              {project.tags.slice(0, 4).map((tag) => (
+          {/* Tech Stack */}
+          <div className="mt-6 sm:mt-7">
+            <p className="text-[0.7rem] font-mono font-bold uppercase tracking-[0.18em] text-muted-foreground mb-2.5">
+              Tech Stack
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="rounded-full border border-foreground/12 bg-background/60 backdrop-blur-sm px-3 py-1 text-[0.68rem] font-mono uppercase tracking-wider text-muted-foreground"
+                  className="rounded-full border border-foreground/12 bg-muted/40 hover:bg-muted/70 backdrop-blur-sm px-3 py-1 text-[0.72rem] font-mono uppercase tracking-wider text-foreground/80 transition-colors"
                 >
                   {tag}
                 </span>
               ))}
             </div>
-
-            <div className="flex items-center gap-2.5 shrink-0">
-              {project.liveLink && (
-                <a
-                  href={project.liveLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="grid size-10 place-items-center rounded-full border border-foreground/15 bg-background/80 hover:bg-muted text-foreground transition-all duration-200 active:scale-95"
-                  aria-label={`Visit live site for ${project.title}`}
-                  title="Visit Live Site"
-                >
-                  <ExternalLink className="size-4" />
-                </a>
-              )}
-              <Link
-                to={projectLink}
-                aria-label={`View ${project.title} case study`}
-                className="grid size-12 sm:size-13 place-items-center rounded-full bg-primary text-primary-foreground shadow-sm transition-all duration-300 group-hover:scale-105 group-hover:bg-primary/90 active:scale-95"
-              >
-                <ArrowUpRight className="size-5 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-              </Link>
-            </div>
           </div>
+        </div>
+
+        {/* Action Links Row (Live Site, Repo, Case Study) */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-5 border-t border-border/40">
+          <div className="flex flex-wrap items-center gap-2.5">
+            {project.liveLink && (
+              <a
+                href={project.liveLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-background/80 hover:bg-primary hover:text-primary-foreground hover:border-primary px-4 py-2 text-xs font-mono font-semibold uppercase tracking-wider text-foreground transition-all duration-200 active:scale-95 shadow-xs group/btn"
+                aria-label={`Visit live site for ${project.title}`}
+              >
+                <span>Live Site</span>
+                <ExternalLink className="size-3.5 transition-transform duration-200 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
+              </a>
+            )}
+
+            {hasRepoLink && (
+              <a
+                href={project.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-background/80 hover:bg-foreground hover:text-background hover:border-foreground px-4 py-2 text-xs font-mono font-semibold uppercase tracking-wider text-foreground transition-all duration-200 active:scale-95 shadow-xs group/btn"
+                aria-label={`View GitHub repository for ${project.title}`}
+              >
+                <Github className="size-3.5" />
+                <span>Repo</span>
+              </a>
+            )}
+          </div>
+
+          <Link
+            to={projectLink}
+            className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-sm group/case"
+            aria-label={`View ${project.title} case study`}
+          >
+            <span>Case Study</span>
+            <ArrowUpRight className="size-3.5 transition-transform duration-200 group-hover/case:translate-x-0.5 group-hover/case:-translate-y-0.5" />
+          </Link>
         </div>
       </div>
     </motion.article>
