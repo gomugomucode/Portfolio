@@ -12,7 +12,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
   return (
     <article className="group flex flex-col h-full border border-border rounded-md overflow-hidden bg-card hover:border-foreground/20 hover:[box-shadow:var(--e-2)] transition-all duration-300">
       <Link
-        to={`/project/${project.index}`}
+        to={`/projects/${project.slug}`}
         className="block aspect-video overflow-hidden bg-muted relative w-full"
       >
         <img
@@ -43,7 +43,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
         </div>
 
         <Link
-          to={`/project/${project.index}`}
+          to={`/projects/${project.slug}`}
           className="block group-hover:text-primary transition-colors"
         >
           <h3 className="font-display text-xl font-medium tracking-tight text-foreground leading-snug line-clamp-1">
@@ -55,7 +55,7 @@ export const ProjectCard = ({ project }: ProjectCardProps) => {
 
         <div className="flex flex-wrap items-center gap-2 pt-4 border-t border-border mt-auto">
           <Button variant="default" size="sm" className="h-8 text-[11px]" asChild>
-            <Link to={`/project/${project.index}`}>
+            <Link to={`/projects/${project.slug}`}>
               <BookOpen className="w-3 h-3 mr-1.5" />
               Study
             </Link>

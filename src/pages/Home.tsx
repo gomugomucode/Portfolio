@@ -45,10 +45,10 @@ const Home = () => {
   return (
     <div className="flex flex-col w-full">
       <SEO
-        title="Anupam Baral | Full-Stack & AI Engineer"
-        description="Anupam Baral is a Full Stack Developer & AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana."
-        keywords="Full Stack Developer Nepal, React Developer Nepal, Next.js Developer, Python Developer, AI Developer Nepal, Supabase Developer, Firebase Developer"
-        canonicalUrl={siteConfig.url}
+        title="Anupam Baral (gomugomucode) | Full Stack & AI Engineer"
+        description="Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer & AI Engineer in Nepal building React, Next.js, Python, and Solana Web3 systems."
+        keywords="Anupam Baral, gomugomucode, Full Stack Developer Nepal, AI Engineer Nepal, React Developer, Next.js Developer, Python Developer, Solana Developer"
+        canonicalUrl={`${siteConfig.url}/`}
         schema={schemas}
       />
       <HeroSection />

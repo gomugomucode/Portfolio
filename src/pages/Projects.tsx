@@ -53,6 +53,7 @@ const Projects = () => {
       title: p.title,
       description: p.problem,
       tags: p.tags,
+      slug: p.slug,
       githubLink: p.githubLink,
       liveLink: p.liveLink,
       imageUrl: p.imageUrl,
@@ -62,7 +63,7 @@ const Projects = () => {
   const schemas = [
     getBreadcrumbSchema(breadcrumbs),
     getWebPageSchema(
-      "Projects by Anupam Baral | Full Stack & AI Case Studies",
+      "Projects by Anupam Baral (@gomugomucode) | Full Stack & AI Case Studies",
       "Explore projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and Solana Web3 software.",
       url,
       breadcrumbs
@@ -73,8 +74,8 @@ const Projects = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Projects by Anupam Baral | React, Next.js, Python & Solana"
-        description="Explore production projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions."
+        title="Projects by Anupam Baral (@gomugomucode) | React, Next.js, Python & Solana"
+        description="Explore production projects built by Anupam Baral (@gomugomucode), featuring scalable web applications, AI/ML integrations, and open-source contributions."
         keywords="Anupam Baral Projects, gomugomucode GitHub, React Projects, Next.js Case Studies, Solana Developer Nepal"
         canonicalUrl={url}
         schema={schemas}

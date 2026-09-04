@@ -1,5 +1,6 @@
 export interface ProjectPreview {
   index: string;
+  slug: string;
   title: string;
   problem: string;
   impact: string;
@@ -13,6 +14,7 @@ export interface ProjectPreview {
 export const projects: ProjectPreview[] = [
   {
     index: "01",
+    slug: "e-learning-platform",
     title: "E-Learning Platform",
     problem: "Legacy LMS platforms suffer from slow loads and tightly coupled architectures.",
     impact:
@@ -25,6 +27,7 @@ export const projects: ProjectPreview[] = [
   },
   {
     index: "02",
+    slug: "yatra-solana-ride-sharing",
     title: "Yatra — Solana Ride-Sharing",
     problem: "Centralized ride-sharing takes up to 30% of driver earnings with no data sovereignty.",
     impact:
@@ -37,6 +40,7 @@ export const projects: ProjectPreview[] = [
   },
   {
     index: "03",
+    slug: "web3-loyalty-protocol",
     title: "Web3 Loyalty Protocol",
     problem: "Corporate rewards programs create friction, fragmentation, and distrust.",
     impact:
@@ -49,6 +53,7 @@ export const projects: ProjectPreview[] = [
   },
   {
     index: "04",
+    slug: "greenstar-suppliers",
     title: "Greenstar Suppliers",
     problem: "Local hardware suppliers in Nepal lack a professional online presence to showcase entrance and home automation products and receive orders.",
     impact:
@@ -61,6 +66,7 @@ export const projects: ProjectPreview[] = [
   },
   {
     index: "05",
+    slug: "yarshabyte-agency",
     title: "YarshaByte — Creative Digital Agency",
     problem:
       "Businesses and modern brands in Nepal struggle with generic, slow web presences that fail to reflect brand identity, communicate credibility, and engage digital-first clients.",

@@ -43,11 +43,11 @@ const ProjectDetails = () => {
     );
   }
 
-  const url = `${siteConfig.url}/project/${project.id}`;
+  const url = `${siteConfig.url}/projects/${project.slug}`;
   const breadcrumbs = [
     { name: "Home", item: "/" },
     { name: "Projects", item: "/projects" },
-    { name: project.title, item: `/project/${project.id}` },
+    { name: project.title, item: `/projects/${project.slug}` },
   ];
 
   const schemas = [
@@ -55,6 +55,7 @@ const ProjectDetails = () => {
       title: project.title,
       description: project.subtitle,
       tags: project.tags,
+      slug: project.slug,
       githubLink: project.githubLink,
       liveLink: project.liveLink,
       imageUrl: project.imageUrl,
