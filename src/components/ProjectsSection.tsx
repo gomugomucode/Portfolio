@@ -1,9 +1,11 @@
-import { motion } from "framer-motion";
+import { motion, type Variants } from "framer-motion";
 import { ArrowUpRight, ExternalLink } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects, type ProjectPreview } from "@/data/projects";
 import { Button } from "./ui/button";
 import { SectionShell } from "./layout/SectionShell";
+
+const EASING: [number, number, number, number] = [0.22, 1, 0.36, 1];
 
 const projectMetadata: Record<string, { category: string; year: string; badge: string }> = {
   "01": { category: "EdTech & LMS", year: "2024", badge: "Case Study" },
@@ -13,7 +15,7 @@ const projectMetadata: Record<string, { category: string; year: string; badge: s
   "05": { category: "Creative Agency", year: "2026", badge: "Live Project" },
 };
 
-const headingContainerVariants = {
+const headingContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -24,19 +26,19 @@ const headingContainerVariants = {
   },
 };
 
-const charVariants = {
+const charVariants: Variants = {
   hidden: { y: "115%", opacity: 0 },
   visible: {
     y: "0%",
     opacity: 1,
     transition: {
       duration: 0.75,
-      ease: [0.22, 1, 0.36, 1],
+      ease: EASING,
     },
   },
 };
 
-const textFadeVariants = {
+const textFadeVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -44,19 +46,19 @@ const textFadeVariants = {
     transition: {
       duration: 0.7,
       delay: 0.35,
-      ease: [0.22, 1, 0.36, 1],
+      ease: EASING,
     },
   },
 };
 
-const cardMotionVariants = {
+const cardMotionVariants: Variants = {
   hidden: { opacity: 0, y: 45 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.22, 1, 0.36, 1],
+      ease: EASING,
     },
   },
 };
