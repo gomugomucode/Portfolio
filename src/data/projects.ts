@@ -60,7 +60,7 @@ export const projects: ProjectPreview[] = [
       "Built a full-featured Next.js 16 product catalogue and enquiry platform for Greenstar Suppliers. Features a hero carousel, per-product Call/WhatsApp order buttons, a floating contact widget, and a backend enquiry form — all tailored for Nepal's market.",
     metric: { label: "Order channels", value: "3" },
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
-    imageUrl: "/greenstar.webp",
+    imageUrl: "/greenstarphoto.png",
     liveLink: "https://www.greenstarsuppliers.com.np/",
     githubLink: "",
   },

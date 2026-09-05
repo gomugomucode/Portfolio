@@ -29,7 +29,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
 
         <div className="flex flex-col gap-8">
           {/* Header Badge & Rating Summary Bar */}
-          <div className="p-6 rounded-lg border border-border bg-card/40 backdrop-blur-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="p-6 rounded-lg border border-border bg-card flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
                 <ShieldCheck className="w-6 h-6 text-emerald-500" aria-hidden="true" />
@@ -75,7 +75,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
               >
-                <Card className="p-6 h-full flex flex-col justify-between border-border bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-colors duration-300 gap-6">
+                <Card className="p-6 h-full flex flex-col justify-between border-border bg-card hover:border-primary/40 transition-colors duration-300 gap-6">
                   <div className="flex flex-col gap-4">
                     {/* Header with Star Rating & Google Verified Badge */}
                     <div className="flex items-center justify-between gap-2">

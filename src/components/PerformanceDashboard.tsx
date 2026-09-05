@@ -58,7 +58,7 @@ export const PerformanceDashboard = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                 >
-                  <Card className="p-5 flex flex-col justify-between border-border bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-colors gap-3 h-full">
+                  <Card className="p-5 flex flex-col justify-between border-border bg-card hover:border-primary/40 transition-colors gap-3 h-full">
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center justify-between">
                         <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{item.label}</span>
@@ -92,7 +92,7 @@ export const PerformanceDashboard = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                 >
-                  <Card className="p-5 flex flex-col justify-between border-border bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-colors gap-3 h-full">
+                  <Card className="p-5 flex flex-col justify-between border-border bg-card hover:border-primary/40 transition-colors gap-3 h-full">
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center justify-between">
                         <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{item.label}</span>

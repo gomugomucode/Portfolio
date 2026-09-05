@@ -81,7 +81,7 @@ export const TestimonialsSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
               >
-                <Card className="p-6 h-full flex flex-col justify-between border-border bg-card/40 backdrop-blur-sm hover:border-primary/40 transition-colors duration-300 gap-6">
+                <Card className="p-6 h-full flex flex-col justify-between border-border bg-card hover:border-primary/40 transition-colors duration-300 gap-6">
                   <div className="flex flex-col gap-4">
                     <div className="flex items-center justify-between gap-2">
                       <div className="flex items-center gap-1 text-amber-500" aria-label="5 stars rating">

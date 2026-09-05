@@ -112,7 +112,7 @@ const ContactSection = () => {
             <div
               role="status"
               aria-live="polite"
-              className="flex flex-col items-center justify-center text-center gap-4 py-12 px-6 border border-border rounded-md bg-card/50"
+              className="flex flex-col items-center justify-center text-center gap-4 py-12 px-6 border border-border rounded-md bg-card"
             >
               <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
                 <Send className="w-5 h-5" aria-hidden="true" />
@@ -253,7 +253,7 @@ const ContactSection = () => {
             </div>
           </Card>
 
-          <Card className="p-5 bg-foreground/[0.03]">
+          <Card className="p-5 bg-card">
             <div className="flex flex-col gap-3 font-mono text-xs">
               <span className="label-mono">Hiring & Response SLA</span>
               <div className="flex flex-col gap-1 text-muted-foreground">

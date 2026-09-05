@@ -386,7 +386,7 @@ const routeMetadata = [
     title: "Greenstar Suppliers Website Case Study | Next.js 16 & Prisma",
     description: "Production case study of Greenstar Suppliers: a Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.",
     keywords: "Next.js Developer Nepal, Full Stack Developer Nepal, Prisma PostgreSQL, Home Automation Nepal, Next.js 16 App Router",
-    ogImage: `${SITE_URL}/greenstar.webp`,
+    ogImage: `${SITE_URL}/greenstarphoto.png`,
     bodyHtml: `
       ${sharedNavHtml}
       <main>

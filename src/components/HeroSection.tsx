@@ -187,7 +187,7 @@ const HeroSection = () => {
             variants={itemVariants}
             initial="hidden"
             animate="visible"
-            className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-lg border border-border bg-card/40 backdrop-blur-sm"
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 p-6 rounded-lg border border-border bg-card"
           >
             <div className="flex flex-col gap-1 border-r border-border/40 last:border-0 pr-4">
               <span className="font-display text-2xl md:text-3xl font-bold text-foreground">4+</span>

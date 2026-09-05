@@ -127,7 +127,7 @@ export const GitHubSection = () => {
 
         <div className="flex flex-col gap-8">
           {/* GitHub Header Profile Bar */}
-          <div className="p-6 rounded-lg border border-border bg-card/40 backdrop-blur-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="p-6 rounded-lg border border-border bg-card flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
                 <Github className="w-6 h-6" aria-hidden="true" />

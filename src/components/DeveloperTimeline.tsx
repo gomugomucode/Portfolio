@@ -191,7 +191,7 @@ export const DeveloperTimeline = () => {
                 </div>
 
                 {/* Content Card */}
-                <Card className="p-5 md:p-6 flex flex-col gap-4 bg-card/50 backdrop-blur-sm border-border hover:border-primary/40 transition-colors">
+                <Card className="p-5 md:p-6 flex flex-col gap-4 bg-card border-border hover:border-primary/40 transition-colors">
                   <h3 className="font-display text-lg font-semibold text-foreground">
                     {item.title}
                   </h3>

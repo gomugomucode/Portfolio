@@ -288,9 +288,9 @@ export const caseStudies: Record<string, CaseStudy> = {
     client: "Greenstar Suppliers, Nepal",
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Prisma", "PostgreSQL"],
     keywords: ["Next.js Developer Nepal", "Full Stack Developer Nepal", "Prisma PostgreSQL", "Home Automation Nepal", "Next.js 16 App Router"],
-    imageUrl: "/greenstar.webp",
+    imageUrl: "/greenstarphoto.png",
     screenshots: [
-      "/greenstar.webp",
+      "/greenstarphoto.png",
       "https://images.unsplash.com/photo-1558002038-1055907df827?q=80&w=1200"
     ],
     liveLink: "https://www.greenstarsuppliers.com.np/",

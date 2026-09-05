@@ -23,7 +23,7 @@ export const CertificatesSection = () => {
           {certificates.map((cert) => (
             <Card
               key={cert.id}
-              className="p-6 flex flex-col justify-between gap-6 bg-card/60 backdrop-blur-sm border-border hover:border-primary/40 transition-all duration-300 group"
+              className="p-6 flex flex-col justify-between gap-6 bg-card border-border hover:border-primary/40 transition-all duration-300 group"
             >
               <div className="flex flex-col gap-4">
                 {/* Header info */}

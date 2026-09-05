@@ -14,7 +14,7 @@ export const ArchitectureDiagram: React.FC<ArchitectureDiagramProps> = ({
   nodes,
 }) => {
   return (
-    <div className="w-full p-6 md:p-8 rounded-lg border border-border bg-card/60 backdrop-blur-sm flex flex-col gap-6">
+    <div className="w-full p-6 md:p-8 rounded-lg border border-border bg-card flex flex-col gap-6">
       <div className="flex flex-col gap-1">
         <span className="font-mono text-[10px] uppercase tracking-widest text-primary font-semibold">
           System Flow & Visual Architecture

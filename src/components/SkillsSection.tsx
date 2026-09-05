@@ -168,7 +168,7 @@ const SkillsSection = () => {
             role="tabpanel"
             id={`panel-${selectedCategory.id}`}
             aria-labelledby={`tab-${selectedCategory.id}`}
-            className="lg:col-span-8 p-6 md:p-8 rounded-xl border border-border bg-card/60 backdrop-blur-sm flex flex-col gap-6"
+            className="lg:col-span-8 p-6 md:p-8 rounded-xl border border-border bg-card flex flex-col gap-6"
           >
             {/* Header Title & Icon */}
             <div className="flex items-center gap-4 pb-4 border-b border-border">

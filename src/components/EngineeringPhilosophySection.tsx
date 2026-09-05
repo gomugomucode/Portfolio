@@ -101,7 +101,7 @@ const EngineeringPhilosophySection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: idx * 0.08 }}
-                    className="flex flex-col justify-between p-6 rounded-lg border border-border bg-card/40 hover:border-primary/40 transition-colors duration-300 gap-6"
+                    className="flex flex-col justify-between p-6 rounded-lg border border-border bg-card hover:border-primary/40 transition-colors duration-300 gap-6"
                   >
                     <div className="flex flex-col gap-4">
                       <div className="w-10 h-10 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
