@@ -37,7 +37,6 @@ export const getPersonSchema = () => ({
     siteConfig.social.twitter,
     siteConfig.social.medium,
     siteConfig.social.youtube,
-    siteConfig.social.googleMaps,
   ],
   knowsAbout: [
     "Full-Stack Web Development",

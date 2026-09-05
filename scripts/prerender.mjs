@@ -96,7 +96,6 @@ const routeMetadata = [
             <li><a href="https://medium.com/@gomugomucode" target="_blank" rel="noopener noreferrer">Medium: @gomugomucode</a></li>
             <li><a href="https://x.com/gomugomucode" target="_blank" rel="noopener noreferrer">X (Twitter): @gomugomucode</a></li>
             <li><a href="https://youtube.com/@gomugomucode" target="_blank" rel="noopener noreferrer">YouTube: @gomugomucode</a></li>
-            <li><a href="https://www.google.com/maps/place/Anupam+Baral+-+AI%2FML+%26+Full-Stack+Developer/@28.397455,84.1301506,7z/data=!3m1!4b1!4m6!3m5!1s0x85dbafd39ae92f89:0x13b3b1f0138c19d0!8m2!3d28.397455!4d84.1301506!16s%2Fg%2F11zc_q7f9c" target="_blank" rel="noopener noreferrer">Google Business Profile</a></li>
           </ul>
         </section>
       </main>
@@ -139,8 +138,7 @@ const routeMetadata = [
             "https://linkedin.com/in/gomugomucode",
             "https://x.com/gomugomucode",
             "https://medium.com/@gomugomucode",
-            "https://youtube.com/@gomugomucode",
-            "https://www.google.com/maps/place/Anupam+Baral+-+AI%2FML+%26+Full-Stack+Developer/@28.397455,84.1301506,7z/data=!3m1!4b1!4m6!3m5!1s0x85dbafd39ae92f89:0x13b3b1f0138c19d0!8m2!3d28.397455!4d84.1301506!16s%2Fg%2F11zc_q7f9c"
+            "https://youtube.com/@gomugomucode"
           ]
         }
       },

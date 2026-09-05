@@ -79,7 +79,6 @@ export default function SEO({
       <link rel="me" href={siteConfig.social.twitter} />
       <link rel="me" href={siteConfig.social.medium} />
       <link rel="me" href={siteConfig.social.youtube} />
-      <link rel="me" href={siteConfig.social.googleMaps} />
 
       {/* Theme & PWA */}
       <meta name="theme-color" content="#0f172a" />
