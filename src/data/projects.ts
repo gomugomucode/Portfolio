@@ -66,14 +66,14 @@ export const projects: ProjectPreview[] = [
   },
   {
     index: "05",
-    slug: "yarshabyte-agency",
-    title: "YarshaByte — Creative Digital Agency",
+    slug: "yarshabyte-it-company",
+    title: "YarshaByte — IT Company",
     problem:
-      "Businesses and modern brands in Nepal struggle with generic, slow web presences that fail to reflect brand identity, communicate credibility, and engage digital-first clients.",
+      "Businesses and emerging enterprises in Nepal struggle with disjointed IT systems, legacy infrastructure, and generic web templates that fail to build digital credibility.",
     impact:
-      "Architected and built a high-performance creative agency platform featuring interactive brand storytelling, fluid micro-animations, fast Edge CDN delivery, and modern client acquisition funnels.",
+      "Architected and engineered the modern digital platform for YarshaByte, an IT company delivering full-spectrum web development, software solutions, cloud systems, and IT consulting.",
     metric: { label: "Performance", value: "99+" },
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "IT Services", "Vercel"],
     imageUrl: "/yarshabyte.webp",
     liveLink: "https://yarshabyte.vercel.app/",
     githubLink: "",

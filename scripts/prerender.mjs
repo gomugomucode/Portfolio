@@ -78,8 +78,8 @@ const routeMetadata = [
             <p>Next.js 16 product catalogue and order enquiry platform for entrance & home automation in Nepal.</p>
           </article>
           <article>
-            <h3><a href="/projects/yarshabyte-agency">YarshaByte — Creative Digital Agency</a></h3>
-            <p>Modern creative digital agency platform built with Next.js, fluid typography, and bespoke web design.</p>
+            <h3><a href="/projects/yarshabyte-it-company">YarshaByte — IT Company</a></h3>
+            <p>Modern IT company web platform built with Next.js, highlighting software engineering, IT consulting, and digital solutions.</p>
           </article>
         </section>
         <section>
@@ -235,8 +235,8 @@ const routeMetadata = [
             <p>Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.</p>
           </article>
           <article>
-            <h2><a href="/projects/yarshabyte-agency">YarshaByte — Creative Digital Agency</a></h2>
-            <p>Modern creative digital agency platform built with Next.js, fluid typography, and bespoke web design.</p>
+            <h2><a href="/projects/yarshabyte-it-company">YarshaByte — IT Company</a></h2>
+            <p>Modern IT company web platform built with Next.js, highlighting software engineering, IT consulting, and digital solutions.</p>
           </article>
         </section>
       </main>
@@ -417,25 +417,25 @@ const routeMetadata = [
     ]
   },
   {
-    route: "/projects/yarshabyte-agency",
-    title: "YarshaByte Creative Agency Case Study | Next.js & Modern Web Design",
-    description: "In-depth case study of YarshaByte: a cutting-edge creative digital agency and web development platform built with Next.js, Tailwind CSS, and fluid motion design.",
-    keywords: "YarshaByte, Creative Digital Agency Nepal, Next.js Portfolio, Web Design Nepal, Framer Motion UI",
+    route: "/projects/yarshabyte-it-company",
+    title: "YarshaByte IT Company Case Study | Next.js & Modern Web Engineering",
+    description: "In-depth case study of YarshaByte: an innovative IT company delivering software engineering, web development, and digital services built with Next.js, Tailwind CSS, and fluid motion design.",
+    keywords: "YarshaByte, IT Company Nepal, Software Development Nepal, Next.js Portfolio, Web Development Nepal, IT Consulting Kathmandu",
     ogImage: `${SITE_URL}/yarshabyte.webp`,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
         <p><a href="/projects">&larr; Back to Projects</a></p>
-        <h1>YarshaByte — Creative Digital Agency Case Study</h1>
-        <p>Author: Anupam Baral (@gomugomucode) | Lead Creative Technologist & Engineer</p>
-        <p>A modern digital agency platform showcasing bespoke web design, interactive branding, and high-performance development.</p>
+        <h1>YarshaByte — IT Company & Digital Solutions Case Study</h1>
+        <p>Author: Anupam Baral (@gomugomucode) | Lead Full-Stack Engineer & Frontend Architect</p>
+        <p>A modern IT company platform showcasing software development, IT consulting, cloud delivery, and bespoke digital solutions.</p>
         <section>
           <h2>Problem & Solution</h2>
-          <p>Designed and built YarshaByte using Next.js App Router, Tailwind CSS, and modern motion principles. Integrated custom SVG path morphing, responsive typography scaling, and modular component architecture to deliver a visceral, agency-grade digital experience.</p>
+          <p>Designed and built YarshaByte's web platform using Next.js App Router, TypeScript, and modern motion principles. Engineered modular service showcases for IT consulting, software development, and digital solutions with sub-80ms edge delivery.</p>
         </section>
         <section>
           <h2>Links</h2>
-          <p><a href="https://yarshabyte.vercel.app/" target="_blank" rel="noopener noreferrer">Live Agency Site</a></p>
+          <p><a href="https://yarshabyte.vercel.app/" target="_blank" rel="noopener noreferrer">Live IT Company Platform</a></p>
         </section>
       </main>
       ${sharedFooterHtml}
@@ -444,14 +444,39 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
-        "@id": `${SITE_URL}/projects/yarshabyte-agency#software`,
-        "name": "YarshaByte Creative Digital Agency",
-        "description": "Next.js creative digital agency platform with fluid motion design.",
+        "@id": `${SITE_URL}/projects/yarshabyte-it-company#software`,
+        "name": "YarshaByte IT Company & Digital Solutions",
+        "description": "Next.js IT company platform with fluid motion design and software engineering showcases.",
         "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Framer Motion",
-        "url": `${SITE_URL}/projects/yarshabyte-agency`,
+        "url": `${SITE_URL}/projects/yarshabyte-it-company`,
         "author": {
           "@id": `${SITE_URL}/#person`
         }
+      }
+    ]
+  },
+  {
+    route: "/projects/yarshabyte-agency",
+    title: "YarshaByte IT Company Case Study | Next.js & Modern Web Engineering",
+    description: "In-depth case study of YarshaByte: an innovative IT company delivering software engineering, web development, and digital services.",
+    keywords: "YarshaByte, IT Company Nepal, Software Development Nepal, Next.js Portfolio",
+    ogImage: `${SITE_URL}/yarshabyte.webp`,
+    bodyHtml: `
+      ${sharedNavHtml}
+      <main>
+        <p><a href="/projects">&larr; Back to Projects</a></p>
+        <h1>YarshaByte — IT Company & Digital Solutions</h1>
+        <p><a href="/projects/yarshabyte-it-company">Redirecting to updated IT Company case study &rarr;</a></p>
+      </main>
+      ${sharedFooterHtml}
+    `,
+    schema: [
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareSourceCode",
+        "@id": `${SITE_URL}/projects/yarshabyte-agency#software`,
+        "name": "YarshaByte IT Company",
+        "url": `${SITE_URL}/projects/yarshabyte-agency`
       }
     ]
   },

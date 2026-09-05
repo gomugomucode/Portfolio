@@ -21,7 +21,16 @@ export type { CaseStudy };
 const ProjectDetails = () => {
   const { id } = useParams<{ id: string }>();
   const project = id
-    ? caseStudies[id] || Object.values(caseStudies).find((cs) => cs.slug === id)
+    ? caseStudies[id] ||
+      Object.values(caseStudies).find(
+        (cs) =>
+          cs.slug === id ||
+          (cs.id === "05" &&
+            (id === "yarshabyte-agency" ||
+              id === "yarshabyte-it-company" ||
+              id === "yarshabyte-creative-digital-agency" ||
+              id === "yarshabyte"))
+      )
     : null;
 
   if (!project) {

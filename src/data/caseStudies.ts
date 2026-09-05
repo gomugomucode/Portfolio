@@ -330,22 +330,24 @@ export const caseStudies: Record<string, CaseStudy> = {
   },
   "05": {
     id: "05",
-    slug: "yarshabyte-creative-digital-agency",
-    title: "YarshaByte — Creative Digital Agency",
-    seoTitle: "YarshaByte Creative Agency Case Study | Next.js & Modern Web Design",
-    seoDescription: "In-depth case study of YarshaByte: a cutting-edge creative digital agency and web development platform built with Next.js, Tailwind CSS, and fluid motion design.",
-    subtitle: "A modern digital agency platform showcasing bespoke web design, interactive branding, and high-performance development.",
-    role: "Lead Creative Technologist & Engineer",
+    slug: "yarshabyte-it-company",
+    title: "YarshaByte — IT Company & Digital Solutions",
+    seoTitle: "YarshaByte IT Company Case Study | Next.js & Modern Web Engineering",
+    seoDescription: "In-depth case study of YarshaByte: an innovative IT company delivering software engineering, web development, and digital services built with Next.js, Tailwind CSS, and fluid motion design.",
+    subtitle: "A modern IT company platform showcasing software development, IT consulting, cloud delivery, and bespoke digital solutions.",
+    role: "Lead Full-Stack Engineer & Frontend Architect",
     year: "2026",
-    client: "YarshaByte Studio",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Vercel"],
+    client: "YarshaByte (IT Company)",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "IT Services", "Vercel"],
     keywords: [
       "YarshaByte",
-      "Creative Digital Agency Nepal",
+      "IT Company Nepal",
+      "Software Development Nepal",
+      "Web Development Nepal",
       "Next.js Portfolio",
-      "Web Design Nepal",
+      "IT Consulting Kathmandu",
       "Framer Motion UI",
-      "Modern Web Development"
+      "Modern Web Engineering"
     ],
     imageUrl: "/yarshabyte.webp",
     screenshots: [
@@ -358,29 +360,29 @@ export const caseStudies: Record<string, CaseStudy> = {
       { label: "Edge Delivery", value: "<80ms" },
       { label: "Interactive UX", value: "60 FPS" }
     ],
-    problem: "Most digital agency websites in emerging markets rely on static, generic templates that lack distinct visual character, responsive motion, and fast mobile performance, failing to inspire customer confidence.",
+    problem: "Most IT companies and service firms in Nepal rely on generic, slow WordPress templates that fail to showcase technical excellence, lack fluid responsiveness, and underperform in lead generation.",
     requirements: [
-      "Bespoke visual identity and fluid typographic layout reflecting agency craft.",
+      "Modern brand identity and tech-forward typographic layout reflecting an IT and software solutions company.",
       "Ultra-responsive 60 FPS scroll-driven and hover micro-animations.",
       "Optimized Core Web Vitals with near-instant Edge CDN delivery on Vercel.",
-      "Streamlined client inquiry and multi-channel communication pathways."
+      "Streamlined client inquiry and multi-channel IT consultation pathways."
     ],
-    solution: "Designed and built YarshaByte using Next.js App Router, Tailwind CSS, and modern motion principles. Integrated custom SVG path morphing, responsive typography scaling, and modular component architecture to deliver a visceral, agency-grade digital experience.",
+    solution: "Designed and built YarshaByte's web platform using Next.js App Router, TypeScript, and modern motion principles. Engineered modular service showcases for IT consulting, software development, and digital solutions with sub-80ms edge delivery.",
     architecture: [
       "Next.js App Router for server-rendered speed and edge streaming.",
-      "Custom CSS variables and Tailwind utilities for aesthetic design tokens.",
+      "TypeScript and Tailwind CSS design tokens for maintainable UI architecture.",
       "Framer Motion and keyframe SVG animations for interactive visual polish.",
       "Vercel Edge Network for rapid global delivery and sub-100ms response times."
     ],
-    tradeoffs: "Prioritized custom styling and lightweight animation primitives over heavy 3D rendering libraries (like Three.js), ensuring rapid initial page loads on lower-bandwidth mobile devices.",
+    tradeoffs: "Prioritized lightweight CSS/SVG animation primitives over heavy 3D rendering engines, guaranteeing blazing-fast initial load times and smooth mobile browsing across Nepal's networks.",
     features: [
-      "Editorial agency showcase featuring client case studies and services.",
+      "Comprehensive IT company showcase highlighting software services and client work.",
       "Dynamic navigation with smooth wave transitions and mobile-first menu.",
       "Direct client contact channels (WhatsApp, phone, social integrations).",
       "Fully responsive typography scale with fluid clamp calculations."
     ],
     challenges: "Achieving cinematic visual animations while sustaining 95+ performance scores on Google Lighthouse across mobile devices.",
     lessons: "Restricting animation triggers to GPU-accelerated CSS properties (transform, opacity) prevents thread blocking and preserves buttery 60 FPS interactions.",
-    futureImprovements: "Implementing dynamic client testimonial feeds and interactive 3D WebGL showcase modules."
+    futureImprovements: "Implementing dynamic client portal integration and interactive project cost estimator modules."
   }
 };

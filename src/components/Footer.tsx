@@ -48,7 +48,7 @@ const Footer = () => {
             <Link to="/projects/yatra-solana-ride-sharing" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">02. Yatra — Solana Ride-Sharing</Link>
             <Link to="/projects/web3-loyalty-protocol" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">03. Web3 Loyalty Protocol</Link>
             <Link to="/projects/greenstar-suppliers" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">04. Greenstar Suppliers Catalogue</Link>
-            <Link to="/projects/yarshabyte-agency" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">05. YarshaByte — Creative Agency</Link>
+            <Link to="/projects/yarshabyte-it-company" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">05. YarshaByte — IT Company</Link>
           </div>
 
           <div className="lg:col-span-3 flex flex-col gap-4">

@@ -81,10 +81,10 @@ export const SEARCH_INDEX: SearchIndexItem[] = [
   {
     id: "proj-05",
     type: "project",
-    title: "YarshaByte — Creative Digital Agency",
-    description: "Modern creative digital agency platform built with Next.js, fluid typography, and bespoke web design.",
-    url: "/project/05",
-    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "Agency", "Design", "Vercel"],
+    title: "YarshaByte — IT Company & Digital Solutions",
+    description: "Modern IT company web platform built with Next.js, showcasing software engineering, IT consulting, and digital solutions.",
+    url: "/projects/yarshabyte-it-company",
+    tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "IT Company", "IT Services", "Vercel"],
   },
 
   // Articles from FALLBACK_ARTICLES

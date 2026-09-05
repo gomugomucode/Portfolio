@@ -68,7 +68,7 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
   // Client websites should not render repository links
   const isClientWebsite =
     project.slug === "greenstar-suppliers" ||
-    project.slug === "yarshabyte-agency" ||
+    project.slug.startsWith("yarshabyte") ||
     !project.githubLink ||
     project.githubLink.trim() === "";
 

@@ -17,7 +17,7 @@ const routes = [
   { url: "/projects/yatra-solana-ride-sharing", priority: "0.8", changefreq: "monthly" },
   { url: "/projects/web3-loyalty-protocol", priority: "0.8", changefreq: "monthly" },
   { url: "/projects/greenstar-suppliers", priority: "0.8", changefreq: "monthly" },
-  { url: "/projects/yarshabyte-agency", priority: "0.8", changefreq: "monthly" },
+  { url: "/projects/yarshabyte-it-company", priority: "0.8", changefreq: "monthly" },
   { url: "/blog", priority: "0.9", changefreq: "daily" },
   { url: "/blog/yatra-solana-ride-sharing-protocol", priority: "0.8", changefreq: "monthly" },
   { url: "/blog/decoupled-lms-architectures", priority: "0.8", changefreq: "monthly" },

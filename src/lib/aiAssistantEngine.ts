@@ -102,6 +102,18 @@ export const aiAssistantEngine = {
       };
     }
 
+    // Query 8: YarshaByte / IT Company
+    if (q.includes("yarsha") || q.includes("it company") || q.includes("it consulting")) {
+      return {
+        matchedTopic: "YarshaByte IT Company Platform",
+        answer: "Anupam architected and built the digital platform for YarshaByte, an IT company delivering software engineering, web development, and digital solutions for businesses in Nepal. Engineered with Next.js App Router, TypeScript, and Framer Motion for 99+ Lighthouse performance.",
+        citations: [
+          { title: "YarshaByte IT Company Case Study", url: "/projects/yarshabyte-it-company" },
+          { title: "All Projects Showcase", url: "/projects" },
+        ],
+      };
+    }
+
     // Default Fallback matching
     const matchingStudy = ENGINEERING_CASE_STUDIES.find((study) =>
       study.title.toLowerCase().includes(q) || study.problem.toLowerCase().includes(q)
@@ -117,7 +129,7 @@ export const aiAssistantEngine = {
 
     return {
       matchedTopic: "Portfolio Engineering Summary",
-      answer: `Anupam Baral is a Full-Stack & AI Engineer specializing in React, Next.js, TypeScript, Python, PostgreSQL, Supabase, Firebase, and Solana Rust smart contracts. Over 4+ production applications engineered with sub-second page loads and strict type safety.`,
+      answer: `Anupam Baral is a Full-Stack & AI Engineer specializing in React, Next.js, TypeScript, Python, PostgreSQL, Supabase, Firebase, and Solana Rust smart contracts. Over 5+ production applications engineered with sub-second page loads and strict type safety.`,
       citations: [
         { title: "Technical Skills & Matrix", url: "/about" },
         { title: "For Recruiters Portal", url: "/for-recruiters" },
