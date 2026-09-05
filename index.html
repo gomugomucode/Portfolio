@@ -61,6 +61,16 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="preload" href="/mypic1.webp" as="image" type="image/webp" fetchpriority="high" />
+
+  <!-- Browser Compatibility: Ensure requestIdleCallback preserves Window receiver in Gecko/Firefox -->
+  <script>
+    if (typeof window !== "undefined" && typeof window.requestIdleCallback === "function") {
+      try {
+        window.requestIdleCallback = window.requestIdleCallback.bind(window);
+        window.cancelIdleCallback = window.cancelIdleCallback.bind(window);
+      } catch (_) {}
+    }
+  </script>
 </head>
 
 <body class="antialiased text-foreground bg-background selection:bg-primary/20 selection:text-primary">
