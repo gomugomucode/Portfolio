@@ -14,9 +14,10 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ["Inter", "system-ui", "-apple-system", "sans-serif"],
-        display: ["Inter", "system-ui", "-apple-system", "sans-serif"],
-        mono: ["JetBrains Mono", "monospace"],
+        sans: ["'Suisse Intl'", "Inter", "system-ui", "-apple-system", "sans-serif"],
+        display: ["'TT Tunnels'", "Impact", "'Arial Black'", "sans-serif"],
+        tech: ["'TT Lakes Neue'", "Impact", "'Arial Narrow'", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
       colors: {
         border: "var(--border)",
