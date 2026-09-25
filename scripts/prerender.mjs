@@ -45,9 +45,11 @@ const sharedFooterHtml = `
 const routeMetadata = [
   {
     route: "/",
-    title: "Anupam Baral (gomugomucode) | Full Stack & AI Engineer",
-    description: "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer & AI Engineer in Nepal building React, Next.js, Python, and Solana Web3 systems.",
-    keywords: "Full Stack Developer Nepal, React Developer Nepal, Next.js Developer, Python Developer, AI Developer Nepal, Supabase Developer, Firebase Developer, Solana Developer, Anupam Baral, gomugomucode",
+    title: "Anupam Baral — Full-Stack Developer & AI Engineer | gomugomucode",
+    description: "Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects.",
+    ogTitle: "Anupam Baral — Full-Stack Developer & AI Engineer",
+    ogDescription: "Portfolio of Anupam Baral (@gomugomucode), Full-Stack Developer and AI Engineer from Nepal.",
+    keywords: "Anupam Baral, gomugomucode, Full Stack Developer Nepal, AI Engineer Nepal, React Developer, Next.js Developer, Python Developer, Solana Developer",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -107,17 +109,17 @@ const routeMetadata = [
         "@type": "ProfilePage",
         "@id": `${SITE_URL}/#profile`,
         "url": `${SITE_URL}/`,
-        "name": "Anupam Baral (gomugomucode) | Full Stack & AI Engineer",
-        "description": "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer & AI Engineer in Nepal building React, Next.js, Python, and Solana Web3 systems.",
+        "name": "Anupam Baral — Full-Stack Developer & AI Engineer | gomugomucode",
+        "description": "Full-Stack Developer and AI Engineer from Nepal.",
         "mainEntity": {
           "@type": "Person",
           "@id": `${SITE_URL}/#person`,
-          "name": SITE_NAME,
+          "name": "Anupam Baral",
           "alternateName": ["gomugomucode", "@gomugomucode"],
           "url": `${SITE_URL}/`,
           "image": `${SITE_URL}/my-photo.webp`,
-          "jobTitle": "Full-Stack Developer & AI Engineer",
-          "description": "Anupam Baral is a Full Stack Developer and AI Engineer based in Nepal. Specializing in React, Next.js, TypeScript, Python, Supabase, Firebase, and Solana Web3 development.",
+          "jobTitle": ["Full-Stack Developer", "AI Engineer"],
+          "description": "Full-Stack Developer and AI Engineer from Nepal.",
           "nationality": {
             "@type": "Country",
             "name": "Nepal"
@@ -147,9 +149,12 @@ const routeMetadata = [
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
         "url": `${SITE_URL}/`,
-        "name": `${SITE_NAME} - Full Stack & AI Developer Portfolio`,
-        "alternateName": "gomugomucode",
-        "description": "Portfolio of Anupam Baral, Full Stack Developer and AI Engineer in Nepal."
+        "name": "Anupam Baral — Full-Stack Developer & AI Engineer",
+        "alternateName": ["gomugomucode", "@gomugomucode"],
+        "description": "Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects.",
+        "publisher": {
+          "@id": `${SITE_URL}/#person`
+        }
       }
     ]
   },
@@ -450,31 +455,6 @@ const routeMetadata = [
         "author": {
           "@id": `${SITE_URL}/#person`
         }
-      }
-    ]
-  },
-  {
-    route: "/projects/yarshabyte-agency",
-    title: "YarshaByte IT Company Case Study | Next.js & Modern Web Engineering",
-    description: "In-depth case study of YarshaByte: an innovative IT company delivering software engineering, web development, and digital services.",
-    keywords: "YarshaByte, IT Company Nepal, Software Development Nepal, Next.js Portfolio",
-    ogImage: `${SITE_URL}/yarshabyte.webp`,
-    bodyHtml: `
-      ${sharedNavHtml}
-      <main>
-        <p><a href="/projects">&larr; Back to Projects</a></p>
-        <h1>YarshaByte — IT Company & Digital Solutions</h1>
-        <p><a href="/projects/yarshabyte-it-company">Redirecting to updated IT Company case study &rarr;</a></p>
-      </main>
-      ${sharedFooterHtml}
-    `,
-    schema: [
-      {
-        "@context": "https://schema.org",
-        "@type": "SoftwareSourceCode",
-        "@id": `${SITE_URL}/projects/yarshabyte-agency#software`,
-        "name": "YarshaByte IT Company",
-        "url": `${SITE_URL}/projects/yarshabyte-agency`
       }
     ]
   },
@@ -912,14 +892,16 @@ const prerender = () => {
     html = html.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis, `<link rel="canonical" href="${currentUrl}" />`);
 
     // Inject OpenGraph
-    html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/gis, `<meta property="og:title" content="${meta.title}" />`);
-    html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/gis, `<meta property="og:description" content="${meta.description}" />`);
+    const finalOgTitle = meta.ogTitle || meta.title;
+    const finalOgDescription = meta.ogDescription || meta.description;
+    html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/gis, `<meta property="og:title" content="${finalOgTitle}" />`);
+    html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/gis, `<meta property="og:description" content="${finalOgDescription}" />`);
     html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/gis, `<meta property="og:url" content="${currentUrl}" />`);
     html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/gis, `<meta property="og:image" content="${meta.ogImage}" />`);
 
     // Inject Twitter
-    html = html.replace(/<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:title" content="${meta.title}" />`);
-    html = html.replace(/<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:description" content="${meta.description}" />`);
+    html = html.replace(/<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:title" content="${finalOgTitle}" />`);
+    html = html.replace(/<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:description" content="${finalOgDescription}" />`);
     html = html.replace(/<meta\s+name="twitter:url"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:url" content="${currentUrl}" />`);
     html = html.replace(/<meta\s+name="twitter:image"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:image" content="${meta.ogImage}" />`);
 
@@ -935,23 +917,55 @@ const prerender = () => {
       html = html.replace('<div id="root"></div>', `<div id="root">${meta.bodyHtml}</div>`);
     }
 
-    // Target output directory
-    let outputFilePath;
+    // Target output directory: write both clean HTML file and directory index.html
     if (meta.route === "/") {
-      outputFilePath = indexHtmlPath;
+      fs.writeFileSync(indexHtmlPath, html, "utf8");
+      console.log(`[Prerender] Prerendered HTML: / -> dist/index.html`);
     } else {
-      const routeSubDir = path.join(distDir, meta.route.replace(/^\//, ""));
+      const cleanRoute = meta.route.replace(/^\//, "");
+      
+      // 1. Write clean URL file: dist/<route>.html (e.g. dist/about.html)
+      const htmlFilePath = path.join(distDir, `${cleanRoute}.html`);
+      const parentDir = path.dirname(htmlFilePath);
+      if (!fs.existsSync(parentDir)) {
+        fs.mkdirSync(parentDir, { recursive: true });
+      }
+      fs.writeFileSync(htmlFilePath, html, "utf8");
+
+      // 2. Write directory index file: dist/<route>/index.html (e.g. dist/about/index.html)
+      const routeSubDir = path.join(distDir, cleanRoute);
       if (!fs.existsSync(routeSubDir)) {
         fs.mkdirSync(routeSubDir, { recursive: true });
       }
-      outputFilePath = path.join(routeSubDir, "index.html");
-    }
+      const dirIndexFilePath = path.join(routeSubDir, "index.html");
+      fs.writeFileSync(dirIndexFilePath, html, "utf8");
 
-    fs.writeFileSync(outputFilePath, html, "utf8");
-    console.log(`[Prerender] Prerendered HTML: ${meta.route} -> ${path.relative(projectRoot, outputFilePath)}`);
+      console.log(`[Prerender] Prerendered HTML: ${meta.route} -> dist/${cleanRoute}.html & dist/${cleanRoute}/index.html`);
+    }
   });
 
-  console.log(`[Prerender] Successfully prerendered ${routeMetadata.length} pages with semantic HTML body content.`);
+  // Generate a dedicated, genuine 404.html to eliminate Soft 404s
+  let notFoundHtml = baseHtml;
+  notFoundHtml = notFoundHtml.replace(/<title>.*?<\/title>/gis, `<title>Page Not Found (404) | Anupam Baral</title>`);
+  notFoundHtml = notFoundHtml.replace(/<meta\s+name="title"\s+content=".*?"\s*\/?>/gis, `<meta name="title" content="Page Not Found (404) | Anupam Baral" />`);
+  notFoundHtml = notFoundHtml.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gis, `<meta name="description" content="The requested page could not be found on anupambaral.com.np." />`);
+  notFoundHtml = notFoundHtml.replace(/<meta\s+name="robots"\s+content=".*?"\s*\/?>/gis, `<meta name="robots" content="noindex, follow" />`);
+  notFoundHtml = notFoundHtml.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis, ``);
+  notFoundHtml = notFoundHtml.replace('<div id="root"></div>', `<div id="root">
+    ${sharedNavHtml}
+    <main style="max-width: 800px; margin: 4rem auto; padding: 2rem; text-align: center;">
+      <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">404 — Page Not Found</h1>
+      <p style="font-size: 1.125rem; color: #888; margin-bottom: 2rem;">The page you requested does not exist on this server.</p>
+      <p><a href="/" style="font-weight: 600; color: #c9923a;">Return to Home</a> | <a href="/projects">View Projects</a> | <a href="/about">About Anupam Baral</a> | <a href="/contact">Contact</a></p>
+    </main>
+    ${sharedFooterHtml}
+  </div>`);
+
+  const notFoundPath = path.join(distDir, "404.html");
+  fs.writeFileSync(notFoundPath, notFoundHtml, "utf8");
+  console.log(`[Prerender] Generated dist/404.html (genuine 404 fallback)`);
+
+  console.log(`[Prerender] Successfully prerendered ${routeMetadata.length} pages + 404.html with semantic HTML.`);
 };
 
 prerender();

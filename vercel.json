@@ -47,13 +47,6 @@
       "source": "/project/:path*",
       "destination": "/projects/:path*",
       "permanent": true
-    }
-  ],
-  "rewrites": [
-    {
-      "source": "/((?!assets/|.*\\..*).*)",
-      "destination": "/index.html"
-    }
   ],
   "headers": [
     {

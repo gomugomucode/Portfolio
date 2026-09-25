@@ -14,8 +14,8 @@ export const getPersonSchema = () => ({
   alternateName: [siteConfig.username, siteConfig.handle],
   url: `${siteConfig.url}/`,
   image: `${siteConfig.url}/my-photo.webp`,
-  jobTitle: siteConfig.author.role,
-  description: siteConfig.description,
+  jobTitle: ["Full-Stack Developer", "AI Engineer"],
+  description: "Full-Stack Developer and AI Engineer from Nepal.",
   nationality: {
     "@type": "Country",
     name: "Nepal",
@@ -63,8 +63,8 @@ export const getProfilePageSchema = () => ({
   "@type": "ProfilePage",
   "@id": `${siteConfig.url}/#profile`,
   url: `${siteConfig.url}/`,
-  name: `${siteConfig.name} (${siteConfig.username}) | Full Stack & AI Engineer`,
-  description: siteConfig.description,
+  name: `${siteConfig.name} — Full-Stack Developer & AI Engineer | gomugomucode`,
+  description: "Full-Stack Developer and AI Engineer from Nepal.",
   mainEntity: getPersonSchema(),
 });
 
@@ -74,8 +74,8 @@ export const getWebSiteSchema = () => ({
   "@type": "WebSite",
   "@id": `${siteConfig.url}/#website`,
   url: `${siteConfig.url}/`,
-  name: `${siteConfig.name} - Full Stack & AI Developer Portfolio`,
-  alternateName: "gomugomucode",
+  name: `${siteConfig.name} — Full-Stack Developer & AI Engineer`,
+  alternateName: [siteConfig.username, siteConfig.handle],
   description: siteConfig.description,
   publisher: {
     "@id": `${siteConfig.url}/#person`,

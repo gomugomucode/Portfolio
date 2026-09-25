@@ -45,8 +45,10 @@ const Home = () => {
   return (
     <div className="flex flex-col w-full">
       <SEO
-        title="Anupam Baral (gomugomucode) | Full Stack & AI Engineer"
-        description="Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer & AI Engineer in Nepal building React, Next.js, Python, and Solana Web3 systems."
+        title="Anupam Baral — Full-Stack Developer & AI Engineer | gomugomucode"
+        description="Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects."
+        ogTitle="Anupam Baral — Full-Stack Developer & AI Engineer"
+        ogDescription="Portfolio of Anupam Baral (@gomugomucode), Full-Stack Developer and AI Engineer from Nepal."
         keywords="Anupam Baral, gomugomucode, Full Stack Developer Nepal, AI Engineer Nepal, React Developer, Next.js Developer, Python Developer, Solana Developer"
         canonicalUrl={`${siteConfig.url}/`}
         schema={schemas}
