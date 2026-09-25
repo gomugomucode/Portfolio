@@ -3,14 +3,14 @@
   "trailingSlash": false,
   "redirects": [
     {
-      "source": "/:path*",
+      "source": "/(.*)",
       "has": [
         {
           "type": "host",
           "value": "www.anupambaral.com.np"
         }
       ],
-      "destination": "https://anupambaral.com.np/:path*",
+      "destination": "https://anupambaral.com.np/$1",
       "permanent": true
     },
     {

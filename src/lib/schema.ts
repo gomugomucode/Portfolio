@@ -194,24 +194,6 @@ export const getBlogPostingSchema = (post: BlogPostingSchemaInput) => ({
   inLanguage: "en-US",
 });
 
-// 8. FAQ Schema
-export interface FAQItem {
-  question: string;
-  answer: string;
-}
-
-export const getFAQSchema = (faqs: FAQItem[]) => ({
-  "@context": "https://schema.org",
-  "@type": "FAQPage",
-  mainEntity: faqs.map((faq) => ({
-    "@type": "Question",
-    name: faq.question,
-    acceptedAnswer: {
-      "@type": "Answer",
-      text: faq.answer,
-    },
-  })),
-});
 
 // 9. ContactPage Schema
 export const getContactPageSchema = (url: string) => ({
