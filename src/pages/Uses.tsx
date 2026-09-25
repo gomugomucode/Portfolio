@@ -12,8 +12,8 @@ const Uses = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Uses — Development Setup & Hardware | Anupam Baral"
-        description="A curated look into the hardware, software, editor setup, terminal configuration, and AI engineering tools used daily by Anupam Baral."
+        title="Uses — Anupam Baral (@gomugomucode)"
+        description="A curated look into the hardware, software, editor setup, terminal configuration, and AI engineering tools used daily by Anupam Baral (@gomugomucode)."
         canonicalUrl={url}
       />
 

@@ -35,10 +35,10 @@ export default function SEO({
   const fullTitle = title
     ? title.includes(siteConfig.name)
       ? title
-      : `${title} | ${siteConfig.name}`
-    : `${siteConfig.name} (${siteConfig.username}) | Full Stack & AI Engineer`;
+      : `${title} — ${siteConfig.name} (${siteConfig.handle})`
+    : `${siteConfig.name} (${siteConfig.handle}) — Full-Stack Developer & AI Engineer`;
 
-  const finalOgTitle = ogTitle || title || `${siteConfig.name} (${siteConfig.username}) | Full Stack Developer Nepal`;
+  const finalOgTitle = ogTitle || fullTitle;
   const finalOgDescription = ogDescription || description;
 
   // Normalize canonical: Root always has trailing slash, subroutes have no trailing slash
@@ -49,17 +49,12 @@ export default function SEO({
     currentUrl = currentUrl.replace(/\/+$/, "");
   }
 
-  const combinedKeywords = keywords
-    ? `${keywords}, ${siteConfig.primaryKeywords.join(", ")}, ${siteConfig.secondaryKeywords.join(", ")}`
-    : `${siteConfig.primaryKeywords.join(", ")}, ${siteConfig.secondaryKeywords.join(", ")}`;
-
   return (
     <Helmet>
       {/* Primary Metadata */}
       <title>{fullTitle}</title>
       <meta name="title" content={fullTitle} />
       <meta name="description" content={description} />
-      <meta name="keywords" content={combinedKeywords} />
       <meta name="author" content={author} />
       <meta name="publisher" content={siteConfig.name} />
       <meta name="robots" content={noIndex ? "noindex, nofollow" : "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"} />
@@ -76,9 +71,7 @@ export default function SEO({
       {/* Social Identity Links (rel="me") */}
       <link rel="me" href={siteConfig.social.github} />
       <link rel="me" href={siteConfig.social.linkedin} />
-      <link rel="me" href={siteConfig.social.twitter} />
       <link rel="me" href={siteConfig.social.medium} />
-      <link rel="me" href={siteConfig.social.youtube} />
 
       {/* Theme & PWA */}
       <meta name="theme-color" content="#0f172a" />

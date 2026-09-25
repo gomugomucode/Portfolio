@@ -23,7 +23,7 @@ Architecture Blueprint for Future Gemini & RAG Vector Search Enhancements.
 
 ## 2. Type Interfaces (`src/lib/aiArchitecture.ts`)
 
-Contracts are pre-built under [`src/lib/aiArchitecture.ts`](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/src/lib/aiArchitecture.ts) covering:
+Contracts are pre-built under [`src/lib/aiArchitecture.ts`](../src/lib/aiArchitecture.ts) covering:
 - `DocumentChunk`
 - `SemanticSearchQuery`
 - `RAGContext`

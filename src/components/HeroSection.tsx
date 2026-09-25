@@ -62,7 +62,7 @@ const HeroSection = () => {
               </motion.div>
 
               <motion.span variants={itemVariants} className="label-mono">
-                Anupam Baral — Full Stack & AI Engineer
+                Full-Stack Developer & AI Engineer · Butwal, Nepal
               </motion.span>
 
               {/* Clear Entity H1 Headline */}
@@ -70,7 +70,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="heading-display-lg max-w-[20ch] tracking-tight"
               >
-                Anupam Baral — Full-Stack Developer & AI Engineer
+                Anupam Baral
               </motion.h1>
 
               {/* Subheadline Value Proposition */}
@@ -78,7 +78,7 @@ const HeroSection = () => {
                 variants={itemVariants}
                 className="text-body max-w-2xl text-muted-foreground leading-relaxed"
               >
-                I'm Anupam Baral (<strong>@gomugomucode</strong>), a Full-Stack Developer and AI Engineer based in Nepal. I specialize in building modern web applications with <strong>React</strong>, <strong>Next.js</strong>, and <strong>TypeScript</strong>, engineering intelligent <strong>Python</strong> microservices, and architecting decentralized systems on <strong>Solana</strong>.
+                Anupam Baral is a Full-Stack Developer and AI Engineer from Nepal, known online as <strong>gomugomucode</strong> (<strong>@gomugomucode</strong>). I build production web applications with <strong>React</strong>, <strong>Next.js</strong>, and <strong>TypeScript</strong>, engineer intelligent <strong>Python</strong> microservices, and architect decentralized systems on <strong>Solana</strong>.
               </motion.p>
 
               {/* Dual Action Conversion CTAs */}
@@ -114,7 +114,7 @@ const HeroSection = () => {
               <div className="flex items-center gap-4">
                 <img
                   src="/mypic1.webp"
-                  alt="Anupam Baral - Full Stack Developer & AI Engineer"
+                  alt="Anupam Baral — Full-Stack Developer and AI Engineer"
                   width={72}
                   height={72}
                   decoding="async"

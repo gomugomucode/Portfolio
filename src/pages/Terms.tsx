@@ -6,9 +6,8 @@ const Terms = () => {
   return (
     <div className="w-full max-w-2xl mx-auto px-4 pt-32 pb-16">
       <SEO
-        title="Terms of Service | Anupam Baral"
+        title="Terms of Service — Anupam Baral (@gomugomucode)"
         description="Standard terms of service and usage conditions for Anupam Baral's developer portfolio."
-        keywords="Anupam Baral Terms of Service, Legal"
         canonicalUrl="https://anupambaral.com.np/terms"
       />
 

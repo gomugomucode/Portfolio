@@ -1,13 +1,16 @@
-# Anupam Baral — Engineering Portfolio & Technical Log
+# Anupam Baral (@gomugomucode) — Engineering Portfolio
+
+**Production Portfolio & Engineering Case Studies**: [https://anupambaral.com.np/](https://anupambaral.com.np/)  
+**GitHub**: [@gomugomucode](https://github.com/gomugomucode)
 
 [![React](https://img.shields.io/badge/React-18.3-61DAFB?logo=react&logoColor=black)](https://react.dev/)
 [![Vite](https://img.shields.io/badge/Vite-8.0-646CFF?logo=vite&logoColor=white)](https://vitejs.dev/)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5.8-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4-38B2AC?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/)
 [![Vitest](https://img.shields.io/badge/Vitest-4.1-6E9F18?logo=vitest&logoColor=white)](https://vitest.dev/)
-[![Build Status](https://img.shields.io/badge/SSG-Prerendered-success)](#-ssg--performance-pipeline)
+[![Build Status](https://img.shields.io/badge/SSG-Prerendered-success)](#-architecture--tech-stack)
 
-A production-grade, highly performant personal website and technical portfolio built for software engineering, system design, and product leadership visibility. Engineered with a strict focus on typography, performance, accessibility, zero-compromise developer aesthetics, and quantifiable proof of technical work.
+Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects. Engineered with a strict focus on typography, performance, accessibility, and quantifiable proof of technical work.
 
 ---
 
@@ -133,17 +136,17 @@ Portfolio/
 
 ## 📚 Technical Documentation Index
 
-Detailed architectural and operational documentation is available in the [`docs/`](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs) folder:
+Detailed architectural and operational documentation is available in the [`docs/`](./docs) folder:
 
-- [Architecture Overview](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/Architecture.md) — System design and component relationship model.
-- [Engineering Decisions](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/ENGINEERING_DECISIONS.md) — Key architectural tradeoffs and technical rationale.
-- [Design System](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/DESIGN_SYSTEM.md) — Design tokens, color palette, typography rules.
-- [SEO & Metadata](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/SEO.md) — Structured data schemas (JSON-LD), canonical tags, meta strategy.
-- [Performance Engineering](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/Performance.md) — Lighthouse optimization, asset loading, SSG pre-rendering.
-- [Security Model](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/Security.md) — XSS prevention, headers, sanitization.
-- [Expert Panel Audit](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/EXPERT_PANEL_AUDIT.md) — Technical evaluation and evidence verification.
-- [Hiring Funnel & Conversion](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/HIRING_FUNNEL.md) — Design for recruiters and hiring managers.
-- [Production Readiness](file:///c:/Users/Anupam%20Baral/Desktop/Portfolio/docs/PRODUCTION_READINESS.md) — Deployment checklist and verification matrices.
+- [Architecture Overview](./docs/Architecture.md) — System design and component relationship model.
+- [Engineering Decisions](./docs/ENGINEERING_DECISIONS.md) — Key architectural tradeoffs and technical rationale.
+- [Design System](./docs/DESIGN_SYSTEM.md) — Design tokens, color palette, typography rules.
+- [SEO & Metadata](./docs/SEO.md) — Structured data schemas (JSON-LD), canonical tags, meta strategy.
+- [Performance Engineering](./docs/Performance.md) — Lighthouse optimization, asset loading, SSG pre-rendering.
+- [Security Model](./docs/Security.md) — XSS prevention, headers, sanitization.
+- [Expert Panel Audit](./docs/EXPERT_PANEL_AUDIT.md) — Technical evaluation and evidence verification.
+- [Hiring Funnel & Conversion](./docs/HIRING_FUNNEL.md) — Design for recruiters and hiring managers.
+- [Production Readiness](./docs/PRODUCTION_READINESS.md) — Deployment checklist and verification matrices.
 
 ---
 

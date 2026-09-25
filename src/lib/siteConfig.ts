@@ -5,7 +5,7 @@ export const siteConfig = {
   url: "https://anupambaral.com.np",
   ogImage: "https://anupambaral.com.np/og-image.webp",
   description:
-    "Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects.",
+    "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects.",
   primaryKeywords: [
     "Anupam Baral",
     "gomugomucode",

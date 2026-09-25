@@ -6,9 +6,8 @@ const Privacy = () => {
   return (
     <div className="w-full max-w-2xl mx-auto px-4 pt-32 pb-16">
       <SEO
-        title="Privacy Policy | Anupam Baral"
+        title="Privacy Policy — Anupam Baral (@gomugomucode)"
         description="Privacy policy and data protection standards for Anupam Baral's developer portfolio."
-        keywords="Anupam Baral Privacy Policy, Data Protection"
         canonicalUrl="https://anupambaral.com.np/privacy"
       />
 

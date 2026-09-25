@@ -93,9 +93,8 @@ const OpenSourceHub = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Open Source Repositories & Community Hub | Anupam Baral"
+        title="Open Source — Anupam Baral (@gomugomucode)"
         description="Explore open-source software repositories, developer tools, Solana Rust programs, and GitHub contributions by Anupam Baral (@gomugomucode)."
-        keywords="Anupam Baral Open Source, gomugomucode GitHub, Open Source Developer Nepal, Solana Rust Programs, React Developer Tools"
         canonicalUrl={url}
         schema={schemas}
       />

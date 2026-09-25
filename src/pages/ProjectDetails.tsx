@@ -81,9 +81,8 @@ const ProjectDetails = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title={project.seoTitle}
+        title={`${project.title} — Anupam Baral (@gomugomucode)`}
         description={project.seoDescription}
-        keywords={project.keywords.join(", ")}
         canonicalUrl={url}
         ogImage={`${siteConfig.url}${project.imageUrl}`}
         ogType="article"

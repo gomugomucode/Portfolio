@@ -55,9 +55,8 @@ const RecruiterExperience = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="For Recruiters & Hiring Managers | Anupam Baral"
-        description="Dedicated portal for engineering recruiters evaluating Anupam Baral for Full-Stack, React, Next.js, Python AI, and Web3 roles."
-        keywords="Hire Anupam Baral, Full Stack Developer Nepal Resume, React Engineer For Hire, AI Developer Nepal Hiring"
+        title="For Recruiters — Anupam Baral (@gomugomucode)"
+        description="Dedicated portal for engineering recruiters evaluating Anupam Baral (@gomugomucode) for Full-Stack, React, Next.js, Python AI, and Web3 roles."
         canonicalUrl={url}
         schema={schemas}
       />

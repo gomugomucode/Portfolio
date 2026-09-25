@@ -10,12 +10,12 @@ export const getPersonSchema = () => ({
   "@context": "https://schema.org",
   "@type": "Person",
   "@id": `${siteConfig.url}/#person`,
-  name: siteConfig.name,
-  alternateName: [siteConfig.username, siteConfig.handle],
+  name: "Anupam Baral",
+  alternateName: ["gomugomucode", "@gomugomucode"],
   url: `${siteConfig.url}/`,
   image: `${siteConfig.url}/my-photo.webp`,
   jobTitle: ["Full-Stack Developer", "AI Engineer"],
-  description: "Full-Stack Developer and AI Engineer from Nepal.",
+  description: "Full-Stack Developer and AI Engineer from Nepal, known online as gomugomucode.",
   nationality: {
     "@type": "Country",
     name: "Nepal",
@@ -34,9 +34,7 @@ export const getPersonSchema = () => ({
   sameAs: [
     siteConfig.social.github,
     siteConfig.social.linkedin,
-    siteConfig.social.twitter,
     siteConfig.social.medium,
-    siteConfig.social.youtube,
   ],
   knowsAbout: [
     "Full-Stack Web Development",
@@ -63,8 +61,8 @@ export const getProfilePageSchema = () => ({
   "@type": "ProfilePage",
   "@id": `${siteConfig.url}/#profile`,
   url: `${siteConfig.url}/`,
-  name: `${siteConfig.name} — Full-Stack Developer & AI Engineer | gomugomucode`,
-  description: "Full-Stack Developer and AI Engineer from Nepal.",
+  name: "Anupam Baral (@gomugomucode) — Full-Stack Developer & AI Engineer",
+  description: "Full-Stack Developer and AI Engineer from Nepal, known online as gomugomucode.",
   mainEntity: getPersonSchema(),
 });
 
@@ -74,8 +72,8 @@ export const getWebSiteSchema = () => ({
   "@type": "WebSite",
   "@id": `${siteConfig.url}/#website`,
   url: `${siteConfig.url}/`,
-  name: `${siteConfig.name} — Full-Stack Developer & AI Engineer`,
-  alternateName: [siteConfig.username, siteConfig.handle],
+  name: "Anupam Baral (@gomugomucode)",
+  alternateName: ["gomugomucode", "Anupam Baral"],
   description: siteConfig.description,
   publisher: {
     "@id": `${siteConfig.url}/#person`,

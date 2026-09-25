@@ -35,7 +35,6 @@ const sharedFooterHtml = `
       <a href="https://github.com/gomugomucode" target="_blank" rel="noopener noreferrer">GitHub</a> |
       <a href="https://linkedin.com/in/gomugomucode" target="_blank" rel="noopener noreferrer">LinkedIn</a> |
       <a href="https://medium.com/@gomugomucode" target="_blank" rel="noopener noreferrer">Medium</a> |
-      <a href="https://x.com/gomugomucode" target="_blank" rel="noopener noreferrer">X</a> |
       <a href="/privacy">Privacy Policy</a> |
       <a href="/terms">Terms of Service</a>
     </p>
@@ -45,19 +44,18 @@ const sharedFooterHtml = `
 const routeMetadata = [
   {
     route: "/",
-    title: "Anupam Baral — Full-Stack Developer & AI Engineer | gomugomucode",
-    description: "Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects.",
-    ogTitle: "Anupam Baral — Full-Stack Developer & AI Engineer",
-    ogDescription: "Portfolio of Anupam Baral (@gomugomucode), Full-Stack Developer and AI Engineer from Nepal.",
-    keywords: "Anupam Baral, gomugomucode, Full Stack Developer Nepal, AI Engineer Nepal, React Developer, Next.js Developer, Python Developer, Solana Developer",
+    title: "Anupam Baral (@gomugomucode) — Full-Stack Developer & AI Engineer",
+    description: "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects.",
+    ogTitle: "Anupam Baral (@gomugomucode) — Full-Stack Developer & AI Engineer",
+    ogDescription: "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
         <section>
-          <p>Anupam Baral — Full Stack & AI Engineer (@gomugomucode)</p>
-          <h1>Anupam Baral — Full-Stack Developer & AI Engineer</h1>
-          <p>I'm Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer based in Nepal. I specialize in building modern web applications with React, Next.js, and TypeScript, engineering intelligent Python microservices, and architecting decentralized systems on Solana.</p>
+          <p>Full-Stack Developer & AI Engineer · Butwal, Nepal</p>
+          <h1>Anupam Baral</h1>
+          <p>Anupam Baral is a Full-Stack Developer and AI Engineer from Nepal, known online as <strong>gomugomucode</strong> (@gomugomucode). I build production web applications with React, Next.js, and TypeScript, engineer intelligent Python microservices, and architect decentralized systems on Solana.</p>
           <p>Location: Butwal, Nepal (GMT+5:45). Available for Full-time Roles & Freelance Contracts.</p>
           <p><a href="/contact">Hire Me for Projects</a> | <a href="/Anupambaral-cv.docx">Download CV</a></p>
         </section>
@@ -96,9 +94,7 @@ const routeMetadata = [
             <li><a href="https://github.com/gomugomucode" target="_blank" rel="noopener noreferrer">GitHub: @gomugomucode</a></li>
             <li><a href="https://linkedin.com/in/gomugomucode" target="_blank" rel="noopener noreferrer">LinkedIn: in/gomugomucode</a></li>
             <li><a href="https://medium.com/@gomugomucode" target="_blank" rel="noopener noreferrer">Medium: @gomugomucode</a></li>
-            <li><a href="https://x.com/gomugomucode" target="_blank" rel="noopener noreferrer">X (Twitter): @gomugomucode</a></li>
-            <li><a href="https://youtube.com/@gomugomucode" target="_blank" rel="noopener noreferrer">YouTube: @gomugomucode</a></li>
-          </ul>
+                                  </ul>
         </section>
       </main>
       ${sharedFooterHtml}
@@ -138,9 +134,7 @@ const routeMetadata = [
           "sameAs": [
             "https://github.com/gomugomucode",
             "https://linkedin.com/in/gomugomucode",
-            "https://x.com/gomugomucode",
             "https://medium.com/@gomugomucode",
-            "https://youtube.com/@gomugomucode"
           ]
         }
       },
@@ -160,9 +154,8 @@ const routeMetadata = [
   },
   {
     route: "/about",
-    title: "About Anupam Baral (@gomugomucode) | Full Stack & AI Engineer",
+    title: "About Anupam Baral (@gomugomucode)",
     description: "Authoritative profile and biographical overview of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer based in Nepal specializing in React, Next.js, Python, Supabase, and Solana.",
-    keywords: "About Anupam Baral, gomugomucode, Software Engineer Nepal, React Developer Nepal, Full Stack Developer Nepal, Python AI Developer",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -192,8 +185,7 @@ const routeMetadata = [
             <li><a href="https://github.com/gomugomucode" target="_blank" rel="noopener noreferrer">GitHub (@gomugomucode)</a></li>
             <li><a href="https://linkedin.com/in/gomugomucode" target="_blank" rel="noopener noreferrer">LinkedIn (in/gomugomucode)</a></li>
             <li><a href="https://medium.com/@gomugomucode" target="_blank" rel="noopener noreferrer">Medium (@gomugomucode)</a></li>
-            <li><a href="https://x.com/gomugomucode" target="_blank" rel="noopener noreferrer">X / Twitter (@gomugomucode)</a></li>
-          </ul>
+                      </ul>
         </section>
       </main>
       ${sharedFooterHtml}
@@ -211,9 +203,8 @@ const routeMetadata = [
   },
   {
     route: "/projects",
-    title: "Projects by Anupam Baral | React, Next.js, Python & Solana",
+    title: "Projects — Anupam Baral (@gomugomucode)",
     description: "Explore production projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions.",
-    keywords: "Anupam Baral Projects, gomugomucode GitHub, React Projects, Next.js Case Studies, Solana Developer Nepal",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -258,9 +249,8 @@ const routeMetadata = [
   },
   {
     route: "/projects/e-learning-platform",
-    title: "E-Learning LMS Platform Case Study | React, Node.js & MySQL",
+    title: "E-Learning LMS Platform — Anupam Baral (@gomugomucode)",
     description: "In-depth technical case study of a decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.",
-    keywords: "React LMS, Decoupled Architecture, Node.js Express API, MySQL Indexing, Vercel Edge Caching",
     ogImage: `${SITE_URL}/elearning-preview.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -302,9 +292,8 @@ const routeMetadata = [
   },
   {
     route: "/projects/yatra-solana-ride-sharing",
-    title: "Yatra Solana Ride-Sharing | Decentralized Web3 Protocol Case Study",
+    title: "Yatra: Solana Ride-Sharing Protocol — Anupam Baral (@gomugomucode)",
     description: "Architectural breakdown of Yatra: a Solana decentralized ride-sharing engine written in Rust smart contracts with Firebase RTDB signaling and Web3.js.",
-    keywords: "Solana Developer, Rust Smart Contracts, Decentralized Ride Sharing, Web3.js Protocol, Firebase RTDB",
     ogImage: `${SITE_URL}/yatra.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -346,9 +335,8 @@ const routeMetadata = [
   },
   {
     route: "/projects/web3-loyalty-protocol",
-    title: "Web3 Loyalty Protocol Case Study | Solana & Next.js DApp",
+    title: "Web3 Loyalty Protocol — Anupam Baral (@gomugomucode)",
     description: "Technical case study of a Solana Web3 loyalty rewards protocol featuring automated smart contract distributions, sub-cent transaction costs, and instant token settlement.",
-    keywords: "Solana DApp, Web3 Loyalty Program, Rust Smart Contracts, TypeScript Web3.js, Token Minting",
     ogImage: `${SITE_URL}/solana.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -386,9 +374,8 @@ const routeMetadata = [
   },
   {
     route: "/projects/greenstar-suppliers",
-    title: "Greenstar Suppliers Website Case Study | Next.js 16 & Prisma",
+    title: "Greenstar Suppliers — Anupam Baral (@gomugomucode)",
     description: "Production case study of Greenstar Suppliers: a Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.",
-    keywords: "Next.js Developer Nepal, Full Stack Developer Nepal, Prisma PostgreSQL, Home Automation Nepal, Next.js 16 App Router",
     ogImage: `${SITE_URL}/greenstarphoto.png`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -421,9 +408,8 @@ const routeMetadata = [
   },
   {
     route: "/projects/yarshabyte-it-company",
-    title: "YarshaByte IT Company Case Study | Next.js & Modern Web Engineering",
+    title: "YarshaByte: IT Company — Anupam Baral (@gomugomucode)",
     description: "In-depth case study of YarshaByte: an innovative IT company delivering software engineering, web development, and digital services built with Next.js, Tailwind CSS, and fluid motion design.",
-    keywords: "YarshaByte, IT Company Nepal, Software Development Nepal, Next.js Portfolio, Web Development Nepal, IT Consulting Kathmandu",
     ogImage: `${SITE_URL}/yarshabyte.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -460,9 +446,8 @@ const routeMetadata = [
   },
   {
     route: "/blog",
-    title: "Technical Articles & Engineering Logs | Anupam Baral",
+    title: "Blog — Anupam Baral (@gomugomucode)",
     description: "Articles on software architecture, Solana Web3 smart contracts, React/Next.js performance, and Python machine learning pipelines.",
-    keywords: "Anupam Baral Blog, Engineering Blog, Solana Web3 Developer Blog, React Articles, Python ML Nepal",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -501,9 +486,8 @@ const routeMetadata = [
   },
   {
     route: "/blog/yatra-solana-ride-sharing-protocol",
-    title: "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana | Anupam Baral",
+    title: "Architecting Yatra: Decentralized Ride-Sharing Protocol on Solana — Anupam Baral (@gomugomucode)",
     description: "A comprehensive deep dive into engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems using Rust, Web3.js, and Firebase.",
-    keywords: "Solana, Web3, Rust, Architecture, Yatra, Anupam Baral",
     ogImage: `${SITE_URL}/yatra.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -534,9 +518,8 @@ const routeMetadata = [
   },
   {
     route: "/blog/decoupled-lms-architectures",
-    title: "Decoupling Large-Scale LMS Content Deliveries | Anupam Baral",
+    title: "Decoupling Large-Scale LMS Content Deliveries — Anupam Baral (@gomugomucode)",
     description: "Analyzing MySQL persistence designs, decoupling frontend applications, and designing zero-latency CDN distributions for heavy educational platform architectures.",
-    keywords: "React, Node.js, Express, MySQL, Decoupled Architecture, Anupam Baral",
     ogImage: `${SITE_URL}/elearning-preview.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -566,9 +549,8 @@ const routeMetadata = [
   },
   {
     route: "/blog/type-safe-ai-pipelines",
-    title: "Type-Safe AI Inference: Connecting Python Models to TS Gateways | Anupam Baral",
+    title: "Type-Safe AI Inference: Python Models to TS Gateways — Anupam Baral (@gomugomucode)",
     description: "How to bridge Python machine learning backends with TypeScript API gateways. Implement structural runtime validations to protect latency-critical production applications.",
-    keywords: "Python, FastAPI, TypeScript, Pydantic, Zod, AI / ML, Anupam Baral",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -596,9 +578,8 @@ const routeMetadata = [
   },
   {
     route: "/blog/nextjs-edge-rendering",
-    title: "Optimizing Next.js Edge Rendering for E-commerce | Anupam Baral",
+    title: "Optimizing Next.js Edge Rendering for E-commerce — Anupam Baral (@gomugomucode)",
     description: "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
-    keywords: "Next.js, Edge Rendering, React, E-commerce, Performance, Anupam Baral",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -629,9 +610,8 @@ const routeMetadata = [
   },
   {
     route: "/now",
-    title: "What I'm Doing Now | Anupam Baral",
+    title: "Now — Anupam Baral (@gomugomucode)",
     description: "A real-time snapshot of current engineering projects, active learning roadmap, reading list, and availability of Anupam Baral.",
-    keywords: "Now page, Anupam Baral status, current software projects",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -656,9 +636,8 @@ const routeMetadata = [
   },
   {
     route: "/for-recruiters",
-    title: "Engineering Candidate Profile & Resume | Anupam Baral",
+    title: "For Recruiters — Anupam Baral (@gomugomucode)",
     description: "Comprehensive technical candidate breakdown for recruiters & hiring managers. Stack highlights, availability, timezones, and direct resume access.",
-    keywords: "Hire Anupam Baral, Full Stack Engineer Resume, Senior React Developer, Python AI Engineer Nepal",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -684,9 +663,8 @@ const routeMetadata = [
   },
   {
     route: "/ai",
-    title: "AI Software & Machine Learning Portfolio | Anupam Baral",
+    title: "AI Portfolio — Anupam Baral (@gomugomucode)",
     description: "Python machine learning inference microservices, FastAPI type-safe gateways, LLM structured schema prompts, and AI systems by Anupam Baral.",
-    keywords: "AI Engineer Nepal, Python Machine Learning, FastAPI Gateway, Pydantic Zod, LLM Schema Prompts",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -707,9 +685,8 @@ const routeMetadata = [
   },
   {
     route: "/open-source",
-    title: "Open Source Hub & Contributions | Anupam Baral",
+    title: "Open Source — Anupam Baral (@gomugomucode)",
     description: "Open-source developer utility libraries, Solana Web3 packages, React components, and GitHub repositories by Anupam Baral.",
-    keywords: "gomugomucode Open Source, GitHub Developer Nepal, Web3.js Utilities, React Open Source",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -731,9 +708,8 @@ const routeMetadata = [
   },
   {
     route: "/contact",
-    title: "Hire Anupam Baral | Contact Full Stack & AI Developer Nepal",
+    title: "Contact — Anupam Baral (@gomugomucode)",
     description: "Get in touch with Anupam Baral for freelance development work, open-source collaborations, AI software pipelines, or full-time engineering roles.",
-    keywords: "Hire Anupam Baral, Freelance Developer Nepal, Contact gomugomucode, React Developer Hire, Python AI Developer",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -756,9 +732,8 @@ const routeMetadata = [
   },
   {
     route: "/uses",
-    title: "Uses — Development Setup & Tooling | Anupam Baral",
+    title: "Uses — Anupam Baral (@gomugomucode)",
     description: "A detailed list of the hardware, code editor setup, terminal configuration, and AI tools used daily by Anupam Baral.",
-    keywords: "Anupam Baral Uses, Development Hardware, VS Code Setup, Developer Workstation Nepal",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -779,9 +754,8 @@ const routeMetadata = [
   },
   {
     route: "/architecture",
-    title: "Interactive System Architecture & Systems Design | Anupam Baral",
+    title: "Architecture — Anupam Baral (@gomugomucode)",
     description: "Interactive systems design, database schemas, API gateway flows, and architecture diagrams built by Anupam Baral.",
-    keywords: "System Architecture, Systems Design, Solana Escrow Architecture, MySQL Read Replicas",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -802,9 +776,8 @@ const routeMetadata = [
   },
   {
     route: "/playground",
-    title: "Developer Playground & Algorithmic Demos | Anupam Baral",
+    title: "Playground — Anupam Baral (@gomugomucode)",
     description: "Interactive code playground showcasing security sanitization, rate limiting algorithms, and multi-domain fuzzy search engines.",
-    keywords: "Developer Playground, XSS Sanitizer, Multi Domain Fuzzy Search, JavaScript Algorithms",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -825,9 +798,8 @@ const routeMetadata = [
   },
   {
     route: "/privacy",
-    title: "Privacy Policy | Anupam Baral",
+    title: "Privacy Policy — Anupam Baral (@gomugomucode)",
     description: "Privacy policy and data protection standards for Anupam Baral's developer portfolio website.",
-    keywords: "Anupam Baral Privacy Policy, Data Protection",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -848,9 +820,8 @@ const routeMetadata = [
   },
   {
     route: "/terms",
-    title: "Terms of Service | Anupam Baral",
+    title: "Terms of Service — Anupam Baral (@gomugomucode)",
     description: "Standard terms of service and usage conditions for Anupam Baral's developer portfolio website.",
-    keywords: "Anupam Baral Terms of Service, Legal",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -888,8 +859,7 @@ const prerender = () => {
     html = html.replace(/<title>.*?<\/title>/gis, `<title>${meta.title}</title>`);
     html = html.replace(/<meta\s+name="title"\s+content=".*?"\s*\/?>/gis, `<meta name="title" content="${meta.title}" />`);
     html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gis, `<meta name="description" content="${meta.description}" />`);
-    html = html.replace(/<meta\s+name="keywords"\s+content=".*?"\s*\/?>/gis, `<meta name="keywords" content="${meta.keywords}" />`);
-    html = html.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis, `<link rel="canonical" href="${currentUrl}" />`);
+        html = html.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis, `<link rel="canonical" href="${currentUrl}" />`);
 
     // Inject OpenGraph
     const finalOgTitle = meta.ogTitle || meta.title;

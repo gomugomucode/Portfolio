@@ -122,9 +122,8 @@ const BlogArticlePreview = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title={`${article.title} | Anupam Baral`}
+        title={`${article.title} — Anupam Baral (@gomugomucode)`}
         description={article.excerpt}
-        keywords={article.categories.join(", ")}
         canonicalUrl={url}
         ogImage={article.featuredImage}
         ogType="article"

@@ -67,9 +67,8 @@ const About = () => {
   return (
     <div className="space-y-16 md:space-y-24 pt-28 pb-20">
       <SEO
-        title="About Anupam Baral (@gomugomucode) | Full Stack & AI Engineer"
+        title="About Anupam Baral (@gomugomucode)"
         description="Learn about Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer based in Nepal. Explore technical skills, project portfolio, educational background, and verified profiles."
-        keywords="About Anupam Baral, gomugomucode, Software Engineer Nepal, React Developer Nepal, Full Stack Developer Nepal, Python AI Developer"
         canonicalUrl={url}
         schema={schemas}
       />

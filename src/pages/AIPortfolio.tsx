@@ -84,9 +84,8 @@ const AIPortfolio = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="AI Engineering & Machine Learning Showcase | Anupam Baral"
-        description="Dedicated AI portfolio of Anupam Baral: Python ML inference pipelines, Pydantic schema gateways, LLM prompt engineering, NumPy, Pandas, and Scikit-Learn."
-        keywords="AI Developer Nepal, Python Machine Learning, Pydantic FastAPI Gateway, LLM Prompt Engineering, NumPy Pandas Scikit-Learn"
+        title="AI Portfolio — Anupam Baral (@gomugomucode)"
+        description="Dedicated AI portfolio of Anupam Baral (@gomugomucode): Python ML inference pipelines, Pydantic schema gateways, LLM integrations, and machine learning architectures."
         canonicalUrl={url}
         schema={schemas}
       />

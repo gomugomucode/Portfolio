@@ -12,44 +12,21 @@ import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
 import { siteConfig } from "@/lib/siteConfig";
 import {
-  getProfilePageSchema,
+  getPersonSchema,
   getWebSiteSchema,
-  getFAQSchema,
 } from "@/lib/schema";
-
-const homepageFaqs = [
-  {
-    question: "What software stack does Anupam Baral specialize in?",
-    answer:
-      "Anupam Baral specializes in Full Stack web development using React, Next.js, TypeScript, Python, Node.js, Supabase, Firebase, and Solana Web3 development.",
-  },
-  {
-    question: "Is Anupam Baral available for freelance software development?",
-    answer:
-      "Yes, Anupam Baral is available for freelance projects, AI integration consulting, full-stack application development, and Web3 Solana integrations worldwide.",
-  },
-  {
-    question: "Where is Anupam Baral based?",
-    answer:
-      "Anupam Baral is based in Butwal, Nepal, working with global clients, tech startups, and open-source communities.",
-  },
-];
 
 const Home = () => {
   const schemas = [
-    getProfilePageSchema(),
+    getPersonSchema(),
     getWebSiteSchema(),
-    getFAQSchema(homepageFaqs),
   ];
 
   return (
     <div className="flex flex-col w-full">
       <SEO
-        title="Anupam Baral — Full-Stack Developer & AI Engineer | gomugomucode"
-        description="Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects."
-        ogTitle="Anupam Baral — Full-Stack Developer & AI Engineer"
-        ogDescription="Portfolio of Anupam Baral (@gomugomucode), Full-Stack Developer and AI Engineer from Nepal."
-        keywords="Anupam Baral, gomugomucode, Full Stack Developer Nepal, AI Engineer Nepal, React Developer, Next.js Developer, Python Developer, Solana Developer"
+        title="Anupam Baral (@gomugomucode) — Full-Stack Developer & AI Engineer"
+        description="Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects."
         canonicalUrl={`${siteConfig.url}/`}
         schema={schemas}
       />

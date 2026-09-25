@@ -74,9 +74,8 @@ const Projects = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Projects by Anupam Baral (@gomugomucode) | React, Next.js, Python & Solana"
+        title="Projects — Anupam Baral (@gomugomucode)"
         description="Explore production projects built by Anupam Baral (@gomugomucode), featuring scalable web applications, AI/ML integrations, and open-source contributions."
-        keywords="Anupam Baral Projects, gomugomucode GitHub, React Projects, Next.js Case Studies, Solana Developer Nepal"
         canonicalUrl={url}
         schema={schemas}
       />
