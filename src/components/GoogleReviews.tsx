@@ -95,6 +95,20 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
                     <p className="text-body-sm text-foreground/85 leading-relaxed font-normal">
                       "{item.review}"
                     </p>
+
+                    {/* Attached Review Photo */}
+                    {item.photos && item.photos.length > 0 && (
+                      <div className="mt-1 overflow-hidden rounded-xl border border-border-soft bg-muted/20">
+                        <img
+                          src={item.photos[0]}
+                          alt={`Work setup shared by ${item.name}`}
+                          width="490"
+                          height="240"
+                          loading="lazy"
+                          className="w-full h-40 object-cover hover:scale-[1.02] transition-transform duration-300"
+                        />
+                      </div>
+                    )}
                   </div>
 
                   {/* Reviewer Meta & Action Button */}
