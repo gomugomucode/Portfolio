@@ -169,12 +169,12 @@ const HeroSection = () => {
                       e.currentTarget.src = "/logo.webp";
                     }}
                   />
-                  <div className="absolute bottom-4 left-4 right-4 bg-card/90 backdrop-blur-md border border-border-soft p-3.5 sm:p-4 rounded-xl flex items-center justify-between text-foreground shadow-md">
+                  <div className="absolute bottom-4 left-4 right-4 bg-[#141210]/90 backdrop-blur-xl border border-white/20 p-3.5 sm:p-4 rounded-xl flex items-center justify-between text-white shadow-2xl">
                     <div>
-                      <div className="font-tech text-xs font-black uppercase tracking-[0.2em] text-accent">
+                      <div className="font-tech text-xs sm:text-[13px] font-black uppercase tracking-[0.2em] text-[#ffb17a]">
                         Full-Stack · AI Engineer
                       </div>
-                      <div className="text-[11px] text-muted-foreground font-sans font-normal mt-0.5">
+                      <div className="text-xs sm:text-[12px] text-white/95 font-medium tracking-wide mt-0.5">
                         Web3 &amp; Intelligent Architecture
                       </div>
                     </div>
@@ -184,20 +184,20 @@ const HeroSection = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackSocialClick("github", "https://github.com/gomugomucode")}
-                        className="p-1.5 rounded-full bg-accent/10 hover:bg-accent text-accent hover:text-white transition-colors"
+                        className="p-2 rounded-full bg-white/15 hover:bg-[#b86a2c] text-white transition-all hover:scale-105 active:scale-95"
                         aria-label="GitHub Profile"
                       >
-                        <Github className="w-3.5 h-3.5" />
+                        <Github className="w-4 h-4" />
                       </a>
                       <a
                         href="https://linkedin.com/in/gomugomucode"
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackSocialClick("linkedin", "https://linkedin.com/in/gomugomucode")}
-                        className="p-1.5 rounded-full bg-accent/10 hover:bg-accent text-accent hover:text-white transition-colors"
+                        className="p-2 rounded-full bg-white/15 hover:bg-[#b86a2c] text-white transition-all hover:scale-105 active:scale-95"
                         aria-label="LinkedIn Profile"
                       >
-                        <Linkedin className="w-3.5 h-3.5" />
+                        <Linkedin className="w-4 h-4" />
                       </a>
                     </div>
                   </div>
