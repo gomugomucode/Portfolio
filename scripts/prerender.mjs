@@ -45,9 +45,12 @@ const routeMetadata = [
   {
     route: "/",
     title: "Anupam Baral (@gomugomucode) — Full-Stack Developer & AI Engineer",
-    description: "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects.",
-    ogTitle: "Anupam Baral (@gomugomucode) — Full-Stack Developer & AI Engineer",
-    ogDescription: "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects.",
+    description:
+      "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects.",
+    ogTitle:
+      "Anupam Baral (@gomugomucode) — Full-Stack Developer & AI Engineer",
+    ogDescription:
+      "Official portfolio of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer from Nepal building web applications, AI systems, and software projects.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -104,58 +107,60 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "ProfilePage",
         "@id": `${SITE_URL}/#profile`,
-        "url": `${SITE_URL}/`,
-        "name": "Anupam Baral — Full-Stack Developer & AI Engineer | gomugomucode",
-        "description": "Full-Stack Developer and AI Engineer from Nepal.",
-        "mainEntity": {
+        url: `${SITE_URL}/`,
+        name: "Anupam Baral — Full-Stack Developer & AI Engineer | gomugomucode",
+        description: "Full-Stack Developer and AI Engineer from Nepal.",
+        mainEntity: {
           "@type": "Person",
           "@id": `${SITE_URL}/#person`,
-          "name": "Anupam Baral",
-          "alternateName": ["gomugomucode", "@gomugomucode"],
-          "url": `${SITE_URL}/`,
-          "image": `${SITE_URL}/my-photo.webp`,
-          "jobTitle": ["Full-Stack Developer", "AI Engineer"],
-          "description": "Full-Stack Developer and AI Engineer from Nepal.",
-          "nationality": {
+          name: "Anupam Baral",
+          alternateName: ["gomugomucode", "@gomugomucode"],
+          url: `${SITE_URL}/`,
+          image: `${SITE_URL}/my-photo.webp`,
+          jobTitle: ["Full-Stack Developer", "AI Engineer"],
+          description: "Full-Stack Developer and AI Engineer from Nepal.",
+          nationality: {
             "@type": "Country",
-            "name": "Nepal"
+            name: "Nepal",
           },
-          "address": {
+          address: {
             "@type": "PostalAddress",
-            "addressLocality": "Butwal",
-            "addressRegion": "Lumbini",
-            "addressCountry": "NP"
+            addressLocality: "Butwal",
+            addressRegion: "Lumbini",
+            addressCountry: "NP",
           },
-          "alumniOf": {
+          alumniOf: {
             "@type": "CollegeOrUniversity",
-            "name": "Tribhuvan University",
-            "sameAs": "https://en.wikipedia.org/wiki/Tribhuvan_University"
+            name: "Tribhuvan University",
+            sameAs: "https://en.wikipedia.org/wiki/Tribhuvan_University",
           },
-          "sameAs": [
+          sameAs: [
             "https://github.com/gomugomucode",
             "https://linkedin.com/in/gomugomucode",
             "https://medium.com/@gomugomucode",
-          ]
-        }
+          ],
+        },
       },
       {
         "@context": "https://schema.org",
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        "url": `${SITE_URL}/`,
-        "name": "Anupam Baral — Full-Stack Developer & AI Engineer",
-        "alternateName": ["gomugomucode", "@gomugomucode"],
-        "description": "Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects.",
-        "publisher": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        url: `${SITE_URL}/`,
+        name: "Anupam Baral — Full-Stack Developer & AI Engineer",
+        alternateName: ["gomugomucode", "@gomugomucode"],
+        description:
+          "Anupam Baral (@gomugomucode) is a Full-Stack Developer and AI Engineer from Nepal, building web applications, AI systems, backend services, and open-source projects.",
+        publisher: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/about",
     title: "About Anupam Baral (@gomugomucode)",
-    description: "Authoritative profile and biographical overview of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer based in Nepal specializing in React, Next.js, Python, Supabase, and Solana.",
+    description:
+      "Authoritative profile and biographical overview of Anupam Baral (@gomugomucode), a Full-Stack Developer and AI Engineer based in Nepal specializing in React, Next.js, Python, Supabase, and Solana.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -195,16 +200,18 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "WebPage",
         "@id": `${SITE_URL}/about#webpage`,
-        "url": `${SITE_URL}/about`,
-        "name": "About Anupam Baral (@gomugomucode) | Full Stack & AI Engineer",
-        "description": "Authoritative profile and biographical overview of Anupam Baral (@gomugomucode)."
-      }
-    ]
+        url: `${SITE_URL}/about`,
+        name: "About Anupam Baral (@gomugomucode) | Full Stack & AI Engineer",
+        description:
+          "Authoritative profile and biographical overview of Anupam Baral (@gomugomucode).",
+      },
+    ],
   },
   {
     route: "/projects",
     title: "Projects — Anupam Baral (@gomugomucode)",
-    description: "Explore production projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions.",
+    description:
+      "Explore production projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -241,16 +248,17 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "WebPage",
         "@id": `${SITE_URL}/projects#webpage`,
-        "url": `${SITE_URL}/projects`,
-        "name": "Projects by Anupam Baral",
-        "description": "Explore production projects built by Anupam Baral."
-      }
-    ]
+        url: `${SITE_URL}/projects`,
+        name: "Projects by Anupam Baral",
+        description: "Explore production projects built by Anupam Baral.",
+      },
+    ],
   },
   {
     route: "/projects/e-learning-platform",
     title: "E-Learning LMS Platform — Anupam Baral (@gomugomucode)",
-    description: "In-depth technical case study of a decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.",
+    description:
+      "In-depth technical case study of a decoupled React LMS platform with MySQL query optimizations, sub-1.2s load speeds, and Vercel edge caching.",
     ogImage: `${SITE_URL}/elearning-preview.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -279,21 +287,23 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         "@id": `${SITE_URL}/projects/e-learning-platform#software`,
-        "name": "E-Learning LMS Platform",
-        "description": "Decoupled React LMS platform with MySQL query optimizations.",
-        "codeRepository": "https://github.com/gomugomucode/elearn",
-        "programmingLanguage": "React, Node.js, Express, MySQL",
-        "url": `${SITE_URL}/projects/e-learning-platform`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        name: "E-Learning LMS Platform",
+        description:
+          "Decoupled React LMS platform with MySQL query optimizations.",
+        codeRepository: "https://github.com/gomugomucode/elearn",
+        programmingLanguage: "React, Node.js, Express, MySQL",
+        url: `${SITE_URL}/projects/e-learning-platform`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/projects/yatra-solana-ride-sharing",
     title: "Yatra: Solana Ride-Sharing Protocol — Anupam Baral (@gomugomucode)",
-    description: "Architectural breakdown of Yatra: a Solana decentralized ride-sharing engine written in Rust smart contracts with Firebase RTDB signaling and Web3.js.",
+    description:
+      "Architectural breakdown of Yatra: a Solana decentralized ride-sharing engine written in Rust smart contracts with Firebase RTDB signaling and Web3.js.",
     ogImage: `${SITE_URL}/yatra.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -322,21 +332,22 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         "@id": `${SITE_URL}/projects/yatra-solana-ride-sharing#software`,
-        "name": "Yatra Solana Ride-Sharing",
-        "description": "Decentralized ride-sharing engine on Solana.",
-        "codeRepository": "https://github.com/gomugomucode/Yatra",
-        "programmingLanguage": "Rust, Solana, Next.js, Firebase",
-        "url": `${SITE_URL}/projects/yatra-solana-ride-sharing`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        name: "Yatra Solana Ride-Sharing",
+        description: "Decentralized ride-sharing engine on Solana.",
+        codeRepository: "https://github.com/gomugomucode/Yatra",
+        programmingLanguage: "Rust, Solana, Next.js, Firebase",
+        url: `${SITE_URL}/projects/yatra-solana-ride-sharing`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/projects/web3-loyalty-protocol",
     title: "Web3 Loyalty Protocol — Anupam Baral (@gomugomucode)",
-    description: "Technical case study of a Solana Web3 loyalty rewards protocol featuring automated smart contract distributions, sub-cent transaction costs, and instant token settlement.",
+    description:
+      "Technical case study of a Solana Web3 loyalty rewards protocol featuring automated smart contract distributions, sub-cent transaction costs, and instant token settlement.",
     ogImage: `${SITE_URL}/solana.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -361,21 +372,23 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         "@id": `${SITE_URL}/projects/web3-loyalty-protocol#software`,
-        "name": "Web3 Loyalty Protocol",
-        "description": "Solana Web3 loyalty rewards protocol featuring automated smart contract distributions.",
-        "codeRepository": "https://github.com/gomugomucode/Solana-Loyalty-dApp",
-        "programmingLanguage": "Rust, Solana, Next.js, TypeScript",
-        "url": `${SITE_URL}/projects/web3-loyalty-protocol`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        name: "Web3 Loyalty Protocol",
+        description:
+          "Solana Web3 loyalty rewards protocol featuring automated smart contract distributions.",
+        codeRepository: "https://github.com/gomugomucode/Solana-Loyalty-dApp",
+        programmingLanguage: "Rust, Solana, Next.js, TypeScript",
+        url: `${SITE_URL}/projects/web3-loyalty-protocol`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/projects/greenstar-suppliers",
     title: "Greenstar Suppliers — Anupam Baral (@gomugomucode)",
-    description: "Production case study of Greenstar Suppliers: a Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.",
+    description:
+      "Production case study of Greenstar Suppliers: a Next.js 16 product catalogue and order enquiry web app for entrance & home automation in Nepal.",
     ogImage: `${SITE_URL}/greenstarphoto.png`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -396,20 +409,22 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         "@id": `${SITE_URL}/projects/greenstar-suppliers#software`,
-        "name": "Greenstar Suppliers Website",
-        "description": "Next.js 16 product catalogue and order enquiry platform.",
-        "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Prisma, PostgreSQL",
-        "url": `${SITE_URL}/projects/greenstar-suppliers`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        name: "Greenstar Suppliers Website",
+        description: "Next.js 16 product catalogue and order enquiry platform.",
+        programmingLanguage:
+          "Next.js, TypeScript, Tailwind CSS, Prisma, PostgreSQL",
+        url: `${SITE_URL}/projects/greenstar-suppliers`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/projects/yarshabyte-it-company",
     title: "YarshaByte: IT Company — Anupam Baral (@gomugomucode)",
-    description: "In-depth case study of YarshaByte: an innovative IT company delivering software engineering, web development, and digital services built with Next.js, Tailwind CSS, and fluid motion design.",
+    description:
+      "In-depth case study of YarshaByte: an innovative IT company delivering software engineering, web development, and digital services built with Next.js, Tailwind CSS, and fluid motion design.",
     ogImage: `${SITE_URL}/yarshabyte.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -424,7 +439,7 @@ const routeMetadata = [
         </section>
         <section>
           <h2>Links</h2>
-          <p><a href="https://yarshabyte.vercel.app/" target="_blank" rel="noopener noreferrer">Live IT Company Platform</a></p>
+          <p><a href="https://yarshabyte.com/" target="_blank" rel="noopener noreferrer">Live IT Company Platform</a></p>
         </section>
       </main>
       ${sharedFooterHtml}
@@ -434,20 +449,22 @@ const routeMetadata = [
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
         "@id": `${SITE_URL}/projects/yarshabyte-it-company#software`,
-        "name": "YarshaByte IT Company & Digital Solutions",
-        "description": "Next.js IT company platform with fluid motion design and software engineering showcases.",
-        "programmingLanguage": "Next.js, TypeScript, Tailwind CSS, Framer Motion",
-        "url": `${SITE_URL}/projects/yarshabyte-it-company`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        name: "YarshaByte IT Company & Digital Solutions",
+        description:
+          "Next.js IT company platform with fluid motion design and software engineering showcases.",
+        programmingLanguage: "Next.js, TypeScript, Tailwind CSS, Framer Motion",
+        url: `${SITE_URL}/projects/yarshabyte-it-company`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/blog",
     title: "Blog — Anupam Baral (@gomugomucode)",
-    description: "Articles on software architecture, Solana Web3 smart contracts, React/Next.js performance, and Python machine learning pipelines.",
+    description:
+      "Articles on software architecture, Solana Web3 smart contracts, React/Next.js performance, and Python machine learning pipelines.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -479,15 +496,17 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "Blog",
-        "name": "Anupam Baral Engineering Blog",
-        "url": `${SITE_URL}/blog`
-      }
-    ]
+        name: "Anupam Baral Engineering Blog",
+        url: `${SITE_URL}/blog`,
+      },
+    ],
   },
   {
     route: "/blog/yatra-solana-ride-sharing-protocol",
-    title: "Architecting Yatra: Decentralized Ride-Sharing Protocol on Solana — Anupam Baral (@gomugomucode)",
-    description: "A comprehensive deep dive into engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems using Rust, Web3.js, and Firebase.",
+    title:
+      "Architecting Yatra: Decentralized Ride-Sharing Protocol on Solana — Anupam Baral (@gomugomucode)",
+    description:
+      "A comprehensive deep dive into engineering atomic ride contracts, driver reputation mechanisms, and real-time signalling systems using Rust, Web3.js, and Firebase.",
     ogImage: `${SITE_URL}/yatra.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -507,19 +526,23 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana",
-        "description": "Deep dive into engineering atomic ride contracts on Solana using Rust & Firebase.",
-        "url": `${SITE_URL}/blog/yatra-solana-ride-sharing-protocol`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        headline:
+          "Architecting Yatra — A Decentralized Ride-Sharing Protocol on Solana",
+        description:
+          "Deep dive into engineering atomic ride contracts on Solana using Rust & Firebase.",
+        url: `${SITE_URL}/blog/yatra-solana-ride-sharing-protocol`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/blog/decoupled-lms-architectures",
-    title: "Decoupling Large-Scale LMS Content Deliveries — Anupam Baral (@gomugomucode)",
-    description: "Analyzing MySQL persistence designs, decoupling frontend applications, and designing zero-latency CDN distributions for heavy educational platform architectures.",
+    title:
+      "Decoupling Large-Scale LMS Content Deliveries — Anupam Baral (@gomugomucode)",
+    description:
+      "Analyzing MySQL persistence designs, decoupling frontend applications, and designing zero-latency CDN distributions for heavy educational platform architectures.",
     ogImage: `${SITE_URL}/elearning-preview.webp`,
     bodyHtml: `
       ${sharedNavHtml}
@@ -539,18 +562,20 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Decoupling Large-Scale LMS Content Deliveries",
-        "url": `${SITE_URL}/blog/decoupled-lms-architectures`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        headline: "Decoupling Large-Scale LMS Content Deliveries",
+        url: `${SITE_URL}/blog/decoupled-lms-architectures`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/blog/type-safe-ai-pipelines",
-    title: "Type-Safe AI Inference: Python Models to TS Gateways — Anupam Baral (@gomugomucode)",
-    description: "How to bridge Python machine learning backends with TypeScript API gateways. Implement structural runtime validations to protect latency-critical production applications.",
+    title:
+      "Type-Safe AI Inference: Python Models to TS Gateways — Anupam Baral (@gomugomucode)",
+    description:
+      "How to bridge Python machine learning backends with TypeScript API gateways. Implement structural runtime validations to protect latency-critical production applications.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -568,18 +593,21 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Type-Safe AI Inference: Connecting Python Models to TS Gateways",
-        "url": `${SITE_URL}/blog/type-safe-ai-pipelines`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        headline:
+          "Type-Safe AI Inference: Connecting Python Models to TS Gateways",
+        url: `${SITE_URL}/blog/type-safe-ai-pipelines`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/blog/nextjs-edge-rendering",
-    title: "Optimizing Next.js Edge Rendering for E-commerce — Anupam Baral (@gomugomucode)",
-    description: "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
+    title:
+      "Optimizing Next.js Edge Rendering for E-commerce — Anupam Baral (@gomugomucode)",
+    description:
+      "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -599,19 +627,21 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "BlogPosting",
-        "headline": "Optimizing Next.js Edge Rendering for E-commerce",
-        "description": "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
-        "url": `${SITE_URL}/blog/nextjs-edge-rendering`,
-        "author": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        headline: "Optimizing Next.js Edge Rendering for E-commerce",
+        description:
+          "Strategies for achieving sub-second LCP on content-heavy e-commerce pages using Next.js Edge runtime, streaming SSR, and aggressive caching.",
+        url: `${SITE_URL}/blog/nextjs-edge-rendering`,
+        author: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+    ],
   },
   {
     route: "/now",
     title: "Now — Anupam Baral (@gomugomucode)",
-    description: "A real-time snapshot of current engineering projects, active learning roadmap, reading list, and availability of Anupam Baral.",
+    description:
+      "A real-time snapshot of current engineering projects, active learning roadmap, reading list, and availability of Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -629,15 +659,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "What I'm Doing Now | Anupam Baral",
-        "url": `${SITE_URL}/now`
-      }
-    ]
+        name: "What I'm Doing Now | Anupam Baral",
+        url: `${SITE_URL}/now`,
+      },
+    ],
   },
   {
     route: "/for-recruiters",
     title: "For Recruiters — Anupam Baral (@gomugomucode)",
-    description: "Comprehensive technical candidate breakdown for recruiters & hiring managers. Stack highlights, availability, timezones, and direct resume access.",
+    description:
+      "Comprehensive technical candidate breakdown for recruiters & hiring managers. Stack highlights, availability, timezones, and direct resume access.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -656,15 +687,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Engineering Candidate Profile & Resume",
-        "url": `${SITE_URL}/for-recruiters`
-      }
-    ]
+        name: "Engineering Candidate Profile & Resume",
+        url: `${SITE_URL}/for-recruiters`,
+      },
+    ],
   },
   {
     route: "/ai",
     title: "AI Portfolio — Anupam Baral (@gomugomucode)",
-    description: "Python machine learning inference microservices, FastAPI type-safe gateways, LLM structured schema prompts, and AI systems by Anupam Baral.",
+    description:
+      "Python machine learning inference microservices, FastAPI type-safe gateways, LLM structured schema prompts, and AI systems by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -678,15 +710,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "AI Software & Machine Learning Portfolio",
-        "url": `${SITE_URL}/ai`
-      }
-    ]
+        name: "AI Software & Machine Learning Portfolio",
+        url: `${SITE_URL}/ai`,
+      },
+    ],
   },
   {
     route: "/open-source",
     title: "Open Source — Anupam Baral (@gomugomucode)",
-    description: "Open-source developer utility libraries, Solana Web3 packages, React components, and GitHub repositories by Anupam Baral.",
+    description:
+      "Open-source developer utility libraries, Solana Web3 packages, React components, and GitHub repositories by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -701,15 +734,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Open Source Hub & Contributions",
-        "url": `${SITE_URL}/open-source`
-      }
-    ]
+        name: "Open Source Hub & Contributions",
+        url: `${SITE_URL}/open-source`,
+      },
+    ],
   },
   {
     route: "/contact",
     title: "Contact — Anupam Baral (@gomugomucode)",
-    description: "Get in touch with Anupam Baral for freelance development work, open-source collaborations, AI software pipelines, or full-time engineering roles.",
+    description:
+      "Get in touch with Anupam Baral for freelance development work, open-source collaborations, AI software pipelines, or full-time engineering roles.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -725,15 +759,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "ContactPage",
-        "name": "Hire Anupam Baral",
-        "url": `${SITE_URL}/contact`
-      }
-    ]
+        name: "Hire Anupam Baral",
+        url: `${SITE_URL}/contact`,
+      },
+    ],
   },
   {
     route: "/uses",
     title: "Uses — Anupam Baral (@gomugomucode)",
-    description: "A detailed list of the hardware, code editor setup, terminal configuration, and AI tools used daily by Anupam Baral.",
+    description:
+      "A detailed list of the hardware, code editor setup, terminal configuration, and AI tools used daily by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -747,15 +782,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Uses — Development Setup & Tooling",
-        "url": `${SITE_URL}/uses`
-      }
-    ]
+        name: "Uses — Development Setup & Tooling",
+        url: `${SITE_URL}/uses`,
+      },
+    ],
   },
   {
     route: "/architecture",
     title: "Architecture — Anupam Baral (@gomugomucode)",
-    description: "Interactive systems design, database schemas, API gateway flows, and architecture diagrams built by Anupam Baral.",
+    description:
+      "Interactive systems design, database schemas, API gateway flows, and architecture diagrams built by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -769,15 +805,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Interactive System Architecture",
-        "url": `${SITE_URL}/architecture`
-      }
-    ]
+        name: "Interactive System Architecture",
+        url: `${SITE_URL}/architecture`,
+      },
+    ],
   },
   {
     route: "/playground",
     title: "Playground — Anupam Baral (@gomugomucode)",
-    description: "Interactive code playground showcasing security sanitization, rate limiting algorithms, and multi-domain fuzzy search engines.",
+    description:
+      "Interactive code playground showcasing security sanitization, rate limiting algorithms, and multi-domain fuzzy search engines.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -791,15 +828,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Developer Playground",
-        "url": `${SITE_URL}/playground`
-      }
-    ]
+        name: "Developer Playground",
+        url: `${SITE_URL}/playground`,
+      },
+    ],
   },
   {
     route: "/privacy",
     title: "Privacy Policy — Anupam Baral (@gomugomucode)",
-    description: "Privacy policy and data protection standards for Anupam Baral's developer portfolio website.",
+    description:
+      "Privacy policy and data protection standards for Anupam Baral's developer portfolio website.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -813,15 +851,16 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Privacy Policy | Anupam Baral",
-        "url": `${SITE_URL}/privacy`
-      }
-    ]
+        name: "Privacy Policy | Anupam Baral",
+        url: `${SITE_URL}/privacy`,
+      },
+    ],
   },
   {
     route: "/terms",
     title: "Terms of Service — Anupam Baral (@gomugomucode)",
-    description: "Standard terms of service and usage conditions for Anupam Baral's developer portfolio website.",
+    description:
+      "Standard terms of service and usage conditions for Anupam Baral's developer portfolio website.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
@@ -835,17 +874,19 @@ const routeMetadata = [
       {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Terms of Service | Anupam Baral",
-        "url": `${SITE_URL}/terms`
-      }
-    ]
-  }
+        name: "Terms of Service | Anupam Baral",
+        url: `${SITE_URL}/terms`,
+      },
+    ],
+  },
 ];
 
 const prerender = () => {
   const indexHtmlPath = path.join(distDir, "index.html");
   if (!fs.existsSync(indexHtmlPath)) {
-    console.error("[Prerender] Error: dist/index.html does not exist. Run vite build first.");
+    console.error(
+      "[Prerender] Error: dist/index.html does not exist. Run vite build first.",
+    );
     process.exit(1);
   }
 
@@ -853,27 +894,64 @@ const prerender = () => {
 
   routeMetadata.forEach((meta) => {
     let html = baseHtml;
-    const currentUrl = meta.route === "/" ? `${SITE_URL}/` : `${SITE_URL}${meta.route}`;
+    const currentUrl =
+      meta.route === "/" ? `${SITE_URL}/` : `${SITE_URL}${meta.route}`;
 
     // Inject Title & Description
-    html = html.replace(/<title>.*?<\/title>/gis, `<title>${meta.title}</title>`);
-    html = html.replace(/<meta\s+name="title"\s+content=".*?"\s*\/?>/gis, `<meta name="title" content="${meta.title}" />`);
-    html = html.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gis, `<meta name="description" content="${meta.description}" />`);
-        html = html.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis, `<link rel="canonical" href="${currentUrl}" />`);
+    html = html.replace(
+      /<title>.*?<\/title>/gis,
+      `<title>${meta.title}</title>`,
+    );
+    html = html.replace(
+      /<meta\s+name="title"\s+content=".*?"\s*\/?>/gis,
+      `<meta name="title" content="${meta.title}" />`,
+    );
+    html = html.replace(
+      /<meta\s+name="description"\s+content=".*?"\s*\/?>/gis,
+      `<meta name="description" content="${meta.description}" />`,
+    );
+    html = html.replace(
+      /<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis,
+      `<link rel="canonical" href="${currentUrl}" />`,
+    );
 
     // Inject OpenGraph
     const finalOgTitle = meta.ogTitle || meta.title;
     const finalOgDescription = meta.ogDescription || meta.description;
-    html = html.replace(/<meta\s+property="og:title"\s+content=".*?"\s*\/?>/gis, `<meta property="og:title" content="${finalOgTitle}" />`);
-    html = html.replace(/<meta\s+property="og:description"\s+content=".*?"\s*\/?>/gis, `<meta property="og:description" content="${finalOgDescription}" />`);
-    html = html.replace(/<meta\s+property="og:url"\s+content=".*?"\s*\/?>/gis, `<meta property="og:url" content="${currentUrl}" />`);
-    html = html.replace(/<meta\s+property="og:image"\s+content=".*?"\s*\/?>/gis, `<meta property="og:image" content="${meta.ogImage}" />`);
+    html = html.replace(
+      /<meta\s+property="og:title"\s+content=".*?"\s*\/?>/gis,
+      `<meta property="og:title" content="${finalOgTitle}" />`,
+    );
+    html = html.replace(
+      /<meta\s+property="og:description"\s+content=".*?"\s*\/?>/gis,
+      `<meta property="og:description" content="${finalOgDescription}" />`,
+    );
+    html = html.replace(
+      /<meta\s+property="og:url"\s+content=".*?"\s*\/?>/gis,
+      `<meta property="og:url" content="${currentUrl}" />`,
+    );
+    html = html.replace(
+      /<meta\s+property="og:image"\s+content=".*?"\s*\/?>/gis,
+      `<meta property="og:image" content="${meta.ogImage}" />`,
+    );
 
     // Inject Twitter
-    html = html.replace(/<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:title" content="${finalOgTitle}" />`);
-    html = html.replace(/<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:description" content="${finalOgDescription}" />`);
-    html = html.replace(/<meta\s+name="twitter:url"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:url" content="${currentUrl}" />`);
-    html = html.replace(/<meta\s+name="twitter:image"\s+content=".*?"\s*\/?>/gis, `<meta name="twitter:image" content="${meta.ogImage}" />`);
+    html = html.replace(
+      /<meta\s+name="twitter:title"\s+content=".*?"\s*\/?>/gis,
+      `<meta name="twitter:title" content="${finalOgTitle}" />`,
+    );
+    html = html.replace(
+      /<meta\s+name="twitter:description"\s+content=".*?"\s*\/?>/gis,
+      `<meta name="twitter:description" content="${finalOgDescription}" />`,
+    );
+    html = html.replace(
+      /<meta\s+name="twitter:url"\s+content=".*?"\s*\/?>/gis,
+      `<meta name="twitter:url" content="${currentUrl}" />`,
+    );
+    html = html.replace(
+      /<meta\s+name="twitter:image"\s+content=".*?"\s*\/?>/gis,
+      `<meta name="twitter:image" content="${meta.ogImage}" />`,
+    );
 
     // Inject Schema.org JSON-LD if present
     if (meta.schema) {
@@ -884,7 +962,10 @@ const prerender = () => {
 
     // Inject Semantic Body HTML into <div id="root"></div> for zero-JS crawlers
     if (meta.bodyHtml) {
-      html = html.replace('<div id="root"></div>', `<div id="root">${meta.bodyHtml}</div>`);
+      html = html.replace(
+        '<div id="root"></div>',
+        `<div id="root">${meta.bodyHtml}</div>`,
+      );
     }
 
     // Target output directory: write both clean HTML file and directory index.html
@@ -893,7 +974,7 @@ const prerender = () => {
       console.log(`[Prerender] Prerendered HTML: / -> dist/index.html`);
     } else {
       const cleanRoute = meta.route.replace(/^\//, "");
-      
+
       // 1. Write clean URL file: dist/<route>.html (e.g. dist/about.html)
       const htmlFilePath = path.join(distDir, `${cleanRoute}.html`);
       const parentDir = path.dirname(htmlFilePath);
@@ -910,18 +991,37 @@ const prerender = () => {
       const dirIndexFilePath = path.join(routeSubDir, "index.html");
       fs.writeFileSync(dirIndexFilePath, html, "utf8");
 
-      console.log(`[Prerender] Prerendered HTML: ${meta.route} -> dist/${cleanRoute}.html & dist/${cleanRoute}/index.html`);
+      console.log(
+        `[Prerender] Prerendered HTML: ${meta.route} -> dist/${cleanRoute}.html & dist/${cleanRoute}/index.html`,
+      );
     }
   });
 
   // Generate a dedicated, genuine 404.html to eliminate Soft 404s
   let notFoundHtml = baseHtml;
-  notFoundHtml = notFoundHtml.replace(/<title>.*?<\/title>/gis, `<title>Page Not Found (404) | Anupam Baral</title>`);
-  notFoundHtml = notFoundHtml.replace(/<meta\s+name="title"\s+content=".*?"\s*\/?>/gis, `<meta name="title" content="Page Not Found (404) | Anupam Baral" />`);
-  notFoundHtml = notFoundHtml.replace(/<meta\s+name="description"\s+content=".*?"\s*\/?>/gis, `<meta name="description" content="The requested page could not be found on anupambaral.com.np." />`);
-  notFoundHtml = notFoundHtml.replace(/<meta\s+name="robots"\s+content=".*?"\s*\/?>/gis, `<meta name="robots" content="noindex, follow" />`);
-  notFoundHtml = notFoundHtml.replace(/<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis, ``);
-  notFoundHtml = notFoundHtml.replace('<div id="root"></div>', `<div id="root">
+  notFoundHtml = notFoundHtml.replace(
+    /<title>.*?<\/title>/gis,
+    `<title>Page Not Found (404) | Anupam Baral</title>`,
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+name="title"\s+content=".*?"\s*\/?>/gis,
+    `<meta name="title" content="Page Not Found (404) | Anupam Baral" />`,
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+name="description"\s+content=".*?"\s*\/?>/gis,
+    `<meta name="description" content="The requested page could not be found on anupambaral.com.np." />`,
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<meta\s+name="robots"\s+content=".*?"\s*\/?>/gis,
+    `<meta name="robots" content="noindex, follow" />`,
+  );
+  notFoundHtml = notFoundHtml.replace(
+    /<link\s+rel="canonical"\s+href=".*?"\s*\/?>/gis,
+    ``,
+  );
+  notFoundHtml = notFoundHtml.replace(
+    '<div id="root"></div>',
+    `<div id="root">
     ${sharedNavHtml}
     <main style="max-width: 800px; margin: 4rem auto; padding: 2rem; text-align: center;">
       <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">404 — Page Not Found</h1>
@@ -929,13 +1029,16 @@ const prerender = () => {
       <p><a href="/" style="font-weight: 600; color: #c9923a;">Return to Home</a> | <a href="/projects">View Projects</a> | <a href="/about">About Anupam Baral</a> | <a href="/contact">Contact</a></p>
     </main>
     ${sharedFooterHtml}
-  </div>`);
+  </div>`,
+  );
 
   const notFoundPath = path.join(distDir, "404.html");
   fs.writeFileSync(notFoundPath, notFoundHtml, "utf8");
   console.log(`[Prerender] Generated dist/404.html (genuine 404 fallback)`);
 
-  console.log(`[Prerender] Successfully prerendered ${routeMetadata.length} pages + 404.html with semantic HTML.`);
+  console.log(
+    `[Prerender] Successfully prerendered ${routeMetadata.length} pages + 404.html with semantic HTML.`,
+  );
 };
 
 prerender();

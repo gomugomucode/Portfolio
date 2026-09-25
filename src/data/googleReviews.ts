@@ -14,32 +14,42 @@ export const googleBusinessProfileUrl = "https://www.google.com/maps/place/Anupa
 export const googleReviews: GoogleReview[] = [
   {
     id: "gr-1",
-    name: "Rohan Shrestha",
-    avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop",
+    name: "BKC",
+    avatar: "https://ui-avatars.com/api/?name=BKC&background=b86a2c&color=f5efe7&bold=true",
     rating: 5,
-    review: "Anupam transformed our entrance product catalogue into a fast, modern Next.js web application. His direct Call and WhatsApp order integrations increased customer inquiries across Nepal by over 35%. Clean code, exceptional responsiveness, and delivered ahead of schedule.",
+    review: "I had a really good experience working with Anupam Baral. He's easy to communicate with, keeps everything well coordinated, and always follows up to make sure the work stays on track. I appreciated how responsive and organized he was throughout the process. His knowledge of AI/ML and full-stack development is impressive, and he delivers quality work with attention to detail. I'd definitely recommend him to anyone looking for a skilled, reliable, and professional developer.",
     date: "January 2026",
-    profileUrl: "https://maps.google.com/?q=Anupam+Baral+Full+Stack+Developer+Nepal",
-    projectContext: "Greenstar Suppliers Web Platform"
+    profileUrl: googleBusinessProfileUrl,
+    projectContext: "AI/ML & Full-Stack Development"
   },
   {
     id: "gr-2",
-    name: "Alex Chen",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop",
+    name: "Sanish Bhandari",
+    avatar: "https://ui-avatars.com/api/?name=Sanish+Bhandari&background=1e1a18&color=f5efe7&bold=true",
     rating: 5,
-    review: "Working with Anupam on our Solana hackathon entry was outstanding. He engineered the Rust smart contracts for atomic ride escrow under tight deadlines, achieving sub-400ms transaction finality. Highly skilled in Web3, Rust, and TypeScript.",
-    date: "February 2026",
-    profileUrl: "https://maps.google.com/?q=Anupam+Baral+Full+Stack+Developer+Nepal",
-    projectContext: "Yatra Solana Ride-Sharing Protocol"
+    review: "I had a great experience working with Anupam. He is not only talented in AI/ML and full-stack development but also a hardworking and creative problem solver. His ability to understand complex ideas and turn them into practical solutions is amazing. Wishing him continued success!",
+    date: "January 2026",
+    profileUrl: googleBusinessProfileUrl,
+    projectContext: "AI Solutions & Engineering"
   },
   {
     id: "gr-3",
-    name: "Priya Sharma",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop",
+    name: "Nisha Kafle",
+    avatar: "https://ui-avatars.com/api/?name=Nisha+Kafle&background=c8a381&color=1e1a18&bold=true",
     rating: 5,
-    review: "Anupam's approach to decoupled React frontend and Express REST API architectures is exceptionally structured. His open-source code repositories are type-safe, thoroughly documented, and built for maintainability.",
-    date: "November 2025",
-    profileUrl: "https://maps.google.com/?q=Anupam+Baral+Full+Stack+Developer+Nepal",
-    projectContext: "Decoupled E-Learning Platform"
+    review: "Anupam Baral is a skilled AI/ML and Full-Stack Developer with strong technical knowledge and a passion for learning. He delivers quality work, communicates well, and is always eager to improve. Highly recommended!",
+    date: "January 2026",
+    profileUrl: googleBusinessProfileUrl,
+    projectContext: "Technical Collaboration"
+  },
+  {
+    id: "gr-4",
+    name: "KESAV Rayamajhi",
+    avatar: "https://ui-avatars.com/api/?name=KESAV+Rayamajhi&background=34a853&color=ffffff&bold=true",
+    rating: 5,
+    review: "Having a good experience. times spending upon good things.",
+    date: "February 2026",
+    profileUrl: googleBusinessProfileUrl,
+    projectContext: "Client Consultation"
   }
 ];

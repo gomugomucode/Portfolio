@@ -353,7 +353,7 @@ export const caseStudies: Record<string, CaseStudy> = {
     screenshots: [
       "/yarshabyte.webp"
     ],
-    liveLink: "https://yarshabyte.vercel.app/",
+    liveLink: "https://yarshabyte.com/",
     githubLink: "",
     metrics: [
       { label: "Performance Score", value: "99+" },

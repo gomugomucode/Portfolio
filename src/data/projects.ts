@@ -75,7 +75,7 @@ export const projects: ProjectPreview[] = [
     metric: { label: "Performance", value: "99+" },
     tags: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "IT Services", "Vercel"],
     imageUrl: "/yarshabyte.webp",
-    liveLink: "https://yarshabyte.vercel.app/",
+    liveLink: "https://yarshabyte.com/",
     githubLink: "",
   },
 ];

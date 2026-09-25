@@ -15,7 +15,7 @@ export interface GoogleReviewsProps {
 
 export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true }: GoogleReviewsProps) => {
   const reviewsToDisplay = customReviews && customReviews.length > 0 ? customReviews : googleReviews;
-  const averageRating = (reviewsToDisplay.reduce((acc, r) => acc + r.rating, 0) / reviewsToDisplay.length).toFixed(1);
+  const overallRating = "4.8";
 
   return (
     <SectionShell id="reviews">
@@ -24,7 +24,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
           <SectionHeader
             index="06 — Verified Reviews"
             title="Client testimonials & verified Google reviews."
-            description="Direct feedback and 5.0-star verified client endorsements from our Google Business Profile."
+            description="Direct feedback and 4.8-star verified client endorsements from our Google Business Profile."
           />
         )}
 
@@ -43,13 +43,13 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
                   </Badge>
                 </div>
                 <div className="flex items-center gap-2 mt-1">
-                  <span className="font-display font-black text-base text-foreground">{averageRating}</span>
-                  <div className="flex items-center gap-0.5 text-accent" aria-label={`Rating ${averageRating} out of 5 stars`}>
+                  <span className="font-display font-black text-base text-foreground">{overallRating}</span>
+                  <div className="flex items-center gap-0.5 text-accent" aria-label={`Rating ${overallRating} out of 5 stars`}>
                     {[...Array(5)].map((_, i) => (
                       <Star key={i} className="w-4 h-4 fill-current" aria-hidden="true" />
                     ))}
                   </div>
-                  <span className="text-xs font-tech uppercase tracking-wider text-muted-foreground">({reviewsToDisplay.length} Reviews on Google Maps)</span>
+                  <span className="text-xs font-tech uppercase tracking-wider text-muted-foreground">(4.8 / 5.0 from 6 Google Reviews)</span>
                 </div>
               </div>
             </div>
@@ -67,7 +67,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
           </div>
 
           {/* Reviews Cards Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {reviewsToDisplay.map((item, idx) => (
               <motion.div
                 key={item.id}
