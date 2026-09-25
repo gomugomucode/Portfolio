@@ -176,34 +176,34 @@ export const DeveloperTimeline = () => {
 
                 {/* Timeline Header Badge & Year */}
                 <div className="flex flex-wrap items-center gap-3">
-                  <span className="font-mono text-xs font-semibold text-primary">
+                  <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">
                     {item.year} {item.quarter ? `• ${item.quarter}` : ""}
                   </span>
-                  <Badge variant="outline" className={`font-mono text-[10px] uppercase tracking-wider ${badgeStyle}`}>
+                  <Badge variant="outline" className={`font-tech text-[10px] font-bold uppercase tracking-wider rounded-full px-2.5 py-0.5 ${badgeStyle}`}>
                     <Icon className="w-3 h-3 mr-1 inline-block" aria-hidden="true" />
                     {item.category}
                   </Badge>
                   {item.organization && (
-                    <span className="text-xs font-mono text-muted-foreground">
+                    <span className="text-xs font-tech font-bold uppercase tracking-wider text-foreground/60">
                       @ {item.organization}
                     </span>
                   )}
                 </div>
 
                 {/* Content Card */}
-                <Card className="p-5 md:p-6 flex flex-col gap-4 bg-card border-border hover:border-primary/40 transition-colors">
-                  <h3 className="font-display text-lg font-semibold text-foreground">
+                <Card className="p-5 md:p-6 flex flex-col gap-4 bg-card/60 rounded-2xl border-border-soft hover:border-border-strong hover:bg-card transition-all duration-300 shadow-xs">
+                  <h3 className="font-display text-lg font-bold uppercase tracking-tight text-foreground">
                     {item.title}
                   </h3>
-                  <p className="text-body-sm text-muted-foreground leading-relaxed">
+                  <p className="text-body-sm text-foreground/80 leading-relaxed">
                     {item.description}
                   </p>
 
                   {/* Highlights Bullet List */}
-                  <ul className="flex flex-col gap-2 pt-1 border-t border-border/40">
+                  <ul className="flex flex-col gap-2 pt-2 border-t border-border-soft">
                     {item.highlights.map((highlight, hIdx) => (
-                      <li key={hIdx} className="flex items-start gap-2 text-xs text-foreground/90 font-mono">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" aria-hidden="true" />
+                      <li key={hIdx} className="flex items-start gap-2.5 text-xs text-foreground/85 font-sans leading-relaxed">
+                        <CheckCircle2 className="w-3.5 h-3.5 text-accent shrink-0 mt-0.5" aria-hidden="true" />
                         <span>{highlight}</span>
                       </li>
                     ))}
@@ -213,7 +213,7 @@ export const DeveloperTimeline = () => {
                   {item.techStack && (
                     <div className="flex flex-wrap gap-1.5 pt-2">
                       {item.techStack.map((tech) => (
-                        <span key={tech} className="px-2 py-0.5 rounded bg-muted/60 text-[10px] font-mono text-muted-foreground">
+                        <span key={tech} className="px-2.5 py-0.5 rounded-full border border-border-soft bg-foreground/[0.03] text-[10px] font-tech font-bold uppercase tracking-wider text-foreground/75">
                           {tech}
                         </span>
                       ))}

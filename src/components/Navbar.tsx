@@ -134,27 +134,27 @@ const Navbar = () => {
 
   const linkClass = (href: string, isPage: boolean) =>
     cn(
-      "label-mono interactive-focus rounded-sm px-1 py-0.5 transition-colors",
+      "font-tech text-xs font-bold uppercase tracking-[0.16em] interactive-focus px-3 py-1.5 rounded-full transition-all duration-200",
       !isPage && isHome && activeSection === href
-        ? "text-foreground"
-        : "text-muted-foreground hover:text-foreground",
+        ? "text-accent bg-accent/10 border border-accent/25"
+        : "text-foreground/75 hover:text-accent hover:bg-foreground/5",
     );
 
   return (
     <nav
       aria-label="Primary navigation"
       className={cn(
-        "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+        "sticky top-0 z-50 transition-all duration-300 backdrop-blur-md",
         isScrolled
-          ? "py-3 bg-background/85 backdrop-blur-md border-b border-border"
-          : "py-5 bg-transparent border-b border-transparent",
+          ? "py-3 bg-background/90 border-b border-border-soft shadow-xs"
+          : "py-4 bg-background/70 border-b border-transparent",
       )}
     >
       <Container>
         <div className="flex items-center justify-between h-10">
           <Link
             to="/"
-            className="font-display font-medium tracking-wide text-sm text-foreground hover:opacity-80 transition-opacity interactive-focus"
+            className="font-display font-black tracking-wider text-base text-foreground hover:text-accent transition-colors interactive-focus uppercase"
             onClick={(e) => {
               if (location.pathname === "/") {
                 e.preventDefault();
@@ -162,10 +162,15 @@ const Navbar = () => {
               }
             }}
           >
-            <img src="/logo.webp" alt="Anupam Baral Logo" className="h-12 w-auto" width="48" height="48" />
+            <div className="flex items-center gap-2.5">
+              <img src="/logo.webp" alt="Anupam Baral Logo" className="h-9 w-auto object-contain" width="36" height="36" />
+              <span className="hidden sm:inline font-display font-black tracking-tight text-sm">
+                ANUPAM BARAL
+              </span>
+            </div>
           </Link>
 
-          <div className="hidden md:flex items-center gap-8">
+          <div className="hidden md:flex items-center gap-3">
             {navLinks.map((link) =>
               link.isPage ? (
                 <Link
@@ -191,7 +196,7 @@ const Navbar = () => {
           <button
             ref={burgerButtonRef}
             type="button"
-            className="md:hidden min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2 -mr-2 text-muted-foreground hover:text-foreground interactive-focus rounded-md"
+            className="md:hidden min-h-[44px] min-w-[44px] inline-flex items-center justify-center p-2 -mr-2 text-foreground/80 hover:text-accent interactive-focus rounded-full"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
             aria-expanded={isMobileMenuOpen}
@@ -211,11 +216,11 @@ const Navbar = () => {
             exit={{ opacity: 0 }}
             transition={{ duration: 0.18 }}
           >
-            {/* Backdrop (solid glass surface + blur) */}
+            {/* Backdrop */}
             <button
               type="button"
               aria-label="Close menu"
-              className="absolute inset-0 w-full h-full bg-background/90 backdrop-blur-md"
+              className="absolute inset-0 w-full h-full bg-foreground/30 backdrop-blur-sm"
               onClick={() => setIsMobileMenuOpen(false)}
             />
 
@@ -229,29 +234,29 @@ const Navbar = () => {
               transition={{ duration: 0.2, ease: "easeOut" }}
               className="absolute top-0 left-0 right-0 z-10"
             >
-              <div className="bg-background/98 backdrop-blur-xl border-b border-border/80 shadow-2xl px-6 py-6">
-                <div className="flex items-center justify-between gap-4">
-                  <span className="label-mono">Menu</span>
+              <div className="bg-background border-b border-border-soft shadow-2xl px-6 py-6">
+                <div className="flex items-center justify-between gap-4 border-b border-border-soft pb-4">
+                  <span className="font-tech text-xs font-bold uppercase tracking-[0.2em] text-accent">Navigation</span>
                   <button
                     ref={closeButtonRef}
                     type="button"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="p-2 -m-2 text-muted-foreground hover:text-foreground interactive-focus rounded-md"
+                    className="p-2 -m-2 text-foreground/70 hover:text-foreground interactive-focus rounded-full"
                     aria-label="Close menu"
                   >
                     <X className="w-5 h-5" />
                   </button>
                 </div>
 
-                <div className="mt-5 flex flex-col gap-1">
+                <div className="mt-4 flex flex-col gap-1">
                   {navLinks.map((link) => {
                     const isActive =
                       (link.isPage && location.pathname === `/${link.href}`) ||
                       (!link.isPage && isHome && activeSection === link.href);
 
                     const sharedClass = cn(
-                      "label-mono py-3 border-b border-border transition-colors",
-                      isActive ? "text-foreground" : "text-muted-foreground hover:text-foreground",
+                      "font-tech text-sm font-bold uppercase tracking-[0.16em] py-3 border-b border-border-soft transition-colors flex items-center justify-between",
+                      isActive ? "text-accent" : "text-foreground/80 hover:text-accent",
                     );
 
                     if (link.isPage) {
@@ -262,7 +267,8 @@ const Navbar = () => {
                           onClick={() => setIsMobileMenuOpen(false)}
                           className={sharedClass}
                         >
-                          {link.name}
+                          <span>{link.name}</span>
+                          {isActive && <span className="w-1.5 h-1.5 rounded-full bg-accent" />}
                         </Link>
                       );
                     }
@@ -274,7 +280,8 @@ const Navbar = () => {
                         onClick={(e) => handleNavClick(e, link.href)}
                         className={sharedClass}
                       >
-                        {link.name}
+                        <span>{link.name}</span>
+                        {isActive && <span className="w-1.5 h-1.5 rounded-full bg-accent" />}
                       </a>
                     );
                   })}

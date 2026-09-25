@@ -101,35 +101,37 @@ const EngineeringPhilosophySection = () => {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.4, delay: idx * 0.08 }}
-                    className="flex flex-col justify-between p-6 rounded-lg border border-border bg-card hover:border-primary/40 transition-colors duration-300 gap-6"
+                    className="skill-card flex flex-col justify-between p-7 gap-6 group"
                   >
+                    <span className="skill-accent-bar" />
+
                     <div className="flex flex-col gap-4">
-                      <div className="w-10 h-10 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center text-primary">
+                      <div className="w-10 h-10 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent">
                         <Icon className="w-5 h-5" aria-hidden="true" />
                       </div>
 
-                      <div className="flex flex-col gap-1">
-                        <h3 className="font-display text-lg font-medium text-foreground">
-                          {pillar.title}
-                        </h3>
-                        <span className="font-mono text-[11px] text-primary">
+                      <div className="flex flex-col gap-1.5">
+                        <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">
                           {pillar.subtitle}
                         </span>
+                        <h3 className="font-display text-lg font-bold uppercase tracking-tight text-foreground">
+                          {pillar.title}
+                        </h3>
                       </div>
 
-                      <p className="text-body-sm text-muted-foreground leading-relaxed">
+                      <p className="text-body-sm text-foreground/75 leading-relaxed">
                         {pillar.description}
                       </p>
                     </div>
 
-                    <div className="flex flex-col gap-2 pt-4 border-t border-border/40">
-                      <span className="font-mono text-[9px] uppercase tracking-widest text-muted-foreground">
+                    <div className="flex flex-col gap-2 pt-4 border-t border-border-soft">
+                      <span className="font-tech text-[10px] font-bold uppercase tracking-widest text-foreground/60">
                         Core Principles
                       </span>
-                      <ul className="flex flex-col gap-1.5">
+                      <ul className="flex flex-col gap-2">
                         {pillar.principles.map((principle, pIdx) => (
-                          <li key={pIdx} className="flex items-center gap-2 text-xs text-foreground/90 font-mono">
-                            <Terminal className="w-3 h-3 text-primary shrink-0" aria-hidden="true" />
+                          <li key={pIdx} className="flex items-center gap-2 text-xs text-foreground/85 font-tech font-bold uppercase tracking-wider">
+                            <Terminal className="w-3.5 h-3.5 text-accent shrink-0" aria-hidden="true" />
                             <span className="line-clamp-1">{principle}</span>
                           </li>
                         ))}

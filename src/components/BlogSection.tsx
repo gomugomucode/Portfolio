@@ -67,7 +67,7 @@ const BlogSection = () => {
           />
           <Link
             to="/blog"
-            className="inline-flex items-center gap-2 label-mono text-muted-foreground hover:text-foreground transition-colors interactive-focus shrink-0 group"
+            className="inline-flex items-center gap-2 font-tech text-xs uppercase tracking-wider text-accent hover:text-foreground transition-colors interactive-focus shrink-0 group font-semibold"
           >
             Show More Articles
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -77,11 +77,11 @@ const BlogSection = () => {
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {[1, 2, 3].map((i) => (
-              <div key={i} className="animate-pulse flex flex-col gap-4 border border-border rounded-md p-4 h-[400px]">
-                <div className="w-full h-40 bg-muted rounded-md shrink-0" />
-                <div className="h-4 bg-muted w-32 rounded-sm" />
-                <div className="h-6 bg-muted w-3/4 rounded-sm" />
-                <div className="h-16 bg-muted w-full rounded-sm" />
+              <div key={i} className="animate-pulse flex flex-col gap-4 border border-border-soft rounded-2xl p-4 h-[400px]">
+                <div className="w-full h-40 bg-muted rounded-xl shrink-0" />
+                <div className="h-4 bg-muted w-32 rounded-full" />
+                <div className="h-6 bg-muted w-3/4 rounded-md" />
+                <div className="h-16 bg-muted w-full rounded-md" />
               </div>
             ))}
           </div>

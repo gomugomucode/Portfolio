@@ -65,7 +65,6 @@ interface WorkCardProps {
 const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps) => {
   const projectLink = project.slug ? `/projects/${project.slug}` : `/projects/${project.index}`;
 
-  // Client websites should not render repository links
   const isClientWebsite =
     project.slug === "greenstar-suppliers" ||
     project.slug.startsWith("yarshabyte") ||
@@ -84,7 +83,7 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
     >
       {/* Box 1: Image Showcase Box */}
       <div
-        className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-foreground/10 bg-card shadow-[0_16px_50px_rgba(26,24,22,0.06)] hover:shadow-[0_24px_70px_rgba(26,24,22,0.12)] hover:border-foreground/20 transition-all duration-500 min-h-[19rem] sm:min-h-[22rem] lg:min-h-[27rem] xl:min-h-[29rem] flex flex-col ${
+        className={`group relative overflow-hidden rounded-2xl sm:rounded-3xl border border-dark-border bg-dark-card shadow-2xl hover:border-dark-foreground/30 transition-all duration-500 min-h-[19rem] sm:min-h-[22rem] lg:min-h-[27rem] xl:min-h-[29rem] flex flex-col ${
           isReversed ? "lg:order-2" : "lg:order-1"
         }`}
       >
@@ -98,23 +97,17 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
             alt={project.title}
             loading="lazy"
             decoding="async"
-            className="w-full h-full object-cover object-top transition duration-500 ease-out group-hover:brightness-95"
+            className="w-full h-full object-cover object-top transition duration-500 ease-out group-hover:scale-105"
             onError={(e) => {
               e.currentTarget.src =
                 "https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1200";
             }}
           />
           {/* Ambient vignette gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
-
-          {/* Uniform black wave sliding from top to bottom on hover */}
-          <div
-            className="pointer-events-none absolute inset-0 -translate-y-full group-hover:translate-y-0 transition-transform duration-700 ease-out bg-gradient-to-b from-black/75 via-black/55 to-black/75 z-[5]"
-            aria-hidden="true"
-          />
+          <div className="absolute inset-0 bg-gradient-to-t from-dark-bg/60 via-transparent to-transparent pointer-events-none" />
 
           {/* Floating Index Badge */}
-          <span className="pointer-events-none absolute left-4 top-4 sm:left-6 sm:top-6 rounded-full bg-background/90 backdrop-blur-md px-3.5 py-1 text-xs font-mono font-bold tracking-widest text-foreground border border-foreground/10 shadow-sm z-10">
+          <span className="pointer-events-none absolute left-4 top-4 sm:left-6 sm:top-6 rounded-full bg-dark-bg/90 backdrop-blur-md px-3.5 py-1 text-xs font-tech font-bold uppercase tracking-widest text-accent-light border border-dark-border shadow-sm z-10">
             {project.index}
           </span>
         </Link>
@@ -126,30 +119,30 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
           isReversed ? "lg:order-1" : "lg:order-2"
         }`}
       >
-        {/* Main Content Info (Directly starting with Title, Description, and Tech Stack) */}
+        {/* Main Content Info */}
         <div className="flex-1 flex flex-col justify-center">
           <Link to={projectLink} className="block focus-visible:outline-none group/title">
-            <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.25rem] xl:text-[2.5rem] font-medium uppercase leading-[1.04] tracking-tight text-foreground group-hover/title:text-primary transition-colors duration-300">
+            <h3 className="font-display text-2xl sm:text-3xl lg:text-[2.25rem] font-bold uppercase leading-[1.04] tracking-tight text-dark-foreground group-hover/title:text-accent-light transition-colors duration-300">
               {project.title}
             </h3>
           </Link>
 
-          <p className="mt-4 sm:mt-5 text-sm sm:text-base leading-relaxed text-subtle-foreground">
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-dark-foreground/75">
             {project.problem}
           </p>
 
           {project.impact && (
-            <p className="mt-3 text-sm sm:text-base leading-relaxed text-foreground/80">
+            <p className="mt-3 text-sm sm:text-base leading-relaxed text-dark-foreground/90 font-medium">
               {project.impact}
             </p>
           )}
 
           {/* Tech Stack Pills */}
-          <div className="mt-6 sm:mt-7 flex flex-wrap gap-2">
+          <div className="mt-6 flex flex-wrap gap-2">
             {project.tags.map((tag) => (
               <span
                 key={tag}
-                className="rounded-full border border-foreground/12 bg-background/60 hover:bg-background/90 backdrop-blur-sm px-3.5 py-1 text-xs font-mono uppercase tracking-wider text-foreground/80 transition-colors"
+                className="rounded-full border border-dark-border bg-white/[0.04] backdrop-blur-sm px-3.5 py-1 text-xs font-tech font-bold uppercase tracking-wider text-dark-foreground/80 transition-colors hover:border-accent-light hover:text-accent-light"
               >
                 {tag}
               </span>
@@ -158,14 +151,14 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
         </div>
 
         {/* Action Links Row (Live Site, Repo, Case Study) */}
-        <div className="flex flex-wrap items-center justify-between gap-3 pt-5 border-t border-border/40">
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-6 border-t border-dark-border mt-6">
           <div className="flex flex-wrap items-center gap-2.5">
             {project.liveLink && (
               <a
                 href={project.liveLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-background/80 hover:bg-primary hover:text-primary-foreground hover:border-primary px-4 py-2 text-xs font-mono font-semibold uppercase tracking-wider text-foreground transition-all duration-200 active:scale-95 shadow-xs group/btn"
+                className="inline-flex items-center gap-2 rounded-full border border-dark-border bg-white/[0.04] hover:bg-accent hover:text-white hover:border-accent px-4 py-2 text-xs font-tech font-bold uppercase tracking-wider text-dark-foreground transition-all duration-200 active:scale-95 shadow-xs group/btn"
                 aria-label={`Visit live site for ${project.title}`}
               >
                 <span>Live Site</span>
@@ -178,7 +171,7 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
                 href={project.githubLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 rounded-full border border-foreground/20 bg-background/80 hover:bg-foreground hover:text-background hover:border-foreground px-4 py-2 text-xs font-mono font-semibold uppercase tracking-wider text-foreground transition-all duration-200 active:scale-95 shadow-xs group/btn"
+                className="inline-flex items-center gap-2 rounded-full border border-dark-border bg-white/[0.04] hover:bg-white hover:text-dark-bg hover:border-white px-4 py-2 text-xs font-tech font-bold uppercase tracking-wider text-dark-foreground transition-all duration-200 active:scale-95 shadow-xs group/btn"
                 aria-label={`View GitHub repository for ${project.title}`}
               >
                 <Github className="size-3.5" />
@@ -189,7 +182,7 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
 
           <Link
             to={projectLink}
-            className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground hover:bg-primary/90 px-4 py-2 text-xs font-mono font-semibold uppercase tracking-wider transition-all duration-200 active:scale-95 shadow-sm group/case"
+            className="inline-flex items-center gap-2 rounded-full bg-accent hover:bg-accent-light text-white px-5 py-2 text-xs font-tech font-bold uppercase tracking-widest transition-all duration-200 active:scale-95 shadow-md group/case"
             aria-label={`View ${project.title} case study`}
           >
             <span>Case Study</span>
@@ -203,32 +196,21 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
 
 const WorkHeader = () => (
   <div className="flex flex-col items-start lg:pt-4">
-    {/* Eyebrow badge with glowing indicator */}
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.6 }}
-      className="flex items-center gap-3 mb-6 sm:mb-8"
-    >
-      <span className="grid size-4 place-items-center rounded-full border border-foreground/20">
-        <span className="size-1.5 rounded-full bg-primary animate-pulse" />
-      </span>
-      <p className="text-sm font-semibold uppercase tracking-[0.16em] text-foreground/90">
-        Work
-      </p>
-    </motion.div>
+    {/* Eyebrow badge */}
+    <div className="section-eyebrow text-accent-light mb-4">
+      Product Showcase
+    </div>
 
-    {/* Cinematic character-split heading on 1 single line with square accent */}
+    {/* Cinematic character-split heading */}
     <motion.h2
       variants={headingContainerVariants}
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-60px" }}
-      className="text-[clamp(2.4rem,5.5vw,4.5rem)] font-display font-medium uppercase leading-[0.95] tracking-tight text-foreground"
+      className="text-[clamp(2.4rem,5.5vw,4.5rem)] font-display font-black uppercase leading-[0.95] tracking-tight text-dark-foreground"
     >
       <span className="inline-flex items-center flex-nowrap overflow-hidden whitespace-nowrap pb-[0.05em]">
-        {"RECENT WORKS".split("").map((char, i) => (
+        {"SELECTED PRODUCTS".split("").map((char, i) => (
           <motion.span
             key={i}
             variants={charVariants}
@@ -239,7 +221,7 @@ const WorkHeader = () => (
         ))}
         <motion.span
           variants={charVariants}
-          className="ml-3 sm:ml-4 inline-block size-3 sm:size-3.5 lg:size-4 translate-y-[-0.15em] rounded-sm bg-primary align-middle will-change-transform shrink-0"
+          className="ml-3 sm:ml-4 inline-block size-3 sm:size-3.5 lg:size-4 translate-y-[-0.15em] rounded-sm bg-accent-light align-middle will-change-transform shrink-0"
           aria-hidden="true"
         />
       </span>
@@ -250,68 +232,60 @@ const WorkHeader = () => (
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true }}
-      className="mt-7 sm:mt-8 max-w-md text-base leading-7 text-subtle-foreground"
+      className="mt-6 max-w-md text-base leading-7 text-dark-foreground/75"
     >
-      A curated showcase of production applications, decentralized Web3 protocols, and modern creative agency platforms.
+      A curated showcase of production applications, decentralized Web3 protocols, and modern creative systems.
     </motion.p>
   </div>
 );
 
 const ProjectsSection = () => {
   return (
-    <SectionShell id="work" className="relative overflow-hidden">
-      {/* Background ambient lighting */}
-      <div
-        className="pointer-events-none absolute -top-32 right-0 w-[30rem] h-[30rem] rounded-full bg-primary/[0.04] blur-[120px] -z-10"
-        aria-hidden="true"
-      />
-      <div
-        className="pointer-events-none absolute top-2/3 -left-32 w-[26rem] h-[26rem] rounded-full bg-primary/[0.03] blur-[100px] -z-10"
-        aria-hidden="true"
-      />
+    <div id="projects" className="scroll-mt-16">
+      <SectionShell id="work" className="relative overflow-hidden bg-dark-bg text-dark-foreground py-20 md:py-28 lg:py-32 border-t border-b border-dark-border">
+        {/* Section Header */}
+        <div className="mb-14 sm:mb-20 lg:mb-24">
+          <WorkHeader />
+        </div>
 
-      {/* Section Header */}
-      <div className="mb-14 sm:mb-20 lg:mb-24">
-        <WorkHeader />
-      </div>
+        {/* Alternating Full-Width Rows */}
+        <div className="flex flex-col gap-14 sm:gap-20 lg:gap-24">
+          {projects.map((project, index) => (
+            <WorkCard
+              key={project.index}
+              project={project}
+              isReversed={index % 2 === 1}
+            />
+          ))}
+        </div>
 
-      {/* Alternating Full-Width Rows (Line 1: Image Left / Text Right; Line 2: Text Left / Image Right, etc.) */}
-      <div className="flex flex-col gap-14 sm:gap-20 lg:gap-24">
-        {projects.map((project, index) => (
-          <WorkCard
-            key={project.index}
-            project={project}
-            isReversed={index % 2 === 1}
-          />
-        ))}
-      </div>
-
-      {/* View All Projects CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 24 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-        className="mt-16 sm:mt-24 md:mt-28 flex justify-center"
-      >
-        <Button
-          variant="outline"
-          size="lg"
-          asChild
-          className="group rounded-full px-8 py-6 border-foreground/15 hover:border-foreground/30 hover:bg-muted/50 transition-all duration-300 shadow-sm"
+        {/* View All Projects CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="mt-16 sm:mt-24 md:mt-28 flex justify-center"
         >
-          <Link
-            to="/projects"
-            className="gap-3 font-mono uppercase tracking-[0.18em] text-xs font-semibold"
+          <Button
+            variant="outline"
+            size="lg"
+            asChild
+            className="group rounded-full px-8 py-6 border-dark-border text-dark-foreground hover:border-dark-foreground/40 hover:bg-white/10 transition-all duration-300 shadow-sm"
           >
-            View All Projects Archive
-            <span className="group-hover:translate-x-1.5 transition-transform duration-300 inline-block font-sans">
-              →
-            </span>
-          </Link>
-        </Button>
-      </motion.div>
-    </SectionShell>
+            <Link
+              to="/projects"
+              className="gap-3 font-tech uppercase tracking-[0.18em] text-xs font-bold"
+            >
+              View All Projects Archive
+              <span className="group-hover:translate-x-1.5 transition-transform duration-300 inline-block font-sans">
+                →
+              </span>
+            </Link>
+          </Button>
+        </motion.div>
+      </SectionShell>
+    </div>
   );
 };
 

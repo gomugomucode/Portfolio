@@ -28,31 +28,31 @@ const Footer = () => {
             </div>
           </div>
 
-          <div className="lg:col-span-2 flex flex-col gap-4">
-            <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Navigation</p>
-            <Link to="/" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Home</Link>
-            <Link to="/about" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">About</Link>
-            <Link to="/projects" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Projects Archive</Link>
-            <Link to="/blog" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Engineering Blog</Link>
-            <Link to="/open-source" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Open Source Hub</Link>
-            <Link to="/ai" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">AI Showcase</Link>
-            <Link to="/now" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Now Page</Link>
-            <Link to="/for-recruiters" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">For Recruiters</Link>
-            <Link to="/uses" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Uses & Setup</Link>
-            <Link to="/contact" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit">Hire Me / Contact</Link>
+          <div className="lg:col-span-2 flex flex-col gap-3">
+            <p className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-accent mb-1">Navigation</p>
+            <Link to="/" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">Home</Link>
+            <Link to="/about" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">About</Link>
+            <Link to="/projects" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">Projects Archive</Link>
+            <Link to="/blog" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">Engineering Blog</Link>
+            <Link to="/open-source" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">Open Source Hub</Link>
+            <Link to="/ai" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">AI Showcase</Link>
+            <Link to="/now" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">Now Page</Link>
+            <Link to="/for-recruiters" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">For Recruiters</Link>
+            <Link to="/uses" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">Uses &amp; Setup</Link>
+            <Link to="/contact" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit">Hire Me / Contact</Link>
           </div>
 
-          <div className="lg:col-span-3 flex flex-col gap-4">
-            <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Featured Case Studies</p>
-            <Link to="/projects/e-learning-platform" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">01. E-Learning LMS Platform</Link>
-            <Link to="/projects/yatra-solana-ride-sharing" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">02. Yatra — Solana Ride-Sharing</Link>
-            <Link to="/projects/web3-loyalty-protocol" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">03. Web3 Loyalty Protocol</Link>
-            <Link to="/projects/greenstar-suppliers" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">04. Greenstar Suppliers Catalogue</Link>
-            <Link to="/projects/yarshabyte-it-company" className="text-sm font-medium hover:text-primary transition-colors py-1 inline-flex w-fit line-clamp-1">05. YarshaByte — IT Company</Link>
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            <p className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-accent mb-1">Featured Case Studies</p>
+            <Link to="/projects/e-learning-platform" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit line-clamp-1">01. E-Learning LMS Platform</Link>
+            <Link to="/projects/yatra-solana-ride-sharing" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit line-clamp-1">02. Yatra — Solana Ride-Sharing</Link>
+            <Link to="/projects/web3-loyalty-protocol" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit line-clamp-1">03. Web3 Loyalty Protocol</Link>
+            <Link to="/projects/greenstar-suppliers" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit line-clamp-1">04. Greenstar Suppliers Catalogue</Link>
+            <Link to="/projects/yarshabyte-it-company" className="text-sm font-medium text-foreground/80 hover:text-accent transition-colors py-0.5 inline-flex w-fit line-clamp-1">05. YarshaByte — IT Company</Link>
           </div>
 
-          <div className="lg:col-span-3 flex flex-col gap-4">
-            <p className="text-[10px] font-mono tracking-widest uppercase text-muted-foreground mb-2">Connect & Location</p>
+          <div className="lg:col-span-3 flex flex-col gap-3">
+            <p className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-accent mb-1">Connect &amp; Location</p>
             <div className="flex flex-wrap items-center gap-3 mb-2">
               <a href="https://github.com/gomugomucode" target="_blank" rel="noopener noreferrer" className="social-link" aria-label="GitHub Profile">
                 <Github className="w-4 h-4" />
@@ -67,19 +67,19 @@ const Footer = () => {
                 <Mail className="w-4 h-4" />
               </a>
             </div>
-            <p className="text-xs text-muted-foreground leading-relaxed">
+            <p className="text-xs text-foreground/70 leading-relaxed font-sans">
               Butwal, Lumbini, Nepal — 32907 (GMT+5:45)
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-12 mt-12 border-t border-border/50">
-          <p className="text-xs text-muted-foreground">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-10 mt-12 border-t border-border-soft">
+          <p className="font-tech text-xs font-bold uppercase tracking-wider text-foreground/60">
             &copy; {currentYear} Anupam Baral (@gomugomucode). All rights reserved.
           </p>
           <div className="flex gap-6">
-            <Link to="/privacy" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Privacy Policy</Link>
-            <Link to="/terms" className="text-xs text-muted-foreground hover:text-foreground transition-colors">Terms of Service</Link>
+            <Link to="/privacy" className="font-tech text-xs font-bold uppercase tracking-wider text-foreground/60 hover:text-accent transition-colors">Privacy Policy</Link>
+            <Link to="/terms" className="font-tech text-xs font-bold uppercase tracking-wider text-foreground/60 hover:text-accent transition-colors">Terms of Service</Link>
           </div>
         </div>
       </div>

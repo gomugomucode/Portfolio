@@ -9,14 +9,15 @@ interface LayoutProps {
 
 const Layout = ({ children }: LayoutProps) => {
   return (
-    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+    <div className="site-frame min-h-screen text-foreground relative flex flex-col">
+      <div className="ambient-grid" aria-hidden="true" />
       <a href="#main-content" className="skip-link">
         Skip to main content
       </a>
 
       <Navbar />
 
-      <main id="main-content" tabIndex={-1} className="relative z-10 w-full min-h-[calc(100vh-100px)] pt-16 focus:outline-none">
+      <main id="main-content" tabIndex={-1} className="relative z-10 w-full flex-1 focus:outline-none">
         {children}
       </main>
 

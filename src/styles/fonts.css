@@ -28,10 +28,28 @@
 }
 
 @font-face {
+  font-family: "TT Tunnels";
+  src: url("/fonts/TTTunnels-Bold.woff2") format("woff2"),
+       url("/fonts/TTTunnels-Bold.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
   font-family: "TT Lakes Neue";
   src: url("/fonts/TTLakesNeue-Medium.woff2") format("woff2"),
        url("/fonts/TTLakesNeue-Medium.woff") format("woff");
   font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "TT Lakes Neue";
+  src: url("/fonts/TTLakesNeue-Medium.woff2") format("woff2"),
+       url("/fonts/TTLakesNeue-Medium.woff") format("woff");
+  font-weight: 700;
   font-style: normal;
   font-display: swap;
 }

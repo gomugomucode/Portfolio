@@ -45,7 +45,7 @@ export const PerformanceDashboard = () => {
 
           {/* Lighthouse Scores Grid */}
           <div className="flex flex-col gap-4">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-primary font-semibold flex items-center gap-1.5">
+            <span className="font-tech text-xs uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
               <Gauge className="w-3.5 h-3.5" aria-hidden="true" /> Google Lighthouse Audit Scores
             </span>
 
@@ -58,17 +58,17 @@ export const PerformanceDashboard = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                 >
-                  <Card className="p-5 flex flex-col justify-between border-border bg-card hover:border-primary/40 transition-colors gap-3 h-full">
+                  <Card className="p-5 flex flex-col justify-between border-border-soft bg-card/60 rounded-2xl hover:border-accent/40 transition-all gap-3 h-full">
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{item.label}</span>
-                        <Badge variant="outline" className="font-mono text-[9px] text-emerald-500 border-emerald-500/30">
+                        <span className="font-tech text-[11px] uppercase tracking-wider text-muted-foreground">{item.label}</span>
+                        <Badge variant="outline" className="font-tech text-[10px] rounded-full text-emerald-600 border-emerald-500/30 bg-emerald-500/5">
                           {item.status}
                         </Badge>
                       </div>
-                      <span className="font-display text-2xl font-bold text-emerald-500 mt-1">{item.value}</span>
+                      <span className="font-display text-2xl font-bold text-foreground mt-1">{item.value}</span>
                     </div>
-                    <p className="text-[11px] text-muted-foreground font-mono leading-normal pt-2 border-t border-border/40">
+                    <p className="text-[11px] text-muted-foreground font-tech leading-normal pt-2 border-t border-border-soft">
                       {item.subtext}
                     </p>
                   </Card>
@@ -79,7 +79,7 @@ export const PerformanceDashboard = () => {
 
           {/* Core Web Vitals & Build Stats Grid */}
           <div className="flex flex-col gap-4 pt-2">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-primary font-semibold flex items-center gap-1.5">
+            <span className="font-tech text-xs uppercase tracking-widest text-accent font-semibold flex items-center gap-2">
               <Zap className="w-3.5 h-3.5" aria-hidden="true" /> Core Web Vitals & Build Benchmark Stats
             </span>
 
@@ -92,17 +92,17 @@ export const PerformanceDashboard = () => {
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: idx * 0.05 }}
                 >
-                  <Card className="p-5 flex flex-col justify-between border-border bg-card hover:border-primary/40 transition-colors gap-3 h-full">
+                  <Card className="p-5 flex flex-col justify-between border-border-soft bg-card/60 rounded-2xl hover:border-accent/40 transition-all gap-3 h-full">
                     <div className="flex flex-col gap-1">
                       <div className="flex items-center justify-between">
-                        <span className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground">{item.label}</span>
-                        <Badge variant="outline" className="font-mono text-[9px] text-primary border-primary/30">
+                        <span className="font-tech text-[11px] uppercase tracking-wider text-muted-foreground">{item.label}</span>
+                        <Badge variant="outline" className="font-tech text-[10px] rounded-full text-accent border-accent/30 bg-accent/5">
                           {item.status}
                         </Badge>
                       </div>
                       <span className="font-display text-2xl font-bold text-foreground mt-1">{item.value}</span>
                     </div>
-                    <p className="text-[11px] text-muted-foreground font-mono leading-normal pt-2 border-t border-border/40">
+                    <p className="text-[11px] text-muted-foreground font-tech leading-normal pt-2 border-t border-border-soft">
                       {item.subtext}
                     </p>
                   </Card>
@@ -112,20 +112,20 @@ export const PerformanceDashboard = () => {
           </div>
 
           {/* Architectural Guarantees Bar */}
-          <Card className="p-6 bg-gradient-to-r from-primary/[0.04] to-transparent border border-primary/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+          <Card className="p-6 bg-accent/[0.04] border border-accent/20 rounded-2xl flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-md bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+              <div className="w-10 h-10 rounded-full bg-accent/10 border border-accent/20 flex items-center justify-center text-accent shrink-0">
                 <ShieldCheck className="w-5 h-5" aria-hidden="true" />
               </div>
               <div className="flex flex-col">
-                <h4 className="font-display text-sm font-semibold text-foreground">Strict Type Safety & Zero Memory Leaks</h4>
+                <h4 className="font-display text-base font-bold text-foreground">Strict Type Safety & Zero Memory Leaks</h4>
                 <p className="text-body-sm text-muted-foreground">
                   100% strict TypeScript type checking (`npx tsc --noEmit`) verified on every build release.
                 </p>
               </div>
             </div>
-            <div className="flex items-center gap-2 font-mono text-xs text-primary font-medium shrink-0">
-              <CheckCircle2 className="w-4 h-4 text-emerald-500" aria-hidden="true" />
+            <div className="flex items-center gap-2 font-tech text-xs uppercase tracking-wider text-accent font-semibold shrink-0">
+              <CheckCircle2 className="w-4 h-4 text-emerald-600" aria-hidden="true" />
               Build Status: Passing (0 Errors)
             </div>
           </Card>

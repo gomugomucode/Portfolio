@@ -35,44 +35,55 @@ const AboutSection = () => {
       <AnimatedSection>
         <SectionGrid>
           <div className="lg:col-span-7 flex flex-col gap-6">
-            <SectionHeader
-              index="01 — About"
-              title="Architecting web systems & AI software that scale."
-            />
+            <div className="flex flex-col gap-2">
+              <div className="section-eyebrow">Engineering Philosophy</div>
+              <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase leading-snug tracking-tight text-foreground">
+                Architecting scalable digital products where clean design systems meet intelligent software engineering.
+              </h2>
+            </div>
 
-            <div className="text-body flex flex-col gap-4">
+            <div className="text-body flex flex-col gap-4 text-foreground/80">
               <p>
-                I am <strong>Anupam Baral</strong>, a <strong>Full-Stack & AI Engineer</strong> based in Nepal. I specialize in bridging cloud infrastructures with performant, accessible user interfaces built on <strong>React</strong>, <strong>Next.js</strong>, and <strong>Python</strong>.
+                I am <strong>Anupam Baral</strong>, a <strong>Full-Stack &amp; AI Engineer</strong> based in Nepal. I specialize in bridging cloud infrastructures with performant, accessible user interfaces built on <strong>React</strong>, <strong>Next.js</strong>, and <strong>Python</strong>.
               </p>
               <p>
                 My focus is engineering production-ready software. Whether deploying intelligent <strong>Python</strong> machine learning pipelines, building real-time backend systems with <strong>Supabase</strong> and <strong>Firebase</strong>, or writing smart programs on <strong>Solana</strong>, I prioritize clean architecture, sub-second LCP performance, and long-term maintainability.
               </p>
             </div>
 
-            <div className="flex flex-wrap gap-2">
+            <div className="flex flex-wrap gap-2 pt-2">
               {["React", "Next.js", "TypeScript", "Python", "Supabase", "Firebase", "Solana", "AI / ML"].map((tag) => (
-                <Badge key={tag}>{tag}</Badge>
+                <span
+                  key={tag}
+                  className="rounded-full border border-border-soft bg-foreground/[0.04] px-3.5 py-1 text-xs font-tech font-bold uppercase tracking-wider text-foreground/80 hover:border-accent hover:text-accent transition-colors"
+                >
+                  {tag}
+                </span>
               ))}
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex flex-col gap-3">
-            <Card className="p-5 hover:border-foreground/20 transition-colors duration-300">
+          <div className="lg:col-span-5 flex flex-col gap-3.5">
+            <Card className="p-5 rounded-2xl border-border-soft bg-card/60 hover:bg-card hover:border-border-strong transition-all duration-300 shadow-xs">
               <div className="flex items-start gap-4">
-                <MapPin className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" aria-hidden="true" />
-                <div className="flex flex-col gap-1">
-                  <span className="label-mono">Location</span>
-                  <span className="text-sm text-foreground">Butwal, Nepal (Available Worldwide)</span>
+                <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <MapPin className="w-4 h-4 text-accent" aria-hidden="true" />
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">Location</span>
+                  <span className="text-sm font-medium text-foreground">Butwal, Nepal (Available Worldwide)</span>
                 </div>
               </div>
             </Card>
 
-            <Card className="p-5 hover:border-foreground/20 transition-colors duration-300">
+            <Card className="p-5 rounded-2xl border-border-soft bg-card/60 hover:bg-card hover:border-border-strong transition-all duration-300 shadow-xs">
               <div className="flex items-start gap-4">
-                <GraduationCap className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" aria-hidden="true" />
-                <div className="flex flex-col gap-1">
-                  <span className="label-mono">Education</span>
-                  <span className="text-sm text-foreground">
+                <div className="w-8 h-8 rounded-full bg-accent/10 flex items-center justify-center shrink-0 mt-0.5">
+                  <GraduationCap className="w-4 h-4 text-accent" aria-hidden="true" />
+                </div>
+                <div className="flex flex-col gap-0.5">
+                  <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">Education</span>
+                  <span className="text-sm font-medium text-foreground">
                     BCA — Butwal Kalika Campus (2023–Present)
                   </span>
                 </div>
@@ -80,15 +91,16 @@ const AboutSection = () => {
             </Card>
 
             <a href="mailto:contact@anupambaral.com.np" className="group block" aria-label="Send direct email to Anupam Baral">
-              <Card className="p-5 hover:border-foreground/20 transition-all duration-300">
+              <Card className="p-5 rounded-2xl border-border-soft bg-card/60 hover:bg-card hover:border-accent transition-all duration-300 shadow-xs">
                 <div className="flex items-start gap-4">
-                  <Mail className="w-4 h-4 text-subtle-foreground mt-0.5 shrink-0" aria-hidden="true" />
-                  <div className="flex flex-col gap-1">
-                    <span className="label-mono">Direct contact</span>
-                    <span className="text-sm text-foreground group-hover:text-primary transition-colors">
+                  <div className="w-8 h-8 rounded-full bg-accent/10 group-hover:bg-accent group-hover:text-white transition-colors flex items-center justify-center shrink-0 mt-0.5">
+                    <Mail className="w-4 h-4 text-accent group-hover:text-white transition-colors" aria-hidden="true" />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">Direct Contact</span>
+                    <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
                       contact@anupambaral.com.np
                     </span>
-                    
                   </div>
                 </div>
               </Card>

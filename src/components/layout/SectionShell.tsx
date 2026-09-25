@@ -19,8 +19,8 @@ export const SectionShell = ({
   <section
     id={id}
     className={cn(
-      "w-full py-20 md:py-28 lg:py-32",
-      bordered && "border-t border-border",
+      "w-full py-16 md:py-24 lg:py-28",
+      bordered && "border-t border-border-soft",
       className,
     )}
   >
@@ -45,11 +45,11 @@ export const SectionHeader = ({
   className,
   as: HeadingTag = "h2",
 }: SectionHeaderProps) => (
-  <div className={cn("flex flex-col gap-3 mb-12 md:mb-16", className)}>
-    <span className="label-mono">{index}</span>
+  <div className={cn("flex flex-col gap-2 mb-10 md:mb-14", className)}>
+    <div className="section-eyebrow">{index}</div>
     <HeadingTag className="heading-display">{title}</HeadingTag>
     {description && (
-      <p className="text-body-sm max-w-xl">{description}</p>
+      <p className="text-body text-foreground/80 max-w-2xl">{description}</p>
     )}
   </div>
 );

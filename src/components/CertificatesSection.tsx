@@ -23,19 +23,19 @@ export const CertificatesSection = () => {
           {certificates.map((cert) => (
             <Card
               key={cert.id}
-              className="p-6 flex flex-col justify-between gap-6 bg-card border-border hover:border-primary/40 transition-all duration-300 group"
+              className="p-6 flex flex-col justify-between gap-6 bg-card/60 rounded-2xl border-border-soft hover:border-border-strong hover:bg-card transition-all duration-300 group shadow-xs"
             >
               <div className="flex flex-col gap-4">
                 {/* Header info */}
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <div className="flex items-center gap-2">
-                    <Award className="w-5 h-5 text-primary shrink-0" aria-hidden="true" />
-                    <span className="font-mono text-xs font-semibold text-primary uppercase tracking-wider">
+                    <Award className="w-5 h-5 text-accent shrink-0" aria-hidden="true" />
+                    <span className="font-tech text-xs font-bold uppercase tracking-wider text-accent">
                       {cert.issuer}
                     </span>
                   </div>
                   {cert.badge && (
-                    <Badge variant="outline" className="font-mono text-[10px] bg-primary/10 text-primary border-primary/30">
+                    <Badge variant="outline" className="font-tech text-[10px] font-bold uppercase tracking-wider bg-accent/10 text-accent border-accent/30 rounded-full px-2.5 py-0.5">
                       <ShieldCheck className="w-3 h-3 mr-1 inline-block" aria-hidden="true" />
                       {cert.badge}
                     </Badge>
@@ -44,10 +44,10 @@ export const CertificatesSection = () => {
 
                 {/* Certificate Title */}
                 <div>
-                  <h3 className="font-display text-xl font-bold text-foreground group-hover:text-primary transition-colors">
+                  <h3 className="font-display text-xl font-bold uppercase text-foreground group-hover:text-accent transition-colors">
                     {cert.title}
                   </h3>
-                  <div className="flex flex-wrap items-center gap-3 text-xs font-mono text-muted-foreground mt-1.5">
+                  <div className="flex flex-wrap items-center gap-3 text-xs font-tech font-bold uppercase tracking-wider text-foreground/60 mt-1.5">
                     <span>Issued: {cert.issueDate}</span>
                     <span>•</span>
                     <span>No: {cert.certificateNo}</span>
@@ -55,7 +55,7 @@ export const CertificatesSection = () => {
                       <>
                         <span>•</span>
                         <span className="flex items-center gap-1 text-foreground">
-                          <Clock className="w-3 h-3 text-primary" aria-hidden="true" />
+                          <Clock className="w-3 h-3 text-accent" aria-hidden="true" />
                           {cert.creditHours} Credit Hrs
                         </span>
                       </>
@@ -67,7 +67,7 @@ export const CertificatesSection = () => {
                 <button
                   type="button"
                   aria-label={`Expand certificate: ${cert.title}`}
-                  className="relative group/img overflow-hidden rounded-lg border border-border/80 bg-black/40 aspect-[4/3] flex items-center justify-center cursor-pointer text-left w-full interactive-focus"
+                  className="relative group/img overflow-hidden rounded-xl border border-border-soft bg-black/40 aspect-[4/3] flex items-center justify-center cursor-pointer text-left w-full interactive-focus"
                   onClick={() => setSelectedCert(cert)}
                 >
                   <img
@@ -76,37 +76,37 @@ export const CertificatesSection = () => {
                     className="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-background/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-xs">
-                    <span className="inline-flex items-center gap-1.5 font-mono text-xs font-medium px-3 py-1.5 rounded-md bg-secondary text-secondary-foreground shadow-lg">
+                  <div className="absolute inset-0 bg-foreground/60 opacity-0 group-hover/img:opacity-100 transition-opacity duration-300 flex items-center justify-center gap-2 backdrop-blur-xs">
+                    <span className="inline-flex items-center gap-1.5 font-tech text-xs font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full bg-accent text-white shadow-lg">
                       <Eye className="w-3.5 h-3.5" aria-hidden="true" />
-                      View Full Certificate
+                      View Certificate
                     </span>
                   </div>
                 </button>
 
                 {/* Description */}
-                <p className="text-body-sm text-muted-foreground leading-relaxed">
+                <p className="text-body-sm text-foreground/80 leading-relaxed">
                   {cert.description}
                 </p>
 
                 {/* Skills tags */}
                 <div className="flex flex-wrap gap-1.5 pt-2">
                   {cert.skills.map((skill) => (
-                    <Badge key={skill} variant="default" className="text-[11px] font-mono">
+                    <span key={skill} className="px-2.5 py-0.5 rounded-full border border-border-soft bg-foreground/[0.03] text-[10px] font-tech font-bold uppercase tracking-wider text-foreground/75">
                       {skill}
-                    </Badge>
+                    </span>
                   ))}
                 </div>
 
                 {/* Partners tags */}
                 {cert.partners && cert.partners.length > 0 && (
-                  <div className="pt-3 border-t border-border/40">
-                    <span className="text-[10px] font-mono text-muted-foreground block mb-1.5 uppercase tracking-wider">
-                      Academic & Hiring Partners:
+                  <div className="pt-3 border-t border-border-soft">
+                    <span className="text-[10px] font-tech font-bold uppercase tracking-widest text-foreground/60 block mb-1.5">
+                      Academic &amp; Hiring Partners:
                     </span>
                     <div className="flex flex-wrap gap-1">
                       {cert.partners.map((partner) => (
-                        <span key={partner} className="px-2 py-0.5 rounded bg-muted/40 text-[10px] font-mono text-muted-foreground">
+                        <span key={partner} className="px-2 py-0.5 rounded-full bg-foreground/[0.04] text-[10px] font-tech text-foreground/70">
                           {partner}
                         </span>
                       ))}
@@ -116,12 +116,12 @@ export const CertificatesSection = () => {
               </div>
 
               {/* Actions Footer */}
-              <div className="flex items-center justify-between gap-3 pt-4 border-t border-border/60">
+              <div className="flex items-center justify-between gap-3 pt-4 border-t border-border-soft">
                 <Button
                   variant="outline"
                   size="sm"
                   onClick={() => setSelectedCert(cert)}
-                  className="gap-2 text-xs font-mono"
+                  className="gap-2 text-xs font-tech font-bold uppercase tracking-wider rounded-full border-border-strong px-4"
                 >
                   <Eye className="w-3.5 h-3.5" aria-hidden="true" />
                   Expand Image
@@ -131,7 +131,7 @@ export const CertificatesSection = () => {
                     href={cert.pdfUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 text-xs font-mono text-primary hover:underline"
+                    className="inline-flex items-center gap-1.5 text-xs font-tech font-bold uppercase tracking-wider text-accent hover:underline"
                   >
                     <FileText className="w-3.5 h-3.5" aria-hidden="true" />
                     Download PDF

@@ -105,23 +105,27 @@ const ContactSection = () => {
     <SectionShell id="contact">
       <AnimatedSection>
         <SectionGrid>
-        <div className="lg:col-span-7 flex flex-col gap-8">
-          <SectionHeader index="10 — Contact" title="Let's build together." />
+        <div className="lg:col-span-7 flex flex-col gap-6">
+          <SectionHeader
+            index="Product Collaboration"
+            title="Work With Anupam / Let's Build Together."
+            description="Have an ambitious product vision that needs full-stack engineering, production AI workflows, or decentralized systems? Reach out directly."
+          />
 
           {success ? (
             <div
               role="status"
               aria-live="polite"
-              className="flex flex-col items-center justify-center text-center gap-4 py-12 px-6 border border-border rounded-md bg-card"
+              className="flex flex-col items-center justify-center text-center gap-4 py-12 px-6 border border-accent/25 rounded-2xl bg-card shadow-sm"
             >
-              <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center text-primary mb-2">
+              <div className="w-12 h-12 rounded-full bg-accent/10 flex items-center justify-center text-accent mb-2">
                 <Send className="w-5 h-5" aria-hidden="true" />
               </div>
-              <h3 className="font-display font-medium text-xl">Message Sent</h3>
-              <p className="text-body-sm max-w-sm">
-                Thank you for reaching out. I usually respond within 24 hours.
+              <h3 className="font-display font-bold uppercase text-xl text-foreground">Message Sent</h3>
+              <p className="text-body-sm max-w-sm text-foreground/80">
+                Thank you for reaching out. I review incoming requests daily and will get back to you within 24 hours.
               </p>
-              <Button variant="outline" onClick={() => setSuccess(false)} className="mt-4">
+              <Button variant="outline" onClick={() => setSuccess(false)} className="mt-4 rounded-full border-border-strong font-tech text-xs uppercase tracking-wider">
                 Send another message
               </Button>
             </div>
@@ -198,39 +202,39 @@ const ContactSection = () => {
                 )}
               </div>
 
-              <Button type="submit" disabled={sending} className="mt-2 w-full sm:w-auto self-start">
+              <button type="submit" disabled={sending} className="btn-primary mt-2 self-start">
                 {sending ? (
-                  <span className="flex items-center gap-2 label-mono normal-case">
-                    <span className="w-4 h-4 border-2 border-primary-foreground/30 border-t-primary-foreground rounded-full animate-spin" aria-hidden="true" />
+                  <span className="flex items-center gap-2 font-tech font-bold uppercase">
+                    <span className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" aria-hidden="true" />
                     Sending...
                   </span>
                 ) : (
                   <span className="flex items-center gap-2">
                     <Send className="w-4 h-4" aria-hidden="true" />
-                    Send message
+                    Send Message
                   </span>
                 )}
-              </Button>
+              </button>
             </form>
           )}
         </div>
 
-        <div className="lg:col-span-5 flex flex-col gap-3">
+        <div className="lg:col-span-5 flex flex-col gap-3.5">
           <a href="mailto:contact@anupambaral.com.np" className="group" aria-label="Send direct email to Anupam Baral">
-            <Card className="p-5 hover:border-foreground/20 transition-colors duration-300">
+            <Card className="p-5 rounded-2xl border-border-soft bg-card/60 hover:bg-card hover:border-accent transition-all duration-300 shadow-xs">
               <div className="flex flex-col gap-1">
-                <span className="label-mono">Direct email</span>
-                <span className="text-sm text-foreground group-hover:text-primary transition-colors">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">Direct Email</span>
+                <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
                   contact@anupambaral.com.np
                 </span>
               </div>
             </Card>
           </a>
 
-          <Card className="p-5">
+          <Card className="p-5 rounded-2xl border-border-soft bg-card/60 shadow-xs">
             <div className="flex flex-col gap-3">
-              <span className="label-mono">Profiles</span>
-              <div className="flex items-center gap-2">
+              <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">Profiles</span>
+              <div className="flex items-center gap-2.5">
                 <a
                   href="https://github.com/gomugomucode"
                   target="_blank"
@@ -253,13 +257,13 @@ const ContactSection = () => {
             </div>
           </Card>
 
-          <Card className="p-5 bg-card">
-            <div className="flex flex-col gap-3 font-mono text-xs">
-              <span className="label-mono">Hiring & Response SLA</span>
-              <div className="flex flex-col gap-1 text-muted-foreground">
+          <Card className="p-5 rounded-2xl border-border-soft bg-card/60 shadow-xs">
+            <div className="flex flex-col gap-3 font-tech text-xs font-bold uppercase tracking-wider">
+              <span className="text-accent tracking-[0.18em]">Hiring &amp; Response SLA</span>
+              <div className="flex flex-col gap-1.5 text-foreground/75 font-normal normal-case font-sans text-xs">
                 <p>• <strong>Response SLA:</strong> &lt; 24 Hours</p>
-                <p>• <strong>Location & Timezone:</strong> Butwal, Nepal (GMT+5:45)</p>
-                <p>• <strong>Availability:</strong> Full-time Roles & Contracts</p>
+                <p>• <strong>Location &amp; Timezone:</strong> Butwal, Nepal (GMT+5:45)</p>
+                <p>• <strong>Availability:</strong> Full-Time Roles &amp; Contracts</p>
                 <p>• <strong>Preferred Projects:</strong> React/Next.js Apps, Python AI Pipelines, Web3 Systems</p>
               </div>
             </div>

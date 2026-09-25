@@ -112,136 +112,176 @@ const SkillsSection = () => {
   const [activeTab, setActiveTab] = useState<string>("frontend");
   const selectedCategory = expertiseCategories.find((c) => c.id === activeTab) || expertiseCategories[0];
 
+  const categoryIndexLabels: Record<string, string> = {
+    frontend: "01 / FRONTEND",
+    backend: "02 / BACKEND",
+    ai: "03 / AI & ML",
+    cloud: "04 / CLOUD & DB",
+    devops: "05 / DEVOPS",
+    blockchain: "06 / WEB3",
+  };
+
   return (
     <SectionShell id="skills">
       <AnimatedSection>
-        <SectionHeader index="05 — Expertise" title="Technical domain & engineering expertise." />
+        <SectionHeader
+          index="Core Competencies"
+          title="Domain Mastery & Technical Architecture"
+          description="A systematic breakdown of software engineering capabilities, battle-tested technologies, and production systems engineered across the stack."
+        />
 
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Category Selection Navigation */}
-          <div className="lg:col-span-4 flex flex-col gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground mb-1">
-              Select Engineering Domain
-            </span>
-            <div role="tablist" aria-label="Engineering Expertise Domains" className="flex flex-col gap-1.5">
-              {expertiseCategories.map((cat) => {
-                const Icon = cat.icon;
-                const isActive = cat.id === activeTab;
-                return (
-                  <button
-                    key={cat.id}
-                    id={`tab-${cat.id}`}
-                    role="tab"
-                    aria-selected={isActive}
-                    aria-controls={`panel-${cat.id}`}
-                    tabIndex={isActive ? 0 : -1}
-                    onClick={() => setActiveTab(cat.id)}
-                    className={`flex items-center gap-3 p-3.5 rounded-lg border text-left transition-all duration-200 interactive-focus ${
-                      isActive
-                        ? "bg-card border-primary/50 text-foreground shadow-sm"
-                        : "bg-transparent border-transparent text-muted-foreground hover:bg-muted/50 hover:text-foreground"
+        {/* 6-Card Domain Mastery Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10">
+          {expertiseCategories.map((cat) => {
+            const Icon = cat.icon;
+            const isActive = cat.id === activeTab;
+            return (
+              <button
+                key={cat.id}
+                type="button"
+                onClick={() => setActiveTab(cat.id)}
+                className={`skill-card text-left transition-all duration-300 interactive-focus group cursor-pointer ${
+                  isActive
+                    ? "border-accent bg-foreground/[0.04] shadow-md -translate-y-1"
+                    : "border-border-soft hover:border-border-strong"
+                }`}
+              >
+                <span
+                  className="skill-accent-bar"
+                  style={isActive ? { transform: "scaleY(1)" } : undefined}
+                />
+
+                <div className="flex items-center justify-between gap-2 mb-3">
+                  <span className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-accent">
+                    {categoryIndexLabels[cat.id] || "00 / CORE"}
+                  </span>
+                  <div
+                    className={`w-7 h-7 rounded-full flex items-center justify-center transition-colors ${
+                      isActive ? "bg-accent text-white" : "bg-foreground/5 text-foreground/70 group-hover:text-accent"
                     }`}
                   >
-                    <div
-                      className={`w-8 h-8 rounded-md flex items-center justify-center shrink-0 ${
-                        isActive ? "bg-primary text-primary-foreground" : "bg-muted text-muted-foreground"
-                      }`}
-                    >
-                      <Icon className="w-4 h-4" aria-hidden="true" />
-                    </div>
-                    <div className="flex flex-col min-w-0">
-                      <span className="text-sm font-medium leading-none font-display">
-                        {cat.title}
-                      </span>
-                      <span className="text-[10px] font-mono text-muted-foreground mt-1 truncate">
-                        {cat.technologies.slice(0, 3).join(", ")}
-                      </span>
-                    </div>
-                  </button>
-                );
-              })}
-            </div>
-          </div>
+                    <Icon className="w-3.5 h-3.5" aria-hidden="true" />
+                  </div>
+                </div>
 
-          {/* Right Expertise Detail Panel */}
-          <div
-            role="tabpanel"
-            id={`panel-${selectedCategory.id}`}
-            aria-labelledby={`tab-${selectedCategory.id}`}
-            className="lg:col-span-8 p-6 md:p-8 rounded-xl border border-border bg-card flex flex-col gap-6"
-          >
-            {/* Header Title & Icon */}
-            <div className="flex items-center gap-4 pb-4 border-b border-border">
-              <div className="w-12 h-12 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-center text-primary shrink-0">
+                <h3 className="font-display text-lg font-bold uppercase tracking-tight text-foreground mb-2">
+                  {cat.title}
+                </h3>
+
+                <p className="text-sm text-foreground/75 leading-relaxed line-clamp-2 mb-4">
+                  {cat.summary}
+                </p>
+
+                <div className="flex flex-wrap gap-1.5 pt-2 border-t border-border-soft/60">
+                  {cat.technologies.slice(0, 3).map((tech) => (
+                    <span
+                      key={tech}
+                      className="px-2 py-0.5 rounded-full bg-foreground/[0.04] text-[10px] font-tech font-bold uppercase tracking-wider text-foreground/70"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                  {cat.technologies.length > 3 && (
+                    <span className="px-2 py-0.5 rounded-full bg-accent/10 text-[10px] font-tech font-bold text-accent">
+                      +{cat.technologies.length - 3}
+                    </span>
+                  )}
+                </div>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Selected Domain Deep Dive Panel */}
+        <div
+          role="region"
+          aria-label={`Detailed engineering specifications for ${selectedCategory.title}`}
+          className="p-6 md:p-8 rounded-2xl border border-border-soft bg-card shadow-sm flex flex-col gap-6"
+        >
+          {/* Header Title & Icon */}
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-border-soft">
+            <div className="flex items-center gap-4">
+              <div className="w-12 h-12 rounded-xl bg-accent/10 border border-accent/25 flex items-center justify-center text-accent shrink-0">
                 {(() => {
                   const Icon = selectedCategory.icon;
                   return <Icon className="w-6 h-6" aria-hidden="true" />;
                 })()}
               </div>
-              <div className="flex flex-col gap-1">
-                <h3 className="font-display text-xl font-semibold text-foreground">
+              <div className="flex flex-col gap-0.5">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-accent">
+                  Active Domain Focus
+                </span>
+                <h3 className="font-display text-2xl font-bold uppercase text-foreground">
                   {selectedCategory.title}
                 </h3>
-                <p className="text-body-sm text-muted-foreground">
-                  {selectedCategory.summary}
+              </div>
+            </div>
+            <p className="text-body-sm text-foreground/80 max-w-xl">
+              {selectedCategory.summary}
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            {/* Technologies & Real Projects */}
+            <div className="flex flex-col gap-6">
+              <div className="flex flex-col gap-2.5">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-foreground/60">
+                  Core Technologies &amp; Frameworks
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {selectedCategory.technologies.map((tech) => (
+                    <Badge
+                      key={tech}
+                      variant="default"
+                      className="bg-foreground/[0.05] hover:bg-accent hover:text-white text-foreground border border-border-soft font-tech text-xs font-bold uppercase tracking-wider py-1 px-3 rounded-full"
+                    >
+                      {tech}
+                    </Badge>
+                  ))}
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-2.5">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-foreground/60">
+                  Applied Real-World Projects
+                </span>
+                <div className="flex flex-wrap gap-2">
+                  {selectedCategory.realProjects.map((proj) => (
+                    <span
+                      key={proj}
+                      className="px-3 py-1 rounded-full border border-border-soft bg-foreground/[0.03] text-xs font-tech font-bold uppercase tracking-wider text-foreground/80"
+                    >
+                      {proj}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Problems Solved & Current Focus */}
+            <div className="flex flex-col gap-5">
+              <div className="flex flex-col gap-3">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-foreground/60">
+                  Production Problems Solved
+                </span>
+                <ul className="flex flex-col gap-2.5">
+                  {selectedCategory.problemsSolved.map((problem, pIdx) => (
+                    <li key={pIdx} className="flex items-start gap-2.5 text-body-sm text-foreground/85">
+                      <CheckCircle2 className="w-4 h-4 text-accent shrink-0 mt-0.5" aria-hidden="true" />
+                      <span>{problem}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div className="p-4 rounded-xl bg-accent/[0.06] border border-accent/20 flex flex-col gap-1.5 mt-1">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-accent flex items-center gap-1.5">
+                  <ShieldAlert className="w-3.5 h-3.5" aria-hidden="true" /> Active Focus
+                </span>
+                <p className="text-xs text-foreground/85 font-medium leading-relaxed">
+                  {selectedCategory.currentFocus}
                 </p>
               </div>
-            </div>
-
-            {/* Technologies Grid */}
-            <div className="flex flex-col gap-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Core Stack & Tools
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {selectedCategory.technologies.map((tech) => (
-                  <Badge key={tech} variant="default" className="text-xs font-mono">
-                    {tech}
-                  </Badge>
-                ))}
-              </div>
-            </div>
-
-            {/* Real-world Projects */}
-            <div className="flex flex-col gap-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Applied Real-World Projects
-              </span>
-              <div className="flex flex-wrap gap-2">
-                {selectedCategory.realProjects.map((proj) => (
-                  <span
-                    key={proj}
-                    className="px-3 py-1 rounded-md border border-border/80 bg-muted/40 text-xs font-medium text-foreground font-mono"
-                  >
-                    {proj}
-                  </span>
-                ))}
-              </div>
-            </div>
-
-            {/* Concrete Problems Solved */}
-            <div className="flex flex-col gap-3 pt-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
-                Production Problems Solved
-              </span>
-              <ul className="flex flex-col gap-2">
-                {selectedCategory.problemsSolved.map((problem, pIdx) => (
-                  <li key={pIdx} className="flex items-start gap-2.5 text-body-sm text-foreground/90">
-                    <CheckCircle2 className="w-4 h-4 text-primary shrink-0 mt-0.5" aria-hidden="true" />
-                    <span>{problem}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            {/* Current Active Focus */}
-            <div className="p-4 rounded-lg bg-primary/[0.04] border border-primary/20 flex flex-col gap-1 mt-2">
-              <span className="font-mono text-[10px] uppercase tracking-widest text-primary font-semibold flex items-center gap-1.5">
-                <ShieldAlert className="w-3.5 h-3.5" aria-hidden="true" /> Current Active Focus
-              </span>
-              <p className="text-xs text-foreground/90 font-mono">
-                {selectedCategory.currentFocus}
-              </p>
             </div>
           </div>
         </div>
