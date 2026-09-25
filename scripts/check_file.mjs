@@ -1,6 +1,6 @@
 import fs from 'fs';
 
-const file = 'C:/Users/Anupam Baral/.gemini/antigravity-ide/brain/c533a782-6c77-4b05-9329-4295809d1238/.system_generated/steps/319/content.md';
+const file = 'C:/Users/Anupam Baral/.gemini/antigravity-ide/brain/c533a782-6c77-4b05-9329-4295809d1238/.system_generated/steps/403/content.md';
 if (fs.existsSync(file)) {
   const c = fs.readFileSync(file, 'utf8');
   console.log('File size:', c.length);
