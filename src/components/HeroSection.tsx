@@ -118,6 +118,9 @@ const HeroSection = () => {
                   <a href="#skills" className="anchor-chip">
                     Skills
                   </a>
+                  <a href="#reviews" className="anchor-chip">
+                    Reviews ★
+                  </a>
                   <a href="#contact" className="anchor-chip highlight">
                     Connect ↗
                   </a>
@@ -237,10 +240,10 @@ const HeroSection = () => {
               </div>
               <div className="flex flex-col">
                 <span className="font-display text-4xl sm:text-5xl font-black text-accent leading-none">
-                  &lt;1.2s
+                  5.0 ★
                 </span>
                 <span className="mt-2 font-tech text-xs font-bold uppercase tracking-[0.18em] text-foreground/60">
-                  Fast Edge Latency
+                  Google Verified Rating
                 </span>
               </div>
             </div>

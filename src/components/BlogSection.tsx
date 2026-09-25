@@ -60,7 +60,7 @@ const BlogSection = () => {
       <AnimatedSection>
         <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-12 md:mb-16">
           <SectionHeader
-            index="09 — Writing"
+            index="07 — Writing"
             title="Engineering logs."
             description="Technical writing on architecture, blockchain systems, and ML deployments."
             className="mb-0"

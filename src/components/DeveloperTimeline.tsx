@@ -148,7 +148,7 @@ export const DeveloperTimeline = () => {
     <SectionShell id="timeline">
       <AnimatedSection>
         <SectionHeader
-          index="03 — Timeline"
+          index="02 — Timeline"
           title="Career journey, milestones & learning trajectory."
         />
 

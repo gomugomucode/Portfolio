@@ -36,7 +36,7 @@ const AboutSection = () => {
         <SectionGrid>
           <div className="lg:col-span-7 flex flex-col gap-6">
             <div className="flex flex-col gap-2">
-              <div className="section-eyebrow">Engineering Philosophy</div>
+              <div className="section-eyebrow">01 — Overview</div>
               <h2 className="font-display text-2xl sm:text-3xl lg:text-4xl font-bold uppercase leading-snug tracking-tight text-foreground">
                 Architecting scalable digital products where clean design systems meet intelligent software engineering.
               </h2>

@@ -22,33 +22,34 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
       <AnimatedSection>
         {showTitle && (
           <SectionHeader
-            index="08 — Verified Endorsements"
-            title="Client testimonials & verified peer endorsements."
+            index="06 — Verified Reviews"
+            title="Client testimonials & verified Google reviews."
+            description="Direct feedback and 5.0-star verified client endorsements from our Google Business Profile."
           />
         )}
 
         <div className="flex flex-col gap-8">
           {/* Header Badge & Rating Summary Bar */}
-          <div className="p-6 rounded-lg border border-border bg-card flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
+          <div className="p-6 md:p-8 rounded-2xl border border-border-soft bg-card/60 flex flex-col md:flex-row items-start md:items-center justify-between gap-6 shadow-sm">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center shrink-0">
-                <ShieldCheck className="w-6 h-6 text-emerald-500" aria-hidden="true" />
+                <ShieldCheck className="w-6 h-6 text-emerald-600" aria-hidden="true" />
               </div>
               <div className="flex flex-col">
                 <div className="flex items-center gap-2">
-                  <span className="font-display text-lg font-semibold text-foreground">Client & Peer Endorsements</span>
-                  <Badge variant="outline" className="font-mono text-[10px] text-emerald-500 border-emerald-500/30">
-                    <ShieldCheck className="w-3 h-3 mr-1 inline-block" /> Verified
+                  <span className="font-display text-xl font-bold uppercase tracking-tight text-foreground">Verified Google Reviews</span>
+                  <Badge variant="outline" className="font-tech text-[10px] text-emerald-600 border-emerald-500/30 bg-emerald-500/5 rounded-full flex items-center gap-1 px-2.5 py-0.5">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" /> 100% Verified
                   </Badge>
                 </div>
-                <div className="flex items-center gap-2 mt-0.5">
-                  <span className="font-display font-bold text-sm text-foreground">{averageRating}</span>
-                  <div className="flex items-center gap-0.5 text-amber-500" aria-label={`Rating ${averageRating} out of 5 stars`}>
+                <div className="flex items-center gap-2 mt-1">
+                  <span className="font-display font-black text-base text-foreground">{averageRating}</span>
+                  <div className="flex items-center gap-0.5 text-accent" aria-label={`Rating ${averageRating} out of 5 stars`}>
                     {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-3.5 h-3.5 fill-current" aria-hidden="true" />
+                      <Star key={i} className="w-4 h-4 fill-current" aria-hidden="true" />
                     ))}
                   </div>
-                  <span className="text-body-sm text-muted-foreground">({reviewsToDisplay.length} Verified Endorsements)</span>
+                  <span className="text-xs font-tech uppercase tracking-wider text-muted-foreground">({reviewsToDisplay.length} Reviews on Google Maps)</span>
                 </div>
               </div>
             </div>
@@ -58,9 +59,9 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
               target="_blank"
               rel="noopener noreferrer"
               onClick={() => trackSocialClick("google_reviews", googleBusinessProfileUrl)}
-              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-md bg-foreground text-background font-mono text-xs font-medium hover:bg-foreground/90 transition-colors shrink-0 interactive-focus"
+              className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-accent text-white font-tech text-xs uppercase tracking-wider font-semibold hover:bg-foreground active:scale-95 transition-all shadow-sm shrink-0 interactive-focus"
             >
-              View Google Business Profile
+              <span>View Business Profile</span>
               <ExternalLink className="w-3.5 h-3.5" aria-hidden="true" />
             </a>
           </div>
@@ -75,7 +76,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: idx * 0.08 }}
               >
-                <Card className="p-6 h-full flex flex-col justify-between border-border-soft bg-card/60 rounded-2xl hover:border-border-strong hover:bg-card transition-all duration-300 gap-6 shadow-xs">
+                <Card className="p-6 h-full flex flex-col justify-between border border-border-soft bg-card/60 rounded-2xl hover:border-accent/40 hover:bg-card hover:shadow-lg transition-all duration-300 gap-6">
                   <div className="flex flex-col gap-4">
                     {/* Header with Star Rating & Google Verified Badge */}
                     <div className="flex items-center justify-between gap-2">
@@ -86,7 +87,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
                       </div>
                       <Badge variant="outline" className="font-tech text-[9px] font-bold uppercase tracking-wider bg-emerald-500/10 text-emerald-600 border-emerald-500/30 rounded-full flex items-center gap-1 px-2.5 py-0.5">
                         <CheckCircle2 className="w-3 h-3 text-emerald-600" aria-hidden="true" />
-                        Verified
+                        Google Verified
                       </Badge>
                     </div>
 
@@ -102,11 +103,11 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
                       <img
                         src={item.avatar}
                         alt={`Profile picture of ${item.name}`}
-                        width="40"
-                        height="40"
+                        width="44"
+                        height="44"
                         decoding="async"
                         loading="lazy"
-                        className="w-10 h-10 rounded-full object-cover border border-border-soft shrink-0"
+                        className="w-11 h-11 rounded-full object-cover border border-border-soft shrink-0"
                       />
                       <div className="flex flex-col min-w-0">
                         <span className="font-display font-bold uppercase text-sm text-foreground truncate">
@@ -122,7 +123,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
                       href={item.profileUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-1.5 text-xs font-tech font-bold uppercase tracking-wider text-accent hover:underline py-1.5 px-3 rounded-full border border-accent/25 bg-accent/5 transition-colors interactive-focus"
+                      className="inline-flex items-center justify-center gap-1.5 text-xs font-tech font-bold uppercase tracking-wider text-accent hover:text-foreground py-2 px-4 rounded-full border border-accent/25 bg-accent/5 hover:bg-accent/10 transition-colors interactive-focus"
                     >
                       <span>View on Google</span>
                       <ExternalLink className="w-3 h-3" aria-hidden="true" />
@@ -144,7 +145,7 @@ export const GoogleReviews = ({ customReviews = googleReviews, showTitle = true 
               rel="noopener noreferrer"
               className="inline-block"
             >
-              <Button variant="outline" className="gap-2 font-tech font-bold uppercase tracking-wider text-xs rounded-full border-border-strong px-6 py-5">
+              <Button variant="outline" className="gap-2 font-tech font-bold uppercase tracking-wider text-xs rounded-full border-border-strong hover:border-accent hover:text-accent px-8 py-5 transition-all">
                 <svg className="w-4 h-4 mr-1 inline-block" viewBox="0 0 24 24" aria-hidden="true">
                   <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
                   <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>

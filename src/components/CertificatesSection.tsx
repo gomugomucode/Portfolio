@@ -15,7 +15,7 @@ export const CertificatesSection = () => {
     <SectionShell id="certificates">
       <AnimatedSection>
         <SectionHeader
-          index="06 — Certifications"
+          index="05 — Certifications"
           title="Verified credentials, training & technical workshops."
         />
 

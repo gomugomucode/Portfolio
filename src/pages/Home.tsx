@@ -1,12 +1,10 @@
 import SEO from "@/components/SEO";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
-import EngineeringPhilosophySection from "@/components/EngineeringPhilosophySection";
 import DeveloperTimeline from "@/components/DeveloperTimeline";
 import ProjectsSection from "@/components/ProjectsSection";
 import SkillsSection from "@/components/SkillsSection";
 import CertificatesSection from "@/components/CertificatesSection";
-import PerformanceDashboard from "@/components/PerformanceDashboard";
 import GoogleReviews from "@/components/GoogleReviews";
 import BlogSection from "@/components/BlogSection";
 import ContactSection from "@/components/ContactSection";
@@ -32,12 +30,10 @@ const Home = () => {
       />
       <HeroSection />
       <AboutSection />
-      <EngineeringPhilosophySection />
       <DeveloperTimeline />
       <ProjectsSection />
       <SkillsSection />
       <CertificatesSection />
-      <PerformanceDashboard />
       <GoogleReviews />
       <BlogSection />
       <ContactSection />
