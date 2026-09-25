@@ -158,23 +158,23 @@ const HeroSection = () => {
               className="lg:col-span-5 flex justify-center"
             >
               <div className="w-full max-w-[28rem] relative">
-                <div className="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-navy border border-border-soft shadow-2xl group">
+                <div className="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-card border border-border-soft shadow-xl group">
                   <img
                     src="/mypic1.webp"
                     alt="Anupam Baral — Full-Stack Developer and AI Engineer"
                     width={480}
                     height={600}
-                    className="w-full h-full object-cover filter grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700 ease-out"
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                     onError={(e) => {
                       e.currentTarget.src = "/logo.webp";
                     }}
                   />
-                  <div className="absolute bottom-4 left-4 right-4 bg-[#1e1a18]/85 backdrop-blur-md border border-[#f5efe7]/15 p-3.5 sm:p-4 rounded-xl flex items-center justify-between text-[#f5efe7]">
+                  <div className="absolute bottom-4 left-4 right-4 bg-card/90 backdrop-blur-md border border-border-soft p-3.5 sm:p-4 rounded-xl flex items-center justify-between text-foreground shadow-md">
                     <div>
-                      <div className="font-tech text-xs font-black uppercase tracking-[0.2em] text-accent-light">
+                      <div className="font-tech text-xs font-black uppercase tracking-[0.2em] text-accent">
                         Full-Stack · AI Engineer
                       </div>
-                      <div className="text-[11px] text-[#f5efe7]/70 font-sans font-normal mt-0.5">
+                      <div className="text-[11px] text-muted-foreground font-sans font-normal mt-0.5">
                         Web3 &amp; Intelligent Architecture
                       </div>
                     </div>
@@ -184,7 +184,7 @@ const HeroSection = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackSocialClick("github", "https://github.com/gomugomucode")}
-                        className="p-1.5 rounded-full bg-white/10 hover:bg-accent text-white transition-colors"
+                        className="p-1.5 rounded-full bg-accent/10 hover:bg-accent text-accent hover:text-white transition-colors"
                         aria-label="GitHub Profile"
                       >
                         <Github className="w-3.5 h-3.5" />
@@ -194,7 +194,7 @@ const HeroSection = () => {
                         target="_blank"
                         rel="noopener noreferrer"
                         onClick={() => trackSocialClick("linkedin", "https://linkedin.com/in/gomugomucode")}
-                        className="p-1.5 rounded-full bg-white/10 hover:bg-accent text-white transition-colors"
+                        className="p-1.5 rounded-full bg-accent/10 hover:bg-accent text-accent hover:text-white transition-colors"
                         aria-label="LinkedIn Profile"
                       >
                         <Linkedin className="w-3.5 h-3.5" />
