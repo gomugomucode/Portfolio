@@ -59,7 +59,7 @@ const HeroSection = () => {
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-7 flex flex-col gap-6"
+              className="order-2 lg:order-1 lg:col-span-7 flex flex-col gap-6"
             >
               {/* Role Eyebrow */}
               <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5">
@@ -85,7 +85,7 @@ const HeroSection = () => {
               {/* Subheadline Intro */}
               <motion.p
                 variants={itemVariants}
-                className="hero-intro text-base sm:text-lg lg:text-[1.2rem] font-medium leading-relaxed text-foreground/80 max-w-2xl"
+                className="hero-intro hidden md:block text-base sm:text-lg lg:text-[1.2rem] font-medium leading-relaxed text-foreground/80 max-w-2xl"
               >
                 Full-Stack Developer and AI Engineer architecting high-performance web applications with <strong>React</strong> and <strong>TypeScript</strong>, intelligent <strong>Python ML</strong> microservices, and decentralized systems on <strong>Solana</strong>.
               </motion.p>
@@ -155,9 +155,9 @@ const HeroSection = () => {
               variants={itemVariants}
               initial="hidden"
               animate="visible"
-              className="lg:col-span-5 flex justify-center"
+              className="order-1 lg:order-2 lg:col-span-5 flex justify-center"
             >
-              <div className="w-full max-w-[28rem] relative">
+              <div className="w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-[28rem] relative">
                 <div className="relative aspect-[4/5] rounded-[1.5rem] overflow-hidden bg-card border border-border-soft shadow-xl group">
                   <img
                     src="/mypic1.webp"
