@@ -1,5 +1,6 @@
-import { motion, type Variants } from "framer-motion";
-import { ArrowUpRight, ExternalLink, Github } from "lucide-react";
+import { useState } from "react";
+import { motion, AnimatePresence, type Variants } from "framer-motion";
+import { ArrowUpRight, ChevronDown, ChevronUp, ExternalLink, Github, Layers } from "lucide-react";
 import { Link } from "react-router-dom";
 import { projects, type ProjectPreview } from "@/data/projects";
 import { Button } from "./ui/button";
@@ -240,6 +241,13 @@ const WorkHeader = () => (
 );
 
 const ProjectsSection = () => {
+  const [showAll, setShowAll] = useState(false);
+
+  const initialCount = 2;
+  const initialProjects = projects.slice(0, initialCount);
+  const remainingProjects = projects.slice(initialCount);
+  const remainingCount = remainingProjects.length;
+
   return (
     <div id="projects" className="scroll-mt-16">
       <SectionShell id="work" className="relative overflow-hidden bg-dark-bg text-dark-foreground py-20 md:py-28 lg:py-32 border-t border-b border-dark-border">
@@ -248,25 +256,67 @@ const ProjectsSection = () => {
           <WorkHeader />
         </div>
 
-        {/* Alternating Full-Width Rows */}
+        {/* Selected 2 Projects */}
         <div className="flex flex-col gap-14 sm:gap-20 lg:gap-24">
-          {projects.map((project, index) => (
+          {initialProjects.map((project, index) => (
             <WorkCard
               key={project.index}
               project={project}
               isReversed={index % 2 === 1}
             />
           ))}
+
+          {/* Other Projects Revealed on Toggle */}
+          <AnimatePresence>
+            {showAll && (
+              <motion.div
+                initial={{ opacity: 0, y: 35 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 20 }}
+                transition={{ duration: 0.6, ease: EASING }}
+                className="flex flex-col gap-14 sm:gap-20 lg:gap-24"
+              >
+                {remainingProjects.map((project, index) => (
+                  <WorkCard
+                    key={project.index}
+                    project={project}
+                    isReversed={(initialCount + index) % 2 === 1}
+                  />
+                ))}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
 
-        {/* View All Projects CTA */}
+        {/* Interactive Action Controls: More Projects / Related Projects & Full Archive */}
         <motion.div
           initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
-          className="mt-16 sm:mt-24 md:mt-28 flex justify-center"
+          className="mt-16 sm:mt-24 md:mt-28 flex flex-col sm:flex-row items-center justify-center gap-4"
         >
+          {remainingCount > 0 && (
+            <button
+              type="button"
+              onClick={() => setShowAll((prev) => !prev)}
+              aria-expanded={showAll}
+              className="group inline-flex items-center gap-3 rounded-full bg-accent hover:bg-accent-light text-white px-8 py-5 text-xs font-tech font-bold uppercase tracking-widest transition-all duration-300 active:scale-95 shadow-lg shadow-accent/20 hover:shadow-accent/40"
+            >
+              <Layers className="size-4 transition-transform duration-300 group-hover:scale-110" />
+              <span>
+                {showAll
+                  ? "Show Fewer Projects"
+                  : `More Projects (+${remainingCount})`}
+              </span>
+              {showAll ? (
+                <ChevronUp className="size-4 transition-transform duration-200" />
+              ) : (
+                <ChevronDown className="size-4 transition-transform duration-200 group-hover:translate-y-0.5" />
+              )}
+            </button>
+          )}
+
           <Button
             variant="outline"
             size="lg"
@@ -277,7 +327,7 @@ const ProjectsSection = () => {
               to="/projects"
               className="gap-3 font-tech uppercase tracking-[0.18em] text-xs font-bold"
             >
-              View All Projects Archive
+              All Projects Archive
               <span className="group-hover:translate-x-1.5 transition-transform duration-300 inline-block font-sans">
                 →
               </span>

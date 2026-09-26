@@ -1,10 +1,21 @@
 import { useState } from "react";
-import { Github, Linkedin, Send } from "lucide-react";
+import {
+  Github,
+  Linkedin,
+  Send,
+  Mail,
+  Copy,
+  Check,
+  ArrowUpRight,
+  Clock,
+  Globe,
+  Briefcase,
+  Sparkles,
+} from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Input } from "./ui/input";
 import { Textarea } from "./ui/textarea";
 import { Button } from "./ui/button";
-import { Card } from "./ui/card";
 import { SectionGrid, SectionHeader, SectionShell } from "./layout/SectionShell";
 import AnimatedSection from "./AnimatedSection";
 import { trackContactFormSubmit } from "@/lib/analytics";
@@ -19,6 +30,19 @@ const ContactSection = () => {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [sending, setSending] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const handleCopyEmail = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    navigator.clipboard.writeText("contact@anupambaral.com.np");
+    setCopied(true);
+    toast({
+      title: "Email Copied!",
+      description: "contact@anupambaral.com.np copied to clipboard.",
+    });
+    setTimeout(() => setCopied(false), 2000);
+  };
 
   const validate = () => {
     const result = contactSchema.safeParse(form);
@@ -219,55 +243,212 @@ const ContactSection = () => {
           )}
         </div>
 
-        <div className="lg:col-span-5 flex flex-col gap-3.5">
-          <a href="mailto:contact@anupambaral.com.np" className="group" aria-label="Send direct email to Anupam Baral">
-            <Card className="p-5 rounded-2xl border-border-soft bg-card/60 hover:bg-card hover:border-accent transition-all duration-300 shadow-xs">
-              <div className="flex flex-col gap-1">
-                <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">Direct Email</span>
-                <span className="text-sm font-medium text-foreground group-hover:text-accent transition-colors">
-                  contact@anupambaral.com.np
+        <div className="lg:col-span-5 flex flex-col gap-4">
+          {/* Card 1: Direct Email & Fast Contact */}
+          <div className="group relative overflow-hidden rounded-2xl border border-border-soft bg-card/80 p-5 shadow-xs transition-all duration-300 hover:border-accent hover:shadow-md hover:bg-card">
+            {/* Ambient subtle glow background */}
+            <div className="pointer-events-none absolute -right-12 -top-12 h-32 w-32 rounded-full bg-accent/5 blur-2xl transition-all duration-500 group-hover:bg-accent/10" />
+
+            <div className="relative flex flex-col gap-3">
+              <div className="flex items-center justify-between gap-2">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">
+                  Direct Email
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-accent/25 bg-accent/10 px-2.5 py-0.5 font-tech text-[10px] font-bold uppercase tracking-wider text-accent">
+                  <span className="h-1.5 w-1.5 rounded-full bg-accent animate-pulse" />
+                  Quick Turnaround
                 </span>
               </div>
-            </Card>
-          </a>
 
-          <Card className="p-5 rounded-2xl border-border-soft bg-card/60 shadow-xs">
+              <div className="flex items-center justify-between gap-3 pt-1">
+                <a
+                  href="mailto:contact@anupambaral.com.np"
+                  className="flex items-center gap-3 min-w-0 group/link"
+                  aria-label="Send email to contact@anupambaral.com.np"
+                >
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-accent/25 bg-accent/10 text-accent transition-all duration-300 group-hover:bg-accent group-hover:text-white group-hover:shadow-sm">
+                    <Mail className="h-5 w-5" aria-hidden="true" />
+                  </div>
+                  <div className="min-w-0 flex flex-col">
+                    <span className="text-xs text-foreground/60 font-tech uppercase tracking-wider">
+                      Write Directly
+                    </span>
+                    <span className="truncate font-mono text-xs sm:text-sm font-semibold text-foreground transition-colors group-hover/link:text-accent">
+                      contact@anupambaral.com.np
+                    </span>
+                  </div>
+                </a>
+
+                <div className="flex items-center gap-1.5 shrink-0">
+                  <button
+                    type="button"
+                    onClick={handleCopyEmail}
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border-soft bg-background/80 text-foreground/75 transition-all duration-200 hover:border-accent hover:bg-accent/10 hover:text-accent active:scale-95 shadow-2xs"
+                    title={copied ? "Copied!" : "Copy email address"}
+                    aria-label={copied ? "Email copied to clipboard" : "Copy email address"}
+                  >
+                    {copied ? (
+                      <Check className="h-4 w-4 text-emerald-600 dark:text-emerald-400" />
+                    ) : (
+                      <Copy className="h-4 w-4" />
+                    )}
+                  </button>
+                  <a
+                    href="mailto:contact@anupambaral.com.np"
+                    className="inline-flex h-9 w-9 items-center justify-center rounded-lg border border-border-soft bg-background/80 text-foreground/75 transition-all duration-200 hover:border-accent hover:bg-accent hover:text-white active:scale-95 shadow-2xs"
+                    aria-label="Open mail client"
+                  >
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Card 2: Developer Profiles */}
+          <div className="rounded-2xl border border-border-soft bg-card/80 p-5 shadow-xs transition-all duration-300 hover:border-border-strong hover:bg-card">
             <div className="flex flex-col gap-3">
-              <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">Profiles</span>
-              <div className="flex items-center gap-2.5">
+              <span className="font-tech text-xs font-bold uppercase tracking-[0.16em] text-accent">
+                Profiles &amp; Code
+              </span>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
                 <a
                   href="https://github.com/gomugomucode"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label="GitHub Profile"
+                  className="group/gh flex items-center justify-between rounded-xl border border-border-soft bg-background/60 p-3 transition-all duration-200 hover:border-accent hover:bg-background hover:shadow-2xs active:scale-[0.98]"
+                  aria-label="GitHub Profile (@gomugomucode)"
                 >
-                  <Github className="w-4 h-4" />
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-foreground/5 text-foreground transition-colors group-hover/gh:bg-accent/10 group-hover/gh:text-accent">
+                      <Github className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0 flex flex-col">
+                      <span className="font-tech text-xs font-bold uppercase tracking-wider text-foreground">
+                        GitHub
+                      </span>
+                      <span className="truncate font-mono text-[11px] text-foreground/60">
+                        @gomugomucode
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-foreground/40 transition-transform duration-200 group-hover/gh:translate-x-0.5 group-hover/gh:-translate-y-0.5 group-hover/gh:text-accent" />
                 </a>
+
                 <a
                   href="https://linkedin.com/in/gomugomucode"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-link"
-                  aria-label="LinkedIn Profile"
+                  className="group/li flex items-center justify-between rounded-xl border border-border-soft bg-background/60 p-3 transition-all duration-200 hover:border-accent hover:bg-background hover:shadow-2xs active:scale-[0.98]"
+                  aria-label="LinkedIn Profile (in/gomugomucode)"
                 >
-                  <Linkedin className="w-4 h-4" />
+                  <div className="flex items-center gap-2.5 min-w-0">
+                    <div className="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-[#0a66c2]/10 text-[#0a66c2] transition-colors group-hover/li:bg-[#0a66c2] group-hover/li:text-white">
+                      <Linkedin className="h-4 w-4" />
+                    </div>
+                    <div className="min-w-0 flex flex-col">
+                      <span className="font-tech text-xs font-bold uppercase tracking-wider text-foreground">
+                        LinkedIn
+                      </span>
+                      <span className="truncate font-mono text-[11px] text-foreground/60">
+                        in/gomugomucode
+                      </span>
+                    </div>
+                  </div>
+                  <ArrowUpRight className="h-3.5 w-3.5 shrink-0 text-foreground/40 transition-transform duration-200 group-hover/li:translate-x-0.5 group-hover/li:-translate-y-0.5 group-hover/li:text-accent" />
                 </a>
               </div>
             </div>
-          </Card>
+          </div>
 
-          <Card className="p-5 rounded-2xl border-border-soft bg-card/60 shadow-xs">
-            <div className="flex flex-col gap-3 font-tech text-xs font-bold uppercase tracking-wider">
-              <span className="text-accent tracking-[0.18em]">Hiring &amp; Response SLA</span>
-              <div className="flex flex-col gap-1.5 text-foreground/75 font-normal normal-case font-sans text-xs">
-                <p>• <strong>Response SLA:</strong> &lt; 24 Hours</p>
-                <p>• <strong>Location &amp; Timezone:</strong> Butwal, Nepal (GMT+5:45)</p>
-                <p>• <strong>Availability:</strong> Full-Time Roles &amp; Contracts</p>
-                <p>• <strong>Preferred Projects:</strong> React/Next.js Apps, Python AI Pipelines, Web3 Systems</p>
+          {/* Card 3: Hiring & Response SLA Bento */}
+          <div className="relative overflow-hidden rounded-2xl border border-border-soft bg-card/80 p-5 shadow-xs transition-all duration-300 hover:border-border-strong hover:bg-card">
+            <div className="flex flex-col gap-4">
+              <div className="flex items-center justify-between gap-2 border-b border-border-soft/60 pb-3">
+                <span className="font-tech text-xs font-bold uppercase tracking-[0.18em] text-accent">
+                  Hiring &amp; Response SLA
+                </span>
+                <span className="inline-flex items-center gap-1.5 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2.5 py-0.5 font-tech text-[10px] font-bold uppercase tracking-wider text-emerald-700 dark:text-emerald-400">
+                  <span className="relative flex h-1.5 w-1.5">
+                    <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75" />
+                    <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  </span>
+                  Available
+                </span>
+              </div>
+
+              <div className="grid grid-cols-1 gap-2.5">
+                {/* Metric row 1: Response SLA */}
+                <div className="flex items-start gap-3 rounded-xl border border-border-soft/60 bg-background/50 p-2.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent mt-0.5">
+                    <Clock className="h-3.5 w-3.5" />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-tech text-[11px] font-bold uppercase tracking-wider text-foreground/60">
+                      Response SLA
+                    </span>
+                    <span className="font-mono text-xs font-semibold text-foreground">
+                      &lt; 24 Hours (Guaranteed)
+                    </span>
+                  </div>
+                </div>
+
+                {/* Metric row 2: Location & Timezone */}
+                <div className="flex items-start gap-3 rounded-xl border border-border-soft/60 bg-background/50 p-2.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent mt-0.5">
+                    <Globe className="h-3.5 w-3.5" />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-tech text-[11px] font-bold uppercase tracking-wider text-foreground/60">
+                      Location &amp; Timezone
+                    </span>
+                    <span className="text-xs font-medium text-foreground">
+                      Butwal, Nepal <span className="font-mono text-[11px] text-foreground/70">(GMT+5:45)</span>
+                    </span>
+                  </div>
+                </div>
+
+                {/* Metric row 3: Availability */}
+                <div className="flex items-start gap-3 rounded-xl border border-border-soft/60 bg-background/50 p-2.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent mt-0.5">
+                    <Briefcase className="h-3.5 w-3.5" />
+                  </div>
+                  <div className="flex flex-col gap-0.5">
+                    <span className="font-tech text-[11px] font-bold uppercase tracking-wider text-foreground/60">
+                      Availability
+                    </span>
+                    <span className="text-xs font-medium text-foreground">
+                      Full-Time Roles &amp; Contracts
+                    </span>
+                  </div>
+                </div>
+
+                {/* Metric row 4: Preferred Projects */}
+                <div className="flex items-start gap-3 rounded-xl border border-border-soft/60 bg-background/50 p-2.5">
+                  <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg bg-accent/10 text-accent mt-0.5">
+                    <Sparkles className="h-3.5 w-3.5" />
+                  </div>
+                  <div className="flex flex-col gap-1.5 w-full">
+                    <span className="font-tech text-[11px] font-bold uppercase tracking-wider text-foreground/60">
+                      Preferred Projects
+                    </span>
+                    <div className="flex flex-wrap gap-1.5">
+                      <span className="rounded-md border border-border-soft bg-card px-2 py-0.5 font-tech text-[10px] font-bold uppercase tracking-wider text-foreground/80">
+                        React / Next.js Apps
+                      </span>
+                      <span className="rounded-md border border-border-soft bg-card px-2 py-0.5 font-tech text-[10px] font-bold uppercase tracking-wider text-foreground/80">
+                        Python AI Pipelines
+                      </span>
+                      <span className="rounded-md border border-border-soft bg-card px-2 py-0.5 font-tech text-[10px] font-bold uppercase tracking-wider text-foreground/80">
+                        Web3 Systems
+                      </span>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
-          </Card>
+          </div>
         </div>
 
         </SectionGrid>
