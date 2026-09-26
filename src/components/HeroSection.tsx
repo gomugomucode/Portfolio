@@ -1,9 +1,9 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Github, Linkedin, Download, ArrowRight, MapPin, Mail, Check, Code2, Sparkles } from "lucide-react";
+import { Download, ArrowRight, MapPin, Mail, Check, Code2, Sparkles } from "lucide-react";
 import { Container } from "./layout/Container";
 import { siteConfig } from "@/lib/siteConfig";
-import { trackResumeDownload, trackSocialClick } from "@/lib/analytics";
+import { trackResumeDownload } from "@/lib/analytics";
 
 const HeroSection = () => {
   const [copied, setCopied] = useState(false);
@@ -51,9 +51,23 @@ const HeroSection = () => {
   return (
     <section className="relative min-h-[88vh] flex flex-col justify-center pt-10 pb-16 md:pt-14 md:pb-20 border-b border-border-soft overflow-hidden">
       <Container>
-        <div className="flex flex-col gap-12 md:gap-16">
+        <div className="flex flex-col gap-8 md:gap-12 lg:gap-16">
+          {/* Mobile-only Role Eyebrow */}
+          <motion.div
+            variants={itemVariants}
+            initial="hidden"
+            animate="visible"
+            className="flex lg:hidden flex-wrap items-center gap-2.5"
+          >
+            <div className="status-pill">
+              <span className="pulse-dot" aria-hidden="true" />
+              <span>Available for Full-Time &amp; Contracts</span>
+            </div>
+            <span className="subdomain-tag">@gomugomucode</span>
+          </motion.div>
+
           {/* Main Hero Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Left Narrative & Headings */}
             <motion.div
               variants={containerVariants}
@@ -61,8 +75,8 @@ const HeroSection = () => {
               animate="visible"
               className="order-2 lg:order-1 lg:col-span-7 flex flex-col gap-6"
             >
-              {/* Role Eyebrow */}
-              <motion.div variants={itemVariants} className="flex flex-wrap items-center gap-2.5">
+              {/* Desktop-only Role Eyebrow */}
+              <motion.div variants={itemVariants} className="hidden lg:flex flex-wrap items-center gap-2.5">
                 <div className="status-pill">
                   <span className="pulse-dot" aria-hidden="true" />
                   <span>Available for Full-Time &amp; Contracts</span>
@@ -169,36 +183,12 @@ const HeroSection = () => {
                       e.currentTarget.src = "/logo.webp";
                     }}
                   />
-                  <div className="absolute bottom-4 left-4 right-4 bg-[#141210]/90 backdrop-blur-xl border border-white/20 p-3.5 sm:p-4 rounded-xl flex items-center justify-between text-white shadow-2xl">
-                    <div>
-                      <div className="font-tech text-xs sm:text-[13px] font-black uppercase tracking-[0.2em] text-[#ffb17a]">
-                        Full-Stack · AI Engineer
-                      </div>
-                      <div className="text-xs sm:text-[12px] text-white/95 font-medium tracking-wide mt-0.5">
-                        Web3 &amp; Intelligent Architecture
-                      </div>
+                  <div className="absolute bottom-4 left-4 right-4 bg-[#141210]/90 backdrop-blur-xl border border-white/20 p-3.5 sm:p-4 rounded-xl flex flex-col gap-0.5 text-white shadow-2xl">
+                    <div className="font-tech text-xs sm:text-[13px] font-black uppercase tracking-[0.2em] text-[#ffb17a]">
+                      Full-Stack · AI Engineer
                     </div>
-                    <div className="flex items-center gap-2">
-                      <a
-                        href="https://github.com/gomugomucode"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => trackSocialClick("github", "https://github.com/gomugomucode")}
-                        className="p-2 rounded-full bg-white/15 hover:bg-[#b86a2c] text-white transition-all hover:scale-105 active:scale-95"
-                        aria-label="GitHub Profile"
-                      >
-                        <Github className="w-4 h-4" />
-                      </a>
-                      <a
-                        href="https://linkedin.com/in/gomugomucode"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        onClick={() => trackSocialClick("linkedin", "https://linkedin.com/in/gomugomucode")}
-                        className="p-2 rounded-full bg-white/15 hover:bg-[#b86a2c] text-white transition-all hover:scale-105 active:scale-95"
-                        aria-label="LinkedIn Profile"
-                      >
-                        <Linkedin className="w-4 h-4" />
-                      </a>
+                    <div className="text-xs sm:text-[12px] text-white/95 font-medium tracking-wide">
+                      Web3 &amp; Intelligent Architecture
                     </div>
                   </div>
                 </div>
