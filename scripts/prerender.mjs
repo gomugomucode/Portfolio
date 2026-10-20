@@ -209,7 +209,7 @@ const routeMetadata = [
   },
   {
     route: "/projects",
-    title: "Projects — Anupam Baral (@gomugomucode)",
+    title: "Software Engineering Portfolio & Projects — Anupam Baral (@gomugomucode)",
     description:
       "Explore production projects built by Anupam Baral, featuring scalable web applications, AI/ML integrations, and open-source contributions.",
     ogImage: DEFAULT_IMAGE,
@@ -462,7 +462,7 @@ const routeMetadata = [
   },
   {
     route: "/blog",
-    title: "Blog — Anupam Baral (@gomugomucode)",
+    title: "Engineering Blog & Technical Articles — Anupam Baral (@gomugomucode)",
     description:
       "Articles on software architecture, Solana Web3 smart contracts, React/Next.js performance, and Python machine learning pipelines.",
     ogImage: DEFAULT_IMAGE,
@@ -639,7 +639,7 @@ const routeMetadata = [
   },
   {
     route: "/now",
-    title: "Now — Anupam Baral (@gomugomucode)",
+    title: "What I'm Doing Now (/now) — Anupam Baral (@gomugomucode)",
     description:
       "A real-time snapshot of current engineering projects, active learning roadmap, reading list, and availability of Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
@@ -666,7 +666,7 @@ const routeMetadata = [
   },
   {
     route: "/for-recruiters",
-    title: "For Recruiters — Anupam Baral (@gomugomucode)",
+    title: "Fast-Track Hiring Guide for Recruiters — Anupam Baral (@gomugomucode)",
     description:
       "Comprehensive technical candidate breakdown for recruiters & hiring managers. Stack highlights, availability, timezones, and direct resume access.",
     ogImage: DEFAULT_IMAGE,
@@ -694,15 +694,46 @@ const routeMetadata = [
   },
   {
     route: "/ai",
-    title: "AI Portfolio — Anupam Baral (@gomugomucode)",
+    title: "AI & Machine Learning Engineering Portfolio — Anupam Baral (@gomugomucode)",
     description:
       "Python machine learning inference microservices, FastAPI type-safe gateways, LLM structured schema prompts, and AI systems by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>AI Software & Machine Learning Portfolio</h1>
-        <p>Engineered by Anupam Baral (@gomugomucode). Type-safe Python inference microservices, FastAPI gateways, and LLM structured prompt pipelines.</p>
+        <section>
+          <p>04 — Specialized Work</p>
+          <h1>AI Software & Machine Learning Portfolio</h1>
+          <p>Explore production AI software pipelines, Python machine learning models, Pydantic schema validation gateways, and deterministic LLM prompt implementations by Anupam Baral (@gomugomucode).</p>
+        </section>
+        <section>
+          <h2>Featured AI & Machine Learning Systems</h2>
+          <article>
+            <h3>Type-Safe AI Inference Gateway</h3>
+            <p><strong>Tech Stack:</strong> Python, FastAPI, Pydantic, TypeScript, Zod, Docker</p>
+            <p>Architected a type-safe API gateway bridging Python ML inference engines with TypeScript web clients. Enforces structural Pydantic runtime schema validation to eliminate undefined runtime errors.</p>
+            <ul>
+              <li>Sub-150ms inference response gateway with asynchronous route handlers</li>
+              <li>Strict Pydantic & Zod schema validation across client-server boundaries</li>
+              <li>Containerized Docker deployment isolating heavy ML dependencies</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Deterministic LLM Output Schema Engine</h3>
+            <p><strong>Tech Stack:</strong> Python, OpenAI API, Prompt Engineering, JSON Schema, Pydantic</p>
+            <p>Designed a deterministic JSON schema wrapper for Large Language Model (LLM) APIs. Converts unstructured text responses into 100% compliant structured JSON data for downstream database storage.</p>
+            <ul>
+              <li>Guaranteed 100% schema compliance for extracted structured data</li>
+              <li>Automated retry and fallback strategies for malformed model outputs</li>
+              <li>Token usage & API cost tracking telemetry integration</li>
+            </ul>
+          </article>
+          <article>
+            <h3>Predictive Analytics & Feature Extraction Pipeline</h3>
+            <p><strong>Tech Stack:</strong> Python, NumPy, Pandas, Scikit-Learn, Matplotlib</p>
+            <p>Built end-to-end data preprocessing and classification pipelines using Pandas and Scikit-Learn. Performed feature engineering, missing value imputation, and model hyperparameter tuning.</p>
+          </article>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -717,16 +748,36 @@ const routeMetadata = [
   },
   {
     route: "/open-source",
-    title: "Open Source — Anupam Baral (@gomugomucode)",
+    title: "Open Source Software & Developer Tools — Anupam Baral (@gomugomucode)",
     description:
       "Open-source developer utility libraries, Solana Web3 packages, React components, and GitHub repositories by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>Open Source Hub & Contributions</h1>
-        <p>Open-source repositories, developer tooling, and smart contract modules maintained by Anupam Baral (@gomugomucode).</p>
-        <p><a href="https://github.com/gomugomucode" target="_blank" rel="noopener noreferrer">Visit GitHub Profile &rarr;</a></p>
+        <section>
+          <p>05 — Public Engineering</p>
+          <h1>Open Source Hub & Contributions</h1>
+          <p>A central index of open-source software repositories, Solana smart program experiments, developer tools, and contributions maintained by Anupam Baral (@gomugomucode).</p>
+        </section>
+        <section>
+          <h2>Featured Public Repositories</h2>
+          <article>
+            <h3><a href="https://github.com/gomugomucode/elearn" target="_blank" rel="noopener noreferrer">elearn — Decoupled Learning Management System</a></h3>
+            <p>Decoupled Learning Management System separating a static React client from a stateless Node.js/Express REST API and MySQL persistence store.</p>
+            <p><strong>Tech Stack:</strong> React, Node.js, Express, MySQL, Vercel · MIT License</p>
+          </article>
+          <article>
+            <h3><a href="https://github.com/gomugomucode/Yatra" target="_blank" rel="noopener noreferrer">Yatra — Solana Ride-Sharing Protocol</a></h3>
+            <p>Decentralized ride-sharing engine built on Solana with Rust smart programs, Firebase RTDB signaling, and Web3.js signatures.</p>
+            <p><strong>Tech Stack:</strong> Solana, Rust, Next.js, Firebase, Web3.js · MIT License</p>
+          </article>
+          <article>
+            <h3><a href="https://github.com/gomugomucode/Solana-Loyalty-dApp" target="_blank" rel="noopener noreferrer">Solana-Loyalty-dApp — Web3 Loyalty Rewards</a></h3>
+            <p>Solana customer loyalty dApp featuring automated smart program SPL token minting and rewards distribution.</p>
+            <p><strong>Tech Stack:</strong> Solana, Rust, Next.js, Web3.js, Tailwind CSS · MIT License</p>
+          </article>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -741,17 +792,24 @@ const routeMetadata = [
   },
   {
     route: "/contact",
-    title: "Contact — Anupam Baral (@gomugomucode)",
+    title: "Contact & Hire Full-Stack & AI Engineer — Anupam Baral (@gomugomucode)",
     description:
       "Get in touch with Anupam Baral for freelance development work, open-source collaborations, AI software pipelines, or full-time engineering roles.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>Contact Anupam Baral | Hire a Full Stack & AI Developer</h1>
-        <p>Get in touch for software engineering contracts, web applications, or full-time roles.</p>
-        <p>Email: <a href="mailto:contact@anupambaral.com.np">contact@anupambaral.com.np</a></p>
-        <p>Location: Butwal, Nepal (GMT+5:45)</p>
+        <header>
+          <p>Collaboration & Contracts</p>
+          <h1>Contact & Hire Full-Stack & AI Engineer</h1>
+          <p>Get in touch with Anupam Baral (@gomugomucode) for full-stack web applications, AI/ML pipelines, decentralized Solana smart programs, or technical consulting contracts.</p>
+        </header>
+        <section>
+          <h2>Direct Contact Channels</h2>
+          <p>Primary Email: <a href="mailto:contact@anupambaral.com.np">contact@anupambaral.com.np</a></p>
+          <p>Alternative Email: <a href="mailto:anupambaral.work@gmail.com">anupambaral.work@gmail.com</a></p>
+          <p>Location: Butwal, Lumbini, Nepal (GMT+5:45). Available for global remote contracts.</p>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -766,15 +824,36 @@ const routeMetadata = [
   },
   {
     route: "/uses",
-    title: "Uses — Anupam Baral (@gomugomucode)",
+    title: "Developer Setup, Tooling & Tech Stack (/uses) — Anupam Baral (@gomugomucode)",
     description:
       "A detailed list of the hardware, code editor setup, terminal configuration, and AI tools used daily by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>Developer Setup & Tooling — Uses</h1>
-        <p>Hardware, editor configuration, terminal environment, and developer tools used daily by Anupam Baral (@gomugomucode).</p>
+        <section>
+          <p>07 — Uses</p>
+          <h1>Development Setup, Tooling & Tech Stack (/uses)</h1>
+          <p>A curated look into the hardware, software, editor setup, terminal configuration, and AI engineering tools used daily by Anupam Baral (@gomugomucode).</p>
+        </section>
+        <section>
+          <h2>Hardware & Workstation</h2>
+          <p><strong>Nitro V16 Laptop:</strong> AMD Ryzen 7 8845HS, 16GB DDR5 RAM, 512GB NVMe SSD, RTX 4050 GPU.</p>
+          <p><strong>High-DPI Dual Monitors:</strong> Custom 4K desktop display layout for multi-file IDE workflows.</p>
+        </section>
+        <section>
+          <h2>Editor & IDE Configuration</h2>
+          <p><strong>VS Code & Antigravity IDE:</strong> Customized with JetBrains Mono ligatures, Dark+ Modern high-contrast theme, ESLint, Prettier, and Tailwind CSS IntelliSense.</p>
+        </section>
+        <section>
+          <h2>Terminal & Shell Environment</h2>
+          <p><strong>PowerShell 7 & Starship:</strong> Fast cross-platform shell with customized Git status prompts, Node 20 LTS runtime, and GitHub CLI.</p>
+        </section>
+        <section>
+          <h2>AI Workflows & Cloud Infrastructure</h2>
+          <p><strong>AI Pair Programming:</strong> Google Gemini 1.5 Pro, Claude 3.5 Sonnet, GitHub Copilot.</p>
+          <p><strong>Cloud & Hosting:</strong> Vercel edge deployment, Supabase PostgreSQL, Firebase RTDB.</p>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -789,15 +868,31 @@ const routeMetadata = [
   },
   {
     route: "/architecture",
-    title: "Architecture — Anupam Baral (@gomugomucode)",
+    title: "Systems Architecture & Interactive Design — Anupam Baral (@gomugomucode)",
     description:
       "Interactive systems design, database schemas, API gateway flows, and architecture diagrams built by Anupam Baral.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>System Architecture & Interactive Design</h1>
-        <p>Interactive architectural decision records and systems designs built by Anupam Baral (@gomugomucode).</p>
+        <section>
+          <p>08 — Architecture</p>
+          <h1>System Architecture & Interactive Design</h1>
+          <p>Interactive systems design, database schemas, API gateway flows, and architecture decision records engineered by Anupam Baral (@gomugomucode).</p>
+        </section>
+        <section>
+          <h2>Production Architectural Blueprints</h2>
+          <article>
+            <h3>Yatra — Solana Ride-Sharing Escrow Architecture</h3>
+            <p>Decoupled architecture separating high-frequency 50ms GPS telemetry from immutable 400ms Solana on-chain escrow account finality.</p>
+            <p>Components: React 18 Mobile UI (TypeScript + Tailwind), Firebase Realtime DB (50ms telemetry), Solana Anchor Program (Rust escrow).</p>
+          </article>
+          <article>
+            <h3>High-Concurrency LMS Read-Replica MySQL Architecture</h3>
+            <p>Decoupled presentation layer with stateless Express API gateways querying indexed MySQL read-replicas during high-concurrency exam windows.</p>
+            <p>Components: Vite Edge Presentation (React 18 + CDN), Express API Gateway (Node.js + JWT), MySQL Read Replicas.</p>
+          </article>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -812,15 +907,26 @@ const routeMetadata = [
   },
   {
     route: "/playground",
-    title: "Playground — Anupam Baral (@gomugomucode)",
+    title: "Interactive Security & Algorithmic Playground — Anupam Baral (@gomugomucode)",
     description:
       "Interactive code playground showcasing security sanitization, rate limiting algorithms, and multi-domain fuzzy search engines.",
     ogImage: DEFAULT_IMAGE,
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>Developer Playground & Algorithmic Demos</h1>
-        <p>Interactive algorithmic demonstrations and security tools built by Anupam Baral (@gomugomucode).</p>
+        <section>
+          <p>Interactive Tools</p>
+          <h1>Developer Playground & Algorithmic Demos</h1>
+          <p>Interactive algorithmic demonstrations, XSS input sanitization tools, token-bucket rate limiters, and multi-domain fuzzy search engines engineered by Anupam Baral (@gomugomucode).</p>
+        </section>
+        <section>
+          <h2>Available Playground Modules</h2>
+          <ul>
+            <li><strong>Security Sanitizer:</strong> Real-time XSS string escaping and HTML entity encoding.</li>
+            <li><strong>Rate Limiter Engine:</strong> Sliding window and token-bucket algorithm visualizer.</li>
+            <li><strong>Fuzzy Search Engine:</strong> Sub-millisecond multi-attribute search across developer projects.</li>
+          </ul>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -842,8 +948,27 @@ const routeMetadata = [
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>Privacy Policy</h1>
-        <p>Privacy policy and data protection standards for anupambaral.com.np.</p>
+        <header>
+          <p>Legal & Compliance</p>
+          <h1>Privacy Policy</h1>
+          <p>Last updated: July 01, 2026. Official privacy policy for anupambaral.com.np operated by Anupam Baral (@gomugomucode).</p>
+        </header>
+        <section>
+          <h2>1. Data Collection & Processing</h2>
+          <p>This website functions strictly as a professional developer portfolio. I do not store personal data. Information submitted via the contact form is transmitted securely to Web3Forms API to deliver email notifications without server caching.</p>
+        </section>
+        <section>
+          <h2>2. Cookies & Tracking Technologies</h2>
+          <p>This website does not deploy advertising pixels or invasive behavioral profiling cookies. The site runs cleanly with privacy-first analytics principles.</p>
+        </section>
+        <section>
+          <h2>3. External Profile Links</h2>
+          <p>This portfolio references external profiles on GitHub, LinkedIn, Medium, Twitter/X, and YouTube. External services operate under their respective privacy policies.</p>
+        </section>
+        <section>
+          <h2>4. Contact & Inquiries</h2>
+          <p>For questions regarding privacy, contact: <a href="mailto:contact@anupambaral.com.np">contact@anupambaral.com.np</a>.</p>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -865,8 +990,23 @@ const routeMetadata = [
     bodyHtml: `
       ${sharedNavHtml}
       <main>
-        <h1>Terms of Service</h1>
-        <p>Terms of service for anupambaral.com.np operated by Anupam Baral (@gomugomucode).</p>
+        <header>
+          <p>Legal & Compliance</p>
+          <h1>Terms of Service</h1>
+          <p>Last updated: July 01, 2026. Terms and conditions for using anupambaral.com.np.</p>
+        </header>
+        <section>
+          <h2>1. Intellectual Property & Code Samples</h2>
+          <p>All original technical articles, case studies, and architectural illustrations published on this site are authored by Anupam Baral. Open-source code repositories are governed by their respective repository licenses (e.g., MIT License).</p>
+        </section>
+        <section>
+          <h2>2. Portfolio Demonstration & Warranties</h2>
+          <p>Case study metrics, benchmark charts, and code playgrounds are provided for technical demonstration purposes. Interactive demos are provided as-is without warranty.</p>
+        </section>
+        <section>
+          <h2>3. Permitted Usage & Attribution</h2>
+          <p>You may quote or reference portfolio articles provided standard academic or developer attribution is given with a link back to anupambaral.com.np.</p>
+        </section>
       </main>
       ${sharedFooterHtml}
     `,
@@ -915,9 +1055,16 @@ const prerender = () => {
       `<link rel="canonical" href="${currentUrl}" />`,
     );
 
-    // Inject OpenGraph
+    // Inject OpenGraph & Metadata
     const finalOgTitle = meta.ogTitle || meta.title;
     const finalOgDescription = meta.ogDescription || meta.description;
+    const finalOgType = meta.ogType || (meta.route.startsWith("/blog/") || meta.route.startsWith("/projects/") ? "article" : "website");
+    const finalOgImageAlt = meta.ogImageAlt || `${meta.title} — Anupam Baral`;
+
+    html = html.replace(
+      /<meta\s+property="og:type"\s+content=".*?"\s*\/?>/gis,
+      `<meta property="og:type" content="${finalOgType}" />`,
+    );
     html = html.replace(
       /<meta\s+property="og:title"\s+content=".*?"\s*\/?>/gis,
       `<meta property="og:title" content="${finalOgTitle}" />`,
@@ -933,6 +1080,10 @@ const prerender = () => {
     html = html.replace(
       /<meta\s+property="og:image"\s+content=".*?"\s*\/?>/gis,
       `<meta property="og:image" content="${meta.ogImage}" />`,
+    );
+    html = html.replace(
+      /<meta\s+property="og:image:alt"\s+content=".*?"\s*\/?>/gis,
+      `<meta property="og:image:alt" content="${finalOgImageAlt}" />`,
     );
 
     // Inject Twitter
@@ -953,9 +1104,18 @@ const prerender = () => {
       `<meta name="twitter:image" content="${meta.ogImage}" />`,
     );
 
-    // Inject Schema.org JSON-LD if present
+    // Inject Schema.org JSON-LD if present (unified @graph)
     if (meta.schema) {
-      const jsonLd = JSON.stringify(meta.schema);
+      const graphData = Array.isArray(meta.schema)
+        ? {
+            "@context": "https://schema.org",
+            "@graph": meta.schema.map((s) => {
+              const { "@context": _, ...clean } = s;
+              return clean;
+            }),
+          }
+        : { "@context": "https://schema.org", ...meta.schema };
+      const jsonLd = JSON.stringify(graphData);
       const schemaTag = `\n    <script type="application/ld+json" id="schema-jsonld" data-rh="true">${jsonLd}</script>\n  `;
       html = html.replace("</head>", `${schemaTag}</head>`);
     }
