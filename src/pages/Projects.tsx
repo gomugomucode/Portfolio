@@ -74,7 +74,7 @@ const Projects = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Projects — Anupam Baral (@gomugomucode)"
+        title="Software Engineering Portfolio & Projects — Anupam Baral (@gomugomucode)"
         description="Explore production projects built by Anupam Baral (@gomugomucode), featuring scalable web applications, AI/ML integrations, and open-source contributions."
         canonicalUrl={url}
         schema={schemas}

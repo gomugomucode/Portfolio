@@ -284,7 +284,7 @@ const Blog = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Blog — Anupam Baral (@gomugomucode)"
+        title="Engineering Blog & Technical Articles — Anupam Baral (@gomugomucode)"
         description="Articles on software engineering, Solana blockchain, React, TypeScript, Python, and machine learning pipelines by Anupam Baral (@gomugomucode)."
         canonicalUrl={url}
         schema={schemas}

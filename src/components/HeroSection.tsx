@@ -183,14 +183,6 @@ const HeroSection = () => {
                       e.currentTarget.src = "/logo.webp";
                     }}
                   />
-                  <div className="absolute bottom-4 left-4 right-4 bg-[#141210]/90 backdrop-blur-xl border border-white/20 p-3.5 sm:p-4 rounded-xl flex flex-col gap-0.5 text-white shadow-2xl">
-                    <div className="font-tech text-xs sm:text-[13px] font-black uppercase tracking-[0.2em] text-[#ffb17a]">
-                      Full-Stack · AI Engineer
-                    </div>
-                    <div className="text-xs sm:text-[12px] text-white/95 font-medium tracking-wide">
-                      Web3 &amp; Intelligent Architecture
-                    </div>
-                  </div>
                 </div>
               </div>
             </motion.div>

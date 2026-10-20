@@ -16,7 +16,7 @@ const Architecture = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Architecture — Anupam Baral (@gomugomucode)"
+        title="Systems Architecture & Interactive Design — Anupam Baral (@gomugomucode)"
         description="Interactive systems design, database schemas, API gateway flows, and architecture diagrams built by Anupam Baral (@gomugomucode)."
         canonicalUrl={url}
       />

@@ -110,7 +110,13 @@ export default function SEO({
         <script type="application/ld+json" id="schema-jsonld" data-rh="true">
           {JSON.stringify(
             Array.isArray(schema)
-              ? schema.map((s) => ({ "@context": "https://schema.org", ...s }))
+              ? {
+                  "@context": "https://schema.org",
+                  "@graph": schema.map((s) => {
+                    const { "@context": _, ...cleanSchema } = s;
+                    return cleanSchema;
+                  }),
+                }
               : { "@context": "https://schema.org", ...schema }
           )}
         </script>

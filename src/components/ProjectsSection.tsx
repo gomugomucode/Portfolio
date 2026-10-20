@@ -96,6 +96,8 @@ const WorkCard = ({ project, isReversed = false, className = "" }: WorkCardProps
           <img
             src={project.imageUrl}
             alt={project.title}
+            width={1200}
+            height={675}
             loading="lazy"
             decoding="async"
             className="w-full h-full object-cover object-top transition duration-500 ease-out group-hover:scale-105"

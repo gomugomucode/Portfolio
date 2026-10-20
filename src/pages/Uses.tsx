@@ -12,7 +12,7 @@ const Uses = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Uses — Anupam Baral (@gomugomucode)"
+        title="Developer Setup, Tooling & Tech Stack (/uses) — Anupam Baral (@gomugomucode)"
         description="A curated look into the hardware, software, editor setup, terminal configuration, and AI engineering tools used daily by Anupam Baral (@gomugomucode)."
         canonicalUrl={url}
       />

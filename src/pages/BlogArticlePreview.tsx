@@ -9,7 +9,7 @@ import { SectionShell } from "@/components/layout/SectionShell";
 import { BlogCard } from "@/components/BlogCard";
 import { fetchMediumArticles, type MediumArticle, FALLBACK_ARTICLES } from "@/lib/mediumFeed";
 import { siteConfig } from "@/lib/siteConfig";
-import { getBlogPostingSchema, getBreadcrumbSchema, getWebPageSchema } from "@/lib/schema";
+import { getPersonSchema, getBlogPostingSchema, getBreadcrumbSchema, getWebPageSchema } from "@/lib/schema";
 
 const formatDate = (dateStr: string) => {
   try {
@@ -26,8 +26,8 @@ const formatDate = (dateStr: string) => {
 
 const BlogArticlePreview = () => {
   const { slug } = useParams<{ slug: string }>();
-  const [articles, setArticles] = useState<MediumArticle[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [articles, setArticles] = useState<MediumArticle[]>(FALLBACK_ARTICLES);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     let isMounted = true;

@@ -21,7 +21,7 @@ const Contact = () => {
   return (
     <div className="space-y-20">
       <SEO
-        title="Contact — Anupam Baral (@gomugomucode)"
+        title="Contact & Hire Full-Stack & AI Engineer — Anupam Baral (@gomugomucode)"
         description="Get in touch with Anupam Baral (@gomugomucode) for freelance development work, open-source collaborations, AI software pipelines, or engineering roles."
         canonicalUrl={url}
         schema={schemas}

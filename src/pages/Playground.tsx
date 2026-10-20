@@ -29,7 +29,7 @@ const Playground = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Playground — Anupam Baral (@gomugomucode)"
+        title="Interactive Security & Algorithmic Playground — Anupam Baral (@gomugomucode)"
         description="Interactive code playground showcasing security sanitization, rate limiting algorithms, and multi-domain fuzzy search engines by Anupam Baral (@gomugomucode)."
         canonicalUrl={url}
       />

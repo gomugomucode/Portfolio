@@ -73,6 +73,8 @@ export const CertificatesSection = () => {
                   <img
                     src={cert.image}
                     alt={`Certificate preview for ${cert.title}`}
+                    width={600}
+                    height={450}
                     className="w-full h-full object-cover object-center group-hover/img:scale-105 transition-transform duration-500"
                     loading="lazy"
                   />
@@ -185,6 +187,8 @@ export const CertificatesSection = () => {
                   <img
                     src={selectedCert.image}
                     alt={selectedCert.title}
+                    width={1200}
+                    height={850}
                     className="max-h-[65vh] w-auto object-contain rounded"
                   />
                 </div>

@@ -84,7 +84,7 @@ const AIPortfolio = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="AI Portfolio — Anupam Baral (@gomugomucode)"
+        title="AI & Machine Learning Engineering Portfolio — Anupam Baral (@gomugomucode)"
         description="Dedicated AI portfolio of Anupam Baral (@gomugomucode): Python ML inference pipelines, Pydantic schema gateways, LLM integrations, and machine learning architectures."
         canonicalUrl={url}
         schema={schemas}

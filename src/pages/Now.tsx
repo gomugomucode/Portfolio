@@ -80,7 +80,7 @@ const Now = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="Now — Anupam Baral (@gomugomucode)"
+        title="What I'm Doing Now (/now) — Anupam Baral (@gomugomucode)"
         description="What Anupam Baral (@gomugomucode) is currently building, learning, reading, and working on right now."
         canonicalUrl={url}
         schema={schemas}

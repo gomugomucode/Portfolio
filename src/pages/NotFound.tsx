@@ -1,6 +1,7 @@
 import { useLocation, Link } from "react-router-dom";
 import { useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import SEO from "@/components/SEO";
 
 const NotFound = () => {
   const location = useLocation();
@@ -11,6 +12,11 @@ const NotFound = () => {
 
   return (
     <div className="flex min-h-[70vh] items-center justify-center py-16">
+      <SEO
+        title="Page Not Found (404) — Anupam Baral (@gomugomucode)"
+        description="The requested page could not be found on anupambaral.com.np."
+        noIndex={true}
+      />
       <div className="text-center flex flex-col items-center gap-4 max-w-md px-4">
         <h1 className="font-display text-[10rem] md:text-[14rem] font-semibold tracking-tighter text-muted-foreground/20 leading-none select-none">
           404

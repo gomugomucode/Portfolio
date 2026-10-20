@@ -55,7 +55,7 @@ const RecruiterExperience = () => {
   return (
     <SectionShell bordered={false}>
       <SEO
-        title="For Recruiters — Anupam Baral (@gomugomucode)"
+        title="Fast-Track Hiring Guide for Recruiters — Anupam Baral (@gomugomucode)"
         description="Dedicated portal for engineering recruiters evaluating Anupam Baral (@gomugomucode) for Full-Stack, React, Next.js, Python AI, and Web3 roles."
         canonicalUrl={url}
         schema={schemas}
